@@ -1,0 +1,26 @@
+#+AUTHOR: Jeffrey Young
+#+TITLE: MergeSort Coding Notes and Sources
+#+DATE: Feb 23, 2017
+
+# Fix the margins
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{amssymb}
+
+# Remove section numbers, no table of contents
+#+OPTIONS: toc:nil
+#+options: num:nil
+
+# Set the article class
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [10pt, letterpaper]
+
+* Sources
+	- MS001 :: http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Sorting/mergeSort.htm
+	- MS002 :: http://algs4.cs.princeton.edu/lectures/22Mergesort.pdf	 	 
+	- MS003 :: https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms 
+	- MS004 :: http://algs4.cs.princeton.edu/22mergesort/	 	 
+	- MS005 :: https://secweb.cs.odu.edu/~zeil/cs361/sum14/Public/mergesort/index.html	 	 
+	- MS006 :: http://www.cs.toronto.edu/~hojjat/148s07/lectures/week11/12_mergesort.pdf	 	 
+	- MS007 :: https://www.cs.purdue.edu/cgvlab/courses/251/lectures/slides/03.23-SortingSetsSelection.pdf	 	 
+	- MS008 :: http://pages.cs.wisc.edu/~vernon/cs367/notes/14.SORTING.html	 	 
+	- MS009 :: https://webdocs.cs.ualberta.ca/~holte/mergesort.pdf	 	 

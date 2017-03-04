@@ -1,0 +1,26 @@
+#+AUTHOR: Jeffrey Young
+#+TITLE: MergeSort Coding Notes and Sources
+#+DATE: Feb 23, 2017
+
+# Fix the margins
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{amssymb}
+
+# Remove section numbers, no table of contents
+#+OPTIONS: toc:nil
+#+options: num:nil
+
+# Set the article class
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [10pt, letterpaper]
+
+* Sources
+	- UN001 :: http://www.cs.princeton.edu/~wayne/kleinberg-tardos/pdf/04GreedyAlgorithmsII.pdf
+	- UN002 :: http://math.mit.edu/~rothvoss/18.304.3PM/Presentations/1-Melissa.pdf	 	 
+	- UN003 :: https://www.cs.auckland.ac.nz/~jmor159/PLDS210/dijkstra.html	 	 
+	- UN004 :: http://www.ms.unimelb.edu.au/~moshe@unimelb/620-261/dijkstra/dijkstra.html	 	 
+	- UN005 :: http://courses.cs.washington.edu/courses/cse373/10sp/lectures/cse373-10sp-lec21-GraphsDijkstra-ink.html	 	 
+	- UN006 :: http://www.cs.princeton.edu/~rs/AlgsDS07/15ShortestPaths.pdf	 	 
+	- UN007 :: http://www.cs.cornell.edu/courses/cs312/2002sp/lectures/lec20/lec20.htm	 	 
+	- UN008 :: http://mat.uab.cat/~alseda/MasterOpt/MyL09.pdf	 	 
+	- UN009 :: http://mat.uab.cat/~alseda/MasterOpt/MyL09.pdf	 	 
