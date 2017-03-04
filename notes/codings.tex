@@ -1,0 +1,179 @@
+% Created 2017-03-04 Sat 11:39
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{adjustbox}
+\author{Jeffrey Young}
+\date{Feb 23, 2017}
+\title{Coding Notes}
+\hypersetup{
+ pdfauthor={Jeffrey Young},
+ pdftitle={Coding Notes},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.0.50 (Org mode 9.0.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{Purpose}
+\label{sec:org285730d}
+The Purpose of encodings is to systematically and formally codify real world, in the wild, explanations so that observing larger patterns becomes possible. The end goal of this is:
+\begin{enumerate}
+\item Generate a database of encodings
+\item Analyze database to find patterns of explanation
+\item 1 and 2 become formative work for exploring DSL possibilities in XOP
+\end{enumerate}
+\section*{Scope}
+\label{sec:org4716f59}
+The scope of the database is restricted to explanations of common Computer Science algorithms \uline{from} Universities only. Restricting the scope in this manner provides two benefits:
+\begin{enumerate}
+\item All explanatory objects have a stated, intrinsic goal to communicate the mechanics, application, and implementation of similar things
+\item There are numerous examples of different approaches to explain \uline{the same} thing, and numerous examples of \uline{like} approaches to explain different things
+\end{enumerate}
+
+\section*{Some Terminology}
+\label{sec:org21a493e}
+In our terminology an explanation is called an "explanation artifact", our
+  working model of the process of explaining is a non-linear sequence of
+  "steps", where each "step" denotes some progress in the understanding of the
+  explanation artifact on the part of the information receiver. More formally:
+\begin{description}
+\item[{Explanatory Artifact}] The whole explanation, including all the step taken in the explanation, the language used in the explanation etc.
+\item[{Step}] The steps that are taken, in an explanatory artifact, that guide the
+reader from non-understanding to understanding.
+\end{description}
+\section*{Syntax}
+\label{sec:org9b5ca7c}
+The syntax of an encoding is given by \_ - \_ - \_ - \_ \(\subseteq\) Location \texttimes{} Level \texttimes{} Role \texttimes{} Notation where \\
+
+l \(\in\) \(\mathbb{N}\) \\
+
+g \(\in\) Level ::= Problem | Algorithm | Implementation \\
+
+r \(\in\) Role ::= Background | Definition | Constraint | Example | Application | Variant | Analogy | Idea | Proof | Performance | Properties \\
+
+n \(\in\) Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n \\
+
+\section*{Semantics}
+\label{sec:org7434ee1}
+\begin{itemize}
+\item a location \(l\), specifies the location that the encoding is referring to,
+this could be a slide, a number line etc.
+\item a Level \(g\), Specifies the level of abstraction for a given step:
+\begin{description}
+\item[{Problem}] \(\triangleq\) the purpose of a given step is to elucidate the
+motivating problem of the algorithm, i.e the problem that the algorithm
+will solve
+\item[{Algorithm}] \(\triangleq\) the purpose of a given step is to explain the
+algorithm at hand
+\item[{Implementation}] \(\triangleq\) the purpose of a given step is to explain the
+implementation details of the algorithm, e.g. What data structures to
+use, What the form of the code that implements the algorithm should be
+\end{description}
+
+\item a Role \(r\), specifies how the Level is trying to be reached, denotes the
+answer to question such as "What is the step trying to convey?":
+\end{itemize}
+
+Consider the following matrix of Level Role combinations of Dijkstra's
+algorithm. Not all of the cells will be orthogonal to each other. In this case
+we would have: \\
+
+\textbf{Problem}: How to traverse the shortest path in a non-negative
+     weighted graph \\
+
+\textbf{Algorithm}: Dijkstra's Algorithm \\
+
+\textbf{Implementation}: You should use a Priority Queue that has
+     efficient lookup, mutate operations. \\
+
+\begin{itemize}
+\item \(\bot\) used to denote cells which may be nonsensical \\
+\end{itemize}
+
+\begin{table}
+\centering
+\adjustbox{max width=\linewidth}{
+\begin{tabular}{|c|c|c|c|}
+Role & Problem & Algorithm & Implementation\\
+\hline
+Definition & Mathematical definition of Problem & Mathematical Definition of Algorithm & \bot\\
+Example & Display of a non-negative weighted graph & Showing the algorithms execution on the map & Showing requisite data structures etc.\\
+Application & Real World Example of the problem & \bot & Triage System in a Hospital\\
+Background & History of the Problem & History, Author, etc. & History of Priority Queues\\
+Variant & Perhaps a teleporter exists, now what is shortest path & Description of Bellman-Ford & Description of slightly different Priority Queues\\
+Analogy & \bot & Exposition of Prim's algorithm & \bot\\
+Performance & \bot & Complexity & Complexity of requisite data structs\\
+Idea & \bot & \bot & \bot\\
+Constraint & Depiction of the Constraints of the Problem & Depiction of domain where Algorithm lacks validity & Requirements of internal Data Structs\\
+Proof & \bot & Explicit Proof of Algorithm correctness & Explicit Proof of some requisite part of the algorithm\\
+\end{tabular}
+\end{table}
+
+For example slide 2 might provide background information on the Algorithm
+level, then slide 3 may provide the working definition on the Algorithm Level.
+In general the meaning of each role is:
+\begin{description}
+\item[{Definition}] \(\triangleq\) A given level is reached by a step that explicitly provides a
+formal definition.
+\item[{Example}] \(\triangleq\) A given level is reached by a step that provides an Example
+\item[{Application}] \(\triangleq\) A given level is reached by a step that explains what the
+algorithm is useful for
+\item[{Background}] \(\triangleq\) A given level is reached by a step that describes the history,
+creators, genealogy of the Algorithm
+\item[{Variant}] \(\triangleq\) A given level is reached by a step that describes things that are
+similar but slightly different than the algorithm. For example, describing
+Prim's algorithm and it's similarities to Dijkstra's or describing the
+similarities between a dog and a wolf
+\item[{Analogy}] \(\triangleq\) A given level is reached by a step that provides an Analogy to
+explain the algorithm at hand. For example a visual analogy for Dijkstra's
+could be: If you have a physical model of a graph, and you pick it up by
+one vertex, then the vertex with the shortest path to the "source" vertex
+will be the one farthest from the ground.
+\item[{Performance}] \(\triangleq\) A given level is reached by a step that explicitly describes
+the computational complexity of the level
+\item[{Idea}] \(\triangleq\) A given level is reached by a step that adds an abstract idea to the
+explanation as a way to progress. For example, the statement "Well we have
+this, \uline{what if we did} this?"
+\item[{Constraint}] \(\triangleq\) A given level is reached by a step that explicitly presents a
+limit or condition in which the level would cease to be valid, e.g.
+Dijkstra's only works on non-negative weighted graphs
+\item[{Proof}] \(\triangleq\) A given level is reached by a formal proof
+
+\begin{itemize}
+\item a Notation \(n\), specifies the form of the role:
+\begin{description}
+\item[{English}] \(\triangleq\) Human language to give explanations/statements.
+\item[{Diagram}] \(\triangleq\) Diagram in the manner of data structures, such as graph, list.
+\item[{List}] \(\triangleq\) List of similar items
+\item[{OrderedList}] \(\triangleq\) Step by step items
+\item[{Math}] \(\triangleq\) Formulas/math style symbols.
+\item[{Pseudocode}] \(\triangleq\) Algorithm presented as pseudocode
+\item[{Code}] \(\triangleq\) executable code to show the algorithm explicitly
+\item[{Tables}] \(\triangleq\) Explanatory information displayed in a table
+\item[{Animation}] \(\triangleq\) a gif or animation of any type is used.
+\item[{Picture}] \(\triangleq\) A photo/screenshot or picture is used.
+\end{description}
+\end{itemize}
+\end{description}
+
+for example a definition might be described in English, followed by the same definition described by geometry. Notations can be combined for a single location like so:
+\begin{equation}
+   \(\frac{n \in \text{Notation} \quad m \in \text{Notation}}{n/m \in \text{Notation}}\)
+\end{equation}
+\end{document}

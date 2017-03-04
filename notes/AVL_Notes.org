@@ -1,0 +1,28 @@
+#+AUTHOR: Jeffrey Young
+#+TITLE: Coding Notes
+#+DATE: Feb 23, 2017
+
+# Fix the margins
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{amssymb}
+
+# Remove section numbers, no table of contents
+#+OPTIONS: toc:nil
+#+options: num:nil
+
+# Set the article class
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [10pt, letterpaper]
+
+* Sources
+  1. www.cs.fsu.edu/~asriniva/courses/DS13/lectures/Lec17-19.ppt
+  2. www.cs.ust.hk/~huamin/COMP171/avl-tree.ppt
+  3. https://www.cs.sjsu.edu/~lee/cs146/Asami-avl-presentation.ppt
+  4. www.cse.unt.edu/~huangyan/3110/Lectures/SearchTrees.ppt
+  5. www.cs.utoronto.ca/~tabrown/csc263/week3.ppt
+  6. courses.washington.edu/tcss342/slides/AVLheightproof08.ppt
+  7. www.cs.cmu.edu/~ab/15-121F10/.../Lecture%2016%20-%20Balanced%20Trees.ppt
+  8. https://www.cs.cmu.edu/~fp/courses/15122-s11/lectures/18-avl.pdf
+  9. https://www.cs.purdue.edu/homes/ayg/CS251/slides/chap7b.pdf
+  10. http://courses.cs.vt.edu/cs2604/spring04/Notes/C06.AVLTrees.pdf
+
