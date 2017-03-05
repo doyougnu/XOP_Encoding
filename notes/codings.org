@@ -44,9 +44,11 @@
   n \in Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n \\
 
 * Semantics
-  - a location \(l\), specifies the location that the encoding is referring to,
-    this could be a slide, a number line etc.
-  - a Level \(g\), Specifies the level of abstraction for a given step:
+** Location
+   a location \(l\), specifies the location that the encoding is referring to,
+   this could be a slide, a number line etc.
+** Level
+  a Level \(g\), Specifies the level of abstraction for a given step, a level can by one of:
     - Problem :: \triangleq the purpose of a given step is to elucidate the
          motivating problem of the algorithm, i.e the problem that the algorithm
          will solve
@@ -56,85 +58,85 @@
          implementation details of the algorithm, e.g. What data structures to
          use, What the form of the code that implements the algorithm should be
 
-  - a Role \(r\), specifies how the Level is trying to be reached, denotes the
-    answer to question such as "What is the step trying to convey?":
-    
- Consider the following matrix of Level Role combinations of Dijkstra's
- algorithm. Not all of the cells will be orthogonal to each other. In this case
- we would have: \\
+** Role
+   a Role \(r\), specifies how the Level is trying to be reached, denotes the
+   answer to question such as "What is the step trying to convey?":
 
- *Problem*: How to traverse the shortest path in a non-negative
-      weighted graph \\
+   In general the meaning of each role is:
+   - Definition :: \triangleq A given level is reached by a step that explicitly provides a
+                   formal definition.
+   - Example :: \triangleq A given level is reached by a step that provides an Example
+   - Application :: \triangleq A given level is reached by a step that explains what the
+                    algorithm is useful for
+   - Background :: \triangleq A given level is reached by a step that describes the history,
+                   creators, genealogy of the Algorithm
+   - Variant :: \triangleq A given level is reached by a step that describes things that are
+                similar but slightly different than the algorithm. For example, describing
+                Prim's algorithm and it's similarities to Dijkstra's or describing the
+                similarities between a dog and a wolf
+   - Analogy :: \triangleq A given level is reached by a step that provides an Analogy to
+                explain the algorithm at hand. For example a visual analogy for Dijkstra's
+                could be: If you have a physical model of a graph, and you pick it up by
+                one vertex, then the vertex with the shortest path to the "source" vertex
+                will be the one farthest from the ground.
+   - Performance :: \triangleq A given level is reached by a step that explicitly describes
+                    the computational complexity of the level
+   - Idea :: \triangleq A given level is reached by a step that adds an abstract idea to the
+             explanation as a way to progress. For example, the statement "Well we have
+             this, _what if we did_ this?"
+   - Constraint :: \triangleq A given level is reached by a step that explicitly presents a
+                   limit or condition in which the level would cease to be valid, e.g.
+                   Dijkstra's only works on non-negative weighted graphs
+   - Proof :: \triangleq A given level is reached by a formal proof
 
- *Algorithm*: Dijkstra's Algorithm \\
+   Consider the following matrix of Level Role combinations of Dijkstra's
+   algorithm. Not all of the cells will be orthogonal to each other. In this case
+   we would have: \\
+   
+   *Problem*: How to traverse the shortest path in a non-negative
+   weighted graph \\
 
- *Implementation*: You should use a Priority Queue that has
-      efficient lookup, mutate operations. \\
+   *Algorithm*: Dijkstra's Algorithm \\
+
+   *Implementation*: You should use a Priority Queue that has
+   efficient lookup, mutate operations. \\
       
- * \(\bot\) used to denote cells which may be nonsensical \\
+   * \(\bot\) used to denote cells which may be nonsensical \\
       
- #+begin_table
- #+LATEX: \centering
- #+LATEX: \adjustbox{max width=\linewidth}{
- #+ATTR_LATEX: :envrionment longtable :align |c|c|c|c|
- #+ATTR_LATEX: :center nil
-    | <10> | <10>    | <10>      | <10>           |
-    | Role | Problem | Algorithm | Implementation |
-    |------+---------+-----------+----------------|
-    | Definition | Mathematical definition of Problem | Mathematical Definition of Algorithm | \bot |
-    | Example | Display of a non-negative weighted graph | Showing the algorithms execution on the map | Showing requisite data structures etc. |
-    | Application | Real World Example of the problem | \bot | Triage System in a Hospital |
-    | Background | History of the Problem | History, Author, etc. | History of Priority Queues |
-    | Variant | Perhaps a teleporter exists, now what is shortest path | Description of Bellman-Ford | Description of slightly different Priority Queues |
-    | Analogy | \bot | Exposition of Prim's algorithm | \bot |
-    | Performance | \bot | Complexity | Complexity of requisite data structs |
-    | Idea | \bot | \bot | \bot |
-    | Constraint | Depiction of the Constraints of the Problem | Depiction of domain where Algorithm lacks validity | Requirements of internal Data Structs |
-    | Proof | \bot | Explicit Proof of Algorithm correctness | Explicit Proof of some requisite part of the algorithm |
- #+end_table
+   #+Begin_Table
+   #+LATEX: \adjustbox{max width=\linewidth}{
+   #+LATEX: \centering
+   #+ATTR_LATEX: :envrionment longtable :align |c|c|c|c| :placement [!h] 
+   | Role | Problem | Algorithm | Implementation |
+   |------+---------+-----------+----------------|
+   | Definition | Mathematical definition of Problem | Mathematical Definition of Algorithm | \bot |
+   | Example | Display of a non-negative weighted graph | Showing the algorithms execution on the map | Showing requisite data structures etc. |
+   | Application | Real World Example of the problem | \bot | Triage System in a Hospital |
+   | Background | History of the Problem | History, Author, etc. | History of Priority Queues |
+   | Variant | Perhaps a teleporter exists, now what is shortest path | Description of Bellman-Ford | Description of slightly different Priority Queues |
+   | Analogy | \bot | Exposition of Prim's algorithm | \bot |
+   | Performance | \bot | Complexity | Complexity of requisite data structs |
+   | Idea | \bot | \bot | \bot |
+   | Constraint | Depiction of the Constraints of the Problem | Depiction of domain where Algorithm lacks validity | Requirements of internal Data Structs |
+   | Proof | \bot | Explicit Proof of Algorithm correctness | Explicit Proof of some requisite part of the algorithm |
+   #+End_Table
+   
+** Notation
+   a Notation \(n\), specifies the form of the role, and can be one of:
+   - English :: \triangleq Human language to give explanations/statements.
+   - Diagram :: \triangleq Diagram in the manner of data structures, such as graph, list.
+   - List :: \triangleq List of similar items
+   - OrderedList :: \triangleq Step by step items
+   - Math :: \triangleq Formulas/math style symbols.
+   - Pseudocode :: \triangleq Algorithm presented as pseudocode
+   - Code :: \triangleq executable code to show the algorithm explicitly
+   - Tables :: \triangleq Explanatory information displayed in a table
+   - Animation :: \triangleq a gif or animation of any type is used.
+   - Picture :: \triangleq A photo/screenshot or picture is used.
 
- For example slide 2 might provide background information on the Algorithm
- level, then slide 3 may provide the working definition on the Algorithm Level.
- In general the meaning of each role is:
- - Definition :: \triangleq A given level is reached by a step that explicitly provides a
-      formal definition.
- - Example :: \triangleq A given level is reached by a step that provides an Example
- - Application :: \triangleq A given level is reached by a step that explains what the
-      algorithm is useful for
- - Background :: \triangleq A given level is reached by a step that describes the history,
-      creators, genealogy of the Algorithm
- - Variant :: \triangleq A given level is reached by a step that describes things that are
-      similar but slightly different than the algorithm. For example, describing
-      Prim's algorithm and it's similarities to Dijkstra's or describing the
-      similarities between a dog and a wolf
- - Analogy :: \triangleq A given level is reached by a step that provides an Analogy to
-      explain the algorithm at hand. For example a visual analogy for Dijkstra's
-      could be: If you have a physical model of a graph, and you pick it up by
-      one vertex, then the vertex with the shortest path to the "source" vertex
-      will be the one farthest from the ground.
- - Performance :: \triangleq A given level is reached by a step that explicitly describes
-      the computational complexity of the level
- - Idea :: \triangleq A given level is reached by a step that adds an abstract idea to the
-      explanation as a way to progress. For example, the statement "Well we have
-      this, _what if we did_ this?"
- - Constraint :: \triangleq A given level is reached by a step that explicitly presents a
-      limit or condition in which the level would cease to be valid, e.g.
-      Dijkstra's only works on non-negative weighted graphs
- - Proof :: \triangleq A given level is reached by a formal proof
-
-  - a Notation \(n\), specifies the form of the role:
-    - English :: \triangleq Human language to give explanations/statements.
-    - Diagram :: \triangleq Diagram in the manner of data structures, such as graph, list.
-    - List :: \triangleq List of similar items
-    - OrderedList :: \triangleq Step by step items
-    - Math :: \triangleq Formulas/math style symbols.
-    - Pseudocode :: \triangleq Algorithm presented as pseudocode
-    - Code :: \triangleq executable code to show the algorithm explicitly
-    - Tables :: \triangleq Explanatory information displayed in a table
-    - Animation :: \triangleq a gif or animation of any type is used.
-    - Picture :: \triangleq A photo/screenshot or picture is used.
-
- for example a definition might be described in English, followed by the same definition described by geometry. Notations can be combined for a single location like so:
- \begin{equation}
-    \(\frac{n \in \text{Notation} \quad m \in \text{Notation}}{n/m \in \text{Notation}}\)
- \end{equation}
+   for example a definition might be described in English, followed by the same
+   definition described by geometry. Notations can be combined for a single
+   location like so:
+   \begin{equation}
+      \(\frac{n \in \text{Notation} \quad m \in \text{Notation}}{n/m \in \text{Notation}}\)
+   \end{equation}
