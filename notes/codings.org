@@ -130,9 +130,11 @@
    - Math :: \triangleq Formulas/math style symbols.
    - Pseudocode :: \triangleq Algorithm presented as pseudocode
    - Code :: \triangleq executable code to show the algorithm explicitly
-   - Tables :: \triangleq Explanatory information displayed in a table
+   - Table :: \triangleq Explanatory information displayed in a table
    - Animation :: \triangleq a gif or animation of any type is used.
    - Picture :: \triangleq A photo/screenshot or picture is used.
+   - Sequence :: \triangleq A conjunction of steps meant to show progress in a serial manner
+   - Plot :: \triangleq A mathematically generated plot that adheres to some coordinate system
 
    for example a definition might be described in English, followed by the same
    definition described by geometry. Notations can be combined for a single

@@ -1,4 +1,4 @@
-% Created 2017-03-04 Sat 15:59
+% Created 2017-03-04 Sat 17:52
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt, letterpaper]{article}
 \usepackage[utf8]{inputenc}
@@ -31,7 +31,7 @@
 \maketitle
 
 \section*{Purpose}
-\label{sec:org4c99545}
+\label{sec:org80ce788}
 The Purpose of encodings is to systematically and formally codify real world, in the wild, explanations so that observing larger patterns becomes possible. The end goal of this is:
 \begin{enumerate}
 \item Generate a database of encodings
@@ -39,7 +39,7 @@ The Purpose of encodings is to systematically and formally codify real world, in
 \item 1 and 2 become formative work for exploring DSL possibilities in XOP
 \end{enumerate}
 \section*{Scope}
-\label{sec:orgd9f9156}
+\label{sec:org5a8c06a}
 The scope of the database is restricted to explanations of common Computer Science algorithms \uline{from} Universities only. Restricting the scope in this manner provides two benefits:
 \begin{enumerate}
 \item All explanatory objects have a stated, intrinsic goal to communicate the mechanics, application, and implementation of similar things
@@ -47,7 +47,7 @@ The scope of the database is restricted to explanations of common Computer Scien
 \end{enumerate}
 
 \section*{Some Terminology}
-\label{sec:org8a62c5b}
+\label{sec:orgb18ec3b}
 In our terminology an explanation is called an "explanation artifact", our
   working model of the process of explaining is a non-linear sequence of
   "steps", where each "step" denotes some progress in the understanding of the
@@ -58,7 +58,7 @@ In our terminology an explanation is called an "explanation artifact", our
 reader from non-understanding to understanding.
 \end{description}
 \section*{Syntax}
-\label{sec:org74ac92a}
+\label{sec:org772cf18}
 The syntax of an encoding is given by \_ - \_ - \_ - \_ \(\subseteq\) Location \texttimes{} Level \texttimes{} Role \texttimes{} Notation where \\
 
 l \(\in\) \(\mathbb{N}\) \\
@@ -70,13 +70,13 @@ r \(\in\) Role ::= Background | Definition | Constraint | Example | Application 
 n \(\in\) Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n \\
 
 \section*{Semantics}
-\label{sec:org96cc204}
+\label{sec:org4353afd}
 \subsection*{Location}
-\label{sec:org0f2d149}
+\label{sec:org79462b2}
 a location \(l\), specifies the location that the encoding is referring to,
 this could be a slide, a number line etc.
 \subsection*{Level}
-\label{sec:org0b85806}
+\label{sec:org1df0da5}
 a Level \(g\), Specifies the level of abstraction for a given step, a level can by one of:
 \begin{description}
 \item[{Problem}] \(\triangleq\) the purpose of a given step is to elucidate the
@@ -90,7 +90,7 @@ use, What the form of the code that implements the algorithm should be
 \end{description}
 
 \subsection*{Role}
-\label{sec:orgb8ef15e}
+\label{sec:orgc729b97}
 a Role \(r\), specifies how the Level is trying to be reached, denotes the
 answer to question such as "What is the step trying to convey?":
 
@@ -161,7 +161,7 @@ Proof & \bot & Explicit Proof of Algorithm correctness & Explicit Proof of some 
 \end{Table}
 
 \subsection*{Notation}
-\label{sec:orgb869863}
+\label{sec:org62787c8}
 a Notation \(n\), specifies the form of the role, and can be one of:
 \begin{description}
 \item[{English}] \(\triangleq\) Human language to give explanations/statements.
@@ -171,9 +171,11 @@ a Notation \(n\), specifies the form of the role, and can be one of:
 \item[{Math}] \(\triangleq\) Formulas/math style symbols.
 \item[{Pseudocode}] \(\triangleq\) Algorithm presented as pseudocode
 \item[{Code}] \(\triangleq\) executable code to show the algorithm explicitly
-\item[{Tables}] \(\triangleq\) Explanatory information displayed in a table
+\item[{Table}] \(\triangleq\) Explanatory information displayed in a table
 \item[{Animation}] \(\triangleq\) a gif or animation of any type is used.
 \item[{Picture}] \(\triangleq\) A photo/screenshot or picture is used.
+\item[{Sequence}] \(\triangleq\) A conjunction of steps meant to show progress in a serial manner
+\item[{Plot}] \(\triangleq\) A mathematically generated plot that adheres to some coordinate system
 \end{description}
 
 for example a definition might be described in English, followed by the same
