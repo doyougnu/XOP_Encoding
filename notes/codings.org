@@ -63,13 +63,16 @@
    answer to question such as "What is the step trying to convey?":
 
    In general the meaning of each role is:
+   - Background :: \triangleq A given level is reached by a step that describes the history,
+                   creators, genealogy of the Algorithm
    - Definition :: \triangleq A given level is reached by a step that explicitly provides a
                    formal definition.
+   - Constraint :: \triangleq A given level is reached by a step that explicitly presents a
+                   limit or condition in which the level would cease to be valid, e.g.
+                   Dijkstra's only works on non-negative weighted graphs
    - Example :: \triangleq A given level is reached by a step that provides an Example
    - Application :: \triangleq A given level is reached by a step that explains what the
                     algorithm is useful for
-   - Background :: \triangleq A given level is reached by a step that describes the history,
-                   creators, genealogy of the Algorithm
    - Variant :: \triangleq A given level is reached by a step that describes things that are
                 similar but slightly different than the algorithm. For example, describing
                 Prim's algorithm and it's similarities to Dijkstra's or describing the
@@ -79,15 +82,13 @@
                 could be: If you have a physical model of a graph, and you pick it up by
                 one vertex, then the vertex with the shortest path to the "source" vertex
                 will be the one farthest from the ground.
-   - Performance :: \triangleq A given level is reached by a step that explicitly describes
-                    the computational complexity of the level
    - Idea :: \triangleq A given level is reached by a step that adds an abstract idea to the
              explanation as a way to progress. For example, the statement "Well we have
              this, _what if we did_ this?"
-   - Constraint :: \triangleq A given level is reached by a step that explicitly presents a
-                   limit or condition in which the level would cease to be valid, e.g.
-                   Dijkstra's only works on non-negative weighted graphs
    - Proof :: \triangleq A given level is reached by a formal proof
+   - Performance :: \triangleq A given level is reached by a step that explicitly describes
+                    the computational complexity of the level
+   - Properties :: \triangleq A given level is reached by a step that explicitly describes the properties of that level. For Example, AVL Trees are both /balanced/ and /ordered/.
 
    Consider the following matrix of Level Role combinations of Dijkstra's
    algorithm. Not all of the cells will be orthogonal to each other. In this case

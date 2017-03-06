@@ -1,4 +1,4 @@
-% Created 2017-03-04 Sat 17:52
+% Created 2017-03-05 Sun 18:58
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt, letterpaper]{article}
 \usepackage[utf8]{inputenc}
@@ -31,7 +31,7 @@
 \maketitle
 
 \section*{Purpose}
-\label{sec:org80ce788}
+\label{sec:org4e0034f}
 The Purpose of encodings is to systematically and formally codify real world, in the wild, explanations so that observing larger patterns becomes possible. The end goal of this is:
 \begin{enumerate}
 \item Generate a database of encodings
@@ -39,7 +39,7 @@ The Purpose of encodings is to systematically and formally codify real world, in
 \item 1 and 2 become formative work for exploring DSL possibilities in XOP
 \end{enumerate}
 \section*{Scope}
-\label{sec:org5a8c06a}
+\label{sec:org0d4f588}
 The scope of the database is restricted to explanations of common Computer Science algorithms \uline{from} Universities only. Restricting the scope in this manner provides two benefits:
 \begin{enumerate}
 \item All explanatory objects have a stated, intrinsic goal to communicate the mechanics, application, and implementation of similar things
@@ -47,7 +47,7 @@ The scope of the database is restricted to explanations of common Computer Scien
 \end{enumerate}
 
 \section*{Some Terminology}
-\label{sec:orgb18ec3b}
+\label{sec:orgbe0d9dc}
 In our terminology an explanation is called an "explanation artifact", our
   working model of the process of explaining is a non-linear sequence of
   "steps", where each "step" denotes some progress in the understanding of the
@@ -58,7 +58,7 @@ In our terminology an explanation is called an "explanation artifact", our
 reader from non-understanding to understanding.
 \end{description}
 \section*{Syntax}
-\label{sec:org772cf18}
+\label{sec:org1ee15f7}
 The syntax of an encoding is given by \_ - \_ - \_ - \_ \(\subseteq\) Location \texttimes{} Level \texttimes{} Role \texttimes{} Notation where \\
 
 l \(\in\) \(\mathbb{N}\) \\
@@ -70,13 +70,13 @@ r \(\in\) Role ::= Background | Definition | Constraint | Example | Application 
 n \(\in\) Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n \\
 
 \section*{Semantics}
-\label{sec:org4353afd}
+\label{sec:orgc0bd108}
 \subsection*{Location}
-\label{sec:org79462b2}
+\label{sec:org41bae11}
 a location \(l\), specifies the location that the encoding is referring to,
 this could be a slide, a number line etc.
 \subsection*{Level}
-\label{sec:org1df0da5}
+\label{sec:org6cfb060}
 a Level \(g\), Specifies the level of abstraction for a given step, a level can by one of:
 \begin{description}
 \item[{Problem}] \(\triangleq\) the purpose of a given step is to elucidate the
@@ -90,19 +90,22 @@ use, What the form of the code that implements the algorithm should be
 \end{description}
 
 \subsection*{Role}
-\label{sec:orgc729b97}
+\label{sec:orgbce9be6}
 a Role \(r\), specifies how the Level is trying to be reached, denotes the
 answer to question such as "What is the step trying to convey?":
 
 In general the meaning of each role is:
 \begin{description}
+\item[{Background}] \(\triangleq\) A given level is reached by a step that describes the history,
+creators, genealogy of the Algorithm
 \item[{Definition}] \(\triangleq\) A given level is reached by a step that explicitly provides a
 formal definition.
+\item[{Constraint}] \(\triangleq\) A given level is reached by a step that explicitly presents a
+limit or condition in which the level would cease to be valid, e.g.
+Dijkstra's only works on non-negative weighted graphs
 \item[{Example}] \(\triangleq\) A given level is reached by a step that provides an Example
 \item[{Application}] \(\triangleq\) A given level is reached by a step that explains what the
 algorithm is useful for
-\item[{Background}] \(\triangleq\) A given level is reached by a step that describes the history,
-creators, genealogy of the Algorithm
 \item[{Variant}] \(\triangleq\) A given level is reached by a step that describes things that are
 similar but slightly different than the algorithm. For example, describing
 Prim's algorithm and it's similarities to Dijkstra's or describing the
@@ -112,15 +115,13 @@ explain the algorithm at hand. For example a visual analogy for Dijkstra's
 could be: If you have a physical model of a graph, and you pick it up by
 one vertex, then the vertex with the shortest path to the "source" vertex
 will be the one farthest from the ground.
-\item[{Performance}] \(\triangleq\) A given level is reached by a step that explicitly describes
-the computational complexity of the level
 \item[{Idea}] \(\triangleq\) A given level is reached by a step that adds an abstract idea to the
 explanation as a way to progress. For example, the statement "Well we have
 this, \uline{what if we did} this?"
-\item[{Constraint}] \(\triangleq\) A given level is reached by a step that explicitly presents a
-limit or condition in which the level would cease to be valid, e.g.
-Dijkstra's only works on non-negative weighted graphs
 \item[{Proof}] \(\triangleq\) A given level is reached by a formal proof
+\item[{Performance}] \(\triangleq\) A given level is reached by a step that explicitly describes
+the computational complexity of the level
+\item[{Properties}] \(\triangleq\) A given level is reached by a step that explicitly describes the properties of that level. For Example, AVL Trees are both \emph{balanced} and \emph{ordered}.
 \end{description}
 
 Consider the following matrix of Level Role combinations of Dijkstra's
@@ -161,7 +162,7 @@ Proof & \bot & Explicit Proof of Algorithm correctness & Explicit Proof of some 
 \end{Table}
 
 \subsection*{Notation}
-\label{sec:org62787c8}
+\label{sec:org8a4d359}
 a Notation \(n\), specifies the form of the role, and can be one of:
 \begin{description}
 \item[{English}] \(\triangleq\) Human language to give explanations/statements.
