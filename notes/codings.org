@@ -20,10 +20,12 @@
   2. Analyze database to find patterns of explanation
   3. 1 and 2 become formative work for exploring DSL possibilities in XOP
 * Scope
-  The scope of the database is restricted to explanations of common Computer Science algorithms _from_ Universities only. Restricting the scope in this manner provides two benefits:
+  The scope of the database is restricted to explanations of common Computer Science algorithms /from/ Universities only. Restricting the scope in this manner provides two benefits:
   1. All explanatory objects have a stated, intrinsic goal to communicate the mechanics, application, and implementation of similar things
-  2. There are numerous examples of different approaches to explain _the same_ thing, and numerous examples of _like_ approaches to explain different things
+  2. There are numerous examples of different approaches to explain /the same/ thing, and numerous examples of /like/ approaches to explain different things
 
+* Data Collection
+All Data is coded by human individuals with reference to this document. The location index represents the location of an encoding /relative/ to the document. So a location of 1 means the literal first page of the document (typically a header slide or introduction).
 * Some Terminology
   In our terminology an explanation is called an "explanation artifact", our
     working model of the process of explaining is a non-linear sequence of
@@ -32,7 +34,7 @@
   - Explanatory Artifact :: The whole explanation, including all the step taken in the explanation, the language used in the explanation etc.
   - Step :: The steps that are taken, in an explanatory artifact, that guide the
        reader from non-understanding to understanding.
-* Syntax
+* Syntax  and Grammer
   The syntax of an encoding is given by _ - _ - _ - _ \(\subseteq\) Location \times Level \times Role \times Notation where \\
   
   l \in \(\mathbb{N}\) \\
@@ -41,8 +43,7 @@
 
   r \in Role ::= Background | Definition | Constraint | Example | Application | Variant | Analogy | Idea | Proof | Performance | Properties \\
 
-  n \in Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n \\
-
+  n \in Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n 
 * Semantics
 ** Location
    a location \(l\), specifies the location that the encoding is referring to,
@@ -84,7 +85,7 @@
                 will be the one farthest from the ground.
    - Idea :: \triangleq A given level is reached by a step that adds an abstract idea to the
              explanation as a way to progress. For example, the statement "Well we have
-             this, _what if we did_ this?"
+             this, /what if we did/ this?"
    - Proof :: \triangleq A given level is reached by a formal proof
    - Performance :: \triangleq A given level is reached by a step that explicitly describes
                     the computational complexity of the level

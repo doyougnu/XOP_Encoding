@@ -1,4 +1,4 @@
-% Created 2017-03-05 Sun 18:58
+% Created 2017-03-09 Thu 16:47
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt, letterpaper]{article}
 \usepackage[utf8]{inputenc}
@@ -31,7 +31,7 @@
 \maketitle
 
 \section*{Purpose}
-\label{sec:org4e0034f}
+\label{sec:org411c3f2}
 The Purpose of encodings is to systematically and formally codify real world, in the wild, explanations so that observing larger patterns becomes possible. The end goal of this is:
 \begin{enumerate}
 \item Generate a database of encodings
@@ -39,15 +39,18 @@ The Purpose of encodings is to systematically and formally codify real world, in
 \item 1 and 2 become formative work for exploring DSL possibilities in XOP
 \end{enumerate}
 \section*{Scope}
-\label{sec:org0d4f588}
-The scope of the database is restricted to explanations of common Computer Science algorithms \uline{from} Universities only. Restricting the scope in this manner provides two benefits:
+\label{sec:orgecf5855}
+The scope of the database is restricted to explanations of common Computer Science algorithms \emph{from} Universities only. Restricting the scope in this manner provides two benefits:
 \begin{enumerate}
 \item All explanatory objects have a stated, intrinsic goal to communicate the mechanics, application, and implementation of similar things
-\item There are numerous examples of different approaches to explain \uline{the same} thing, and numerous examples of \uline{like} approaches to explain different things
+\item There are numerous examples of different approaches to explain \emph{the same} thing, and numerous examples of \emph{like} approaches to explain different things
 \end{enumerate}
 
+\section*{Data Collection}
+\label{sec:org6ccb1e4}
+All Data is coded by human individuals with reference to this document. The location index represents the location of an encoding \emph{relative} to the document. So a location of 1 means the literal first page of the document (typically a header slide or introduction).
 \section*{Some Terminology}
-\label{sec:orgbe0d9dc}
+\label{sec:org2f4906d}
 In our terminology an explanation is called an "explanation artifact", our
   working model of the process of explaining is a non-linear sequence of
   "steps", where each "step" denotes some progress in the understanding of the
@@ -57,8 +60,8 @@ In our terminology an explanation is called an "explanation artifact", our
 \item[{Step}] The steps that are taken, in an explanatory artifact, that guide the
 reader from non-understanding to understanding.
 \end{description}
-\section*{Syntax}
-\label{sec:org1ee15f7}
+\section*{Syntax  and Grammer}
+\label{sec:org1bae7ce}
 The syntax of an encoding is given by \_ - \_ - \_ - \_ \(\subseteq\) Location \texttimes{} Level \texttimes{} Role \texttimes{} Notation where \\
 
 l \(\in\) \(\mathbb{N}\) \\
@@ -67,16 +70,15 @@ g \(\in\) Level ::= Problem | Algorithm | Implementation \\
 
 r \(\in\) Role ::= Background | Definition | Constraint | Example | Application | Variant | Analogy | Idea | Proof | Performance | Properties \\
 
-n \(\in\) Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n \\
-
+n \(\in\) Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n 
 \section*{Semantics}
-\label{sec:orgc0bd108}
+\label{sec:org328433e}
 \subsection*{Location}
-\label{sec:org41bae11}
+\label{sec:org57ca4c4}
 a location \(l\), specifies the location that the encoding is referring to,
 this could be a slide, a number line etc.
 \subsection*{Level}
-\label{sec:org6cfb060}
+\label{sec:org50c3a9c}
 a Level \(g\), Specifies the level of abstraction for a given step, a level can by one of:
 \begin{description}
 \item[{Problem}] \(\triangleq\) the purpose of a given step is to elucidate the
@@ -90,7 +92,7 @@ use, What the form of the code that implements the algorithm should be
 \end{description}
 
 \subsection*{Role}
-\label{sec:orgbce9be6}
+\label{sec:orga9e8ece}
 a Role \(r\), specifies how the Level is trying to be reached, denotes the
 answer to question such as "What is the step trying to convey?":
 
@@ -117,7 +119,7 @@ one vertex, then the vertex with the shortest path to the "source" vertex
 will be the one farthest from the ground.
 \item[{Idea}] \(\triangleq\) A given level is reached by a step that adds an abstract idea to the
 explanation as a way to progress. For example, the statement "Well we have
-this, \uline{what if we did} this?"
+this, \emph{what if we did} this?"
 \item[{Proof}] \(\triangleq\) A given level is reached by a formal proof
 \item[{Performance}] \(\triangleq\) A given level is reached by a step that explicitly describes
 the computational complexity of the level
@@ -162,7 +164,7 @@ Proof & \bot & Explicit Proof of Algorithm correctness & Explicit Proof of some 
 \end{Table}
 
 \subsection*{Notation}
-\label{sec:org8a4d359}
+\label{sec:org4c1f85e}
 a Notation \(n\), specifies the form of the role, and can be one of:
 \begin{description}
 \item[{English}] \(\triangleq\) Human language to give explanations/statements.
