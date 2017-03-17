@@ -5,7 +5,7 @@ library(gridExtra)
 # for mosaic plots
 library(ggmosaic)
 
-setwd("/home/doyougnu/Research/XOP/XOP_Encoding/R/")
+## setwd("/home/doyougnu/Research/XOP/XOP_Encoding/R/")
 # read in each data table
 dfwrd <- read.table(file="../data/encodings_word_03162017.txt"
                , header = TRUE
@@ -99,8 +99,9 @@ ggsave(file = "Plots/BirdsEyeView.png", width = 7, height = 5)
 
 ## sample spine and mosaic plots
 plt6 <- plot(data$Role, data$Goal, xlab = "Roles", ylab = "Goals")
-plt6
-ggsave(file = "Plots/RoleGoalMosaic.png", width = 7, height = 5)
+jpeg("Plots/RoleGoalMosaic.jpg")
+plot(data$Role, data$Goal, xlab = "Roles", ylab = "Goals")
+dev.off()
 
 
 ## generate a contingecy table
