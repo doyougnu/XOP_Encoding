@@ -1,0 +1,103 @@
+#+AUTHOR: Jeffrey Young
+#+TITLE: Theoretical Underpinnings
+#+DATE: Mar 25, 2017
+
+# Fix the margins
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{bussproofs}
+
+# Remove section numbers, no table of contents
+#+OPTIONS: toc:nil
+#+options: num:nil
+
+# Set the article class
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [10pt, letterpaper]
+
+* Aristotle 
+  To Aristotle we humans seek different things when we seek an "explanation" Aristotle Identifies four such things that we seek when we want something "explained". Much of the philosophy of Explanation rests on this so its worth reviewing.
+
+** Aristotle's Four "Causes"
+   - Material Cause :: What kind of stuff a thing is made of. \\
+      Used often in science, think Chemisty.
+   - Formal Cause :: What kind of category or class does it belong to, what form is it an instantiate of. \\
+      Used in taxonomy, chemistry you name it.
+   - Efficient Cause :: What brought it about? \\
+      Used all over, this is basically what we think of as the meaning of the word "cause".
+   - Final Cause :: What is its function in a larger system. \\
+      This is because Aristotle was believed in teleogist. I can explain it in person but teleology would roughly mean something like "fate". For example, an axe looks like an axe because it was always meant to be used like an Axe. It's purpose is to be used like an Axe so its form is caused by that purpose.
+
+* Deductive-Nomonological Theory
+
+** Hempel's Covering Law Model of _Scientific_ Explanation
+   - Consists of Two Inference Rules.
+   - *The main idea* is that to explain something is to subsume it or show that it is an instance of all known scientific laws
+
+** Some Etymology 
+
+   - Deductive :: This just means that given some premises we can conclude, logically, a conclusion by sound, cogent, logical inference rules
+   - Nomonological :: Greek root /Nomos/ means law; this means a thing that is /deduced from laws/ when translated
+
+** Ontological Terms 
+   - Explanans :: That which is /doing/ the explaining
+   - Explanandum :: The desideratum; That which is to be explained
+
+** D-N Deductive Inference Rule
+
+   The D-N inference rule is:
+   1. Given certain known Laws
+   2. And given certain, known, initial states or conditions
+   3. One could /deduce/ that the thing that we are trying to explain /must/ occur /given/ those conditions and /given/ those laws
+      
+   The formal inference rule is shown below, I've added a side-by-side comparison with the terms to aid the reader: \\
+   \begin{equation}
+   \frac{\text{Explanans} = \begin{cases} 
+                              \text{Known Laws} \\ 
+                              \text{Initial States or Conditions} 
+                            \end{cases}}{\text{Explanandum}}
+   \quad \quad
+   \equiv
+   \quad \quad
+   \frac{\begin{aligned}
+         L_1, L_2 \ldots L_n \\ 
+         S_1, S_2 \dots S_n
+         \end{aligned}}{E}
+   \end{equation}
+
+   Where L_n, is some known scientific law, and S_n represents some initial condition or state, and /E/ is the desideratum. \\
+
+   This is the major objective of science. We normally want to show that something /has to follow/ from the natural laws we know and some initial conditions. But this does not cover things that are probabilistic in nature, only things that are deterministic.
+
+** D-N Probabilistic Explanation
+   
+   The Probabilistic Explanation is:
+   1. Given sufficient probabilistic descriptions of an even occurring
+   2. Given an initial state of initial conditions
+   3. Once can /infer/ that the Explanandum, is /highly probably/ in occurring
+      
+   The inference rule, is formally:
+
+   \begin{center}
+   \begin{equation}
+   \AxiomC{\text{Explanans} = \begin{cases} 
+                              \text{Known Laws} \\ 
+                              \text{Initial States or Conditions} 
+                            \end{cases}}
+   \doubleLine\solidLine
+   \LeftLabel{Means Highly Probable -->}
+   \UnaryInfC{\text{Explanandum}}
+   \DisplayProof
+   \quad
+   \equiv
+   \quad
+     \AxiomC{\begin{aligned}
+         P_1, P_2 \ldots P_n \\
+         S_1, S_2 \dots S_n
+         \end{aligned}}
+    \doubleLine\solidLine
+    \UnaryInfC{\(E\)}
+  \DisplayProof
+  \end{equation}
+    \end{center} \\
+    
+    Where P_n is some Probability for event /n/, S_n is the initial state or condition, and /E/, again, is the Explanandum.

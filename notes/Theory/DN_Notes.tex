@@ -1,0 +1,140 @@
+% Created 2017-03-25 Sat 22:52
+% Intended LaTeX compiler: pdflatex
+\documentclass[10pt, letterpaper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\usepackage[margin=1in]{geometry}
+\usepackage{bussproofs}
+\author{Jeffrey Young}
+\date{Mar 25, 2017}
+\title{Theoretical Underpinnings}
+\hypersetup{
+ pdfauthor={Jeffrey Young},
+ pdftitle={Theoretical Underpinnings},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 26.0.50 (Org mode 9.0.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+
+\section*{Aristotle}
+\label{sec:orgba40103}
+To Aristotle we humans seek different things when we seek an "explanation" Aristotle Identifies four such things that we seek when we want something "explained". Much of the philosophy of Explanation rests on this so its worth reviewing.
+
+\subsection*{Aristotle's Four "Causes"}
+\label{sec:org4030254}
+\begin{description}
+\item[{Material Cause}] What kind of stuff a thing is made of. \\
+Used often in science, think Chemisty.
+\item[{Formal Cause}] What kind of category or class does it belong to, what form is it an instantiate of. \\
+Used in taxonomy, chemistry you name it.
+\item[{Efficient Cause}] What brought it about? \\
+Used all over, this is basically what we think of as the meaning of the word "cause".
+\item[{Final Cause}] What is its function in a larger system. \\
+This is because Aristotle was believed in teleogist. I can explain it in person but teleology would roughly mean something like "fate". For example, an axe looks like an axe because it was always meant to be used like an Axe. It's purpose is to be used like an Axe so its form is caused by that purpose.
+\end{description}
+
+\section*{Deductive-Nomonological Theory}
+\label{sec:org5d9af48}
+
+\subsection*{Hempel's Covering Law Model of \underline{Scientific} Explanation}
+\label{sec:orgec561b6}
+\begin{itemize}
+\item Consists of Two Inference Rules.
+\item \textbf{The main idea} is that to explain something is to subsume it or show that it is an instance of all known scientific laws
+\end{itemize}
+
+\subsection*{Some Etymology}
+\label{sec:orgbba0742}
+
+\begin{description}
+\item[{Deductive}] This just means that given some premises we can conclude, logically, a conclusion by sound, cogent, logical inference rules
+\item[{Nomonological}] Greek root \emph{Nomos} means law; this means a thing that is \emph{deduced from laws} when translated
+\end{description}
+
+\subsection*{Ontological Terms}
+\label{sec:org9863b14}
+\begin{description}
+\item[{Explanans}] That which is \emph{doing} the explaining
+\item[{Explanandum}] The desideratum; That which is to be explained
+\end{description}
+
+\subsection*{D-N Deductive Inference Rule}
+\label{sec:org993a0c7}
+
+The D-N inference rule is:
+\begin{enumerate}
+\item Given certain known Laws
+\item And given certain, known, initial states or conditions
+\item One could \emph{deduce} that the thing that we are trying to explain \emph{must} occur \emph{given} those conditions and \emph{given} those laws
+\end{enumerate}
+
+The formal inference rule is shown below, I've added a side-by-side comparison with the terms to aid the reader: \\
+\begin{equation}
+\frac{\text{Explanans} = \begin{cases} 
+                           \text{Known Laws} \\ 
+                           \text{Initial States or Conditions} 
+                         \end{cases}}{\text{Explanandum}}
+\quad \quad
+\equiv
+\quad \quad
+\frac{\begin{aligned}
+      L_1, L_2 \ldots L_n \\ 
+      S_1, S_2 \dots S_n
+      \end{aligned}}{E}
+\end{equation}
+
+Where L\(_{\text{n}}\), is some known scientific law, and S\(_{\text{n}}\) represents some initial condition or state, and \emph{E} is the desideratum. \\
+
+This is the major objective of science. We normally want to show that something \emph{has to follow} from the natural laws we know and some initial conditions. But this does not cover things that are probabilistic in nature, only things that are deterministic.
+
+\subsection*{D-N Probabilistic Explanation}
+\label{sec:org8249bd9}
+
+The Probabilistic Explanation is:
+\begin{enumerate}
+\item Given sufficient probabilistic descriptions of an even occurring
+\item Given an initial state of initial conditions
+\item Once can \emph{infer} that the Explanandum, is \emph{highly probably} in occurring
+\end{enumerate}
+
+The inference rule, is formally:
+
+\begin{center}
+ \begin{equation}
+ \AxiomC{\text{Explanans} = \begin{cases} 
+                            \text{Known Laws} \\ 
+                            \text{Initial States or Conditions} 
+                          \end{cases}}
+ \doubleLine\solidLine
+ \LeftLabel{Means Highly Probable -->}
+ \UnaryInfC{\text{Explanandum}}
+ \DisplayProof
+ \quad
+ \equiv
+ \quad
+   \AxiomC{\begin{aligned}
+       P_1, P_2 \ldots P_n \\
+       S_1, S_2 \dots S_n
+       \end{aligned}}
+  \doubleLine\solidLine
+  \UnaryInfC{\(E\)}
+\DisplayProof
+\end{equation}
+\end{center}
+
+Where P\(_{\text{n}}\) is some Probability for event \emph{n}, S\(_{\text{n}}\) is the initial state or condition, and \emph{E}, again, is the Explanandum.
+\end{document}

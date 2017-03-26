@@ -77,7 +77,7 @@ test <- data %>% group_by(Algorithm, Goal, Role, Notation) %>% summarise(count =
 
 plt3 <- ggplot(test, aes(x=Role, y=count)) +
   geom_bar(stat="identity") +
-  geom_bar(aes(x=Role, y=count, fill = Notation), stat="identity", position="dodge") + 
+  geom_bar(aes(x=Role, y=count, fill = Notation), stat="identity", position="dodge") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   facet_grid(.~ Algorithm)
 
