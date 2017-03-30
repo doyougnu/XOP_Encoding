@@ -1,5 +1,5 @@
 #+AUTHOR: Jeffrey Young
-#+TITLE: Educational Theoretical Underpinnings
+#+TITLE: Primer on Educational Theoretical Underpinnings
 #+DATE: Mar 30, 2017
 
 # Fix the margins
@@ -16,12 +16,15 @@
 
 
 bibliography:TheoryEdNotes.bib
+* Orientation
+  In the Educational theory literature we are after what is called a /typology of explanation/ several exist and have been developed through the years see this paper cite:brown1984explaining for an overview.
 
-* Goal
-  In the Educational theory literature we are after what is called a /typology of explanation/ several exist and have been developed through the years cite:brown1984explaining 
+* Purpose
+   Most of the papers I've found have developed a typology, then performed a experimental study of some sort, and then performed some statistical analysis to determine significance between some control group and some other group, typically a chi-squared test. The purpose of this document is to serve as a reference point for papers that may be interesting and to summarize those papers in terms that will be useful. I see to major roads that we can go down based on these papers: 1) We can develop our own typology, specifically designed to explicate and elucidate explanatory objects whose purpose is to explain algorithms - this is an extension of what we've already done. The end of this branch, in my mind, is a user study similar to what some researchers in this area have done with lectures (see Rosenshine below), this would allow us to say these categories are important, these arent' and so on. The other path I can envision is to recodify our methods in terms of these researchers methods, specifically in terms of Bellack et al 1966.
   
 * Papers to look at
-
+   -  Bellack et al, The Language of the classroom cite:bellack1966language, look at this, Gage and Rosenshine indicate this is the source work for explanation in a pedagogical context
+  
 * Papers that will be useful or relevant 
 
 ** Papers that detail what good explanations are 
@@ -38,3 +41,88 @@ bibliography:TheoryEdNotes.bib
    -  Ennis 1969, Logic in Teaching cite:ennis1969logic 
    - Smith and Meux: Study in the logic of teaching cite:Smith1970-SMIASO-13 
    -  Hyman 1974: Vantage Points for Study cite:hyman1968teaching 
+
+     
+* Explaining and Explanations Typology 
+
+** Explanations are divided up into "Keys"
+   - Keys :: A Key is part of the main explanation that must be explained for one to understand that which is to be explained
+** One then seeks to provide "links" between the "keys"
+   - Links :: PAPER DOES NOT DEFINE
+** Determine any rules
+   - Rules :: PAPER DOES NOT DEFINE
+** The Typology 
+*** The Interpretive
+    That which clarifies, exemplifies, or interprets the meaning of terms. Roughly speaks to "What is ... ?" 
+*** The Descriptive
+    That which describes a process or structure. Speaks to "How is ..? How does ...?" 
+*** The "Reason Giving"
+    That which offers reasons or causes. Speaks to the occurrence of a phenomenon (Why is ...?)
+    
+  An Explanation that adheres to this typology would have this form:
+  - Interpretive Explanations ::
+    - What are phyla?
+    - What is a biome?
+    - What is a fossil?
+    - What is ecological succession?
+      
+  - Descriptive Explanations ::
+    - Where does the energy of the living world come from?
+    - How do streams come to be polluted?
+    - How do environmental factors influence the number of plants and animals in a particular way
+    - How are animal protected against the dangers of drying out 
+      
+  - Reason-giving Explanations ::
+    - Why are there no polar bears in the South Pole
+    - Why is soil considered to be an ecosystem 
+
+  I think that these roughly translate to our "Levels" in our coding scheme. 
+
+* Gage et al Typology
+  N.L. Gage's main programme was to identify objective variables in teaching lectures that could be used to form a /standard/ approach to lecturing. He compares the thrust of his work to that of physics; when physics hit a theoretical limit they often sought to surpass the limit by expanding and individuating constituents. For example, the Nucleus of an Atom is actually made up of subatomic particles, then they would seek to study the subatomic particles instead of the nucleus. This typology follows from Barak Rosenshines work See Chapter 9, pg 201, Research into Classroom Processes Westbury/Bellack. In this article Rosenshine develops the typology and then runs a user study to assess the correlative impact of each category on effective and ineffective lectures. So the typology merely serves as a way to classify, and differentiate good lectures from bad ones. This paper is meh, it doesn't define everything but the results are good although it can be hard to follow at times, especially the distinction between variables and categories - which I still don't understand.
+
+** Variables 
+    Rosenshine identifies 27 variables that were verbal, non-verbal, communicated by teachers and received by students. The variables were developed from research in four general areas:
+    1. Linguistics
+    2. Instructional Set
+    3. Experimental studies of instruction
+    4. Multivariate Studies of the Behavioral Correlates of Teacher Effectiveness 
+
+*** Linguistic Categories
+    Consists of 9 "categories"
+    1. Word Length
+    2. Total number of relevant words
+    3. Length and structure of independent clause unit
+    4. prepositional phrases
+    5. readability estimate \triangleq based on a multiple-regression formula developed by Flesch
+    6. personal references \triangleq counts of first and second person pronouns
+    7. negative sentences \triangleq counts of sentences containing "not" modifying the verb, noun or some similar negation
+    8. passive verbs \triangleq counts of independent or dependent clauses containing passive verbs
+    9. awkward and fragmented sentences \triangleq counts of sentences which depart from usual sentence construction or phrases which lack a subject of a verb but add information. e.g. "Now to foreign affairs" 
+*** Instructional Set
+    Consists of 2 categories
+    1. Structuring Sets \triangleq set that contains variables which are words or phrases which indicate that the speaker is attempting to clarify distinctions between new and previously learned material
+    2. Focusing or Arousing Sets \triangleq set that contains variables which might identify phrases designed to arouse or focus attention.  
+*** Presentational Categories
+    Consists of 9 categories
+    1. Use of rule-and-example Pattern
+    2. number of examples
+    3. organization of topics
+    4. use of enumeration
+    5. movement and gesture
+    6. breaks in speech
+    7. use of maps and chalkboard
+    8. rate of speech
+    9. repetition and redundancy  
+*** Multivariate studies of teaching behaviors
+    Consists of 7 categories
+    1. Verbal Hostility
+    2. non-verbal affect
+    3. reference to pupil's interests
+    4. expansion of pupil's ideas
+    5. ratio of acceptance and praise to criticism
+    6. Conditional Words \triangleq counts of words such as "but", "however" and "although"
+    7. Explaining Links \triangleq prepositions and conjunctions which indicated the cause, result, means, or purposes of an event or idea.  
+
+** Takeaway
+   We could co-opt a lot of rosenshines typology for our typology, a benefit of this would be that we would be in a position to co-opt his/her research on effective lectures to effective powerpoints/papers for algorithms.
