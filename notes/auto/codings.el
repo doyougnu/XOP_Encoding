@@ -32,15 +32,15 @@
     "geometry"
     "adjustbox")
    (LaTeX-add-labels
-    "sec:org512d8bf"
-    "sec:org0e48321"
-    "sec:org11045cc"
-    "sec:orga8bfcd0"
-    "sec:orge7e70f7"
-    "sec:org81b499e"
-    "sec:org48105f9"
-    "sec:orgc8fd49c"
-    "sec:org81b7ef7"
-    "sec:org7db075e"))
+    "sec:org1d21623"
+    "sec:orgab8b870"
+    "sec:org0657620"
+    "sec:org1299bbd"
+    "sec:orgf59d647"
+    "sec:org33ae1f5"
+    "sec:orgbbb552c"
+    "sec:org125fee4"
+    "sec:orgc4bd9b5"
+    "sec:orgcb4f01e"))
  :latex)
 

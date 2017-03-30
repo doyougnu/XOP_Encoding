@@ -14,8 +14,8 @@
 #+LaTeX_CLASS: article
 #+LaTeX_CLASS_OPTIONS: [10pt, letterpaper]
 
-
 bibliography:TheoryEdNotes.bib
+
 * Orientation
   In the Educational theory literature we are after what is called a /typology of explanation/ several exist and have been developed through the years see this paper cite:brown1984explaining for an overview.
 
@@ -45,38 +45,44 @@ bibliography:TheoryEdNotes.bib
      
 * Explaining and Explanations Typology 
 
-** Explanations are divided up into "Keys"
-   - Keys :: A Key is part of the main explanation that must be explained for one to understand that which is to be explained
-** One then seeks to provide "links" between the "keys"
+** Keys
+   An explanation is divided up into "keys":
+   - Keys \triangleq A Key is part of the main explanation that must be explained for one to understand that which is to be explained
+** Links
+   One would then seek to "link" the discrete "keys" together: \\
    - Links :: PAPER DOES NOT DEFINE
-** Determine any rules
+** Rules
+   One would also define any rules that are pertinent to what is being explained
    - Rules :: PAPER DOES NOT DEFINE
 ** The Typology 
+   The Typology is formed by 3 categories of explanation:
+
 *** The Interpretive
     That which clarifies, exemplifies, or interprets the meaning of terms. Roughly speaks to "What is ... ?" 
 *** The Descriptive
     That which describes a process or structure. Speaks to "How is ..? How does ...?" 
 *** The "Reason Giving"
-    That which offers reasons or causes. Speaks to the occurrence of a phenomenon (Why is ...?)
+    That which offers reasons or causes. Speaks to the occurrence of a phenomenon (Why is ...?) \\
     
-  An Explanation that adheres to this typology would have this form:
-  - Interpretive Explanations ::
-    - What are phyla?
-    - What is a biome?
-    - What is a fossil?
-    - What is ecological succession?
-      
-  - Descriptive Explanations ::
-    - Where does the energy of the living world come from?
-    - How do streams come to be polluted?
-    - How do environmental factors influence the number of plants and animals in a particular way
-    - How are animal protected against the dangers of drying out 
-      
-  - Reason-giving Explanations ::
-    - Why are there no polar bears in the South Pole
-    - Why is soil considered to be an ecosystem 
+*** An Example: 
 
-  I think that these roughly translate to our "Levels" in our coding scheme. 
+**** Interpretive Explanations:
+     - What are phyla?
+     - What is a biome?
+     - What is a fossil?
+     - What is ecological succession?
+      
+**** Descriptive Explanations:
+     - Where does the energy of the living world come from?
+     - How do streams come to be polluted?
+     - How do environmental factors influence the number of plants and animals in a particular way
+     - How are animal protected against the dangers of drying out 
+      
+**** Reason-giving Explanations:
+     - Why are there no polar bears in the South Pole
+     - Why is soil considered to be an ecosystem 
+
+   I think that these roughly translate to our "Levels" in our coding scheme. 
 
 * Gage et al Typology
   N.L. Gage's main programme was to identify objective variables in teaching lectures that could be used to form a /standard/ approach to lecturing. He compares the thrust of his work to that of physics; when physics hit a theoretical limit they often sought to surpass the limit by expanding and individuating constituents. For example, the Nucleus of an Atom is actually made up of subatomic particles, then they would seek to study the subatomic particles instead of the nucleus. This typology follows from Barak Rosenshines work See Chapter 9, pg 201, Research into Classroom Processes Westbury/Bellack. In this article Rosenshine develops the typology and then runs a user study to assess the correlative impact of each category on effective and ineffective lectures. So the typology merely serves as a way to classify, and differentiate good lectures from bad ones. This paper is meh, it doesn't define everything but the results are good although it can be hard to follow at times, especially the distinction between variables and categories - which I still don't understand.
@@ -126,3 +132,92 @@ bibliography:TheoryEdNotes.bib
 
 ** Takeaway
    We could co-opt a lot of rosenshines typology for our typology, a benefit of this would be that we would be in a position to co-opt his/her research on effective lectures to effective powerpoints/papers for algorithms.
+
+* Bellack Language of the Classroom 
+
+** Chapter 2: Basic System For Analysis 
+
+*** Overview
+    To analyze classroom discourse Bellack et al. developed a "system of categories devised to describe the verbal performance of teachers and students". Protocols of classroom discourse were analyzed in terms of these categories. Basically, and probably unbeknownst to them, they developed a programming language that describes classroom discourse. Keep in mind that their data is based off of transcripts of lectures, so their coding scheme naturally reflects that.
+*** The System 
+    This system is heavily based on Wittgenstein's concept of a language game. The basic categories are:
+    - Pedagogical Moves \triangleq classroom discourse is viewed as a kind of "language game" (this is a technical term from Wittgenstein). The basic unit of discourse is deemed a "pedagogical move" is this system. There are four types of pedagogical moves in the system:
+      1. Structuring
+      2. Soliciting
+      3. Responding
+      4. Reacting 
+    - Teaching Cycles \triangleq Pedagogical moves occur in classroom discourse in certain cyclical patterns and combinations that are designated teach cycles.
+    - Categories of Meaning \triangleq Four functionally different types of meaning are communicated by teachers and pupils in the classroom:
+      1. Substantive with associated
+      2. Substantive-logical meanings
+      3. instructional with associated
+      4. instructional-logical meanings
+    Coding is done from the viewpoint of the observer, with pedagogical meaning inferred from the speaker's verbal behavior. 
+*** Grammer
+    Each pedagogical move is coded as follows, I've added indices to follow the text: \\
+    \begin{verbatim}
+    Move = 1. Speaker 
+           | 2. Type of Move 
+           | 3. Substantive Meaning
+           | 4. Substantive-Logical Meanings 
+           | 5. Number of Lines in (3) or (4) 
+           | 6. Instructional Meanings 
+           | 7. Instructional-Logical Meanings 
+           | 8. Number of lines in (6) or (7) 
+    \end{verbatim}
+
+*** Semantics
+**** The Only Operator
+     Moves are syntactically conjoined into strings with the "/" operator: \\
+     \begin{equation}
+        \(\frac{n \in \text{Move} \quad m \in \text{Move}}{n/m \in \text{Move}}\)
+     \end{equation}
+**** An Example Sentence
+     An example, coded pedagogical move is: \\
+     \begin{verbatim}
+       T/STR/IMX/XPL/4/PRC/FAC/2
+     \end{verbatim}
+     The interpretation is as follows:
+     \begin{verbatim}
+       T / STR / IMX / XPL /  4  / PRC / FAC / 2
+      (1)/ (2) / (3) / (4) / (5) / (6) / (7) /(8)
+     \end{verbatim}
+     This translates to: A /teacher/ (1) makes a /structuring/ (2) move in which they /explain/ (3) something about  /imports and exports/ (4) for /four/ (5) lines of transcript and also states /facts/ (7) about class /procedures/ (6) for /two/ (8) lines of the transcript. 
+**** Structuring (STR) 
+     - _Purpose_: \\
+      Structuring moves function to /set the context/ for subsequent behavior. Think of this as identifying, setting, or initializing the state. 
+     - _Mechanics_: This is achieved by:
+      1. Launching or Halting or Exluding interactions bewteen teacher and pupils
+      2. Indicating the nature of the interaction in terms of the dimensions of time, agent, activity, topic and cognitive process, regulations, reasons, and instructional aid.
+     - _Response_: Structuring moves do not elicit a response, are not direct responses and are not called out by anything in particular in the classroom 
+     - _Examples_:
+       1. T/STR: All right, getting down to it now, I think international trade, then, or international economic relations, whatever you call it, is a field of study within economics which in many cases has been unfortunately divorced from or too far divorced from domestic trade because there are great similarities, and also there are some rather distinct differences.
+**** Soliciting (SOL)
+     - _Purpose_: \\
+      These are moves that tend to elicit an active verbal response, a cognitive response, or a physical response to the persons addressed.
+     - _Mechanics_: Soliciting moves are encoded in terms of the response expected rather than the solicitation itself 
+     - _Examples_:
+       1. T/SOL: What are the factors of production?
+       2. P/SOL: May we keep our books open?
+       3. T/SOL: Pay attention to this!
+**** Responding (RES)
+     - _Purpose_: \\
+      These moves are reciprocal to soliciting moves and only occur in relation to them. They function to fulfill the expectation of soliciting moves, and as such are reflexive.
+     - _Mechanics_: There can be no solicitation that is not intended to elicit a response, and no response that has not been directly elicited by a solicitation
+     - _Examples_:
+       1. T/SOl: What are the factors of production?
+          P/RES: Land, Labor, and capital.
+       2. T/SOL: What is exchange control
+          P/Res: I don't know
+                    
+**** Reacting (REA)
+     - Purpose: \\
+      These moves are occasioned by a structuring, soliciting, responding, or some prior move but are not directly elicited by them. These qualify the moves that preceded them, either by clarifying some point, synthesizing a new one, or expanding on a previous point. 
+     - _Mechanics_: Preceding moves /only/ serve as the occasion for reaction moves. 
+     - _Examples_:
+       1. T/REA: All right
+       2. T/REA: That's partly it
+       3. T/REA: Good. It limits specifically the number of items of one type or another which can come into this country. For example, we might decide that no more than one thousand German cars will be imported in any one calendar year. This is a specific quota which the government checks.
+    - _Special Modifiers_: When a reaction move is italicized (/REA/); this denotes that the reaction is occasioned by more than a single move.
+     - _Special Modifier Examples_:
+       1. T/REA: All of the instances of foreign investment that we have discussed here can be classified as either direct or portfolio types of investment.
