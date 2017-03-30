@@ -1,0 +1,40 @@
+#+AUTHOR: Jeffrey Young
+#+TITLE: Educational Theoretical Underpinnings
+#+DATE: Mar 30, 2017
+
+# Fix the margins
+#+LATEX_HEADER: \usepackage[margin=1in]{geometry}
+#+LATEX_HEADER: \usepackage{bussproofs}
+
+# Remove section numbers, no table of contents
+#+OPTIONS: toc:nil
+#+options: num:nil
+
+# Set the article class
+#+LaTeX_CLASS: article
+#+LaTeX_CLASS_OPTIONS: [10pt, letterpaper]
+
+
+bibliography:TheoryEdNotes.bib
+
+* Goal
+  In the Educational theory literature we are after what is called a /typology of explanation/ several exist and have been developed through the years cite:brown1984explaining 
+  
+* Papers to look at
+
+* Papers that will be useful or relevant 
+
+** Papers that detail what good explanations are 
+   - Brown and Armstrong: Explaining and Explanations cite:brown1984explaining 
+   2. Smith and Meux 1970
+   3. Thyne 1963; 1968; The Psychology of Learning and Techniques of Teaching cite:thyne1965psychology 
+   4. Turney et al., 1975
+   5. Gage and Berliner 1975; Research into Classroom Processes   
+   6. Brown 1978a, 1978b; Microteaching: Programme of Teaching Skills cite:10.2307/3120386   
+
+** Papers that detail different Typography's of Explanations 
+   -  Swift 1967, Language and Concepts in Teaching cite:smith1967language  
+   -  Bellack et al, The Language of the classroom cite:bellack1966language 
+   -  Ennis 1969, Logic in Teaching cite:ennis1969logic 
+   - Smith and Meux: Study in the logic of teaching cite:Smith1970-SMIASO-13 
+   -  Hyman 1974: Vantage Points for Study cite:hyman1968teaching 
