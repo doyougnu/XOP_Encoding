@@ -138,10 +138,10 @@ bibliography:TheoryEdNotes.bib
 ** Chapter 2: Basic System For Analysis 
 
 *** Overview
-    To analyze classroom discourse Bellack et al. developed a "system of categories devised to describe the verbal performance of teachers and students". Protocols of classroom discourse were analyzed in terms of these categories. Basically, and probably unbeknownst to them, they developed a programming language that describes classroom discourse. Keep in mind that their data is based off of transcripts of lectures, so their coding scheme naturally reflects that.
+    To analyze classroom discourse Bellack et al. developed a "system of categories devised to describe the verbal performance of teachers and students". Protocols of classroom discourse were analyzed in terms of these categories. Basically, and probably unbeknownst to them, they developed a programming language that describes classroom discourse. Keep in mind that their data is based off of transcripts of lectures, so their coding scheme naturally reflects that. In this section I'm going to explicate, in detail, their system. I'll start with a quick overview, then define the semantics of each of their terminals, and then dive deep into a few so you can see some examples and explore some of the mechanics. If you don't have time just read "The System", "Grammar", "Semantics"
 *** The System 
     This system is heavily based on Wittgenstein's concept of a language game. The basic categories are:
-    - Pedagogical Moves \triangleq classroom discourse is viewed as a kind of "language game" (this is a technical term from Wittgenstein). The basic unit of discourse is deemed a "pedagogical move" is this system. There are four types of pedagogical moves in the system:
+    - Pedagogical Moves \triangleq classroom discourse is viewed as a kind of "language game" (this is a technical term from Wittgenstein, specifically late-Wittgenstein, I can give you a run down later but suffice to say that the "door depends upon the hinge - Wittgenstein in /On Certaintly/"). The basic unit of discourse is deemed a "pedagogical move" is this system. There are four types of pedagogical moves in the system:
       1. Structuring
       2. Soliciting
       3. Responding
@@ -153,7 +153,7 @@ bibliography:TheoryEdNotes.bib
       3. instructional with associated
       4. instructional-logical meanings
     Coding is done from the viewpoint of the observer, with pedagogical meaning inferred from the speaker's verbal behavior. 
-*** Grammer
+*** Grammar
     Each pedagogical move is coded as follows, I've added indices to follow the text: \\
     \begin{verbatim}
     Move = 1. Speaker 
@@ -167,7 +167,68 @@ bibliography:TheoryEdNotes.bib
     \end{verbatim}
 
 *** Semantics
-**** The Only Operator
+
+**** *Semantic of Moves:* 
+     I'll elucidate the meaning of each move, I'll maintain the indices from the Grammar to avoid confusion:
+     1. *Speaker* \triangleq Indicates the source of the utterance, is one of:
+        1. /Teacher/ (T)
+        2. /Pupil/ (P)
+        3. /Audio-Visual Device/ (A)
+     2. *Type of Pedagogical Move* \triangleq reference to function of move, there are 2 types each with sub-types:
+        1. Initiatory Moves
+           1. /Structuring/ (STR) \triangleq sets context for subsequent behavior by launching or halting-excluding interaction.
+           2. /Soliciting/ (SOL) \triangleq directly elicits a verbal, physical, or mental response; coded in terms of response expected. 
+       2. Reflexive Moves
+          1. /Responding/ (RES) \triangleq fulfills expectation of solicitation; bears reciprocal relation only to solicitation. 
+          2. /Reacting/ (REA) \triangleq modifies (by clarifying, synthesizing, expanding) and/or rates (positively or negatively); occasioned by previous move, but not directly elicited; reactions to more than one previous move coded in italics like this /REA/ 
+       3. /Not Codable/ (NOC) \triangleq serves as the \perp in their coding scheme.
+     3. *Substantive Meaning* \triangleq reference to a subject matter topic 
+     4. *Substantive-Logical Meaning* \triangleq reference to cognitive process involved in dealing with subject matter under study. 3 Main Types each with subtypes:
+        1. Analytic Process \triangleq Use of language or established rules of logic
+           1. /Definining-Denotative/ (DED) \triangleq object referent of term 
+           2. /Defining-Connotative/ (DEC) \triangleq defining characteristics of class or term
+           3. /Interpreting/ (INT) \triangleq verbal equivalent of a statement, slogan, aphorism, or proverb
+        2. Empirical Process \triangleq sense experience as criterion of truth
+           1. /Fact-Stating/ (FAC) \triangleq what is, was, or will be without explanation or evaluation.
+           2. /Explaining/ (XPL) \triangleq relation between objects, events, principles, conditional inference, cause-effect, explicit comparison-contrast, statement of principles, theories or laws
+        3. Evaluative Process \triangleq set of criteria or value system as basis for verification
+           1. /Opining/ (OPN) \triangleq personal values for statement of policy, judgment or evaluation of event, idea, state of affairs, direct and indirect evaluation included
+           2. /Justifying/ (JUS) \triangleq reasons or argument for or against opinion or judgment
+        4. /Logical Process Not Clear/ (NCL) \triangleq this serves as \perp for Substantive-Logical Meanings
+     5. *Number of Lines in 3 and 4 above* 
+     6. *Instructional Meanings* \triangleq reference to factors related to classroom management
+        1. /Assignment/ (ASG) \triangleq suggested or required student activity; reports, tests, readings etc.
+        2. /Material/ (MAT) \triangleq teaching aids and instructional devices
+        3. /Person/ (PER) \triangleq person as physical object or personal experiences
+        4. /Procedure/ (PRC) \triangleq Plan of activities or a course of action
+        5. /Statement/ (STA) \triangleq Verbal utterance, particularly the meaning validity, truth, or propriety of an utterance
+        6. /Logical Process/ (LOG) \triangleq Function of language or rule of logic; reference to definitions or arguments, but not presentation of such
+        7. /Action-General/ (ACT) \triangleq performance (vocal, non-vocal, cognitive, or emotional) the specific nature of which is uncertain or complex
+        8. /Action-Vocal/ (ACV) \triangleq physical qualities of vocal action
+        9. /Action-Physical/ (ACP) \triangleq physical movement or process
+        10. /Action-Cognitive/ (ACC) \triangleq Cognitive process, but not the language or logic of a specific utterance; thinking, knowing, understanding, or listening
+        11. /Action-Emotional/ (ACE) \triangleq emotion or feeling, but not expression of attitude or value
+        12. /Language Mechanics/ (LAM) \triangleq the rules of grammar and/or usage
+     7. *Instructional-Logic Meaning* \triangleq reference to cognitive processes related to the distinctly didactic verbal moves in the instructional situation
+        1. Analytic Process: see (4) above
+        2. Empirical Process: see (4) above
+        3. Evaluative Process: includes the definitions in (4) above and:
+           1. Rating \triangleq reference to metacommunication; usually an evaluative reaction (REA)
+              1. /Positive/ (POS) \triangleq distinctly affirmative rating
+              2. /Admitting/ (ADM) \triangleq mild or equivocally positive rating
+              3. /Repeating/ (RPT) \triangleq implicit positive rating when statement (STA) is repeated by another speacker; also for SOL to repeat a vocal action (ACV)
+              4. /Qualifying/ (QAL) \triangleq explicit reservation stated in rating; exception
+              5. /Not Admitting/ (NAD) \triangleq rating that rejects by stating the contrary; a direct refutation
+              6. /Negative/ (NEG) \triangleq distinctly negative rating
+              7. /Positive/Negative/ (PON) \triangleq SOL requesting positive or negative rating
+              8. /Admitting/Not Admitting/ (AON) \triangleq SOL asking to permit or not permit specific action
+           2. Extra-logical Process \triangleq SOL expecting physical action or when logical nature of verbal response cannot be determined. 
+              1. /Performing/ (PRF) \triangleq asking, demanding; explicit directive or imperative
+              2. /Directing/ (DIR) \triangleq SOL with or without stated alternatives; asking for directive, not permision for specific action 
+              3. /Extra-logical Process Not Clear/ (NCL) \triangleq \perp for extra-logical process
+     8. *Number of Lines in 6 and 7 above*
+
+**** The / Operator
      Moves are syntactically conjoined into strings with the "/" operator: \\
      \begin{equation}
         \(\frac{n \in \text{Move} \quad m \in \text{Move}}{n/m \in \text{Move}}\)
@@ -209,7 +270,6 @@ bibliography:TheoryEdNotes.bib
           P/RES: Land, Labor, and capital.
        2. T/SOL: What is exchange control
           P/Res: I don't know
-                    
 **** Reacting (REA)
      - Purpose: \\
       These moves are occasioned by a structuring, soliciting, responding, or some prior move but are not directly elicited by them. These qualify the moves that preceded them, either by clarifying some point, synthesizing a new one, or expanding on a previous point. 
@@ -221,3 +281,70 @@ bibliography:TheoryEdNotes.bib
     - _Special Modifiers_: When a reaction move is italicized (/REA/); this denotes that the reaction is occasioned by more than a single move.
      - _Special Modifier Examples_:
        1. T/REA: All of the instances of foreign investment that we have discussed here can be classified as either direct or portfolio types of investment.
+                    
+*** Teaching Cycles
+    Pedagogical moves occur in cyclical patterns and combinations, which are designated as /teaching cycles/. A cycle begins with a structuring move or a solicitation that is not preceded by a structuring move. A cycle ends with the move that precedes a new cycle. Teaching cycles are coded /only after/ all moves have been coded. These define structuring and soliciting moves as /initiatory/ and responding and reacting moves as /reflexive/. There are 21 types of teaching cycles possible. The first 12 are structure-initiated and the last 9 are initiated by soliciting moves. 
+
+**** Types of Teaching Cycles
+     1. STR
+     2. STR SOL
+     3. STR REA
+     4. STR REA REA \ldots
+     5. STR SOL RES
+     6. STR SOL RES RES \ldots
+     7. STR SOL REA
+     8. STR SOL REA REA \ldots
+     9. STR SOL RES REA
+     10. STR SOL RES REA REA \ldots
+     11. STR SOL RES REA RES \ldots
+     12. STR SOL RES REA RES \ldots REA \ldots
+     13. SOL
+     14. SOL RES
+     15. SOL RES RES \ldots
+     16. SOL REA
+     17. SOL REA REA \ldots
+     18. SOL RES REA
+     19. SOL RES REA REA \ldots
+     20. SOL RES REA RES \ldots
+     21. SOL RES REA RES \ldots REA \ldots
+    
+  Each type of teaching cycle represents a different pattern of pedagogical discourse. For example, Cycle 9, represents a pattern of discourse that is initiated by a structuring move and is followed by a solicitation; this solicitation then elicits a response that is the occasion for a reaction. Cycle 21 is initiated by a solicitation that elicits multiple responses which are in turn the occasion for multiple reactions. 
+**** Purpose of Teaching Cycles
+     Teaching Cycles provide a way of describing pedagogical moves in relationship to each other. By utilizing the concept of teaching cycles it becomes possible to determine the extent to which solicitations elicit single or multiple responses or the regularity with which reactions follow responses. If a single pedagogical move may be compared to a move in chess or a single play in football. Then teaching cycles are an interrelated series of moves or plays, like a drive in football or a strategy in chess.
+*** Categories of Meaning
+    There are four functionally different types of /meaning/ communicated in the classroom. /substantive/ with associated /substantive-logical/ meanings, /instructional/ with associated /instructional-logical/ meanings. Within each pedagogical move these four types of meaning are identified when they appear in the discourse
+**** *Substantive*
+     meanings refer to the subject matter under study by the class. For example, some previous example's substantive meanings referred to a teaching unit based on /International Economic Problems/ By James Calderwood. These meanings can then be /atomized/, note that sub codings are possible as well, here are just a few examples:
+     1. /Trade/ (TRA) \triangleq refers to General discussions of trade; nature of trade in broad terms.
+     1.11. /Trade/ - /Domestic and International/ (TDI) \triangeq refers to Domestic trade compared and contrasted with international trade.
+     2. /Factors of Production and/or Specialization/ (FSP) \triangleq refers to general discussion of factors of production; what they are; specialization etc. 
+     3. /Barriers to Trade/ \triangleq General discussion of barriers, including policies directed toward maintaining or increasing barriers.
+     4. /Not Trade/ (NTR) \triangleq Discussion not about trade or economics
+     5. /Promoting Free Trade/ (PFT) \triangleq Discussions regarding the promotion of free trade
+     6. /Barrer-Tariffs/ (BAT) \triangleq Specific Discussions of tariff.
+**** *Substantive-logical meanings*
+     refer to the cognitive processes involved in dealing with the subject matter under study. Substantive-logical meanings are categorized under three generate headings:
+     - _Analytic Process_:  Analytic statements are statements about the proposed use of language. Analytic statements are true by virtue of the meaning of the words of which the are composed (they are true /a priori/). Or in other words these are true by an agreed upon set of rules and inferences. Statements like "All single Men are Bachelors". The book describes several sub-classifications here are just a few:
+       1. Defining-General (DEF) ::= To define in a general manner is to give the defining characteristic of a /class/ /and/ to give a specific example of an item within that class. DEF is also coded when the type of definition asked for or given is not clear. \\
+          Examples:
+          1. T: What is a barrier? Code: T/SOL/BAR/DEF/1/-/-/-
+          2. P: It's something that hinders trade. Code: P/RES/BAR/DEF/2/-/-/-
+       2. Defining-Denotative (DED) ::= To define denotatively is to refer to the objects to which the term is applicable. A denotative definition cites the objects to which the term may correctly be applied, and these objects constitute the denotation of the term. 
+     - _Empirical Process_: Empirical statements give information about the world, based on one's experience of it. These statements are distinguished by tests that are conducted in reference to one's experience. Some Examples:
+       1. Fact-Stating (FAC) ::= Giving an account, description or report on the current state of affairs. To State a fact is to state what is. Coding Example:
+          1. T: Now in 1934 \ldots in 1934 \ldots who was President? Code: T/SOL/PFT/\textit{FAC}/2/-/-/-
+          2. P: Roosevelt Code: P/RES/PFT/\textit{FAC}/1/-/-/-
+       2. Explaining (XPL) ::= TO explain is to relate an object, event, action, or state of affairs to some other object, event, action, or state of affairs; or to show the relation between an event or state of affairs and a principle or generalization; or to state the relationships between principles or generalizations. For this document explanation and inference are taken to be identical. A statement is coded XPL when it concerns the /effect/ of some event or state of affairs on some other even or state of affairs; or when a statement provides /reasons/ for some event or state of affairs. Coding Examples:
+          1. T: What would happen if we raised the tariff on transistor radios? Code: T/SOL/BAT/XPL/2/-/-/-
+          2. P: Prices would go up. Code: P/RES/BAT/\textit{XPL}/1/-/-/-
+     - _Evaluative Process_: Evaluative statements are statements of grade, praise, blame, condemnation, or criticism. I'm only going to show the OPN example, there is also a Justification example (JUS) in the book:
+       1. Opining (OPN) ::= To make a statement of opinion, simply to opine. Includes statements of the nature: 1) What ought to be done or 2) fairness, worth, importance, or quality of an action, event, person, idea, plan, or policy. Coding Example:
+          1. P: I think the farmer is being exploited. Code: P/REA/BAT/\textit{OPN}/1/-/-/-
+**** *Instructional Meanings*
+     These refer to conversations about classroom management, assignments, procedures etc. I'm going to omit these becasue they will not pertain to our explanatory objects and the book goes enumerates many of them in great detail.
+**** *Instructional-Logical Meanings* 
+     Meanings that include those processes listed under substantive-logical meanings, but also refer to distinctly didactic verbal moves such as those involved in positive or negative rating and giving instructions. These include statements of qualitative judgment. Its easier to understand with examples. There are many of these but I'll only explicate a few to get the point across:
+     1. Positive (POS) \triangleq refers to distinctly affirmative rating, usually in a reaction to a statement.
+        1. T: Right! Code: T/REA/TDI/-/-/STA/\textit{POS}/1
+     2. Admitting (ADM) \triangleq Hesitation of part of rater, mildy accepting or equivocally positive rating usually in reaction to a statement.
+        1. T: Mm-hmm. Code: T/REA/PFT/-/-/STA/\textit{ADM}/1
