@@ -17,9 +17,11 @@
 
 * Orientation
   In the Educational theory literature we are after what is called a /typology of explanation/ several exist and have been developed through the years see this paper cite:brown1984explaining for an overview. This document serves as a one stop shop of sorts for useful papers, summaries or primers on said papers. If you don't have time I suggest just reading the Purpose section and the section on Bellack.
+* Executive Summary
+  We want to be focusing on Bellack's work for sure. In their research they develop a coding system, that describes qualities of in classroom lectures, and then they use that coding system to determine /teaching cycles/ which are patterns they noticed that arose from the data. We can and should co-opt their coding strategies and recode our data, this may also open the door to analyzing verbal lectures. What you find in this document is a summary of chapter two, where they layout the system. I'm working on reformulating our system in terms of theirs I'll post it when its finished. The big question in my mind is how this will help or connect to a DSL.
 
 * Purpose
-   Most of the papers I've found have developed a typology, then performed a experimental study of some sort, and then performed some statistical analysis to determine significance between some control group and some other group, typically a chi-squared test. The purpose of this document is to serve as a reference point for papers that may be interesting and to summarize those papers in terms that will be useful. I see to major roads that we can go down based on these papers: 1) We can develop our own typology, specifically designed to explicate and elucidate explanatory objects whose purpose is to explain algorithms - this is an extension of what we've already done. The end of this branch, in my mind, is a user study similar to what some researchers in this area have done with lectures (see Rosenshine below), this would allow us to say these categories are important, these arent' and so on. The other path I can envision is to recodify our methods in terms of these researchers methods, specifically in terms of Bellack et al 1966. I think the latter route (a la Bellack) is the most promising, I can envision writing two papers regarding their work 1) Appropriating their system to our needs and showing how it is indeed a programming language and 2) Using the system to encode documents and crunching the data much like we were doing.
+   Most of the papers I've found have developed a typology, then performed a experimental study of some sort, and then performed some statistical analysis to determine significance between some control group and some other group, typically a chi-squared test. The purpose of this document is to serve as a reference point for papers that may be interesting and to summarize those papers in terms that will be useful. I see two major roads that we can go down based on these papers: 1) We can develop our own typology, specifically designed to explicate and elucidate explanatory objects whose purpose is to explain algorithms - this is an extension of what we've already done. The end of this branch, in my mind, is a user study similar to what some researchers in this area have done with lectures (see Rosenshine below), this would allow us to say these categories are important, these arent' and so on. The other path I can envision is to recodify our methods in terms of these researchers methods, specifically in terms of Bellack et al 1966. I think the latter route (a la Bellack) is the most promising, I can envision writing two papers regarding their work 1) Appropriating their system to our needs and show that it can aid in the creation of a DSL or is useful for computer science educators 2) Using the system to encode documents and crunching the data much like we were doing.
   
 * Papers that will be useful or relevant 
 
@@ -47,7 +49,7 @@
     To analyze classroom discourse Bellack et al. developed a "system of categories devised to describe the verbal performance of teachers and students". Protocols of classroom discourse were analyzed in terms of these categories. Basically, and probably unbeknownst to them, they developed a programming language that describes classroom discourse. Keep in mind that their data is based off of transcripts of lectures, so their coding scheme naturally reflects that. In this section I'm going to explicate, in detail, their system. I'll start with a quick overview, then define the semantics of each of their terminals, and then dive deep into a few so you can see some examples and explore some of the mechanics. If you don't have time just read "The System", "Grammar", "Semantics"
 *** The System 
     This system is heavily based on Wittgenstein's concept of a language game. The basic categories are:
-    - Pedagogical Moves \triangleq classroom discourse is viewed as a kind of "language game" (this is a technical term from Wittgenstein, specifically late-Wittgenstein, I can give you a run down later but suffice to say that the "door depends upon the hinge - Wittgenstein in /On Certaintly/"). The basic unit of discourse is deemed a "pedagogical move" is this system. There are four types of pedagogical moves in the system:
+    - Pedagogical Moves \triangleq classroom discourse is viewed as a kind of "language game" (this is a technical term from Wittgenstein, specifically late-Wittgenstein, I can give you a run down later but suffice to say that the "door depends upon the hinge - Wittgenstein in /On Certaintly/"). The basic unit of discourse is deemed a "pedagogical move" in this system. There are four types of pedagogical moves in the system:
       1. Structuring
       2. Soliciting
       3. Responding
@@ -75,7 +77,7 @@
 *** Semantics
 
 **** *Semantic of Moves:* 
-     I'll elucidate the meaning of each move, I'll maintain the indices from the Grammar to avoid confusion:
+     I'll elucidate the meaning of each move, I'll maintain the indices from the Grammar to avoid confusion. These will be brief definitions, for something more fleshed out and  with much more detail see the latter sections, specifically the "Categories of Meaning" Section:
      1. *Speaker* \triangleq Indicates the source of the utterance, is one of:
         1. /Teacher/ (T)
         2. /Pupil/ (P)
@@ -149,7 +151,7 @@
        T / STR / IMX / XPL /  4  / PRC / FAC / 2
       (1)/ (2) / (3) / (4) / (5) / (6) / (7) /(8)
      \end{verbatim}
-     This translates to: A /teacher/ (1) makes a /structuring/ (2) move in which they /explain/ (3) something about  /imports and exports/ (4) for /four/ (5) lines of transcript and also states /facts/ (7) about class /procedures/ (6) for /two/ (8) lines of the transcript. 
+     This translates to: A /teacher/ (1) makes a /structuring/ (2) move in which they /explain/ (4) something about  /imports and exports/ (3) for /four/ (5) lines of transcript and also states /facts/ (7) about class /procedures/ (6) for /two/ (8) lines of the transcript. 
 **** Structuring (STR) 
      - _Purpose_: \\
       Structuring moves function to /set the context/ for subsequent behavior. Think of this as identifying, setting, or initializing the state. 
