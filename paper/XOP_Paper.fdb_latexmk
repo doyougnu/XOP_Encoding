@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1491095352 "bare_conf.tex" "bare_conf.pdf" "bare_conf" 1491095352
+["pdflatex"] 1491096083 "XOP_Paper.tex" "XOP_Paper.pdf" "XOP_Paper" 1491096084
   "/usr/share/texmf-dist/fonts/enc/dvips/base/8r.enc" 1479649822 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/share/texmf-dist/fonts/map/fontname/texfonts.map" 1479649810 3287 e6b82fe08f5336d4d5ebc73fb1152e87 ""
   "/usr/share/texmf-dist/fonts/tfm/adobe/times/ptmb7t.tfm" 1479649813 2172 fd0c924230362ff848a33632ed45dc23 ""
@@ -31,9 +31,9 @@
   "/usr/share/texmf-dist/web2c/texmf.cnf" 1479649825 31669 df537245012f3e5f05bdc55644b7a3df ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1484173685 21233 86a8356fda6de65361ca80c11aac99e1 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1484173673 7252863 03a79a26b8f3c57e33b258d8afed880f ""
-  "bare_conf.aux" 1491095352 478 e69b5749fa6daeb20159449d6ffeabfa ""
-  "bare_conf.tex" 1491095351 24330 ff19a7c170bf73cb718471e52700cc7a ""
+  "XOP_Paper.aux" 1491096084 478 e69b5749fa6daeb20159449d6ffeabfa ""
+  "XOP_Paper.tex" 1491096037 24218 883ab7a0b436ae05b3198f9bc0a099a4 ""
   (generated)
-  "bare_conf.pdf"
-  "bare_conf.aux"
-  "bare_conf.log"
+  "XOP_Paper.pdf"
+  "XOP_Paper.aux"
+  "XOP_Paper.log"
