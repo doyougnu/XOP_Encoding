@@ -1,4 +1,4 @@
-% Created 2017-03-30 Thu 16:26
+% Created 2017-04-02 Sun 17:19
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt, letterpaper]{article}
 \usepackage[utf8]{inputenc}
@@ -31,7 +31,7 @@
 \maketitle
 
 \section*{Purpose}
-\label{sec:org1d21623}
+\label{sec:org4a7044d}
 The Purpose of encodings is to systematically and formally codify real world, in the wild, explanations so that observing larger patterns becomes possible. The end goal of this is:
 \begin{enumerate}
 \item Generate a database of encodings
@@ -39,7 +39,7 @@ The Purpose of encodings is to systematically and formally codify real world, in
 \item 1 and 2 become formative work for exploring DSL possibilities in XOP
 \end{enumerate}
 \section*{Scope}
-\label{sec:orgab8b870}
+\label{sec:orga71438d}
 The scope of the database is restricted to explanations of common Computer Science algorithms \emph{from} Universities only. Restricting the scope in this manner provides two benefits:
 \begin{enumerate}
 \item All explanatory objects have a stated, intrinsic goal to communicate the mechanics, application, and implementation of similar things
@@ -47,10 +47,13 @@ The scope of the database is restricted to explanations of common Computer Scien
 \end{enumerate}
 
 \section*{Data Collection}
-\label{sec:org0657620}
+\label{sec:org6ba551f}
 All Data is coded by human individuals with reference to this document. The location index represents the location of an encoding \emph{relative} to the document. So a location of 1 means the literal first page of the document (typically a header slide or introduction).
-\section*{Some Terminology}
-\label{sec:org1299bbd}
+
+\section*{First Typology Attempt}
+\label{sec:org46b19b6}
+\subsection*{Some Terminology}
+\label{sec:orgcaa2f5b}
 In our terminology an explanation is called an "explanation artifact", our
   working model of the process of explaining is a non-linear sequence of
   "steps", where each "step" denotes some progress in the understanding of the
@@ -60,8 +63,8 @@ In our terminology an explanation is called an "explanation artifact", our
 \item[{Step}] The steps that are taken, in an explanatory artifact, that guide the
 reader from non-understanding to understanding.
 \end{description}
-\section*{Syntax  and Grammer}
-\label{sec:orgf59d647}
+\subsection*{Syntax  and Grammer}
+\label{sec:org1759d46}
 The syntax of an encoding is given by \_ - \_ - \_ - \_ \(\subseteq\) Location \texttimes{} Level \texttimes{} Role \texttimes{} Notation where \\
 
 l \(\in\) \(\mathbb{N}\) \\
@@ -71,14 +74,14 @@ g \(\in\) Level ::= Problem | Algorithm | Implementation \\
 r \(\in\) Role ::= Background | Definition | Constraint | Example | Application | Variant | Analogy | Idea | Proof | Performance | Properties \\
 
 n \(\in\) Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n 
-\section*{Semantics}
-\label{sec:org33ae1f5}
-\subsection*{Location}
-\label{sec:orgbbb552c}
+\subsection*{Semantics}
+\label{sec:orgd0f16eb}
+\subsubsection*{Location}
+\label{sec:orge1d42a6}
 a location \(l\), specifies the location that the encoding is referring to,
 this could be a slide, a number line etc.
-\subsection*{Level}
-\label{sec:org125fee4}
+\subsubsection*{Level}
+\label{sec:org6412cf7}
 a Level \(g\), Specifies the level of abstraction for a given step, a level can by one of:
 \begin{description}
 \item[{Problem}] \(\triangleq\) the purpose of a given step is to elucidate the
@@ -91,8 +94,8 @@ implementation details of the algorithm, e.g. What data structures to
 use, What the form of the code that implements the algorithm should be
 \end{description}
 
-\subsection*{Role}
-\label{sec:orgc4bd9b5}
+\subsubsection*{Role}
+\label{sec:org0dbc9f3}
 a Role \(r\), specifies how the Level is trying to be reached, denotes the
 answer to question such as "What is the step trying to convey?":
 
@@ -163,8 +166,8 @@ Proof & \bot & Explicit Proof of Algorithm correctness & Explicit Proof of some 
 \end{center}
 \end{Table}
 
-\subsection*{Notation}
-\label{sec:orgcb4f01e}
+\subsubsection*{Notation}
+\label{sec:orgeee69bd}
 a Notation \(n\), specifies the form of the role, and can be one of:
 \begin{description}
 \item[{English}] \(\triangleq\) Human language to give explanations/statements.
@@ -187,4 +190,137 @@ location like so:
 \begin{equation}
    \(\frac{n \in \text{Notation} \quad m \in \text{Notation}}{n/m \in \text{Notation}}\)
 \end{equation}
+
+\section*{Typology with following Bellack et al.}
+\label{sec:org5b3cade}
+
+\subsection*{Disclaimer}
+\label{sec:orgf1c5cfa}
+Make sure you are comfortable with the terminology of Bellack et al's typology. I will be referring to it throughout this document and assume the reader is familiar. If you don't know what I mean by Substantive-logical Meanings then go read the Theory Primer document.
+
+\subsection*{Strategy}
+\label{sec:org84499b3}
+Merging our typology with Bellack et al's is tricky but doable. In general we will be adding some categories to the "Types of Pedagogical Moves", adding one category to "Substantive-Logical Meanings" and changing the "Speaker" category to a "slide number or page number". Lastly, there is an important design decision that I am making here in which \emph{for each algorithm, we will now be forced to define substantive meanings}. Furthermore, I am going to completely remove the last 3 indices in Bellack's typology. These mostly deal with in class instructional phrases which are completely useless for our purposes.
+
+\subsection*{Syntax, Grammar, Terms}
+\label{sec:org5dd1a10}
+\subsubsection*{Terms}
+\label{sec:orgad5b425}
+We will follow with Bellack as close as possible as long as it suits our needs, so a pedagogical move has the form:
+\begin{verbatim}
+Move = 1. Line Number or Slide Number
+       / 2. Type of Move 
+       / 3. Substantive Meaning
+       / 4. Substantive-Logical Meanings 
+       / 5. Number of Lines in (3) or (4) 
+\end{verbatim}
+\subsubsection*{Semantics of Moves}
+\label{sec:org2f6906d}
+
+\begin{enumerate}
+\item \textbf{Line Number or Slide Number} \(\triangleq\) Indicates the source of the statement:
+\item \textbf{Type of Pedagogical Move} \(\triangleq\) reference to function of move, there are 2 types each with sub-types:
+\begin{enumerate}
+\item Initiatory Moves
+\begin{enumerate}
+\item \emph{Structuring} (STR) \(\triangleq\) sets context for subsequent behavior by launching or halting-excluding interaction.
+\item \emph{Soliciting} (SOL) \(\triangleq\) directly elicits a verbal, physical, or mental response; coded in terms of response expected.
+\end{enumerate}
+\end{enumerate}
+\begin{enumerate}
+\item Detailing Moves
+\begin{enumerate}
+\item \emph{Responding} (RES) \(\triangleq\) fulfills expectation of solicitation; bears reciprocal relation only to solicitation.
+\item \emph{Expositing} (EXP) \(\triangleq\) a move that explicitly provides or introduces further or new information
+\item \emph{Visual} (VIS) \(\triangleq\) a move that explicitly provides a visual aid
+\end{enumerate}
+\item \emph{Not Codable} (NOC) \(\triangleq\) serves as the \(\perp\) in their coding scheme.
+\end{enumerate}
+\item \textbf{Substantive Meaning} \(\triangleq\) reference to a subject matter topic
+\item \textbf{Substantive-Logical Meaning} \(\triangleq\) reference to cognitive process involved in dealing with subject matter under study. 3 Main Types each with subtypes:
+\begin{enumerate}
+\item Analytic Process \(\triangleq\) Use of language or established rules of logic
+\begin{enumerate}
+\item \emph{Definining-Denotative} (DED) \(\triangleq\) object referent of term
+\item \emph{Defining-Connotative} (DEC) \(\triangleq\) defining characteristics of class or term
+\item \emph{Interpreting} (INT) \(\triangleq\) verbal equivalent of a statement, slogan, aphorism, or proverb
+\end{enumerate}
+\item Empirical Process \(\triangleq\) sense experience as criterion of truth
+\begin{enumerate}
+\item \emph{Fact-Stating} (FAC) \(\triangleq\) what is, was, or will be without explanation or evaluation.
+\item \emph{Explaining} (XPL) \(\triangleq\) relation between objects, events, principles, conditional inference, cause-effect, explicit comparison-contrast, statement of principles, theories or laws
+\end{enumerate}
+\item Evaluative Process \(\triangleq\) set of criteria or value system as basis for verification
+\begin{enumerate}
+\item \emph{Opining} (OPN) \(\triangleq\) personal values for statement of policy, judgment or evaluation of event, idea, state of affairs, direct and indirect evaluation included
+\item \emph{Justifying} (JUS) \(\triangleq\) reasons or argument for or against opinion or judgment
+\end{enumerate}
+\item Visual Process \(\triangleq\) a visual representation is provided and discussed
+\item \emph{Logical Process Not Clear} (NCL) \(\triangleq\) this serves as \(\perp\) for Substantive-Logical Meanings
+\end{enumerate}
+\item \textbf{Number of Lines in 3 and 4 above}
+\end{enumerate}
+
+\subsubsection*{Syntax}
+\label{sec:org9c8578b}
+We will follow Bellack's syntax as well:
+\begin{itemize}
+\item The / Operator:
+\label{sec:orgb4e3638}
+The moves constituents are syntactically conjoined, \emph{in order}, into strings with the "/" operator like so: \\
+\begin{equation}
+   \(\frac{n \in \text{Move Constituents} \quad m \in \text{Move Constituents}}{n/m \in \text{Partial Move}}\)
+\end{equation}
+
+\item An Example
+\label{sec:orgaaac6ca}
+coded pedagogical move is: \\
+\begin{verbatim}
+  2/STR/MOT/IMX/2
+\end{verbatim}
+
+The interpretation is as follows:
+\begin{verbatim}
+  2 / STR / MOT / IMX /  2
+ (1)/ (2) / (3) / (4) / (5)
+\end{verbatim}
+
+This translates to: On slide 2 (1), the presentation makes a \emph{structuring} (2) move in which it \emph{explains} (4) the \emph{motivation} (3) for something for \emph{two} (5) slides
+
+Here is Bellack et al's example for reference:
+\begin{verbatim}
+  T/STR/IMX/XPL/4/PRC/FAC/2
+\end{verbatim}
+The interpretation is as follows:
+\begin{verbatim}
+  T / STR / IMX / XPL /  4  / PRC / FAC / 2
+ (1)/ (2) / (3) / (4) / (5) / (6) / (7) /(8)
+\end{verbatim}
+This translates to: A \emph{teacher} (1) makes a \emph{structuring} (2) move in which they \emph{explain} (4) something about  \emph{imports and exports} (3) for \emph{four} (5) lines of transcript and also states \emph{facts} (7) about class \emph{procedures} (6) for \emph{two} (8) lines of the transcript. 
+
+Here is a useful way to think of this (if you haven't read the Theory primer and skipped my warning!):
+\begin{verbatim}
+  Place of Move / Turn in Language Game / Subject of the Move / How the Move is talking about it
+        (1)     /        (2)           /            (3)       /            (4)                 
+\end{verbatim}
+\end{itemize}
+
+\subsection*{Differences}
+\label{sec:orga13d218}
+There are only a few slight differences between this typology and Bellacks:
+\begin{enumerate}
+\item I've added Types of Pedagogical Moves that are useful for powerpoint slides or lecture notes and removed the reacting type because one cannot react in the same sense to lecture notes or powerpoint slides
+\item I've removed the last three categories, see strategy for why
+\item I've added \emph{Visual Moves} and \emph{Visual Processes} to the type of moves and the substantive-logical meanings respectively. More discussion on this in number (2) in Caveats and Design Decisions below
+\item I've altered the Speaker category to be the location of the move in the document.
+\end{enumerate}
+
+\subsection*{Caveats and Design Decisions}
+\label{sec:org58cd3dd}
+For the most part Bellack's system is useful to our needs. There are some important aspects to consider though:
+\begin{enumerate}
+\item We have risen a level of abstraction: In our original Typology we could count the number of proofs or the number of examples. In this revised typology we \emph{can only} state the types and frequencies of pedagogical moves. This means that if you want to know how many pictures there are in a document then this system will fail you. Rather we would be able to say that the document 1) uses visual aids and 2) has a teaching cycle like STR EXP VIS in that the document cycles a Structuring move, then an Expository move, and then has a Visual move to wrap up.
+\item Where should Visual moves information be? In the revised typology I've added Visual moves to the "Types of Pedagogical Moves" I did this because this category is based on Wittgenstein's concept of a language game. So in Bellack's typology it made sense that they would have a Soliciting move, a Responding move, and a Reacting move because they were analyzing lectures in the classroom. In our typology it makes no sense because we are analyzing a different type of communication viz. power points and lecture notes. So we need to add a few. But that leads to the curious case of Visual Moves. There are both slides that are of a visual type and slides that discuss something using visual notations e.g. pictures or cartoons, so it seems that Visual information is \emph{both a Type of Move, and a Substantive-Logical Meaning}
+\item The last major design decision I made here regards the 3 category, namely \emph{Substantive Meaning}. In Bellack's typology they use this category to be specific about what exactly is being discussed in relation to the overall topic. So for them, the overall topic could be international trade, and then the specifics would be trade tariffs or trade groups. For us the overall topic would be "Dijkstra's Algorithm" or "AVL Trees" and then the specifics could be "Motivation for the algorithm", "Applications of the algorithm", "implementation details of the algorithm". Or we could be even more specific and say the specifics are "Priority Queues" for Dijkstra's and "Tree Rotation" or "Tree Balancing" for AVL Trees. This sort of system is powerful, and more adaptable than our previous notation in that it \emph{does not} seek to provide global, transcendent categories for \emph{every} algorithm. Rather it allows us to \emph{define} the specific attributes for each algorithm and add that information to the typology. This may be or may not be desirable and we should have a lengthy discussion about it at some point because I'm not sure exactly what the implications are or are not.
+\end{enumerate}
 \end{document}

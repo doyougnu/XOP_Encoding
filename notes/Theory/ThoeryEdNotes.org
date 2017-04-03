@@ -65,13 +65,13 @@
     Each pedagogical move is coded as follows, I've added indices to follow the text: \\
     \begin{verbatim}
     Move = 1. Speaker 
-           | 2. Type of Move 
-           | 3. Substantive Meaning
-           | 4. Substantive-Logical Meanings 
-           | 5. Number of Lines in (3) or (4) 
-           | 6. Instructional Meanings 
-           | 7. Instructional-Logical Meanings 
-           | 8. Number of lines in (6) or (7) 
+           / 2. Type of Move 
+           / 3. Substantive Meaning
+           / 4. Substantive-Logical Meanings 
+           / 5. Number of Lines in (3) or (4) 
+           / 6. Instructional Meanings 
+           / 7. Instructional-Logical Meanings 
+           / 8. Number of lines in (6) or (7) 
     \end{verbatim}
 
 *** Semantics
@@ -136,13 +136,13 @@
               3. /Extra-logical Process Not Clear/ (NCL) \triangleq \perp for extra-logical process
      8. *Number of Lines in 6 and 7 above*
 
-**** The / Operator
-     Moves are syntactically conjoined into strings with the "/" operator: \\
+**** The / Operator:
+     The Moves constituents are syntactically conjoined into strings with the "/" operator in order: \\
      \begin{equation}
-        \(\frac{n \in \text{Move} \quad m \in \text{Move}}{n/m \in \text{Move}}\)
+        \(\frac{n \in \text{Move Constituent} \quad m \in \text{Move Constituent}}{n/m \in \text{Partial Move}}\)
      \end{equation}
 **** An Example Sentence
-     An example, coded pedagogical move is: \\
+     coded pedagogical move is: \\
      \begin{verbatim}
        T/STR/IMX/XPL/4/PRC/FAC/2
      \end{verbatim}
