@@ -5,12 +5,12 @@
                      '(("article" "10pt" "letterpaper")))
    (TeX-add-to-alist 'LaTeX-provided-package-options
                      '(("inputenc" "utf8") ("fontenc" "T1") ("ulem" "normalem") ("geometry" "margin=1in")))
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
-   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
    (add-to-list 'LaTeX-verbatim-macros-with-braces-local "path")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "url")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "nolinkurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperbaseurl")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperimage")
+   (add-to-list 'LaTeX-verbatim-macros-with-braces-local "hyperref")
    (add-to-list 'LaTeX-verbatim-macros-with-delims-local "path")
    (TeX-run-style-hooks
     "latex2e"
@@ -32,51 +32,53 @@
     "geometry"
     "bussproofs")
    (LaTeX-add-labels
-    "sec:orgda5377e"
-    "sec:org6616844"
-    "sec:orgfb70c14"
-    "sec:orgd5c1f20"
-    "sec:orge2d7b49"
-    "sec:org5e16833"
-    "sec:org22c161e"
-    "sec:org8dc1f9f"
-    "sec:orgb578665"
-    "sec:org0bbfc52"
-    "sec:org8901c17"
-    "sec:org10a0172"
-    "sec:org7f00cd3"
-    "sec:org8983dde"
-    "sec:org902ce50"
-    "sec:org3d2ba4b"
-    "sec:orgff12ffb"
-    "sec:orgf64857b"
-    "sec:org102b42f"
-    "sec:org6e77596"
-    "sec:org5928c5a"
-    "sec:orgc0e47a1"
-    "sec:org6110fd3"
-    "sec:org4b458cc"
-    "sec:org71c0260"
-    "sec:org0432f8b"
-    "sec:orge7c1662"
-    "sec:org894f2f1"
-    "sec:orgc7a3098"
-    "sec:org7c18127"
-    "sec:orgc756ae1"
-    "sec:orgfb19bca"
-    "sec:orgc57a80c"
-    "sec:org6e9fa60"
-    "sec:org4096af0"
-    "sec:orgbc109fb"
-    "sec:orgf509a5f"
-    "sec:org97ed69c"
-    "sec:org36b0280"
-    "sec:org0fc7955"
-    "sec:org6e10264"
-    "sec:org3d7f4fa"
-    "sec:org13b904d"
-    "sec:orgfee2088"
-    "sec:orgecd5873"
-    "sec:org71f65e5"))
+    "sec:orga054185"
+    "sec:orgebaf5f0"
+    "sec:orgde82871"
+    "sec:orgfbc37c2"
+    "sec:org34b5560"
+    "sec:org4b348a4"
+    "sec:org2074d3c"
+    "sec:org599425c"
+    "sec:org96e4b8a"
+    "sec:orgde6d823"
+    "sec:org42e41cf"
+    "sec:orgd99c77c"
+    "sec:org3647930"
+    "sec:orge9829af"
+    "sec:orgce56327"
+    "sec:org1e8bcd9"
+    "sec:org80f3d45"
+    "sec:org05b9a2a"
+    "sec:org1c19bb4"
+    "sec:org5457457"
+    "sec:org5589d96"
+    "sec:orgde5f035"
+    "sec:orgf0ddbb9"
+    "sec:orga1141e4"
+    "sec:org70118ed"
+    "sec:org7705199"
+    "sec:orga96e694"
+    "sec:org280ac8b"
+    "sec:org51c5005"
+    "sec:org20f056f"
+    "sec:org9b85048"
+    "sec:orgb4a02fa"
+    "sec:org38eb95d"
+    "sec:orgc932d94"
+    "sec:org28e97b1"
+    "sec:org42c6820"
+    "sec:orge1a1dc4"
+    "sec:org8c6cb58"
+    "sec:org3b99572"
+    "sec:org5565f25"
+    "sec:orgc7431ff"
+    "sec:orgb5718f5"
+    "sec:orga86009e"
+    "sec:org2173858"
+    "sec:org300af10"
+    "sec:orgc321f9f")
+   (LaTeX-add-bibliographies
+    "TheoryEdNotes"))
  :latex)
 

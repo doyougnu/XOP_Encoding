@@ -20,8 +20,8 @@ dfwrd$Explanation <- as.character(dfwrd$Explanation)
 dfppt$Explanation <- as.character(dfppt$Explanation)
 
 # Add type of file to each datasets
-dfwrd %>% mutate(fileType = "word")
-dfppt %>% mutate(fileType = "ppt")
+dfwrd <- dfwrd %>% mutate(fileType = "word")
+dfppt <- dfppt %>% mutate(fileType = "ppt")
 
 # Get Algorithm key out, the (%>%) operating is function composition from dplyr package
 dfwrd <- dfwrd %>%
@@ -41,7 +41,7 @@ dfCoderComp <- dataStacked %>%
   filter(Explanation == "UN007" | Explanation == "UN006")
 
 # Generate a data set that does not consider notations
-dfRole <- dataStacked %>%
+dfRole <- data %>%
   select(-(Notation:isPartial:isEmphasized:hasMany)) %>%
   distinct()
 
@@ -107,3 +107,42 @@ dev.off()
 ## generate a contingecy table
 cNGtable <- table(data$Notation, data$Goal)
 cRGtable <- table(data$Role, data$Goal)
+
+# looking for teaching cycles, using only Goals
+dfGoal <- dfRole %>%
+  select(-(Role)) %>%
+  distinct() %>%
+  filter(!((Explanation == "UN007" | Explanation == "UN006") & Coder == "B")) %>%
+  group_by(Position, Algorithm, Goal, fileType) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+# generate a dot plot sized by count
+plt7 <- ggplot(dfGoal, aes(x = Position, y = reorder(Goal, -count), colour = Goal, size = count)) +
+  geom_jitter() +
+  ylab("Goal") +
+  facet_grid(fileType ~ Algorithm)
+plt7
+
+ggsave(file = "Plots/GoalsTeachingCycles.png", width = 7, height = 5)
+
+dfRole2 <- dfRole %>%
+  select(-(Goal)) %>%
+  distinct() %>%
+  filter(!((Explanation == "UN007" | Explanation == "UN006") & Coder == "B")) %>%
+  group_by(Position, Algorithm, Role, fileType) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count))
+
+# generate a dot plot sized by count
+plt8 <- ggplot(dfRole2, aes(x = Position, y = reorder(Role, -count), colour = Role, size = count)) +
+  geom_jitter() +
+  ylab("Role") +
+  facet_grid(fileType ~ Algorithm)
+plt8
+
+ggsave(file = "Plots/RolesTeachingCycles.png", width = 7, height = 5)
+
+test <- ggplot(dfRole, aes(x = Position, y = Goal, colour = Role)) +
+  geom_jitter() +
+  facet_grid(fileType ~ Algorithm)

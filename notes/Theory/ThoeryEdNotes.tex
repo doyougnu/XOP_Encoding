@@ -1,4 +1,4 @@
-% Created 2017-04-02 Sun 17:24
+% Created 2017-04-04 Tue 19:47
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt, letterpaper]{article}
 \usepackage[utf8]{inputenc}
@@ -24,59 +24,59 @@
  pdftitle={Primer on Educational Theoretical Underpinnings},
  pdfkeywords={},
  pdfsubject={},
- pdfcreator={Emacs 26.0.50 (Org mode 9.0.5)}, 
+ pdfcreator={Emacs 25.1.1 (Org mode 9.0.2)}, 
  pdflang={English}}
 \begin{document}
 
 \maketitle
 
 \section*{Orientation}
-\label{sec:orgda5377e}
-In the Educational theory literature we are after what is called a \emph{typology of explanation} several exist and have been developed through the years see this paper cite:brown1984explaining for an overview. This document serves as a one stop shop of sorts for useful papers, summaries or primers on said papers. If you don't have time I suggest just reading the Purpose section and the section on Bellack.
+\label{sec:orga054185}
+In the Educational theory literature we are after what is called a \emph{typology of explanation} several exist and have been developed through the years see this paper \cite{brown1984explaining} for an overview. This document serves as a one stop shop of sorts for useful papers, summaries or primers on said papers. If you don't have time I suggest just reading the Purpose section and the section on Bellack.
 \section*{Executive Summary}
-\label{sec:org6616844}
+\label{sec:orgebaf5f0}
 We want to be focusing on Bellack's work for sure. In their research they develop a coding system, that describes qualities of in classroom lectures, and then they use that coding system to determine \emph{teaching cycles} which are patterns they noticed that arose from the data. We can and should co-opt their coding strategies and recode our data, this may also open the door to analyzing verbal lectures. What you find in this document is a summary of chapter two, where they layout the system. I'm working on reformulating our system in terms of theirs I'll post it when its finished. The big question in my mind is how this will help or connect to a DSL.
 
 \section*{Purpose}
-\label{sec:orgfb70c14}
+\label{sec:orgde82871}
 Most of the papers I've found have developed a typology, then performed a experimental study of some sort, and then performed some statistical analysis to determine significance between some control group and some other group, typically a chi-squared test. The purpose of this document is to serve as a reference point for papers that may be interesting and to summarize those papers in terms that will be useful. I see two major roads that we can go down based on these papers: 1) We can develop our own typology, specifically designed to explicate and elucidate explanatory objects whose purpose is to explain algorithms - this is an extension of what we've already done. The end of this branch, in my mind, is a user study similar to what some researchers in this area have done with lectures (see Rosenshine below), this would allow us to say these categories are important, these arent' and so on. The other path I can envision is to recodify our methods in terms of these researchers methods, specifically in terms of Bellack et al 1966. I think the latter route (a la Bellack) is the most promising, I can envision writing two papers regarding their work 1) Appropriating their system to our needs and show that it can aid in the creation of a DSL or is useful for computer science educators 2) Using the system to encode documents and crunching the data much like we were doing.
 
 \section*{Papers that will be useful or relevant}
-\label{sec:orgd5c1f20}
+\label{sec:orgfbc37c2}
 
 \subsection*{Papers that detail what good explanations are}
-\label{sec:orge2d7b49}
+\label{sec:org34b5560}
 \begin{itemize}
-\item Brown and Armstrong: Explaining and Explanations cite:brown1984explaining
+\item Brown and Armstrong: Explaining and Explanations \cite{brown1984explaining}
 \item Smith and Meux 1970
-\item Thyne 1963; 1968; The Psychology of Learning and Techniques of Teaching cite:thyne1965psychology
+\item Thyne 1963; 1968; The Psychology of Learning and Techniques of Teaching \cite{thyne1965psychology}
 \item Turney et al., 1975
 \item Gage and Berliner 1975; Research into Classroom Processes
-\item Brown 1978a, 1978b; Microteaching: Programme of Teaching Skills cite:10.2307/3120386
+\item Brown 1978a, 1978b; Microteaching: Programme of Teaching Skills \cite{10.2307/3120386}
 \end{itemize}
 
 \subsection*{Papers that detail different Typography's of Explanations}
-\label{sec:org5e16833}
+\label{sec:org4b348a4}
 \begin{itemize}
-\item Swift 1967, Language and Concepts in Teaching cite:smith1967language
-\item Bellack et al, The Language of the classroom cite:bellack1966language
-\item Ennis 1969, Logic in Teaching cite:ennis1969logic
-\item Smith and Meux: Study in the logic of teaching cite:Smith1970-SMIASO-13
-\item Hyman 1974: Vantage Points for Study cite:hyman1968teaching
+\item Swift 1967, Language and Concepts in Teaching \cite{smith1967language}
+\item Bellack et al, The Language of the classroom \cite{bellack1966language}
+\item Ennis 1969, Logic in Teaching \cite{ennis1969logic}
+\item Smith and Meux: Study in the logic of teaching \cite{Smith1970-SMIASO-13}
+\item Hyman 1974: Vantage Points for Study \cite{hyman1968teaching}
 \end{itemize}
 
 
 \section*{Bellack Language of the Classroom}
-\label{sec:org22c161e}
+\label{sec:org2074d3c}
 
 \subsection*{Chapter 2: Basic System For Analysis}
-\label{sec:org8dc1f9f}
+\label{sec:org599425c}
 
 \subsubsection*{Overview}
-\label{sec:orgb578665}
+\label{sec:org96e4b8a}
 To analyze classroom discourse Bellack et al. developed a "system of categories devised to describe the verbal performance of teachers and students". Protocols of classroom discourse were analyzed in terms of these categories. Basically, and probably unbeknownst to them, they developed a programming language that describes classroom discourse. Keep in mind that their data is based off of transcripts of lectures, so their coding scheme naturally reflects that. In this section I'm going to explicate, in detail, their system. I'll start with a quick overview, then define the semantics of each of their terminals, and then dive deep into a few so you can see some examples and explore some of the mechanics. If you don't have time just read "The System", "Grammar", "Semantics"
 \subsubsection*{The System}
-\label{sec:org0bbfc52}
+\label{sec:orgde6d823}
 This system is heavily based on Wittgenstein's concept of a language game. The basic categories are:
 \begin{itemize}
 \item Pedagogical Moves \(\triangleq\) classroom discourse is viewed as a kind of "language game" (this is a technical term from Wittgenstein, specifically late-Wittgenstein, I can give you a run down later but suffice to say that the "door depends upon the hinge - Wittgenstein in \emph{On Certaintly}"). The basic unit of discourse is deemed a "pedagogical move" in this system. There are four types of pedagogical moves in the system:
@@ -97,7 +97,7 @@ This system is heavily based on Wittgenstein's concept of a language game. The b
 \end{itemize}
 Coding is done from the viewpoint of the observer, with pedagogical meaning inferred from the speaker's verbal behavior. 
 \subsubsection*{Grammar}
-\label{sec:org8901c17}
+\label{sec:org42e41cf}
 Each pedagogical move is coded as follows, I've added indices to follow the text: \\
 \begin{verbatim}
 Move = 1. Speaker 
@@ -111,11 +111,11 @@ Move = 1. Speaker
 \end{verbatim}
 
 \subsubsection*{Semantics}
-\label{sec:org10a0172}
+\label{sec:orgd99c77c}
 
 \begin{itemize}
 \item \textbf{Semantic of Moves:}
-\label{sec:org7f00cd3}
+\label{sec:org3647930}
 I'll elucidate the meaning of each move, I'll maintain the indices from the Grammar to avoid confusion. These will be brief definitions, for something more fleshed out and  with much more detail see the latter sections, specifically the "Categories of Meaning" Section:
 \begin{enumerate}
 \item \textbf{Speaker} \(\triangleq\) Indicates the source of the utterance, is one of:
@@ -206,13 +206,13 @@ I'll elucidate the meaning of each move, I'll maintain the indices from the Gram
 \end{enumerate}
 
 \item The / Operator:
-\label{sec:org8983dde}
+\label{sec:orge9829af}
 The Moves constituents are syntactically conjoined into strings with the "/" operator in order: \\
 \begin{equation}
    \(\frac{n \in \text{Move Constituent} \quad m \in \text{Move Constituent}}{n/m \in \text{Partial Move}}\)
 \end{equation}
 \item An Example Sentence
-\label{sec:org902ce50}
+\label{sec:orgce56327}
 coded pedagogical move is: \\
 \begin{verbatim}
   T/STR/IMX/XPL/4/PRC/FAC/2
@@ -224,7 +224,7 @@ The interpretation is as follows:
 \end{verbatim}
 This translates to: A \emph{teacher} (1) makes a \emph{structuring} (2) move in which they \emph{explain} (4) something about  \emph{imports and exports} (3) for \emph{four} (5) lines of transcript and also states \emph{facts} (7) about class \emph{procedures} (6) for \emph{two} (8) lines of the transcript. 
 \item Structuring (STR)
-\label{sec:org3d2ba4b}
+\label{sec:org1e8bcd9}
 \begin{itemize}
 \item \uline{Purpose}: \\
 Structuring moves function to \emph{set the context} for subsequent behavior. Think of this as identifying, setting, or initializing the state.
@@ -240,7 +240,7 @@ Structuring moves function to \emph{set the context} for subsequent behavior. Th
 \end{enumerate}
 \end{itemize}
 \item Soliciting (SOL)
-\label{sec:orgff12ffb}
+\label{sec:org80f3d45}
 \begin{itemize}
 \item \uline{Purpose}: \\
 These are moves that tend to elicit an active verbal response, a cognitive response, or a physical response to the persons addressed.
@@ -253,7 +253,7 @@ These are moves that tend to elicit an active verbal response, a cognitive respo
 \end{enumerate}
 \end{itemize}
 \item Responding (RES)
-\label{sec:orgf64857b}
+\label{sec:org05b9a2a}
 \begin{itemize}
 \item \uline{Purpose}: \\
 These moves are reciprocal to soliciting moves and only occur in relation to them. They function to fulfill the expectation of soliciting moves, and as such are reflexive.
@@ -267,7 +267,7 @@ P/Res: I don't know
 \end{enumerate}
 \end{itemize}
 \item Reacting (REA)
-\label{sec:org102b42f}
+\label{sec:org1c19bb4}
 \begin{itemize}
 \item Purpose: \\
 These moves are occasioned by a structuring, soliciting, responding, or some prior move but are not directly elicited by them. These qualify the moves that preceded them, either by clarifying some point, synthesizing a new one, or expanding on a previous point.
@@ -291,12 +291,12 @@ These moves are occasioned by a structuring, soliciting, responding, or some pri
 \end{itemize}
 
 \subsubsection*{Teaching Cycles}
-\label{sec:org6e77596}
+\label{sec:org5457457}
 Pedagogical moves occur in cyclical patterns and combinations, which are designated as \emph{teaching cycles}. A cycle begins with a structuring move or a solicitation that is not preceded by a structuring move. A cycle ends with the move that precedes a new cycle. Teaching cycles are coded \emph{only after} all moves have been coded. These define structuring and soliciting moves as \emph{initiatory} and responding and reacting moves as \emph{reflexive}. There are 21 types of teaching cycles possible. The first 12 are structure-initiated and the last 9 are initiated by soliciting moves. 
 
 \begin{itemize}
 \item Types of Teaching Cycles
-\label{sec:org5928c5a}
+\label{sec:org5589d96}
 \begin{enumerate}
 \item STR
 \item STR SOL
@@ -323,15 +323,15 @@ Pedagogical moves occur in cyclical patterns and combinations, which are designa
 
 Each type of teaching cycle represents a different pattern of pedagogical discourse. For example, Cycle 9, represents a pattern of discourse that is initiated by a structuring move and is followed by a solicitation; this solicitation then elicits a response that is the occasion for a reaction. Cycle 21 is initiated by a solicitation that elicits multiple responses which are in turn the occasion for multiple reactions. 
 \item Purpose of Teaching Cycles:
-\label{sec:orgc0e47a1}
+\label{sec:orgde5f035}
 Teaching Cycles provide a way of describing pedagogical moves in relationship to each other. By utilizing the concept of teaching cycles it becomes possible to determine the extent to which solicitations elicit single or multiple responses or the regularity with which reactions follow responses. If a single pedagogical move may be compared to a move in chess or a single play in football. Then teaching cycles are an interrelated series of moves or plays, like a drive in football or a strategy in chess.
 \end{itemize}
 \subsubsection*{Categories of Meaning}
-\label{sec:org6110fd3}
+\label{sec:orgf0ddbb9}
 There are four functionally different types of \emph{meaning} communicated in the classroom. \emph{substantive} with associated \emph{substantive-logical} meanings, \emph{instructional} with associated \emph{instructional-logical} meanings. Within each pedagogical move these four types of meaning are identified when they appear in the discourse
 \begin{itemize}
 \item \textbf{Substantive}
-\label{sec:org4b458cc}
+\label{sec:orga1141e4}
 meanings refer to the subject matter under study by the class. For example, some previous example's substantive meanings referred to a teaching unit based on \emph{International Economic Problems} By James Calderwood. These meanings can then be \emph{atomized}, note that sub codings are possible as well, here are just a few examples:
 \begin{enumerate}
 \item \emph{Trade} (TRA) \(\triangleq\) refers to General discussions of trade; nature of trade in broad terms.
@@ -345,7 +345,7 @@ meanings refer to the subject matter under study by the class. For example, some
 \item \emph{Barrer-Tariffs} (BAT) \(\triangleq\) Specific Discussions of tariff.
 \end{enumerate}
 \item \textbf{Substantive-logical meanings}
-\label{sec:org71c0260}
+\label{sec:org70118ed}
 refer to the cognitive processes involved in dealing with the subject matter under study. Substantive-logical meanings are categorized under three generate headings:
 \begin{itemize}
 \item \uline{Analytic Process}:  Analytic statements are statements about the proposed use of language. Analytic statements are true by virtue of the meaning of the words of which the are composed (they are true \emph{a priori}). Or in other words these are true by an agreed upon set of rules and inferences. Statements like "All single Men are Bachelors". The book describes several sub-classifications here are just a few:
@@ -380,10 +380,10 @@ Examples:
 \end{enumerate}
 \end{itemize}
 \item \textbf{Instructional Meanings}
-\label{sec:org0432f8b}
+\label{sec:org7705199}
 These refer to conversations about classroom management, assignments, procedures etc. I'm going to omit these becasue they will not pertain to our explanatory objects and the book goes enumerates many of them in great detail.
 \item \textbf{Instructional-Logical Meanings}
-\label{sec:orge7c1662}
+\label{sec:orga96e694}
 Meanings that include those processes listed under substantive-logical meanings, but also refer to distinctly didactic verbal moves such as those involved in positive or negative rating and giving instructions. These include statements of qualitative judgment. Its easier to understand with examples. There are many of these but I'll only explicate a few to get the point across:
 \begin{enumerate}
 \item Positive (POS) \(\triangleq\) refers to distinctly affirmative rating, usually in a reaction to a statement.
@@ -397,46 +397,46 @@ Meanings that include those processes listed under substantive-logical meanings,
 \end{enumerate}
 \end{itemize}
 \section*{Explaining and Explanations Typology}
-\label{sec:org894f2f1}
+\label{sec:org280ac8b}
 
 \subsection*{Keys}
-\label{sec:orgc7a3098}
+\label{sec:org51c5005}
 An explanation is divided up into "keys":
 \begin{itemize}
 \item Keys \(\triangleq\) A Key is part of the main explanation that must be explained for one to understand that which is to be explained
 \end{itemize}
 \subsection*{Links}
-\label{sec:org7c18127}
+\label{sec:org20f056f}
 One would then seek to "link" the discrete "keys" together: \\
 \begin{description}
 \item[{Links}] PAPER DOES NOT DEFINE
 \end{description}
 \subsection*{Rules}
-\label{sec:orgc756ae1}
+\label{sec:org9b85048}
 One would also define any rules that are pertinent to what is being explained
 \begin{description}
 \item[{Rules}] PAPER DOES NOT DEFINE
 \end{description}
 \subsection*{The Typology}
-\label{sec:orgfb19bca}
+\label{sec:orgb4a02fa}
 The Typology is formed by 3 categories of explanation:
 
 \subsubsection*{The Interpretive}
-\label{sec:orgc57a80c}
+\label{sec:org38eb95d}
 That which clarifies, exemplifies, or interprets the meaning of terms. Roughly speaks to "What is \ldots{} ?" 
 \subsubsection*{The Descriptive}
-\label{sec:org6e9fa60}
+\label{sec:orgc932d94}
 That which describes a process or structure. Speaks to "How is ..? How does \ldots{}?" 
 \subsubsection*{The "Reason Giving"}
-\label{sec:org4096af0}
+\label{sec:org28e97b1}
 That which offers reasons or causes. Speaks to the occurrence of a phenomenon (Why is \ldots{}?) \\
 
 \subsubsection*{An Example:}
-\label{sec:orgbc109fb}
+\label{sec:org42c6820}
 
 \begin{itemize}
 \item Interpretive Explanations:
-\label{sec:orgf509a5f}
+\label{sec:orge1a1dc4}
 \begin{itemize}
 \item What are phyla?
 \item What is a biome?
@@ -445,7 +445,7 @@ That which offers reasons or causes. Speaks to the occurrence of a phenomenon (W
 \end{itemize}
 
 \item Descriptive Explanations:
-\label{sec:org97ed69c}
+\label{sec:org8c6cb58}
 \begin{itemize}
 \item Where does the energy of the living world come from?
 \item How do streams come to be polluted?
@@ -454,7 +454,7 @@ That which offers reasons or causes. Speaks to the occurrence of a phenomenon (W
 \end{itemize}
 
 \item Reason-giving Explanations:
-\label{sec:org36b0280}
+\label{sec:org3b99572}
 \begin{itemize}
 \item Why are there no polar bears in the South Pole
 \item Why is soil considered to be an ecosystem
@@ -464,11 +464,11 @@ I think that these roughly translate to our "Levels" in our coding scheme.
 \end{itemize}
 
 \section*{Gage et al Typology}
-\label{sec:org0fc7955}
+\label{sec:org5565f25}
 N.L. Gage's main programme was to identify objective variables in teaching lectures that could be used to form a \emph{standard} approach to lecturing. He compares the thrust of his work to that of physics; when physics hit a theoretical limit they often sought to surpass the limit by expanding and individuating constituents. For example, the Nucleus of an Atom is actually made up of subatomic particles, then they would seek to study the subatomic particles instead of the nucleus. This typology follows from Barak Rosenshines work See Chapter 9, pg 201, Research into Classroom Processes Westbury/Bellack. In this article Rosenshine develops the typology and then runs a user study to assess the correlative impact of each category on effective and ineffective lectures. So the typology merely serves as a way to classify, and differentiate good lectures from bad ones. This paper is meh, it doesn't define everything but the results are good although it can be hard to follow at times, especially the distinction between variables and categories - which I still don't understand.
 
 \subsection*{Variables}
-\label{sec:org6e10264}
+\label{sec:orgc7431ff}
 Rosenshine identifies 27 variables that were verbal, non-verbal, communicated by teachers and received by students. The variables were developed from research in four general areas:
 \begin{enumerate}
 \item Linguistics
@@ -478,7 +478,7 @@ Rosenshine identifies 27 variables that were verbal, non-verbal, communicated by
 \end{enumerate}
 
 \subsubsection*{Linguistic Categories}
-\label{sec:org3d7f4fa}
+\label{sec:orgb5718f5}
 Consists of 9 "categories"
 \begin{enumerate}
 \item Word Length
@@ -492,14 +492,14 @@ Consists of 9 "categories"
 \item awkward and fragmented sentences \(\triangleq\) counts of sentences which depart from usual sentence construction or phrases which lack a subject of a verb but add information. e.g. "Now to foreign affairs"
 \end{enumerate}
 \subsubsection*{Instructional Set}
-\label{sec:org13b904d}
+\label{sec:orga86009e}
 Consists of 2 categories
 \begin{enumerate}
 \item Structuring Sets \(\triangleq\) set that contains variables which are words or phrases which indicate that the speaker is attempting to clarify distinctions between new and previously learned material
 \item Focusing or Arousing Sets \(\triangleq\) set that contains variables which might identify phrases designed to arouse or focus attention.
 \end{enumerate}
 \subsubsection*{Presentational Categories}
-\label{sec:orgfee2088}
+\label{sec:org2173858}
 Consists of 9 categories
 \begin{enumerate}
 \item Use of rule-and-example Pattern
@@ -513,7 +513,7 @@ Consists of 9 categories
 \item repetition and redundancy
 \end{enumerate}
 \subsubsection*{Multivariate studies of teaching behaviors}
-\label{sec:orgecd5873}
+\label{sec:org300af10}
 Consists of 7 categories
 \begin{enumerate}
 \item Verbal Hostility
@@ -526,10 +526,10 @@ Consists of 7 categories
 \end{enumerate}
 
 \subsection*{Takeaway}
-\label{sec:org71f65e5}
+\label{sec:orgc321f9f}
 We could co-opt a lot of rosenshines typology for our typology, a benefit of this would be that we would be in a position to co-opt his/her research on effective lectures to effective powerpoints/papers for algorithms.
 
 
-bibliographystyle:unsrt
-bibliography:TheoryEdNotes.bib
+\bibliographystyle{unsrt}
+\bibliography{TheoryEdNotes}
 \end{document}
