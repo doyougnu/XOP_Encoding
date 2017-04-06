@@ -45,6 +45,22 @@ dfRole <- data %>%
   select(-(Notation:isPartial:isEmphasized:hasMany)) %>%
   distinct()
 
+# Generate a data frame that has the upper mid and lower bounds for each explanation
+dfPositions <- dfRole %>%
+  group_by(Explanation) %>%
+  summarise(upperBound = range(Position)[2]
+          , lowerBound = floor(upperBound / 3)
+          , midBound = lowerBound * 2)
+
+# now merge
+dfRole <- merge(dfRole, dfPositions, all=TRUE)
+
+# add relevant columns
+dfRole <- x %>%
+  mutate(Location =
+           ifelse(Position >= 0 & Position < lowerBound, "Beg"
+                , ifelse(Position >= lowerBound & Position < midBound, "Mid"
+                       , "End")))
 # mosaic plot df
 mdf <- data %>% group_by(Explanation, Goal, Role, Notation, Position) %>% summarise(count = n())
 
@@ -113,7 +129,7 @@ dfGoal <- dfRole %>%
   select(-(Role)) %>%
   distinct() %>%
   filter(!((Explanation == "UN007" | Explanation == "UN006") & Coder == "B")) %>%
-  group_by(Position, Algorithm, Goal, fileType) %>%
+  group_by(Position, Algorithm, Goal, fileType, Location) %>%
   summarise(count = n()) %>%
   arrange(desc(count))
 
@@ -130,19 +146,31 @@ dfRole2 <- dfRole %>%
   select(-(Goal)) %>%
   distinct() %>%
   filter(!((Explanation == "UN007" | Explanation == "UN006") & Coder == "B")) %>%
-  group_by(Position, Algorithm, Role, fileType) %>%
+  group_by(Position, Algorithm, Role, fileType, Location) %>%
   summarise(count = n()) %>%
   arrange(desc(count))
 
-# generate a dot plot sized by count
-plt8 <- ggplot(dfRole2, aes(x = Position, y = reorder(Role, -count), colour = Role, size = count)) +
+# generate a boxplot in the same form
+plt8 <- ggplot(dfRole2, aes(x = factor(Location, levels=c("Beg", "Mid", "End"))
+                          , y = reorder(Role, -count)
+                         , colour = Role, shape = Location, size = count)) +
   geom_jitter() +
+  xlab("Location") +
   ylab("Role") +
   facet_grid(fileType ~ Algorithm)
 plt8
 
-ggsave(file = "Plots/RolesTeachingCycles.png", width = 7, height = 5)
 
-test <- ggplot(dfRole, aes(x = Position, y = Goal, colour = Role)) +
+# count balloon plot compensating for Location
+test <- ggplot(dfGoal, aes(x = factor(Location, levels=c("Beg", "Mid", "End"))
+                          , y = reorder(Goal, -count)
+                         , colour = Goal, shape = Location, size = count)) +
   geom_jitter() +
+  xlab("Location") +
+  ylab("Goal") +
   facet_grid(fileType ~ Algorithm)
+test
+
+
+
+ggsave(file = "Plots/RolesTeachingCycles.png", width = 7, height = 5)
