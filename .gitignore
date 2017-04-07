@@ -4,3 +4,4 @@ paper/XOP_Paper.pdf
 *.fls
 *.log
 *.synctex.gz
+*.el
