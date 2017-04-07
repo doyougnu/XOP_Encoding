@@ -55,7 +55,7 @@
 
 \usepackage{color}
 \usepackage{enumerate}
-
+\usepackage{todo}
 \usepackage{lambda}
 
 
@@ -317,15 +317,6 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-% \title{Step by Step: A Typology of Algorithmic Explanation}
-% \title{Explaining One Step at a Time: A Typology of Algorithmic Explanation}
-% \title{Language Games: Towards an Explanation-Oriented Programming Typology}
-% \title{How are Explanations Explained? A Typology of Algorithmic Explanations}
-% \title{How are Explanations Explained? Towards an Explanation-Oriented
-%   Programming Typology}
-% \title{How are Explanations Explained? Towards an Explanation-Oriented
-%   Programming DSL}
-% \title{Language Games: A Typology of Algorithmic Explanations}
 
 \title{A Domain Analysis of Data Structure and Algorithm Explanations in the Wild}
 
@@ -344,11 +335,13 @@ Corvallis, Oregon, USA}
 Oregon State University\\
 Corvallis, Oregon, USA}
 \and
-\IEEEauthorblockN{Shujin Wu}
+\IEEEauthorblockN{Shujin Wu} 
+% Can't get this to render right
+% \IEEEoverridecommandlockouts \thanks{Now at Google} 
 \IEEEauthorblockA{School of EECS\\
 Oregon State University\\
-Corvallis, Oregon, USA}
-}
+Corvallis, Oregon, USA
+}}
 
 % TODO: add footnote indicating Shujin is now at Google
 
@@ -390,47 +383,6 @@ Corvallis, Oregon, USA}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-% ABSTRACT TRY 1: Slow to build, and then, Crescendo!\\ \\
-% Programs often produce incorrect results. In such a scenario how should a user
-% respond? Explanation-Oriented Programming's [XOP] raison d'etre is to provide
-% a user with the ``how'' and ``why'' in such a scenario. It is computationally
-% trivial to provide the ``how'', but the ``why'' remains an area of active
-% research in XOP literature. We make two observations:
-% % This is likely too cheeky
-% 1) Theories of Explanation are not the lingua franca of computer scientists
-% and 2) Pedagogic Theory provides several examples of typologies that quantize
-% Teacher-Pupil explanations and interactions in the classroom. In this paper we
-% appropriate one such typology to academic explanations of common algorithms in
-% CS curricula. Utilizing this typology, we generate a data set from real world,
-% academic, didactic documents. From this data, we observe patterns of teaching;
-% known as \textit{teaching cycles} in pedagogic literature. Finally, we
-% show how such typologies form the basis for an Explanation-Oriented
-% Domain-Specific Language of Algorithms. \\
-
-% ABSTRACT TRY 2: This one is fast and hard. It's a punk song from the late 80s
-% a la Operation Ivy. \\ \\
-% We propose a Typology of algorithmic explanation which allows one to quantize
-% pedagogic explanations of common algorithms in Computer Science curricula.
-% Utilizing this Typology, we show that many real world, didactic, academic
-% documents exhibit patterns of explanation; known as \textit{teaching cycles}
-% in pedagogic literature. Finally, we propose that such typologies are
-% imperative to the design and construction of Explanation-Oriented Domain
-% Specific Languages.  \\
-
-% % Could probably use some word smithing
-% ABSTRACT TRY 3: This one has the flow right. It's a Sleater-Kinney Song from
-% 95. Could probably use some word-smithing.\\ \\ The goal of
-% Explanation-Oriented Programming is to provide a user with an explanation for
-% incorrect or confusing output. But where is such an explanation to come from?
-% In this paper we review Pedagogic Theory to compose a Typology that is able
-% to quantize academic explanations of common algorithms in CS curricula. We
-% show that by using such a Typology to encode academic, didactic documents, a
-% language designer is able to determine common pedagogic patterns of
-% explanation; known as \textit{teaching cycles} in educational literature.
-% Finally, we propose that such a Typology forms the foundation for the design
-% of an Explanation-Oriented Domain Specific Language of Algorithms. \\
-
-
 % A more problem-driven whack at it:
 Explanations of data structures and algorithms are often complex interactions
 of several notations, including natural language, mathematics, pseudocode, and
@@ -493,7 +445,7 @@ determine what kinds of explanation artifacts educators are already using, how
 educators explain algorithms and data structures, and how these artifacts could
 be improved on with more sophisticated tools (e.g.\ a DSL).
 
-\TODO{Introduce Bellack's system, etc.}
+\todo{Introduce Bellack's system, etc.}
 
 
 This paper makes the following contributions:
@@ -509,8 +461,8 @@ in the form of lecture notes and slides.
 \item \label{contrib:data}
 %
 We provide a coded qualitative data set of explanation artifacts, using the
-system defined in \ref{contrib:codes}. The data set consists of \TODO{XX}
-explanations of Djikstra's shortest path algorithm and \TODO{XX} explanations
+system defined in \ref{contrib:codes}. The data set consists of \todo{XX}
+explanations of Djikstra's shortest path algorithm and \todo{XX} explanations
 of AVL Trees, collected from the Internet.
 
 \item \label{contrib:valid}
@@ -522,7 +474,7 @@ system, such as \emph{teaching cycles}.
 
 \item \label{contrib:valid}
 %
-We analyze the data set and observe that \TODO{something about one-sided
+We analyze the data set and observe that \todo{something about one-sided
 discussion, hopefully some other insights that are relevant to designing a
 DSL}.
 
