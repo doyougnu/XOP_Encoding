@@ -53,7 +53,10 @@
 % manually specify the path to it like:
 % \documentclass[conference]{../sty/IEEEtran}
 
+\usepackage{color}
+\usepackage{enumerate}
 
+\usepackage{lambda}
 
 
 
@@ -444,17 +447,66 @@ Corvallis, Oregon, USA}
 
 
 \section{Introduction}
-% no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.8b and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
 
-\hfill mds
- 
-\hfill August 26, 2015
+Our high-level goal is to further develop the paradigm of explanation-oriented
+programming (XOP). In XOP, the primary output of a program is not a set of
+computed values, but an \emph{explanation of how} those values were computed.
+However, programming languages for XOP should not merely produce explanations
+as a byproduct, but should provide language features for manipulating
+explanation objects directly, creating application-specific notations and
+visualizations, and providing alternative explanations in response to user
+queries. Additionally, the language should help guide the programmer toward the
+creation of \emph{good} explanations.
+
+As a step in this development, we aim to design and implement a domain-specific
+language (DSL) in the XOP paradigm to support computer science education. The
+intended users of the DSL are CS educators who want to create \emph{interactive
+artifacts} to support the explanation of data structures and algorithms to CS
+students. We envision these users as experts on the corresponding data
+structures and algorithms, and also trained and skilled programmers. The
+produced explanation artifacts might supplement a lecture or be posted to a web
+page to supplement a textual explanation.
+
+In this paper, we conduct a qualitative analysis of our domain, in order to
+determine what kinds of explanation artifacts educators are already using, how
+educators explain algorithms and data structures, and how these artifacts could
+be improved on with more sophisticated tools (e.g.\ a DSL).
+
+\TODO{Introduce Bellack's system, etc.}
+
+
+This paper makes the following contributions:
+%
+\begin{enumerate}[C1.]
+
+\item \label{contrib:codes}
+%
+We extend Bellack's system for analyzing \emph{explanation activities} in the
+form of classroom discourse to support analyzing \emph{explanation artifacts}
+in the form of lecture notes and slides.
+
+\item \label{contrib:data}
+%
+We provide a coded qualitative data set of explanation artifacts, using the
+system defined in \ref{contrib:codes}. The data set consists of \TODO{XX}
+explanations of Djikstra's shortest path algorithm and \TODO{XX} explanations
+of AVL Trees, collected from the Internet.
+
+\item \label{contrib:valid}
+%
+We provide evidence that our adaptation of Bellack's system to explanation
+artifacts is sound since we can identify high-level patterns in artifacts
+consistent with patterns in explanation activities coded in the original
+system, such as \emph{teaching cycles}.
+
+\item \label{contrib:valid}
+%
+We analyze the data set and observe that \TODO{something about one-sided
+discussion, hopefully some other insights that are relevant to designing a
+DSL}.
+
+\end{enumerate}
+
 
 \subsection{Subsection Heading Here}
 Subsection text here.
