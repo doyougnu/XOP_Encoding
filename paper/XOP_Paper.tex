@@ -317,15 +317,17 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Step by Step: A Typology of Algorithmic Explanation}
-\title{Explaining One Step at a Time: A Typology of Algorithmic Explanation}
-\title{Language Games: Towards an Explanation-Oriented Programming Typology}
-\title{How are Explanations Explained? A Typology of Algorithmic Explanations}
-\title{How are Explanations Explained? Towards an Explanation-Oriented
-  Programming Typology}
-\title{How are Explanations Explained? Towards an Explanation-Oriented
-  Programming DSL}
-\title{Language Games: A Typology of Algorithmic Explanations}
+% \title{Step by Step: A Typology of Algorithmic Explanation}
+% \title{Explaining One Step at a Time: A Typology of Algorithmic Explanation}
+% \title{Language Games: Towards an Explanation-Oriented Programming Typology}
+% \title{How are Explanations Explained? A Typology of Algorithmic Explanations}
+% \title{How are Explanations Explained? Towards an Explanation-Oriented
+%   Programming Typology}
+% \title{How are Explanations Explained? Towards an Explanation-Oriented
+%   Programming DSL}
+% \title{Language Games: A Typology of Algorithmic Explanations}
+
+\title{A Domain Analysis of Data Structure and Algorithm Explanations in the Wild}
 
 
 % author names and affiliations
@@ -388,45 +390,64 @@ Corvallis, Oregon, USA}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-  ABSTRACT TRY 1: Slow to build, and then, Crescendo!\\ \\
-  Programs often produce incorrect results. In such a scenario how should a user
-  respond? Explanation-Oriented Programming's [XOP] raison d'etre is to provide
-  a user with the ``how'' and ``why'' in such a scenario. It is computationally
-  trivial to provide the ``how'', but the ``why'' remains an area of active
-  research in XOP literature. We make two observations:
-  % This is likely too cheeky
-  1) Theories of Explanation are not the lingua franca of computer scientists
-  and 2) Pedagogic Theory provides several examples of typologies that quantize
-  Teacher-Pupil explanations and interactions in the classroom. In this paper we
-  appropriate one such typology to academic explanations of common algorithms in
-  CS curricula. Utilizing this typology, we generate a data set from real world,
-  academic, didactic documents. From this data, we observe patterns of teaching;
-  known as \textit{teaching cycles} in pedagogic literature. Finally, we
-  show how such typologies form the basis for an Explanation-Oriented
-  Domain-Specific Language of Algorithms. \\
+% ABSTRACT TRY 1: Slow to build, and then, Crescendo!\\ \\
+% Programs often produce incorrect results. In such a scenario how should a user
+% respond? Explanation-Oriented Programming's [XOP] raison d'etre is to provide
+% a user with the ``how'' and ``why'' in such a scenario. It is computationally
+% trivial to provide the ``how'', but the ``why'' remains an area of active
+% research in XOP literature. We make two observations:
+% % This is likely too cheeky
+% 1) Theories of Explanation are not the lingua franca of computer scientists
+% and 2) Pedagogic Theory provides several examples of typologies that quantize
+% Teacher-Pupil explanations and interactions in the classroom. In this paper we
+% appropriate one such typology to academic explanations of common algorithms in
+% CS curricula. Utilizing this typology, we generate a data set from real world,
+% academic, didactic documents. From this data, we observe patterns of teaching;
+% known as \textit{teaching cycles} in pedagogic literature. Finally, we
+% show how such typologies form the basis for an Explanation-Oriented
+% Domain-Specific Language of Algorithms. \\
 
-  ABSTRACT TRY 2: This one is fast and hard. It's a punk song from the late 80s
-  a la Operation Ivy. \\ \\
-  We propose a Typology of algorithmic explanation which allows one to quantize
-  pedagogic explanations of common algorithms in Computer Science curricula.
-  Utilizing this Typology, we show that many real world, didactic, academic
-  documents exhibit patterns of explanation; known as \textit{teaching cycles}
-  in pedagogic literature. Finally, we propose that such typologies are
-  imperative to the design and construction of Explanation-Oriented Domain
-  Specific Languages.  \\
+% ABSTRACT TRY 2: This one is fast and hard. It's a punk song from the late 80s
+% a la Operation Ivy. \\ \\
+% We propose a Typology of algorithmic explanation which allows one to quantize
+% pedagogic explanations of common algorithms in Computer Science curricula.
+% Utilizing this Typology, we show that many real world, didactic, academic
+% documents exhibit patterns of explanation; known as \textit{teaching cycles}
+% in pedagogic literature. Finally, we propose that such typologies are
+% imperative to the design and construction of Explanation-Oriented Domain
+% Specific Languages.  \\
 
-  % Could probably use some word smithing
-  ABSTRACT TRY 3: This one has the flow right. It's a Sleater-Kinney Song from
-  95. Could probably use some word-smithing.\\ \\
-  The goal of Explanation-Oriented Programming is to provide a user with an
-  explanation for incorrect or confusing output. But where is such an
-  explanation to come from? In this paper we review Pedagogic Theory to compose
-  a Typology that is able to quantize academic explanations of common algorithms
-  in CS curricula. We show that by using such a Typology to encode academic,
-  didactic documents, a language designer is able to determine common pedagogic
-  patterns of explanation; known as \textit{teaching cycles} in educational
-  literature. Finally, we propose that such a Typology forms the foundation for
-  the design of an Explanation-Oriented Domain Specific Language of Algorithms.
+% % Could probably use some word smithing
+% ABSTRACT TRY 3: This one has the flow right. It's a Sleater-Kinney Song from
+% 95. Could probably use some word-smithing.\\ \\ The goal of
+% Explanation-Oriented Programming is to provide a user with an explanation for
+% incorrect or confusing output. But where is such an explanation to come from?
+% In this paper we review Pedagogic Theory to compose a Typology that is able
+% to quantize academic explanations of common algorithms in CS curricula. We
+% show that by using such a Typology to encode academic, didactic documents, a
+% language designer is able to determine common pedagogic patterns of
+% explanation; known as \textit{teaching cycles} in educational literature.
+% Finally, we propose that such a Typology forms the foundation for the design
+% of an Explanation-Oriented Domain Specific Language of Algorithms. \\
+
+
+% A more problem-driven whack at it:
+Explanations of data structures and algorithms are often complex interactions
+of several notations, including natural language, mathematics, pseudocode, and
+diagrams. Currently, such explanations are created ad hoc using a variety of
+tools, and the resulting artifacts are typically static, reducing their
+explanatory value. We envision a domain-specific language for developing rich,
+interactive explanations of data structures and algorithms. In this paper, we
+analyze this domain in order to sketch the requirements for our language. We
+conduct the analysis through the lens of an existing pedagogic theory of
+explanation, which we have adapted to a qualitative coding system for existing
+explanation artifacts collected online. We show that explanations of algorithms
+and data structures in the wild exhibit patterns predicted by the pedagogic
+theories, and derive insights for our language from the data. This work is part
+of our larger effort to develop the paradigm of explanation-oriented
+programming, which shifts the focus of a program from computing results to
+producing rich explanations of how those results were computed.
+  
 \end{abstract}
 
 % no keywords
