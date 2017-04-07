@@ -55,10 +55,10 @@
 
 \usepackage{color}
 \usepackage{enumerate}
-\usepackage{todo}
 \usepackage{lambda}
 
-
+%Get todos to render properly
+\usepackage[obeyFinal]{easy-todo}
 
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
@@ -399,7 +399,6 @@ theories, and derive insights for our language from the data. This work is part
 of our larger effort to develop the paradigm of explanation-oriented
 programming, which shifts the focus of a program from computing results to
 producing rich explanations of how those results were computed.
-  
 \end{abstract}
 
 % no keywords
@@ -447,6 +446,21 @@ be improved on with more sophisticated tools (e.g.\ a DSL).
 
 \todo{Introduce Bellack's system, etc.}
 
+Empirical branches of pedagogic theory have created, deployed, and analyzed
+numerous ``coding systems'', known as \emph{typologies of
+  explanation}\cite{westbury1971research, nla.cat-vn407830,
+  rosenshine1968objectively, hyman1968teaching, ennis1969logic,
+  smith1967language, bellack1966language}. We adopt one such Typology, created
+by Bellack et al.\cite{bellack1966language} which is built for exploring
+patterns of explanation, that take place between pupil's and lecturers. In this
+section, we will provide a overview of the system, describe its philosophical
+foundations, its purpose, and how we have adapted it to this project.
+
+Bellack's system is founded upon, and formalizes rules to a \emph{language
+  game}\cite{wittgenstein2010philosophical} that takes place between a pupil,
+and a lecturer in a classroom setting. 
+
+
 
 This paper makes the following contributions:
 %
@@ -463,7 +477,8 @@ in the form of lecture notes and slides.
 We provide a coded qualitative data set of explanation artifacts, using the
 system defined in \ref{contrib:codes}. The data set consists of \todo{XX}
 explanations of Djikstra's shortest path algorithm and \todo{XX} explanations
-of AVL Trees, collected from the Internet.
+of AVL Trees, collected from the Internet, see appendix A for a reference list
+of sources.
 
 \item \label{contrib:valid}
 %
@@ -627,16 +642,9 @@ The authors would like to thank...
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
-
-
-
+\bibliography{XOPbib.bib}
+\bibliographystyle{unsrt}
 
 % that's all folks
 \end{document}
