@@ -175,13 +175,13 @@ All Data is coded by human individuals with reference to this document. The loca
        2. Detailing Moves
           1. /Responding/ (RES) \triangleq fulfills expectation of solicitation; bears reciprocal relation only to solicitation. 
           2. /Expositing/ (EXP) \triangleq a move that explicitly provides or introduces further or new information 
-          3. /Visual/ (VIS) \triangleq a move that explicitly provides a visual aid
        3. /Not Codable/ (NOC) \triangleq serves as the \perp in their coding scheme.
      3. *Substantive Meaning* \triangleq reference to a subject matter topic 
      4. *Substantive-Logical Meaning* \triangleq reference to cognitive process involved in dealing with subject matter under study. 3 Main Types each with subtypes:
         1. Analytic Process \triangleq Use of language or established rules of logic
            1. /Definining-Denotative/ (DED) \triangleq object referent of term 
            2. /Defining-Connotative/ (DEC) \triangleq defining characteristics of class or term
+           3. /Defining-Definitive/ (DEF) \triangleq to give the defining characteristic of a /class and/ to give a specific example of an item with that class
            3. /Interpreting/ (INT) \triangleq verbal equivalent of a statement, slogan, aphorism, or proverb
         2. Empirical Process \triangleq sense experience as criterion of truth
            1. /Fact-Stating/ (FAC) \triangleq what is, was, or will be without explanation or evaluation.

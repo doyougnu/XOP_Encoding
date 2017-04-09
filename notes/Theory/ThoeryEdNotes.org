@@ -237,7 +237,14 @@
           Examples:
           1. T: What is a barrier? Code: T/SOL/BAR/DEF/1/-/-/-
           2. P: It's something that hinders trade. Code: P/RES/BAR/DEF/2/-/-/-
-       2. Defining-Denotative (DED) ::= To define denotatively is to refer to the objects to which the term is applicable. A denotative definition cites the objects to which the term may correctly be applied, and these objects constitute the denotation of the term. 
+       2. Defining-Denotative (DED) ::= To define denotatively is to refer to the objects to which the term is applicable. A denotative definition cites the objects to which the term may correctly be applied, and these objects constitute the denotation of the term.
+       3. Defining-Connotative (DEC) ::= To define connotatively is to give the set of properties or characteristics that an object (abstract or concrete) must have for the term to be applicable. DEC refers to the defining characteristics of a given term. \\
+          Examples:
+          1. T: Now what do we mean by quotas? Code: T/SOL/BAQ/DEF/1/-/-/-
+          2. P: The government sets a special amount \\ 
+             of things that can come into the country\\
+             in one year, and no more can come in. Code: P/RES/BAQ/DEC/4/-/-/-
+
      - _Empirical Process_: Empirical statements give information about the world, based on one's experience of it. These statements are distinguished by tests that are conducted in reference to one's experience. Some Examples:
        1. Fact-Stating (FAC) ::= Giving an account, description or report on the current state of affairs. To State a fact is to state what is. Coding Example:
           1. T: Now in 1934 \ldots in 1934 \ldots who was President? Code: T/SOL/PFT/\textit{FAC}/2/-/-/-
