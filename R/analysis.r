@@ -61,6 +61,15 @@ dfRole <- x %>%
            ifelse(Position >= 0 & Position < lowerBound, "Beg"
                 , ifelse(Position >= lowerBound & Position < midBound, "Mid"
                        , "End")))
+
+# add index for each observaton relative to begging of each document
+dfRole$ind = seq.int(nrow(dfRole))
+dfRole <- dfRole %>%
+  group_by(Explanation) %>%
+  mutate(index = ind - range(ind)[1]) %>%
+  select(-ind) %>%
+  select(-(upperBound:midBound))
+
 # mosaic plot df
 mdf <- data %>% group_by(Explanation, Goal, Role, Notation, Position) %>% summarise(count = n())
 
@@ -126,10 +135,9 @@ cRGtable <- table(data$Role, data$Goal)
 
 # looking for teaching cycles, using only Goals
 dfGoal <- dfRole %>%
-  select(-(Role)) %>%
-  distinct() %>%
-  filter(!((Explanation == "UN007" | Explanation == "UN006") & Coder == "B")) %>%
+  select(-Role) %>%
   group_by(Position, Algorithm, Goal, fileType, Location) %>%
+  distinct() %>%
   summarise(count = n()) %>%
   arrange(desc(count))
 
@@ -144,7 +152,6 @@ ggsave(file = "Plots/GoalsTeachingCycles.png", width = 7, height = 5)
 
 dfRole2 <- dfRole %>%
   select(-(Goal)) %>%
-  distinct() %>%
   filter(!((Explanation == "UN007" | Explanation == "UN006") & Coder == "B")) %>%
   group_by(Position, Algorithm, Role, fileType, Location) %>%
   summarise(count = n()) %>%
@@ -162,13 +169,13 @@ plt8
 
 
 # count balloon plot compensating for Location
-test <- ggplot(dfGoal, aes(x = factor(Location, levels=c("Beg", "Mid", "End"))
-                          , y = reorder(Goal, -count)
-                         , colour = Goal, shape = Location, size = count)) +
+test <- ggplot(dfRole, aes(x = Role, y = index, colour = Role, fill = Role)) +
+  geom_boxplot(colour = "black", alpha = 0.5) +
   geom_jitter() +
-  xlab("Location") +
-  ylab("Goal") +
-  facet_grid(fileType ~ Algorithm)
+  ## xlab("Index") +
+  ## ylab("Role") +
+  coord_flip() +
+  facet_grid(fileType ~ Algorithm, scales = "free")
 test
 
 
