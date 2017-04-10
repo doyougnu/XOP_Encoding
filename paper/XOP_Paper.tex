@@ -1,4 +1,3 @@
-
 %% XOP_Encoding_Paper.tex
 %% V1.4b
 %% 2015/08/26
@@ -54,9 +53,15 @@
 % manually specify the path to it like:
 % \documentclass[conference]{../sty/IEEEtran}
 
+\usepackage{color}
+\usepackage{enumerate}
+\usepackage{lambda}
 
+% Get todos to render properly
+\usepackage[obeyFinal]{easy-todo}
 
-
+% add package for ::= symbol, can't compile to pdf for some reason
+% \usepackage{txfonts}
 
 % Some very useful LaTeX packages include:
 % (uncomment the ones you want to load)
@@ -315,29 +320,34 @@
 % not capitalized unless they are the first or last word of the title.
 % Linebreaks \\ can be used within to get better formatting as desired.
 % Do not put math or special symbols in the title.
-\title{Step by Step: A Typology of Algorithmic Explanation}
-\title{Explaining One Step at a Time: A Typology of Algorithmic Explanation}
-\title{Language Games: Towards an Explanation-Oriented Programming Typology}
-\title{How are Explanations Explained? A Typology of Algorithmic Explanations}
-\title{How are Explanations Explained? Towards an Explanation-Oriented
-  Programming Typology}
-\title{How are Explanations Explained? Towards an Explanation-Oriented
-  Programming DSL}
-\title{Language Games: A Typology of Algorithmic Explanations}
+
+\title{A Domain Analysis of Data Structure and Algorithm Explanations in the Wild}
 
 
 % author names and affiliations
 % use a multiple column layout for up to three different
 % affiliations
-\author{\IEEEauthorblockN{Eric Walkingshaw}
+\author{
+\IEEEauthorblockN{Jeffrey Young}
 \IEEEauthorblockA{School of EECS\\
 Oregon State University\\
 Corvallis, Oregon, USA}
 \and
-\IEEEauthorblockN{Jeffrey Young}
+\IEEEauthorblockN{Eric Walkingshaw}
 \IEEEauthorblockA{School of EECS\\
 Oregon State University\\
-Corvallis, Oregon, USA}}
+Corvallis, Oregon, USA}
+\and
+\IEEEauthorblockN{Shujin Wu} 
+% Can't get this to render right
+% \IEEEoverridecommandlockouts \thanks{Now at Google} 
+\IEEEauthorblockA{School of EECS\\
+Oregon State University\\
+Corvallis, Oregon, USA
+}}
+
+% TODO: add footnote indicating Shujin is now at Google
+
 
 % conference papers do not typically use \thanks and this command
 % is locked out in conference mode. If really needed, such as for
@@ -376,45 +386,22 @@ Corvallis, Oregon, USA}}
 % As a general rule, do not put math, special symbols or citations
 % in the abstract
 \begin{abstract}
-  ABSTRACT TRY 1: Slow to build, and then, Crescendo!\\ \\
-  Programs often produce incorrect results. In such a scenario how should a user
-  respond? Explanation-Oriented Programming's [XOP] raison d'etre is to provide
-  a user with the ``how'' and ``why'' in such a scenario. It is computationally
-  trivial to provide the ``how'', but the ``why'' remains an area of active
-  research in XOP literature. We make two observations:
-  % This is likely too cheeky
-  1) Theories of Explanation are not the lingua franca of computer scientists
-  and 2) Pedagogic Theory provides several examples of typologies that quantize
-  Teacher-Pupil explanations and interactions in the classroom. In this paper we
-  appropriate one such typology to academic explanations of common algorithms in
-  CS curricula. Utilizing this typology, we generate a data set from real world,
-  academic, didactic documents. From this data, we observe patterns of teaching;
-  known as \textit{teaching cycles} in pedagogic literature. Finally, we
-  show how such typologies form the basis for an Explanation-Oriented
-  Domain-Specific Language of Algorithms. \\
-
-  ABSTRACT TRY 2: This one is fast and hard. It's a punk song from the late 80s
-  a la Operation Ivy. \\ \\
-  We propose a Typology of algorithmic explanation which allows one to quantize
-  pedagogic explanations of common algorithms in Computer Science curricula.
-  Utilizing this Typology, we show that many real world, didactic, academic
-  documents exhibit patterns of explanation; known as \textit{teaching cycles}
-  in pedagogic literature. Finally, we propose that such typologies are
-  imperative to the design and construction of Explanation-Oriented Domain
-  Specific Languages.  \\
-
-  % Could probably use some word smithing
-  ABSTRACT TRY 3: This one has the flow right. It's a Sleater-Kinney Song from
-  95. Could probably use some word-smithing.\\ \\
-  The goal of Explanation-Oriented Programming is to provide a user with an
-  explanation for incorrect or confusing output. But where is such an
-  explanation to come from? In this paper we review Pedagogic Theory to compose
-  a Typology that is able to quantize academic explanations of common algorithms
-  in CS curricula. We show that by using such a Typology to encode academic,
-  didactic documents, a language designer is able to determine common pedagogic
-  patterns of explanation; known as \textit{teaching cycles} in educational
-  literature. Finally, we propose that such a Typology forms the foundation for
-  the design of an Explanation-Oriented Domain Specific Language of Algorithms.
+% A more problem-driven whack at it:
+Explanations of data structures and algorithms are often complex interactions
+of several notations, including natural language, mathematics, pseudocode, and
+diagrams. Currently, such explanations are created ad hoc using a variety of
+tools, and the resulting artifacts are typically static, reducing their
+explanatory value. We envision a domain-specific language for developing rich,
+interactive explanations of data structures and algorithms. In this paper, we
+analyze this domain in order to sketch the requirements for our language. We
+conduct the analysis through the lens of an existing pedagogic theory of
+explanation, which we have adapted to a qualitative coding system for existing
+explanation artifacts collected online. We show that explanations of algorithms
+and data structures in the wild exhibit patterns predicted by the pedagogic
+theories, and derive insights for our language from the data. This work is part
+of our larger effort to develop the paradigm of explanation-oriented
+programming, which shifts the focus of a program from computing results to
+producing rich explanations of how those results were computed.
 \end{abstract}
 
 % no keywords
@@ -435,17 +422,227 @@ Corvallis, Oregon, USA}}
 
 
 \section{Introduction}
-% no \IEEEPARstart
-This demo file is intended to serve as a ``starter file''
-for IEEE conference papers produced under \LaTeX\ using
-IEEEtran.cls version 1.8b and later.
-% You must have at least 2 lines in the paragraph with the drop letter
-% (should never be an issue)
-I wish you the best of success.
 
-\hfill mds
- 
-\hfill August 26, 2015
+Our high-level goal is to further develop the paradigm of explanation-oriented
+programming (XOP). In XOP, the primary output of a program is not a set of
+computed values, but an \emph{explanation of how} those values were computed.
+However, programming languages for XOP should not merely produce explanations
+as a byproduct, but should provide language features for manipulating
+explanation objects directly, creating application-specific notations and
+visualizations, and providing alternative explanations in response to user
+queries. Additionally, the language should help guide the programmer toward the
+creation of \emph{good} explanations.
+
+As a step in this development, we aim to design and implement a domain-specific
+language (DSL) in the XOP paradigm to support computer science education. The
+intended users of the DSL are CS educators who want to create \emph{interactive
+artifacts} to support the explanation of data structures and algorithms to CS
+students. We envision these users as experts on the corresponding data
+structures and algorithms, and also trained and skilled programmers. The
+produced explanation artifacts might supplement a lecture or be posted to a web
+page to supplement a textual explanation.
+
+In this paper, we conduct a qualitative analysis of our domain, in order to
+determine what kinds of explanation artifacts educators are already using, how
+educators explain algorithms and data structures, and how these artifacts could
+be improved on with more sophisticated tools (e.g.\ a DSL).
+
+\todo{Introduce Bellack's system, etc.}
+
+\subsection{A Typology of Explanation}
+Empirical branches of pedagogic theory have created, deployed, and analyzed
+numerous ``coding systems'', known as \emph{typologies of
+  explanation}\cite{westbury1971research, nla.cat-vn407830,
+  rosenshine1968objectively, hyman1968teaching, ennis1969logic,
+  smith1967language, bellack1966language}. We adopt one such Typology, created
+by Bellack et al.\cite{bellack1966language} which is built for exploring
+patterns of explanation, that take place between pupil's and lecturers. In this
+section, we will provide a overview of the system, describe its philosophical
+foundations, its purpose, and how we have adapted it to this project.
+
+Bellack's system is founded upon, and formalizes rules to a \emph{language
+  game}\cite{wittgenstein2010philosophical} that takes place between a pupil,
+and a lecturer in a classroom setting. The consequent typology reflects this
+foundation in terms of \emph{pedagogical moves}. A pedagogical move is the basic
+unit of discourse in the pedagogic interlocution between pupil and lecturer.
+Bellack et al. identify four types of pedagogical moves.
+%
+\begin{enumerate}[P1.]
+
+  \item \label{contrib:struct}
+    Structuring Move: a structuring move functions to \emph{set the context} for
+    subsequent behavior. These are statements that a lecturer makes such as
+    ``Let's move on to some examples'' or ``Lambda Calculus has simple
+    operational semantics''.
+  
+  \item \label{contrib:solicit}
+    Soliciting Move: A soliciting move is a verbal statement, made by the
+    lecturer, which explicitly elicits a verbal response. These are statements
+    such as ``Can anyone tell me the purpose of the dot operator?'' or ``Why is
+    Depth-First Search better suited for certain game trees than Breadth-First Search?''
+
+   \item \label{contrib:response}
+     Response Move: A response move is reciprocal to a soliciting move, and only
+     occur in relation to them. Response moves function to fulfill the
+     expectation of soliciting moves. In short, these are the answer's to a
+     lecturer's questions. Some examples are ``The dot operator represents
+     function composition'' or ``Depth-First Search is memory efficient, while
+     Breadth-First Search is not.''
+
+   % what does contrib:XXX do?
+   \item \label{contrib:react}
+     Reacting Move: A reacting move are coincident with structuring, soliciting,
+     and responding moves. Reacting moves are not directly elicited by any other
+     move, but are still occasioned by them. These function to \emph{qualify}
+     some former move through clarifying some point, expanding on some point, or
+     even by synthesizing a new move altogether. Examples of these moves include
+     % could probably use a more illustrative example, or we could use the free
+     % trade example that Bellack employs.
+     statements such as ``That's partly correct; Depth-First Search is more
+     memory efficient but that is not the only reason..''
+
+\end{enumerate}
+
+The coding notation in Bellack et al's system consists of eight categories
+separated by a ``/''. We have affixed each category with an index following
+Bellack's presentation and for specificity. The eight categories are as follows:
+% any thoughts on how to get this in BNF, or even if we should?
+
+\begin{enumerate}
+  \item Speaker
+  \item Type of Move
+  \item Substantive Meaning
+  \item Substantive-Logical Meanings
+  \item Number of Lines in 3 or 4
+  \item Instructional Meaning
+  \item Instructional-Logical Meanings
+  \item Number of Lines in 6 or 7
+\end{enumerate}
+
+% should this be ``the Semantics of each ...'''???
+For each category a shorthand indicator is provided that details the
+representation of that category in the terminology of the coding system.
+For example a structuring move is represented as (STR) in the system's
+notation. The meanings of each category are as follows:
+
+\begin{enumerate}
+  \item{Speaker}: Indicates the source of the utterance, is one of:
+  \begin{enumerate}
+    \item \emph{Teacher} (T)
+    \item \emph{Pupil} (P)
+    \item \emph{Audio-Visual Device} (A)
+  \end{enumerate}
+  \item{Type of Move}: Indicates which type move belongs to. See P1-P4 above.
+  \item {Substantive Meaning}: reference to a subject matter topic
+  \item {Substantive-Logical Meaning}: reference to cognitive process involved
+    in dealing with subject matter under study. This category has three major
+    subcategories: \emph{Analytic Process}, \emph{Empirical Process},
+    \emph{Evaluative Process}, each with their own subcategories:
+  \begin{enumerate}
+    \item{Analytic Process}: Use of language or established rules of logic.
+    \begin{enumerate}
+      \item \emph{Definining-Denotative} (DED): The object referent of term
+      \item \emph{Defining-Connotative} (DEC): A statement about the defining
+        characteristics of some class or term
+      \item \emph{Interpreting} (INT): A verbal equivalent of a statement, slogan, aphorism, or proverb
+      \end{enumerate}
+    \item{Empirical Process}: Use of a sense experience as criterion of truth.
+      \begin{enumerate}
+      \item \emph{Fact-Stating} (FAC): A statement about what is, was, or will be without explanation or evaluation.
+      \item \emph{Explaining} (XPL): a statement about relation between objects, events, principles, conditional inference, cause-effect, explicit comparison-contrast, statement of principles, theories or laws
+      \end{enumerate}
+    \item{Evaluative Process}: set of criteria or value system as basis for verification
+      \begin{enumerate}
+      \item \emph{Opining} (OPN): personal values for statement of policy, judgment or evaluation of event, idea, state of affairs, direct and indirect evaluation included
+      \item \emph{Justifying} (JUS): reasons or argument for or against opinion or judgment
+      \end{enumerate}
+    \item \emph{Logical Process Not Clear} (NCL): represents a $\bot$ value for Substantive-Logical Meanings
+    \end{enumerate}
+  \item{Number of Lines in 3 and 4 above}
+  \item{Instructional Meanings}: reference to factors related to classroom
+    management. Shown below are some examples, we defer an interested reader to
+    Bellack's work for an exhaustive list.
+    \begin{enumerate}
+      \item \emph{Assignment} (ASG): language suggesting or requiring student activity; reports, tests, readings etc.
+      \item \emph{Material} (MAT): Use of teaching aids and instructional devices
+      \item \emph{Statement} (STA): Verbal utterance, particularly the meaning validity, truth, or propriety of an utterance
+      \item \emph{Logical Process} (LOG): Function of language or rule of logic; reference to definitions or arguments, but not presentation of such
+      \item \emph{Action-Cognitive} (ACC): Cognitive process, but not the language or logic of a specific utterance; thinking, knowing, understanding, or listening
+      \item \emph{Action-Emotional} (ACE): emotion or feeling, but not expression of attitude or value
+      \item \emph{Language Mechanics} (LAM): the rules of grammar and/or usage
+    \end{enumerate}
+  \item{Instructional-Logic Meaning}: reference to cognitive processes related
+    to the distinctly didactic verbal moves in the instructional situation.
+    Below are some examples, for an exhaustive list please refer to the original
+    text\cite{bellack1966language} 
+  \begin{enumerate}
+    \item{Analytic Process}: see (4) above
+    \item{Empirical Process}: see (4) above
+    \item{Evaluative Process}: includes the definitions in (4) above and:
+    \begin{enumerate}
+      \item{Rating}: reference to metacommunication; usually an evaluative reaction (REA)
+      \begin{enumerate}
+        \item \emph{Repeating} (RPT):  implicit positive rating when statement (STA) is repeated by another speaker; also for SOL to repeat a vocal action (ACV)
+        \item \emph{Qualifying} (QAL): explicit reservation stated in rating; exception
+        \item \emph{Not Admitting} (NAD): rating that rejects by stating the contrary; a direct refutation
+      \end{enumerate}
+    \item Extra-logical Process (SOL): expecting physical action or when logical nature of verbal response cannot be determined. 
+    \begin{enumerate}
+      \item \emph{Performing} (PRF): asking, demanding; explicit directive or imperative
+      \item \emph{Directing} (DIR): SOL with or without stated alternatives; asking for directive, not permision for specific action
+      \item \emph{Extra-logical Process Not Clear} (NCL): represents a $\bot$ for extra-logical process
+    \end{enumerate}
+  \end{enumerate}
+\end{enumerate}
+\item {Number of Lines in 6 and 7 above}
+\end{enumerate}
+
+An example coded move has this form:
+\todo{come up with a relevant coding example and give the interpretation}
+\begin{verbatim}
+       T/STR/IMX/XPL/4/PRC/FAC/2
+\end{verbatim}
+
+The interpretation is as follows:
+
+\begin{verbatim}
+       T / STR / IMX / XPL /  4  / PRC / FAC / 2
+      (1)/ (2) / (3) / (4) / (5) / (6) / (7) /(8)
+\end{verbatim}
+
+This paper makes the following contributions:
+%
+\begin{enumerate}[C1.]
+
+\item \label{contrib:codes}
+%
+We extend Bellack's system for analyzing \emph{explanation activities} in the
+form of classroom discourse to support analyzing \emph{explanation artifacts}
+in the form of lecture notes and slides.
+
+\item \label{contrib:data}
+%
+We provide a coded qualitative data set of explanation artifacts, using the
+system defined in \ref{contrib:codes}. The data set consists of \todo{XX}
+explanations of Djikstra's shortest path algorithm and \todo{XX} explanations
+of AVL Trees, collected from the Internet, see appendix A for a reference list
+of sources.
+
+\item \label{contrib:valid}
+%
+We provide evidence that our adaptation of Bellack's system to explanation
+artifacts is sound since we can identify high-level patterns in artifacts
+consistent with patterns in explanation activities coded in the original
+system, such as \emph{teaching cycles}.
+
+\item \label{contrib:valid}
+%
+We analyze the data set and observe that \todo{something about one-sided
+discussion, hopefully some other insights that are relevant to designing a
+DSL}.
+
+\end{enumerate}
+
 
 \subsection{Subsection Heading Here}
 Subsection text here.
@@ -593,16 +790,9 @@ The authors would like to thank...
 % <OR> manually copy in the resultant .bbl file
 % set second argument of \begin to the number of references
 % (used to reserve space for the reference number labels box)
-\begin{thebibliography}{1}
 
-\bibitem{IEEEhowto:kopka}
-H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
-  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
-
-\end{thebibliography}
-
-
-
+\bibliography{XOPbib.bib}
+\bibliographystyle{unsrt}
 
 % that's all folks
 \end{document}

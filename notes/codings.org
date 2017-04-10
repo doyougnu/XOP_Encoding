@@ -175,17 +175,18 @@ All Data is coded by human individuals with reference to this document. The loca
        2. Detailing Moves
           1. /Responding/ (RES) \triangleq fulfills expectation of solicitation; bears reciprocal relation only to solicitation. 
           2. /Expositing/ (EXP) \triangleq a move that explicitly provides or introduces further or new information 
-          3. /Visual/ (VIS) \triangleq a move that explicitly provides a visual aid
        3. /Not Codable/ (NOC) \triangleq serves as the \perp in their coding scheme.
      3. *Substantive Meaning* \triangleq reference to a subject matter topic 
      4. *Substantive-Logical Meaning* \triangleq reference to cognitive process involved in dealing with subject matter under study. 3 Main Types each with subtypes:
         1. Analytic Process \triangleq Use of language or established rules of logic
            1. /Definining-Denotative/ (DED) \triangleq object referent of term 
            2. /Defining-Connotative/ (DEC) \triangleq defining characteristics of class or term
-           3. /Interpreting/ (INT) \triangleq verbal equivalent of a statement, slogan, aphorism, or proverb
+           3. /Defining-Definitive/ (DEF) \triangleq to give the defining characteristic of a /class and/ to give a specific example of an item with that class
+           4. /Interpreting/ (INT) \triangleq verbal equivalent of a statement, slogan, aphorism, or proverb
+           5. /Defining-Operational/ (DEO) \triangleq to give a definition of some thing as a series of operations or steps affecting a state or machine. This is typically used to describe the explicit presentation of programming code or pseudo-code.
         2. Empirical Process \triangleq sense experience as criterion of truth
            1. /Fact-Stating/ (FAC) \triangleq what is, was, or will be without explanation or evaluation.
-           2. /Explaining/ (XPL) \triangleq relation between objects, events, principles, conditional inference, cause-effect, explicit comparison-contrast, statement of principles, theories or laws
+           2. /Explaining/ (XPL) \triangleq relation between objects, events, principles, conditional inference, cause-effect, explicit comparison-contrast, statement of principles, theories or laws 
         3. Evaluative Process \triangleq set of criteria or value system as basis for verification
            1. /Opining/ (OPN) \triangleq personal values for statement of policy, judgment or evaluation of event, idea, state of affairs, direct and indirect evaluation included
            2. /Justifying/ (JUS) \triangleq reasons or argument for or against opinion or judgment
@@ -244,3 +245,22 @@ All Data is coded by human individuals with reference to this document. The loca
    1. We have risen a level of abstraction: In our original Typology we could count the number of proofs or the number of examples. In this revised typology we /can only/ state the types and frequencies of pedagogical moves. This means that if you want to know how many pictures there are in a document then this system will fail you. Rather we would be able to say that the document 1) uses visual aids and 2) has a teaching cycle like STR EXP VIS in that the document cycles a Structuring move, then an Expository move, and then has a Visual move to wrap up.
    2. Where should Visual moves information be? In the revised typology I've added Visual moves to the "Types of Pedagogical Moves" I did this because this category is based on Wittgenstein's concept of a language game. So in Bellack's typology it made sense that they would have a Soliciting move, a Responding move, and a Reacting move because they were analyzing lectures in the classroom. In our typology it makes no sense because we are analyzing a different type of communication viz. power points and lecture notes. So we need to add a few. But that leads to the curious case of Visual Moves. There are both slides that are of a visual type and slides that discuss something using visual notations e.g. pictures or cartoons, so it seems that Visual information is /both a Type of Move, and a Substantive-Logical Meaning/. Recall that /Substantive-Logical Meanings/ is the category that denotes the cognitive process involved in dealing with the subject being discussed so we are saying that for power points or maybe lecture notes there are cognitive visual processes occurring.
    3. The last major design decision I made here regards the 3 category, namely /Substantive Meaning/. In Bellack's typology they use this category to be specific about what exactly is being discussed in relation to the overall topic. So for them, the overall topic could be international trade, and then the specifics would be trade tariffs or trade groups. For us the overall topic would be "Dijkstra's Algorithm" or "AVL Trees" and then the specifics could be "Motivation for the algorithm", "Applications of the algorithm", "implementation details of the algorithm". Or we could be even more specific and say the specifics are "Priority Queues" for Dijkstra's and "Tree Rotation" or "Tree Balancing" for AVL Trees. This sort of system is powerful, and more adaptable than our previous notation in that it /does not/ seek to provide global, transcendent categories for /every/ algorithm. Rather it allows us to /define/ the specific attributes for each algorithm and add that information to the typology. This may be or may not be desirable and we should have a lengthy discussion about it at some point because I'm not sure exactly what the implications are or are not.
+
+** Substantive Codings Per Algorithm 
+
+*** AVL Trees
+    Substantive meanings for AVL Trees can be one of:
+    1. /Motivation/ (MOT) \triangleq refers to discussions of the motivations for the thing being discussed
+    2. /Problems/ (PRB) \triangleq refers to explicit problems with the thing being discussed
+    3. /Tree/ (TRE) \triangleq refers to general points about an AVL tree. When a move's substantive meaning is unclear or seems to fit many meanings this term is used.
+    4. /Traversal/ (TRV) \triangleq refers to discussion of how to traverse a tree
+    5. /Manipulation/ (MAN) \triangleq refers to discussion of how to insert, delete, rotate or in general manipulate a tree.
+    6. /Implementation/ (IMP) \triangleq refers to discussion of how to actually implement that which is being discussed. This can also refer to things that are necessary for the implementation of the thing being discussed.
+*** Dijkstra's Algorithm
+    Substantive meanings for Dijkstra's algorithm can be one of:
+    1. /Motivation/ (MOT) \triangleq refers to discussions of the motivations for the thing being discussed
+    2. /Problems/ (PRB) \triangleq refers to explicit problems with the thing being discussed
+    3. /Complexity/ (COM) \triangleq refers to explicit discussion of the computational complexity of the thing being discussed
+    4. /Application/ (APP) \triangleq refers to discussions of the application of the thing being discussed, concrete or abstract.
+    5. /Algorithm/ (ALG) \triangleq refers to general statements about the algorithm being discussed. When the substantive meaning is unclear or traverses many substantive meanings this coding is used.
+    6. /Background/ (BKG) \triangleq refers to discussion of the history, background, people who created, were involved with, or are notable, for the thing being discussed.
