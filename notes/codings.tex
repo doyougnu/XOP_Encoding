@@ -1,4 +1,4 @@
-% Created 2017-04-08 Sat 14:41
+% Created 2017-04-09 Sun 19:18
 % Intended LaTeX compiler: pdflatex
 \documentclass[10pt, letterpaper]{article}
 \usepackage[utf8]{inputenc}
@@ -31,7 +31,7 @@
 \maketitle
 
 \section*{Purpose}
-\label{sec:org2a22781}
+\label{sec:orgcf9217e}
 The Purpose of encodings is to systematically and formally codify real world, in the wild, explanations so that observing larger patterns becomes possible. The end goal of this is:
 \begin{enumerate}
 \item Generate a database of encodings
@@ -39,7 +39,7 @@ The Purpose of encodings is to systematically and formally codify real world, in
 \item 1 and 2 become formative work for exploring DSL possibilities in XOP
 \end{enumerate}
 \section*{Scope}
-\label{sec:org14a4dc2}
+\label{sec:org09c6723}
 The scope of the database is restricted to explanations of common Computer Science algorithms \emph{from} Universities only. Restricting the scope in this manner provides two benefits:
 \begin{enumerate}
 \item All explanatory objects have a stated, intrinsic goal to communicate the mechanics, application, and implementation of similar things
@@ -47,13 +47,13 @@ The scope of the database is restricted to explanations of common Computer Scien
 \end{enumerate}
 
 \section*{Data Collection}
-\label{sec:orgcb0dfcd}
+\label{sec:org348d146}
 All Data is coded by human individuals with reference to this document. The location index represents the location of an encoding \emph{relative} to the document. So a location of 1 means the literal first page of the document (typically a header slide or introduction).
 
 \section*{First Typology Attempt}
-\label{sec:orgd647f84}
+\label{sec:orgc4b6ce5}
 \subsection*{Some Terminology}
-\label{sec:org7fc34d1}
+\label{sec:org55e5be5}
 In our terminology an explanation is called an "explanation artifact", our
   working model of the process of explaining is a non-linear sequence of
   "steps", where each "step" denotes some progress in the understanding of the
@@ -64,7 +64,7 @@ In our terminology an explanation is called an "explanation artifact", our
 reader from non-understanding to understanding.
 \end{description}
 \subsection*{Syntax  and Grammer}
-\label{sec:org57f3fbf}
+\label{sec:orgfaba411}
 The syntax of an encoding is given by \_ - \_ - \_ - \_ \(\subseteq\) Location \texttimes{} Level \texttimes{} Role \texttimes{} Notation where \\
 
 l \(\in\) \(\mathbb{N}\) \\
@@ -75,13 +75,13 @@ r \(\in\) Role ::= Background | Definition | Constraint | Example | Application 
 
 n \(\in\) Notation ::= English | Math | Diagram | List | Table | Sequence | Pseudocode | Code | Animation | Picture | Plot | Empty | n/n 
 \subsection*{Semantics}
-\label{sec:org58c161c}
+\label{sec:orgdd1f5d9}
 \subsubsection*{Location}
-\label{sec:org8a9eb98}
+\label{sec:orgcd142aa}
 a location \(l\), specifies the location that the encoding is referring to,
 this could be a slide, a number line etc.
 \subsubsection*{Level}
-\label{sec:org8327f3a}
+\label{sec:org8c44917}
 a Level \(g\), Specifies the level of abstraction for a given step, a level can by one of:
 \begin{description}
 \item[{Problem}] \(\triangleq\) the purpose of a given step is to elucidate the
@@ -95,7 +95,7 @@ use, What the form of the code that implements the algorithm should be
 \end{description}
 
 \subsubsection*{Role}
-\label{sec:org43afd12}
+\label{sec:org4a017b2}
 a Role \(r\), specifies how the Level is trying to be reached, denotes the
 answer to question such as "What is the step trying to convey?":
 
@@ -167,7 +167,7 @@ Proof & \bot & Explicit Proof of Algorithm correctness & Explicit Proof of some 
 \end{Table}
 
 \subsubsection*{Notation}
-\label{sec:orge065711}
+\label{sec:orge7520ab}
 a Notation \(n\), specifies the form of the role, and can be one of:
 \begin{description}
 \item[{English}] \(\triangleq\) Human language to give explanations/statements.
@@ -192,20 +192,20 @@ location like so:
 \end{equation}
 
 \section*{Typology with following Bellack et al.}
-\label{sec:orgae6911c}
+\label{sec:org0ee547d}
 
 \subsection*{Disclaimer}
-\label{sec:org9eb4349}
+\label{sec:orge1c6f93}
 Make sure you are comfortable with the terminology of Bellack et al's typology. I will be referring to it throughout this document and assume the reader is familiar. If you don't know what I mean by Substantive-logical Meanings then go read the Theory Primer document.
 
 \subsection*{Strategy}
-\label{sec:org527f03d}
+\label{sec:org2fed38c}
 Merging our typology with Bellack et al's is tricky but doable. In general we will be adding some categories to the "Types of Pedagogical Moves", adding one category to "Substantive-Logical Meanings" and changing the "Speaker" category to a "slide number or page number". Lastly, there is an important design decision that I am making here in which \emph{for each algorithm, we will now be forced to define substantive meanings}. Furthermore, I am going to completely remove the last 3 indices in Bellack's typology. These mostly deal with in class instructional phrases which are completely useless for our purposes.
 
 \subsection*{Syntax, Grammar, Terms}
-\label{sec:orgc7994b8}
+\label{sec:org553f282}
 \subsubsection*{Terms}
-\label{sec:orgcc9fa38}
+\label{sec:org6f880a2}
 We will follow with Bellack as close as possible as long as it suits our needs, so a pedagogical move has the form:
 \begin{verbatim}
 Move = 1. Line Number or Slide Number
@@ -215,7 +215,7 @@ Move = 1. Line Number or Slide Number
        / 5. Number of Lines in (3) or (4) 
 \end{verbatim}
 \subsubsection*{Semantics of Moves}
-\label{sec:orgd751d63}
+\label{sec:org0ac2509}
 
 \begin{enumerate}
 \item \textbf{Line Number or Slide Number} \(\triangleq\) Indicates the source of the statement:
@@ -244,6 +244,7 @@ Move = 1. Line Number or Slide Number
 \item \emph{Defining-Connotative} (DEC) \(\triangleq\) defining characteristics of class or term
 \item \emph{Defining-Definitive} (DEF) \(\triangleq\) to give the defining characteristic of a \emph{class and} to give a specific example of an item with that class
 \item \emph{Interpreting} (INT) \(\triangleq\) verbal equivalent of a statement, slogan, aphorism, or proverb
+\item \emph{Defining-Operational} (DEO) \(\triangleq\) to give a definition of some thing as a series of operations or steps affecting a state or machine. This is typically used to describe the explicit presentation of programming code or pseudo-code.
 \end{enumerate}
 \item Empirical Process \(\triangleq\) sense experience as criterion of truth
 \begin{enumerate}
@@ -262,18 +263,18 @@ Move = 1. Line Number or Slide Number
 \end{enumerate}
 
 \subsubsection*{Syntax}
-\label{sec:org37c9ed3}
+\label{sec:org084d708}
 We will follow Bellack's syntax as well:
 \begin{itemize}
 \item The / Operator:
-\label{sec:orgfd0af08}
+\label{sec:org5468693}
 The moves constituents are syntactically conjoined, \emph{in order}, into strings with the "/" operator like so: \\
 \begin{equation}
    \(\frac{n \in \text{Move Constituents} \quad m \in \text{Move Constituents}}{n/m \in \text{Partial Move}}\)
 \end{equation}
 
 \item An Example
-\label{sec:orgf4f0f6e}
+\label{sec:orgf845279}
 coded pedagogical move is: \\
 \begin{verbatim}
   2/STR/MOT/IMX/2
@@ -306,7 +307,7 @@ Here is a useful way to think of this (if you haven't read the Theory primer and
 \end{itemize}
 
 \subsection*{Differences}
-\label{sec:orgb738125}
+\label{sec:org79736e4}
 There are only a few slight differences between this typology and Bellacks:
 \begin{enumerate}
 \item I've added Types of Pedagogical Moves that are useful for powerpoint slides or lecture notes and removed the reacting type because one cannot react in the same sense to lecture notes or powerpoint slides
@@ -316,11 +317,37 @@ There are only a few slight differences between this typology and Bellacks:
 \end{enumerate}
 
 \subsection*{Caveats and Design Decisions}
-\label{sec:orga886580}
+\label{sec:org891e6b9}
 For the most part Bellack's system is useful to our needs. There are some important aspects to consider though:
 \begin{enumerate}
 \item We have risen a level of abstraction: In our original Typology we could count the number of proofs or the number of examples. In this revised typology we \emph{can only} state the types and frequencies of pedagogical moves. This means that if you want to know how many pictures there are in a document then this system will fail you. Rather we would be able to say that the document 1) uses visual aids and 2) has a teaching cycle like STR EXP VIS in that the document cycles a Structuring move, then an Expository move, and then has a Visual move to wrap up.
 \item Where should Visual moves information be? In the revised typology I've added Visual moves to the "Types of Pedagogical Moves" I did this because this category is based on Wittgenstein's concept of a language game. So in Bellack's typology it made sense that they would have a Soliciting move, a Responding move, and a Reacting move because they were analyzing lectures in the classroom. In our typology it makes no sense because we are analyzing a different type of communication viz. power points and lecture notes. So we need to add a few. But that leads to the curious case of Visual Moves. There are both slides that are of a visual type and slides that discuss something using visual notations e.g. pictures or cartoons, so it seems that Visual information is \emph{both a Type of Move, and a Substantive-Logical Meaning}. Recall that \emph{Substantive-Logical Meanings} is the category that denotes the cognitive process involved in dealing with the subject being discussed so we are saying that for power points or maybe lecture notes there are cognitive visual processes occurring.
 \item The last major design decision I made here regards the 3 category, namely \emph{Substantive Meaning}. In Bellack's typology they use this category to be specific about what exactly is being discussed in relation to the overall topic. So for them, the overall topic could be international trade, and then the specifics would be trade tariffs or trade groups. For us the overall topic would be "Dijkstra's Algorithm" or "AVL Trees" and then the specifics could be "Motivation for the algorithm", "Applications of the algorithm", "implementation details of the algorithm". Or we could be even more specific and say the specifics are "Priority Queues" for Dijkstra's and "Tree Rotation" or "Tree Balancing" for AVL Trees. This sort of system is powerful, and more adaptable than our previous notation in that it \emph{does not} seek to provide global, transcendent categories for \emph{every} algorithm. Rather it allows us to \emph{define} the specific attributes for each algorithm and add that information to the typology. This may be or may not be desirable and we should have a lengthy discussion about it at some point because I'm not sure exactly what the implications are or are not.
+\end{enumerate}
+
+\subsection*{Substantive Codings Per Algorithm}
+\label{sec:orge9f1d47}
+
+\subsubsection*{AVL Trees}
+\label{sec:org0417910}
+Substantive meanings for AVL Trees can be one of:
+\begin{enumerate}
+\item \emph{Motivation} (MOT) \(\triangleq\) refers to discussions of the motivations for the thing being discussed
+\item \emph{Problems} (PRB) \(\triangleq\) refers to explicit problems with the thing being discussed
+\item \emph{Tree} (TRE) \(\triangleq\) refers to general points about an AVL tree. When a move's substantive meaning is unclear or seems to fit many meanings this term is used.
+\item \emph{Traversal} (TRV) \(\triangleq\) refers to discussion of how to traverse a tree
+\item \emph{Manipulation} (MAN) \(\triangleq\) refers to discussion of how to insert, delete, rotate or in general manipulate a tree.
+\item \emph{Implementation} (IMP) \(\triangleq\) refers to discussion of how to actually implement that which is being discussed. This can also refer to things that are necessary for the implementation of the thing being discussed.
+\end{enumerate}
+\subsubsection*{Dijkstra's Algorithm}
+\label{sec:org125b204}
+Substantive meanings for Dijkstra's algorithm can be one of:
+\begin{enumerate}
+\item \emph{Motivation} (MOT) \(\triangleq\) refers to discussions of the motivations for the thing being discussed
+\item \emph{Problems} (PRB) \(\triangleq\) refers to explicit problems with the thing being discussed
+\item \emph{Complexity} (COM) \(\triangleq\) refers to explicit discussion of the computational complexity of the thing being discussed
+\item \emph{Application} (APP) \(\triangleq\) refers to discussions of the application of the thing being discussed, concrete or abstract.
+\item \emph{Algorithm} (ALG) \(\triangleq\) refers to general statements about the algorithm being discussed. When the substantive meaning is unclear or traverses many substantive meanings this coding is used.
+\item \emph{Background} (BKG) \(\triangleq\) refers to discussion of the history, background, people who created, were involved with, or are notable, for the thing being discussed.
 \end{enumerate}
 \end{document}
