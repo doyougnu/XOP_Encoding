@@ -80,3 +80,36 @@ findCycles <- function(xs, result, acc){
 }
 
 cycles <- findCycles(types, list(), list())
+
+# Observe teaching cycles for one document
+# AVL tree example
+dfAvlSingleton <- df %>% filter(Explanation == "AVT001")
+
+singleAvlCycle <- ggplot(dfSingleton, aes(y = Type, x = index
+                                          , shape=Type, size = 3
+                                          , colour = Type)) +
+  geom_point() +
+  theme(legend.position = "none")
+
+ggsave(file = "Plots/singleAvlCycle.png", width = 7, height = 5)
+
+#Dijkstra's example
+dfDjkSingleton <- df %>% filter(Explanation == "DJK002")
+
+singleDjkCycle <- ggplot(dfSingleton, aes(y = Type, x = index
+                                          , shape=Type, size = 3
+                                          , colour=Type)) +
+  geom_point() +
+  theme(legend.position = "none")
+
+
+ggsave(file = "Plots/singleDjkCycle.png", width = 7, height = 5)
+
+# dot plot for counts
+dfCount <- df %>%
+  group_by(Algorithm, Type, index) %>%
+  summarise(count = n())
+
+test <- ggplot(dfCount, aes(y = Type, x = index, size = count)) +
+  geom_point() +
+  facet_grid(. ~ Algorithm)
