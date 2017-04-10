@@ -1,5 +1,6 @@
 paper/XOP_Paper.pdf
 *.aux
+*.blg
 *.fdb_latexmk
 *.fls
 *.log
