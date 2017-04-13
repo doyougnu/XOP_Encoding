@@ -56,6 +56,11 @@ types <- df$Type
 # this is not idiomatic R, and explicit looping doesn't take advantage of R's
 # vectorization, this is and should be, discouraged
 findCycles <- function(xs, result, acc){
+  # Given a list of xs, a result list, and an accumulator list, function groups
+  # input list in terms of sublists that begin with STR continue until the next
+  # STR instance. Ex: input: STR EXP STR STR STR SOL EXP
+  #                  output: [[STR, EXP], [STR], [STR], [STR SOL EXP]]
+
   # base case
   if (length(xs) == 0){
     res <- append(result, acc)
@@ -79,13 +84,43 @@ findCycles <- function(xs, result, acc){
   }
 }
 
-cycles <- findCycles(types, list(), list())
+listCycles <- findCycles(types, list(), list())
+# lapply is R's map function for lists, function(x) is just making a lambda func
+cycles <- lapply(listCycles, function(x) paste(x, collapse = ' ')) %>% unique()
+
+cycleColorization <- function(xs, result, counter){
+  # base case
+  if (length(xs) == 0){
+    return(result)
+  }
+
+  # get head:tail
+  x <- as.character(xs[1])
+  xss <- xs[-1]
+
+  # Check if STR, if STR increment, if not don't'
+  if (x == "STR"){
+    counter = counter + 1
+  }
+  res <- append(result, counter)
+  cycleColorization(xss, res, counter)
+}
+
+# add new column
+df$typeColorTemp = cycleColorization(df$Type, list(), 0) %>% unlist() 
+# relate column to each explanation
+df <- df %>%
+  group_by(Explanation) %>%
+  mutate(typeColor = typeColorTemp - range(typeColorTemp)[1]) %>%
+  select(-typeColorTemp)
+
+df$typeColor = factor(df$typeColor)
 
 # Observe teaching cycles for one document
 # AVL tree example
 dfAvlSingleton <- df %>% filter(Explanation == "AVT001")
 
-singleAvlCycle <- ggplot(dfSingleton, aes(y = Type, x = index
+singleAvlCycle <- ggplot(dfAvlSingleton, aes(y = Type, x = index
                                           , shape=Type, size = 3
                                           , colour = Type)) +
   geom_point() +
@@ -96,7 +131,7 @@ ggsave(file = "Plots/singleAvlCycle.png", width = 7, height = 5)
 #Dijkstra's example
 dfDjkSingleton <- df %>% filter(Explanation == "DJK002")
 
-singleDjkCycle <- ggplot(dfSingleton, aes(y = Type, x = index
+singleDjkCycle <- ggplot(dfDjkSingleton, aes(y = Type, x = index
                                           , shape=Type, size = 3
                                           , colour=Type)) +
   geom_point() +
@@ -106,10 +141,16 @@ singleDjkCycle <- ggplot(dfSingleton, aes(y = Type, x = index
 ggsave(file = "Plots/singleDjkCycle.png", width = 7, height = 5)
 
 # dot plot for counts
-dfCount <- df %>%
-  group_by(Algorithm, Type, index) %>%
-  summarise(count = n())
+teachCyclesPlt <- ggplot(df, aes(y = Type
+                               , x = index
+                               , colour = typeColor
+                               , group = typeColor)) +
+  geom_point(aes(size = 2)) +
+  geom_line(aes(colour = typeColor, size = 1.5)) +
+  facet_grid(Explanation ~., switch = "y", scales = "free_y") +
+  scale_shape_manual(values = 1:nlevels(df$typeColor)) +
+  theme_bw() +
+  theme(legend.position = "none") +
+  ggtitle("Teaching Cycles per Explanation")
 
-test <- ggplot(dfCount, aes(y = Type, x = index, size = count)) +
-  geom_point() +
-  facet_grid(. ~ Algorithm)
+ggsave(file = "Plots/teachCyclesPlt.png")
