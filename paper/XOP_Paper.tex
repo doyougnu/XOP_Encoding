@@ -450,17 +450,73 @@ determine what kinds of explanation artifacts educators are already using, how
 educators explain algorithms and data structures, and how these artifacts could
 be improved on with more sophisticated tools (e.g.\ a DSL).
 
+\subsection{Typologies of Explanation}
 
-\subsection{A Typology of Explanation}
+% This is bad, needs to be rewritten, ick I don't like it
 Empirical branches of pedagogic theory have created, deployed, and analyzed
 numerous ``coding systems'', known as \emph{typologies of
   explanation}\cite{westbury1971research, nla.cat-vn407830,
   rosenshine1968objectively, hyman1968teaching, ennis1969logic,
-  smith1967language, bellack1966language}. We adopt one such Typology, created
-by Bellack et al.\cite{bellack1966language} which is built for exploring
-patterns of explanation, that take place between pupil's and lecturers. In this
-section, we will provide a overview of the system, describe its philosophical
-foundations, its purpose, and how we have adapted it to this project.
+  smith1967language, bellack1966language}. Typically, typologies are employed to
+quantify methods of teaching, and thus can vary widely to suite the problem at
+hand. We translate one such Typology, created by Bellack et
+al.\cite{bellack1966language} which was designed for exploring patterns of
+explanation in a classroom setting, to explore patterns of explanation in static
+explanatory objects, such as slideshow presentations and lecture notes. The
+Typology's basic conceptual unit is called a \emph{pedagogical move}, it
+represents a single step in the explanatory process. A series of cyclic
+pedagogical moves constitute a \emph{teaching cycle}. Teaching cycles identify
+\emph{how} a topic is being explained in a lecture. In general one can think of
+them as representing the structure, cadence, and substance of a discourse
+between a lecturer and a pupil. We employ the typology to observe and catalog
+the teaching cycles in static explanatory documents created by universities and
+then show how such a typology forms the basis for a DSL.
+
+\subsection{Explanation Oriented Programming}
+\todo{intro for XOP}
+
+\subsection{Contributions}
+This paper makes the following contributions:
+%
+\begin{enumerate}[C1.]
+
+\item \label{contrib:codes}
+%
+We extend Bellack's system for analyzing \emph{explanation activities} in the
+form of classroom discourse to support analyzing \emph{explanation artifacts}
+in the form of lecture notes and slides.
+
+\item \label{contrib:data}
+%
+We provide a coded qualitative data set of explanation artifacts, using the
+system defined in \ref{contrib:codes}. The data set consists of \todo{XX}
+explanations of Djikstra's shortest path algorithm and \todo{XX} explanations
+of AVL Trees, collected from the Internet, see appendix A for a reference list
+of sources.
+
+\item \label{contrib:valid}
+%
+We provide evidence that our adaptation of Bellack's system to explanation
+artifacts is sound since we can identify high-level patterns in artifacts
+consistent with patterns in explanation activities coded in the original
+system, such as \emph{teaching cycles}.
+
+\item \label{contrib:valid}
+%
+We analyze the data set and observe that \todo{something about one-sided
+discussion, hopefully some other insights that are relevant to designing a
+DSL}.
+
+\end{enumerate}
+
+\section{Background}
+\subsection{A Typology of Explanation}
+In this section we present an overview of Bellack et al's typology. We describe
+it's philosophical foundations, its basic unit of analysis - the
+\emph{pedagogical move} - and elucidate the constituents that compose a given
+move. It should be noted that this is not a exhaustive or comprehensive overview
+of Bellack et al's typology, rather, this section is meant to familiarize the
+reader with the basic structure of such a typology.
 
 Bellack's system is founded upon, and formalizes rules to a \emph{language
   game}\cite{wittgenstein2010philosophical} that takes place between a pupil,
@@ -628,41 +684,6 @@ This encoding could be used for a statement by a teacher such as:
 Rotation will not work for case two because after a single rotation is applied,
 the tree will still not be balanced. Thus, double rotations are required to
 handle case two and case three.}
-
-\subsection{Contributions}
-This paper makes the following contributions:
-%
-\begin{enumerate}[C1.]
-
-\item \label{contrib:codes}
-%
-We extend Bellack's system for analyzing \emph{explanation activities} in the
-form of classroom discourse to support analyzing \emph{explanation artifacts}
-in the form of lecture notes and slides.
-
-\item \label{contrib:data}
-%
-We provide a coded qualitative data set of explanation artifacts, using the
-system defined in \ref{contrib:codes}. The data set consists of \todo{XX}
-explanations of Djikstra's shortest path algorithm and \todo{XX} explanations
-of AVL Trees, collected from the Internet, see appendix A for a reference list
-of sources.
-
-\item \label{contrib:valid}
-%
-We provide evidence that our adaptation of Bellack's system to explanation
-artifacts is sound since we can identify high-level patterns in artifacts
-consistent with patterns in explanation activities coded in the original
-system, such as \emph{teaching cycles}.
-
-\item \label{contrib:valid}
-%
-We analyze the data set and observe that \todo{something about one-sided
-discussion, hopefully some other insights that are relevant to designing a
-DSL}.
-
-\end{enumerate}
-
 
 \subsection{Subsection Heading Here}
 Subsection text here.
