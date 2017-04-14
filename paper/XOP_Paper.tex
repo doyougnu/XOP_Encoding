@@ -685,40 +685,21 @@ Rotation will not work for case two because after a single rotation is applied,
 the tree will still not be balanced. Thus, double rotations are required to
 handle case two and case three.}
 
-\subsection{Contributions}
-This paper makes the following contributions:
-%
-\begin{enumerate}[C1.]
+\subsection{Teaching Cycles}
+Teaching cycles are cyclic patterns or combinations of pedagogical moves. A
+cycle begins with a structuring move (STR) or a soliciting move (SOL) and ends
+with any move that precedes a new cycle. For example, the pattern ``STR SOL STR
+STR'' has three teaching cycles in it: 1) STR SOL 2) STR and 3) STR. A teaching
+cycle which has many of the same type of move referring back to a single STR
+move is denoted as: ``STR REA REA \ldots''. Teaching cycles allow one to
+describe pedagogical moves in relationship to each other. In Bellack's words:
 
-\item \label{contrib:codes}
-%
-We extend Bellack's system for analyzing \emph{explanation activities} in the
-form of classroom discourse to support analyzing \emph{explanation artifacts}
-in the form of lecture notes and slides.
+\say{If a single pedagogical move may be compared to a move in chess or single
+  play in football. Then teaching cycles may be seen as an interrelated series of move or plays}
 
-\item \label{contrib:data}
-%
-We provide a coded qualitative data set of explanation artifacts, using the
-system defined in \ref{contrib:codes}. The data set consists of \todo{XX}
-explanations of Djikstra's shortest path algorithm and \todo{XX} explanations
-of AVL Trees, collected from the Internet, see appendix A for a reference list
-of sources.
-
-\item \label{contrib:valid}
-%
-We provide evidence that our adaptation of Bellack's system to explanation
-artifacts is sound since we can identify high-level patterns in artifacts
-consistent with patterns in explanation activities coded in the original
-system, such as \emph{teaching cycles}.
-
-\item \label{contrib:valid}
-%
-We analyze the data set and observe that \todo{something about one-sided
-discussion, hopefully some other insights that are relevant to designing a
-DSL}.
-
-\end{enumerate}
-
+The focus of teaching cycles is to be able to quantify linguistic events in the
+classroom and combinations of pedagogical moves. \todo{decide if we need to
+  espouse the 21 teaching cycles bellack identifies}
 
 \section{Experimental Setup}
 In this section we describe the nature of the data collected, the modifications
@@ -869,9 +850,45 @@ teaching cycle, as shown in Figure 1 below:
 Each dot represents a single pedagogical move. The y-axis is faceted to display
 the Type of Move for each coded document. For example ``AVL001'', the first
 coded document for AVL Trees, has 3 types of pedagogical moves: STR, SOL, EXP.
-and one may observe that this document has 4 different types of teaching cycles
+One may also observe that this document has 4 different types of teaching cycles
 viz. ``STR EXP SOL'', ``STR'', ``STR EXP'' and ``STR \emph{EXP}''.
 
+Due to modifications to Bellack et al's typology we observe todo{XX} types
+teaching cycles for static explanatory objects. These are shown in table 1 below:
+
+
+% should we include NOC in the results?
+  \begin{table}[h]
+  \begin{center}
+    \begin{tabular}{| l |}
+      \hline
+      Teaching Cycles \\ \hline
+      STR \\ \hline
+      STR NOC \\ \hline
+      STR EXP \ldots \\ \hline
+      STR EXP NOC \\ \hline
+      STR EXP SOL \\ \hline
+      STR SOL EXP \\ \hline
+      STR SOL EXP \ldots \\ \hline
+      STR EXP SOL \\ \hline
+      STR EXP EXP SOL \\ \hline
+      STR EXP SOL \\ \hline
+      STR EXP SOL \ldots \\ \hline
+      STR EXP NOC SOL \\ \hline
+      \hline
+    \end{tabular}
+    \caption{Observed Types of Teaching cycles in Static Documents,
+      \emph{italics} denotes many}
+  \end{center}
+  \end{table}
+
+\section{Discussion and Results}
+
+\subsection{Teaching Cycles}
+\subsection{Typological Deficiencies}
+\subsection{Applications to a DSL}
+
+\section{Related Work}
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.
 % For figures, \caption should occur after the \includegraphics.
