@@ -505,8 +505,9 @@ Bellack et al. identify four types of pedagogical moves.
 \end{enumerate}
 
 The coding notation in Bellack et al's system consists of eight categories
-separated by a ``/''. We have affixed each category with an index following
-Bellack's presentation and for specificity. The eight categories are as follows:
+separated by a ``/''. We have affixed each category with an index for
+specificity and following Bellack's presentation . The eight categories are as
+follows:
 % any thoughts on how to get this in BNF, or even if we should?
 
 \begin{enumerate}
@@ -537,8 +538,8 @@ exhaustive presentation \cite{bellack1966language}.The meanings of each category
     \item \emph{Audio-Visual Device} (A)
   \end{enumerate}
   \item{Type of Move}: Indicates which type move belongs to. See P1-P4 above.
-  \item {Substantive Meaning}: reference to a subject matter topic
-  \item {Substantive-Logical Meaning}: Indicate a reference to cognitive process involved
+  \item{Substantive Meaning}: reference to a subject matter topic
+  \item{Substantive-Logical Meaning}: Indicate a reference to cognitive process involved
     in dealing with subject matter under study. This category has three major
     subcategories: \emph{Analytic Process}, \emph{Empirical Process},
     \emph{Evaluative Process}, each with their own subcategories:
@@ -663,9 +664,119 @@ DSL}.
 \end{enumerate}
 
 
-\subsection{Subsection Heading Here}
-Subsection text here.
+\section{Experimental Setup}
+In this section we describe the nature of the data collected, the modifications
+made to Bellack et al's typology and the criteria by which static explanatory
+objects were collected.
 
+\subsection{The Data}
+We restrict the scope of data collection to include only objects that provide an
+explanation of common computer science algorithms from computer
+science departments at accredited universities. Restricting the scope of objects
+in this manner provides two benefits: 1) All explanatory objects have a stated,
+intrinsic goal to communicate the mechanics, application, or implementation of
+some common computer science algorithm. 2) There are bountiful and varied
+examples of different approaches to explain \emph{the same} algorithm, and numerous
+examples of \emph{like} approaches to explain different algorithms.
+
+All data was coded by hand by individuals (coders) with access to a reference
+document specifying the typology. Explanatory objects were indexed according to
+the algorithm that was to be explained, and a simple counter. For example, the
+first document regarding AVL Trees would be named ``AVL001'' while the sixth
+would be ``AVL006'' and so on. All of the data analyzed in this paper was
+collected by a single researcher. While we do not present an analysis of
+agreement for this typology, we do show significant agreement between coders in
+section \todo{name section where we present agreement data}.
+
+\subsection{Modifications to the Typology}
+The modifications made to Bellack et al's system are minor: we remove
+the last 3 categories in Bellack's system (the categories that categorize
+instructional material), we add one type of pedagogical move, two types of
+substantive-logical meanings, and define substantive-meaning categories for each
+algorithm:
+
+\begin{enumerate}[M1.]
+  \item{Categories} 
+    \begin{enumerate}
+      \item Location
+      \item Type of Move
+      \item Substantive Meaning
+      \item Substantive-Logical Meanings
+    \end{enumerate}
+  \item{Additional Type of Move}
+    \begin{enumerate}
+      \item{Expositing Move:} An Expositing move is a type of pedagogical move
+        that explicitly introduces or expands upon some information
+    \end{enumerate}
+  \item{Additional Substantive-Logical Meanings}
+    \begin{enumerate}
+      \item \emph{Visual Process} (VIS): an explicit visual representation is
+        provided or serves as a discussion prompt.
+      \item \emph{Defining-Operational} (DEO): to give a definition as a series
+        of operations or steps affecting a state or machine. This is typically
+        used to describe explicit presentations of programming code or pseudo-code.
+    \end{enumerate}
+  \item{Additional Substantive Meanings}
+    \begin{enumerate}
+      \item{AVL Trees}
+        \begin{enumerate}
+          % this language could be better
+          \item \emph{Motivation} (MOT): refers to discussions of the motivations
+            for what is being discussed
+          \item \emph{Problems} (PRB): refers to explicit problems with whatever is
+            being discussed.
+          \item \emph{Tree} (TRE): refers to general discussion about an AVL
+            Tree. When a move's substantive meaning is unclear or fits many
+            meanings, this term is used.
+          \item \emph{Traversal} (TRV): refers to discussion of how to traverse
+            an AVL Tree
+          \item \emph{Manipulation} (MAN): refers to discussion of operations to
+            manipulate an AVL Tree. Any discussion of inserting, deleting or
+            rotating is coded as MAN.
+          \item \emph{Implementation} (IMP): refers to discussion of the actual
+            implementation of an AVL tree. This may also refer to conditions or
+            constraints which are necessary for the implementation of that which
+            is being discussed.
+        \end{enumerate}
+      \item{Dijkstra's Algorithm}
+        \begin{enumerate}
+          % do you think we can get away with this?
+          \item \emph{Motivation}: see section for AVL Trees
+          \item \emph{Problems}: see section for AVL Trees
+          \item \emph{Complexity} (COM): refers to the discussion of the computational
+            complexity of that which is being discussed. 
+          \item \emph{Application} (APP): refers to discussion of the application of
+            that which is being discussed, whether it be concrete or abstract.
+          \item \emph{Algorithm} (ALG): refers to general statements about the
+            algorithm. When the substantive meaning is unclear or traverses many
+            substantive meanings this term is used.
+          \item \emph{Background} (BKG): refers to discussion of the history,
+            background, people who created, were involved with, or are notable,
+            for the thing being discussed.
+        \end{enumerate}
+      \item{MergeSort}
+        \todo{Present the substantive categories for mergesort}
+    \end{enumerate}
+\end{enumerate}
+
+The modifications made to Bellack et al's typology are largely orthogonal to the
+original. While we did remove the last three categories, one could easily
+imagine these being included and merely coded as $\bot$ or (NOC) in the original
+typology. Any discussion of instructional material that was observed during
+encoding was not considered and is not present in the data.
+
+The largest changes are the addition of the expository step (EXP) and the visual
+substantive-logical meaning (VIS). These were deemed necessary to employ the
+typology to static objects. In a conversation, each interlocutor may solicit and
+respond in turn, for static documents there simply is no way for a reacting or
+responding move to take place. Thus, the language game between the reader and
+the static document must be able to encompass the pure exposition of a subject
+as a pedagogical move, hence the expository step was added.
+
+Similar to the expository step, static documents such as power points or lecture
+notes are able to communicate pedagogical information in a form not possible in
+speech, viz. pictures, illustrations, animations or diagrams. In order to code
+such unique pedagogical moves the visual step was added.
 
 \subsubsection{Subsubsection Heading Here}
 Subsubsection text here.
