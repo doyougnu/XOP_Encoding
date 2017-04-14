@@ -88,6 +88,9 @@ listCycles <- findCycles(types, list(), list())
 # lapply is R's map function for lists, function(x) is just making a lambda func
 cycles <- lapply(listCycles, function(x) paste(x, collapse = ' ')) %>% unique()
 
+# Write all found teaching cycles to a table
+lapply(cycles, write, "Plots/teachingCyclesTable.txt", append = TRUE)
+
 cycleColorization <- function(xs, result, counter){
   # base case
   if (length(xs) == 0){
