@@ -6,3 +6,4 @@ paper/XOP_Paper.pdf
 *.log
 *.synctex.gz
 *.el
+.#*
