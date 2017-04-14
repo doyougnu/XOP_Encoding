@@ -119,12 +119,12 @@
 % *** GRAPHICS RELATED PACKAGES ***
 %
 \ifCLASSINFOpdf
-  % \usepackage[pdftex]{graphicx}
+  \usepackage[pdftex]{graphicx}
   % declare the path(s) where your graphic files are
-  % \graphicspath{{../pdf/}{../jpeg/}}
+  \graphicspath{{../R/BellackTransTypology/Plots/}}
   % and their extensions so you won't have to specify these with
   % every instance of \includegraphics
-  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+  \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 \else
   % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
   % will default to the driver specified in the system graphics.cfg if no
@@ -725,25 +725,6 @@ In this section we describe the nature of the data collected, the modifications
 made to Bellack et al's typology and the criteria by which static explanatory
 objects were collected.
 
-\subsection{The Data}
-We restrict the scope of data collection to include only objects that provide an
-explanation of common computer science algorithms from computer
-science departments at accredited universities. Restricting the scope of objects
-in this manner provides two benefits: 1) All explanatory objects have a stated,
-intrinsic goal to communicate the mechanics, application, or implementation of
-some common computer science algorithm. 2) There are bountiful and varied
-examples of different approaches to explain \emph{the same} algorithm, and numerous
-examples of \emph{like} approaches to explain different algorithms.
-
-All data was coded by hand by individuals (coders) with access to a reference
-document specifying the typology. Explanatory objects were indexed according to
-the algorithm that was to be explained, and a simple counter. For example, the
-first document regarding AVL Trees would be named ``AVL001'' while the sixth
-would be ``AVL006'' and so on. All of the data analyzed in this paper was
-collected by a single researcher. While we do not present an analysis of
-agreement for this typology, we do show significant agreement between coders in
-section \todo{name section where we present agreement data}.
-
 \subsection{Modifications to the Typology}
 The modifications made to Bellack et al's system are minor: we remove
 the last 3 categories in Bellack's system (the categories that categorize
@@ -758,6 +739,7 @@ algorithm:
       \item Type of Move
       \item Substantive Meaning
       \item Substantive-Logical Meanings
+      \item Number of Slides of (c) and (d)
     \end{enumerate}
   \item{Additional Type of Move}
     \begin{enumerate}
@@ -834,9 +816,61 @@ notes are able to communicate pedagogical information in a form not possible in
 speech, viz. pictures, illustrations, animations or diagrams. In order to code
 such unique pedagogical moves the visual step was added.
 
-\subsubsection{Subsubsection Heading Here}
-Subsubsection text here.
+\section{Results}
+In this section we present the method of data collection, the nature of the
+data, and the criteria used to select explanatory objects. We then proceed to
+present our findings. We make two major observations from the data: First,
+we observe the presence of teaching cycles in static explanatory objects.
+Secondly, we observe that the present typology's shortcomings are a limiting
+factor to a more thorough investigation of explanatory objects.
 
+% Should this be in experimental setup?
+\subsection{The Data}
+We restrict the scope of data collection to include only objects that provide an
+explanation of common computer science algorithms from computer
+science departments at accredited universities. Restricting the scope of objects
+in this manner provides two benefits: 1) All explanatory objects have a stated,
+intrinsic goal to communicate the mechanics, application, or implementation of
+some common computer science algorithm. 2) There are bountiful and varied
+examples of different approaches to explain \emph{the same} algorithm, and numerous
+examples of \emph{like} approaches to explain different algorithms.
+
+All data was coded by hand by individuals (coders) with access to a reference
+document specifying the typology. Explanatory objects were indexed according to
+the algorithm that was to be explained, and a simple counter. For example, the
+first document regarding AVL Trees would be named ``AVL001'' while the sixth
+would be ``AVL006'' and so on. All of the data analyzed in this paper was
+collected by a single researcher. While we do not present an analysis of
+agreement for this typology, we do show significant agreement for a predecessor
+typology between coders in section \todo{name section where we present agreement
+  data}.
+
+% Should I say more about the data pre-processing?
+All data was pre-processed using R and Hadley Wickham's excellent ``dplyr'' library
+\cite{Dplyr}, for the complete code see \todo{make github repo in lambda-land
+  for paper resources}. In short, the pre-processing consists of creating an
+``index'' variable that denotes the order a move was encoded in relation to each
+document considered e.g. an index of 1 means that move happened immediately, and
+sequentially, after the move indexed at 0. 
+
+\subsection{Teaching Cycles}
+To graphically observe, and represent, teaching cycles we form a dot plot for
+each coded document, with lines connecting pedagogical moves that make up the
+teaching cycle, as shown in Figure 1 below:
+
+\todo{Make plot readable}
+\begin{figure}[!h]
+  \centering
+  \includegraphics[width=2.5in]{teachCyclesPlt}
+  \caption{Teaching cycles by Document}
+  \label{fig:simple-empty}
+\end{figure}
+
+Each dot represents a single pedagogical move. The y-axis is faceted to display
+the Type of Move for each coded document. For example ``AVL001'', the first
+coded document for AVL Trees, has 3 types of pedagogical moves: STR, SOL, EXP.
+and one may observe that this document has 4 different types of teaching cycles
+viz. ``STR EXP SOL'', ``STR'', ``STR EXP'' and ``STR \emph{EXP}''.
 
 % An example of a floating figure using the graphicx package.
 % Note that \label must occur AFTER (or within) \caption.

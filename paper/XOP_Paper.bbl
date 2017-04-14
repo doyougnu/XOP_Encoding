@@ -44,4 +44,8 @@ Ludwig Wittgenstein.
 \newblock {\em Philosophical investigations}.
 \newblock John Wiley \& Sons, 2010.
 
+\bibitem{Dplyr}
+Hadley Wickham.
+\newblock Introduction to dplyr, 2016.
+
 \end{thebibliography}
