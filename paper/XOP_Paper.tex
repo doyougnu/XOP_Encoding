@@ -458,11 +458,14 @@ numerous ``coding systems'', known as \emph{typologies of
   rosenshine1968objectively, hyman1968teaching, ennis1969logic,
   smith1967language, bellack1966language}. Typically, typologies are employed to
 quantify methods of teaching, and thus can vary widely to suite the problem at
-hand. We translate one such Typology, created by Bellack et
-al.\cite{bellack1966language} which was designed for exploring patterns of
-explanation in a classroom setting, to explore patterns of explanation in static
+hand.
+
+We translate one such Typology, created by Bellack et
+al.\cite{bellack1966language} to explore patterns of explanation in static
 explanatory objects, such as slideshow presentations and lecture notes. The
-Typology's basic conceptual unit is called a \emph{pedagogical move}, it
+typology at hand was designed for exploring patterns of explanation that occur
+in the discourse between a pupil and lecturer in a classroom setting. The
+Typology's basic conceptual unit is called a \emph{pedagogical move}, which
 represents a single step in the explanatory process. A series of cyclic
 pedagogical moves constitute a \emph{teaching cycle}. Teaching cycles identify
 \emph{how} a topic is being explained in a lecture. In general one can think of
@@ -668,10 +671,13 @@ An example coded move has this form:
 
 The interpretation is as follows:
 
+%% This needs formatting help
+\begin{flushleft}
 \begin{verbatim}
        T / STR / MAN / XPL /  4  / PRC / FAC / 2
       (1)/ (2) / (3) / (4) / (5) / (6) / (7) /(8)
 \end{verbatim}
+\end{flushleft}
 
 Which is taken to mean: A \emph{teacher} (1) makes a \emph{structuring} (2) move
 in which they \emph{explain} (4) something about \emph{Tree Manipulation} (3) for
@@ -797,6 +803,51 @@ notes are able to communicate pedagogical information in a form not possible in
 speech, viz. pictures, illustrations, animations or diagrams. In order to code
 such unique pedagogical moves the visual step was added.
 
+\subsection{Other Typologies of Explanation}
+Pedagogic theory has many examples of typologies of explanation which are not
+presented here. We adapt Bellack et al's because it is designed with the same
+motivating research questions in mind as this work, namely quantifying
+real-world examples of explanations. In this section, we will briefly review
+alternative typologies and state our reasons for not adapting them. 
+
+Brown and Armstrong\cite{brown1984explaining} developed a typology that sought
+to qualify characteristics of \emph{good} explanations provided by teachers in a
+classroom setting. Their typology was formed with two stated goals: 1) It should
+be simple, elegant, and easy to pick up for student teachers and 2) It should be
+powerful enough to characterize bad explanations from good ones, and relate to
+previous pedagogic work. Their typology consists of ``keys'', which partition an
+explanation, ``Links'' which form chains of keys that form the
+explanation, and ``Rules'' which define any pertinent rules to for that which is
+being explained. There are three categories of explanation in the typology: 1) The
+Interpretative 2) The Descriptive and 3) The Reason Giving. While promising,
+the presentation of this typology was deemed not formal enough to be actionable
+for our purposes; for example, its presentation lacks definitions for significant terms
+such as ``Links'' and ``Rules''. Furthermore, its desirable features are shared
+with Bellack et al's typology viz. an explanation is a composition of some more
+primitive concepts or categories.
+
+%probably need an introductory sentence here
+Roshenshine's\cite{rosenshine1968objectively} typology is generated through a
+review of thirty lectures and the results of a user study. It's stated purpose
+is to:
+
+\say{objectively measured teaching behaviors that discriminate between more and
+  less successful explanations of social studies material}. 
+
+Rosenshine develops the grammar of terms based on a literature review of four
+categories: 1) Linguistic Categories 2) Instructional Set 3) Presentational
+categories and 4) Multivariate studies of teaching behaviors. Twenty one such
+terms were identified and then tested in a user study for pedagogic impact. The
+terms in the typology may include verbal and non-verbal behaviors in teachers.
+While Rosenshines results were interesting the typology developed is
+un-actionable for our purposes. The terms developed are either too broadly
+defined, not translatable to a DSL, or by Rosenshines own research do not
+correlate to a \emph{good} explanation. Furthermore, there is no set criteria
+presented for encoding lectures with the typology. It is possible to adapt
+Rosenshines work for our purposes but the resultant typology would differ so
+radically from the original that it may no longer be relevant to Rosenshines own
+work. Or to be succinct, Rosenshines typology is not easily extensible.
+
 \section{Results}
 In this section we present the method of data collection, the nature of the
 data, and the criteria used to select explanatory objects. We then proceed to
@@ -822,9 +873,9 @@ the algorithm that was to be explained, and a simple counter. For example, the
 first document regarding AVL Trees would be named ``AVL001'' while the sixth
 would be ``AVL006'' and so on. All of the data analyzed in this paper was
 collected by a single researcher. While we do not present an analysis of
-agreement for this typology, we do show significant agreement for a predecessor
-typology between coders in section \todo{name section where we present agreement
-  data}.
+agreement for this typology. In a predecessor typology we did observe a
+significant agreement of \todo{show agreement percent} between two coders,
+following the same procedures used to encode this data.
 
 % Should I say more about the data pre-processing?
 The data was pre-processed using R and Hadley Wickham's excellent ``dplyr'' library
@@ -875,7 +926,6 @@ teaching cycles for static explanatory objects. These are shown in table 1 below
       STR EXP SOL \\ \hline
       STR EXP SOL \ldots \\ \hline
       STR EXP NOC SOL \\ \hline
-      \hline
     \end{tabular}
     \caption{Observed Types of Teaching cycles in Static Documents,
       \emph{italics} denotes many}
@@ -920,9 +970,9 @@ al's typology \emph{were required} in order to apply the typology to static
 explanatory objects.
 
 We believe that such deficiencies are promising ground for the creation of an
-Explanation-Oriented DSL. One which would allow a static document of some sort
-\emph{to participate} in the language game. The modified typology presented in
-this paper serves as a paradigm from which to design such a DSL in a
+Explanation-Oriented DSL. One which would allow a static document \emph{to
+  participate} in the language game. The modified typology presented in this
+paper serves as a scaffold or paradigm from which to design such a DSL in a
 semantics-first \cite{erwig2011semantics} manner.
 
 \subsection{Applications to a DSL}

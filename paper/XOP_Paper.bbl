@@ -1,4 +1,4 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
 \bibitem{westbury1971research}
 I.~Westbury and A.A. Bellack.
@@ -44,8 +44,20 @@ Ludwig Wittgenstein.
 \newblock {\em Philosophical investigations}.
 \newblock John Wiley \& Sons, 2010.
 
+\bibitem{brown1984explaining}
+GA~Brown and S~Armstrong.
+\newblock Explaining and explanations.
+\newblock {\em Classroom Teaching Skills: The Research Findings of the Teacher
+  Education Project}, page 121, 1984.
+
 \bibitem{Dplyr}
 Hadley Wickham.
 \newblock Introduction to dplyr, 2016.
+
+\bibitem{erwig2011semantics}
+Martin Erwig and Eric Walkingshaw.
+\newblock Semantics first!
+\newblock In {\em International Conference on Software Language Engineering},
+  pages 243--262. Springer Berlin Heidelberg, 2011.
 
 \end{thebibliography}
