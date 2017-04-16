@@ -827,7 +827,7 @@ typology between coders in section \todo{name section where we present agreement
   data}.
 
 % Should I say more about the data pre-processing?
-All data was pre-processed using R and Hadley Wickham's excellent ``dplyr'' library
+The data was pre-processed using R and Hadley Wickham's excellent ``dplyr'' library
 \cite{Dplyr}, for the complete code see \todo{make github repo in lambda-land
   for paper resources}. In short, the pre-processing consists of creating an
 ``index'' variable that denotes the order a move was encoded in relation to each
@@ -883,9 +883,48 @@ teaching cycles for static explanatory objects. These are shown in table 1 below
   \end{table}
 
 \section{Discussion and Results}
+In this section we summarize and interpret the results presented above. To
+ensure transparency and openness, the reader may find all raw results published
+online \todo{make repo holding raw results and R code}.
 
-\subsection{Teaching Cycles}
-\subsection{Typological Deficiencies}
+\subsection{Observed Teaching Cycles}
+As shown in Figure 1, and listed in Table 1, we observe several types of
+teaching cycles. Explanations in static documents adhere to a general pattern of
+an introductory structuring (STR) move, followed by either a expositing (EXP) or
+soliciting (SOL) move. Some cycles were \emph{atomic} in that they were isolated
+to a single pedagogical move. These cycles are coded as a single STR move and
+are synonymous with a single EXP move i.e. the document sets the context for an
+explanation and then concludes the explanation within one \emph{unit} of the
+document viz. a single slide for power point documents, or a single paragraph
+for lecture notes. It is unsurprising that such atomic moves are observed with
+more frequency in power point presentations than lecture notes. \todo{verify
+  this claim after encoding lecture notes}
+
+\subsection{Observed Typological Deficiencies}
+Of particular note in our data is the \emph{absence} of any teaching cycle which
+includes a responding (RES) or reacting (REA) move. Bellack et al's typology is
+founded upon Wittgenstein's concept of a \emph{language game}. When applied to
+discourse in the classroom such a foundation is easy to interpret. The lecturer
+makes a move in the language game, and the pupil can then respond with a move of
+their own. Bellack et al's typology captures the essence of this dynamic through
+structuring, soliciting, responding and reacting moves. However, when applied to
+a static document, the foundations of which the typology rest into conflict with
+the nature of the document. Simply put, observing a responding or reacting move,
+\emph{in} a static document would be nonsensical because the document has no way
+to participate in the language game. Our analysis concludes this fact, as
+expected, viz. that the modified typology, when applied to static documents,
+constitute a category mistake regarding the foundations of the modified typology
+of which it is based on. This fact may also be observed in the very
+modifications made to Bellack et al's typology. The modifications to Bellack et
+al's typology \emph{were required} in order to apply the typology to static
+explanatory objects.
+
+We believe that such deficiencies are promising ground for the creation of an
+Explanation-Oriented DSL. One which would allow a static document of some sort
+\emph{to participate} in the language game. The modified typology presented in
+this paper serves as a paradigm from which to design such a DSL in a
+semantics-first \cite{erwig2011semantics} manner.
+
 \subsection{Applications to a DSL}
 
 \section{Related Work}
