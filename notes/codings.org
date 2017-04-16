@@ -264,3 +264,11 @@ All Data is coded by human individuals with reference to this document. The loca
     4. /Application/ (APP) \triangleq refers to discussions of the application of the thing being discussed, concrete or abstract.
     5. /Algorithm/ (ALG) \triangleq refers to general statements about the algorithm being discussed. When the substantive meaning is unclear or traverses many substantive meanings this coding is used.
     6. /Background/ (BKG) \triangleq refers to discussion of the history, background, people who created, were involved with, or are notable, for the thing being discussed.
+*** MergeSort
+    Substantive meanings for MergeSort algorithm can be one of:
+    1. /Motivation/ (MOT) \triangleq refers to discussions of the motivations for the thing being discussed
+    2. /Problems/ (PRB) \triangleq refers to explicit problems with the thing being discussed
+    3. /Complexity/ (COM) \triangleq refers to explicit discussion of the computational complexity of the thing being discussed
+    4. /Application/ (APP) \triangleq refers to discussions of the application of the thing being discussed, concrete or abstract.
+    5. /Algorithm/ (ALG) \triangleq refers to general statements about the algorithm being discussed. When the substantive meaning is unclear or traverses many substantive meanings this coding is used.
+    6. /Background/ (BKG) \triangleq refers to discussion of the history, background, people who created, were involved with, or are notable, for the thing being discussed.

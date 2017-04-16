@@ -23,4 +23,5 @@
 	- MS006 :: http://www.cs.toronto.edu/~hojjat/148s07/lectures/week11/12_mergesort.pdf	 	 
 	- MS007 :: https://www.cs.purdue.edu/cgvlab/courses/251/lectures/slides/03.23-SortingSetsSelection.pdf	 	 
 	- MS008 :: http://pages.cs.wisc.edu/~vernon/cs367/notes/14.SORTING.html	 	 
-	- MS009 :: https://webdocs.cs.ualberta.ca/~holte/mergesort.pdf	 	 
+	- MS009 :: https://webdocs.cs.ualberta.ca/~holte/mergesort.pdf
+  - MS010 :: https://courses.cs.washington.edu/courses/cse373/03wi/slides/lecture14.ppt 
