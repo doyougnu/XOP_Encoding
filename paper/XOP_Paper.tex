@@ -710,7 +710,9 @@ classroom and combinations of pedagogical moves. \todo{decide if we need to
 \section{Experimental Setup}
 In this section we describe the nature of the data collected, the modifications
 made to Bellack et al's typology and the criteria by which static explanatory
-objects were collected.
+objects were collected. We conclude the section with overviews of two other
+typologies of explanation from the pedagogic literature and our reasons for not
+adapting them to this work.
 
 \subsection{Modifications to the Typology}
 The modifications made to Bellack et al's system are minor: we remove
@@ -773,18 +775,39 @@ algorithm:
           \item \emph{Application} (APP): refers to discussion of the application of
             that which is being discussed, whether it be concrete or abstract.
           \item \emph{Algorithm} (ALG): refers to general statements about the
-            algorithm. When the substantive meaning is unclear or traverses many
+            algorithm. When the 
             substantive meanings this term is used.
           \item \emph{Background} (BKG): refers to discussion of the history,
             background, people who created, were involved with, or are notable,
             for the thing being discussed.
+          \item \emph{Implementation} (IMP): refers to discussion of the actual
+            implementation of an AVL tree. This may also refer to conditions or
+            constraints which are necessary for the implementation of that which
+            is being discussed.
         \end{enumerate}
       \item{MergeSort}
-        \todo{Present the substantive categories for mergesort}
+        \begin{enumerate}
+          \item \emph{Motivation}: see section for AVL Trees
+          \item \emph{Problems}: see section for AVL Trees
+          \item \emph{Complexity} (COM): refers to the discussion of the computational
+            complexity of that which is being discussed. 
+          \item \emph{Application} (APP): refers to discussion of the application of
+            that which is being discussed, whether it be concrete or abstract.
+          \item \emph{Algorithm} (ALG): refers to general statements about the
+            algorithm. When the 
+            substantive meanings this term is used.
+          \item \emph{Background} (BKG): refers to discussion of the history,
+            background, people who created, were involved with, or are notable,
+            for the thing being discussed.
+          \item \emph{Implementation} (IMP): refers to discussion of the actual
+            implementation of an AVL tree. This may also refer to conditions or
+            constraints which are necessary for the implementation of that which
+            is being discussed.
+       \end{enumerate}
     \end{enumerate}
 \end{enumerate}
 
-The modifications made to Bellack et al's typology are largely orthogonal to the
+The modifications made to Bellack et al's typology are orthogonal to the
 original. While we did remove the last three categories, one could easily
 imagine these being included and merely coded as $\bot$ or (NOC) in the original
 typology. Any discussion of instructional material that was observed during
@@ -876,6 +899,13 @@ collected by a single researcher. While we do not present an analysis of
 agreement for this typology. In a predecessor typology we did observe a
 significant agreement of \todo{show agreement percent} between two coders,
 following the same procedures used to encode this data.
+
+If a document changed subject abruptly, the coder was instructed to stop. For
+example, if a fifty page document started to discuss quicksort on page
+thirty-two after discussing mergesort the data would only include codings for
+the first thirty-two pages of that document. We made no effort to control for
+the length of any document and post-process the data to normalize all position
+information to the respective length of each document.
 
 % Should I say more about the data pre-processing?
 The data was pre-processed using R and Hadley Wickham's excellent ``dplyr'' library
