@@ -153,7 +153,10 @@ teachCyclesPlt <- ggplot(df, aes(y = Type
   facet_grid(Explanation ~., switch = "y", scales = "free_y") +
   scale_shape_manual(values = 1:nlevels(df$typeColor)) +
   theme_bw() +
-  theme(legend.position = "none") +
-  ggtitle("Teaching Cycles per Explanation")
+  theme(legend.position = "none"
+      , axis.title.y=element_blank()
+      , axis.title.x = element_blank()
+        , text = element_text(size = 13.5))
+        ## , axis.text.x = element_text(size = 12))
 
 ggsave(file = "Plots/teachCyclesPlt.pdf", device = "pdf", dpi = 100)
