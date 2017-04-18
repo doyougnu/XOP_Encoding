@@ -156,4 +156,4 @@ teachCyclesPlt <- ggplot(df, aes(y = Type
   theme(legend.position = "none") +
   ggtitle("Teaching Cycles per Explanation")
 
-ggsave(file = "Plots/teachCyclesPlt.png", device = "pdf")
+ggsave(file = "Plots/teachCyclesPlt.pdf", device = "pdf", dpi = 100)
