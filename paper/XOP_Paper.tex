@@ -1,8 +1,10 @@
 \documentclass[conference]{IEEEtran}
 
+\usepackage{amsmath}
+
 \usepackage{color}
 \usepackage{enumerate}
-\usepackage{lambda}
+\usepackage{multicol}
 
 % Get todos to render properly
 \usepackage[obeyFinal]{easy-todo}
@@ -16,6 +18,8 @@
 \usepackage{graphicx}
 \graphicspath{{../R/BellackTransTypology/Plots/}}
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+
+\usepackage{lambda}
 
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
@@ -518,6 +522,19 @@ Rosenshines work for our purposes but the resultant typology would differ so
 radically from the original that it may no longer be relevant to Rosenshines own
 work. Or to be succinct, Rosenshines typology is not easily extensible.
 
+
+% Have to put this figure way up here because LaTeX is bad at placing
+% two-column figures.
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{teachCyclesPlt}
+\caption{Plot highlighting teaching cycles observed in collected explanation
+artifacts. The y-axis is faceted to display the type of move for each coded
+explanation. The x-axis indicates the position of a move within the
+explanation. Connected sequences of dots represent a teaching cycle.}
+\label{fig:cycles-plot}
+\end{figure*}
+
 \section{Results}
 In this section we present the method of data collection, the nature of the
 data, and the criteria used to select explanatory objects. We then proceed to
@@ -562,52 +579,52 @@ The data was pre-processed using R and Hadley Wickham's excellent ``dplyr'' libr
 document considered e.g. an index of 1 means that move happened immediately, and
 sequentially, after the move indexed at 0. 
 
+
 \subsection{Teaching Cycles}
+
 To graphically observe, and represent, teaching cycles we form a dot plot for
 each coded document, with lines connecting pedagogical moves that make up the
-teaching cycle, as shown in Figure 1 below:
-
-\todo{Make plot readable}
-\begin{figure}[!h]
-  \centering
-  \includegraphics[width=2.5in]{teachCyclesPlt}
-  \caption{Teaching cycles by Document}
-  \label{fig:simple-empty}
-\end{figure}
-
+teaching cycle, as shown in Fig.~\ref{fig:cycles-plot}.
+%
 Each dot represents a single pedagogical move. The y-axis is faceted to display
 the Type of Move for each coded document. For example ``AVL001'', the first
 coded document for AVL Trees, has 3 types of pedagogical moves: STR, SOL, EXP.
 One may also observe that this document has 4 different types of teaching cycles
 viz. ``STR EXP SOL'', ``STR'', ``STR EXP'' and ``STR \emph{EXP}''.
 
-Due to modifications to Bellack et al's typology we observe todo{XX} types
-teaching cycles for static explanatory objects. These are shown in table 1 below:
 
+Due to modifications to Bellack et al's typology we observe todo{XX} types
+teaching cycles for static explanatory objects. These are shown in the table in
+Fig.~\ref{fig:cycles-table}.
+
+
+% \newcommand{\Freq}[1]{\ensuremath{\text{Freq}_\text{#1}}}
+\newcommand{\Freq}[1]{\ensuremath{\text{Freq}_\text{#1}}}
 
 % should we include NOC in the results?
-  \begin{table}[h]
-  \begin{center}
-    \begin{tabular}{| l |}
-      \hline
-      Teaching Cycles \\ \hline
-      STR \\ \hline
-      STR NOC \\ \hline
-      STR EXP \ldots \\ \hline
-      STR EXP NOC \\ \hline
-      STR EXP SOL \\ \hline
-      STR SOL EXP \\ \hline
-      STR SOL EXP \ldots \\ \hline
-      STR EXP SOL \\ \hline
-      STR EXP EXP SOL \\ \hline
-      STR EXP SOL \\ \hline
-      STR EXP SOL \ldots \\ \hline
-      STR EXP NOC SOL \\ \hline
-    \end{tabular}
-    \caption{Observed Types of Teaching cycles in Static Documents,
-      \emph{italics} denotes many}
-  \end{center}
-  \end{table}
+\begin{figure}
+\centering\footnotesize
+\begin{tabular}{r|r|l}
+\multicolumn{2}{c}{Frequency} & \\
+\multicolumn{1}{c}{Slides}
+  & \multicolumn{1}{c}{Notes}
+  & \multicolumn{1}{l}{Teaching cycle} \\ \hline
+& & STR \\
+& & STR NOC \\
+& & STR EXP \ldots \\
+& & STR EXP NOC \\
+& & STR EXP SOL \\
+& & STR SOL EXP \\
+& & STR SOL EXP \ldots \\
+& & STR EXP SOL \\
+& & STR EXP EXP SOL \\
+& & STR EXP SOL \\
+& & STR EXP SOL \ldots \\
+& & STR EXP NOC SOL \\
+\end{tabular}
+\caption{Type and frequency of teaching cycles in explanation artifacts.}
+\label{fig:cycles-table}
+\end{figure}
 
 \section{Discussion and Results}
 In this section we summarize and interpret the results presented above. To
