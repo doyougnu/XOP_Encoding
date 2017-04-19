@@ -165,7 +165,7 @@ singleDjkCycle <- ggplot(dfDjkSingleton, aes(y = Type, x = index
 
 ggsave(file = "Plots/singleDjkCycle.png", width = 7, height = 5)
 
-
+# Cycles plot with ppt and wrd combined
 teachCyclesPltCombined <- ggplot(df, aes(y = Type
                                , x = index
                                , colour = typeColor
@@ -183,8 +183,10 @@ teachCyclesPltCombined <- ggplot(df, aes(y = Type
       , axis.title.x = element_blank()
         , text = element_text(size = 13.5))
 
+#save plot
 ggsave(file = "Plots/teachCyclesPltCombined.pdf", device = "pdf", dpi = 100)
 
+# Cycles plot with only ppt data, docNums <= 5 are bound only to ppts in the data
 teachCyclesPltppt <- ggplot(df %>% filter(as.numeric(docNum) <= 5), aes(y = Type
                                , x = index
                                , colour = typeColor
@@ -202,8 +204,10 @@ teachCyclesPltppt <- ggplot(df %>% filter(as.numeric(docNum) <= 5), aes(y = Type
       , axis.title.x = element_blank()
         , text = element_text(size = 13.5))
 
+#save plot
 ggsave(file = "Plots/teachCyclesPltppt.pdf", device = "pdf", dpi = 100)
 
+# Cycles plot with only wrd data, docNums > 5 are bound only to wrds in the data
 teachCyclesPltwrd <- ggplot(df %>% filter(as.numeric(docNum) > 5), aes(y = Type
                                , x = index
                                , colour = typeColor
@@ -221,4 +225,5 @@ teachCyclesPltwrd <- ggplot(df %>% filter(as.numeric(docNum) > 5), aes(y = Type
       , axis.title.x = element_blank()
         , text = element_text(size = 13.5))
 
+#save plot
 ggsave(file = "Plots/teachCyclesPltwrd.pdf", device = "pdf", dpi = 100)
