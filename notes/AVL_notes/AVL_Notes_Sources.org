@@ -20,8 +20,9 @@
   - AVT003 :: https://www.cs.sjsu.edu/~lee/cs146/Asami-avl-presentation.ppt
   - AVT004 :: www.cse.unt.edu/~huangyan/3110/Lectures/SearchTrees.ppt
   - AVT005 :: www.cs.utoronto.ca/~tabrown/csc263/week3.ppt
-  - AVT006 :: courses.washington.edu/tcss342/slides/AVLheightproof08.ppt
+  - AVT006 :: www.cs.ucf.edu/~dmarino/ucf/cop3503/lectures/AVLTrees01.doc
   - AVT007 :: https://www.cs.cmu.edu/~fp/courses/15122-s11/lectures/18-avl.pdf
   - AVT008 :: http://www.cs.columbia.edu/~allen/S14/NOTES/avltrees_with_GUI.pdf
   - AVT009 :: https://www.cs.umd.edu/~meesh/351/mount/lectures/extra-AVL.pdf
   - AVT010 :: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec06.pdf
+
