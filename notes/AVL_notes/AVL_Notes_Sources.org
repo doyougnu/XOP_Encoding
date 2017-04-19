@@ -21,7 +21,7 @@
   - AVT004 :: www.cse.unt.edu/~huangyan/3110/Lectures/SearchTrees.ppt
   - AVT005 :: www.cs.utoronto.ca/~tabrown/csc263/week3.ppt
   - AVT006 :: courses.washington.edu/tcss342/slides/AVLheightproof08.ppt
-  - AVT007 :: www.cs.cmu.edu/~ab/15-121F10/.../Lecture%2016%20-%20Balanced%20Trees.ppt
-  - AVT008 :: https://www.cs.cmu.edu/~fp/courses/15122-s11/lectures/18-avl.pdf
-  - AVT009 :: https://www.cs.purdue.edu/homes/ayg/CS251/slides/chap7b.pdf
-  - AVT010 :: http://courses.cs.vt.edu/cs2604/spring04/Notes/C06.AVLTrees.pdf
+  - AVT007 :: https://www.cs.cmu.edu/~fp/courses/15122-s11/lectures/18-avl.pdf
+  - AVT008 :: http://www.cs.columbia.edu/~allen/S14/NOTES/avltrees_with_GUI.pdf
+  - AVT009 :: https://www.cs.umd.edu/~meesh/351/mount/lectures/extra-AVL.pdf
+  - AVT010 :: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec06.pdf
