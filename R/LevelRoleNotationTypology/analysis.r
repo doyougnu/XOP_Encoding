@@ -2,16 +2,17 @@ library(ggplot2)
 library(scales)
 library(dplyr)
 library(gridExtra)
+library(tidyr)
 # for mosaic plots
 library(ggmosaic)
 
 ## setwd("/home/doyougnu/Research/XOP/XOP_Encoding/R/")
 # read in each data table
-dfwrd <- read.table(file="../data/encodings_word_03162017.txt"
+dfwrd <- read.table(file="../../data/LevelRoleNotationTypology/encodings_word_03162017.txt"
                , header = TRUE
                , row.names = NULL)
 
-dfppt <- read.table(file="../data/encodings_ppt_03162017.txt"
+dfppt <- read.table(file="../../data/LevelRoleNotationTypology/encodings_ppt_03162017.txt"
                , header = TRUE
                , row.names = NULL)
 
@@ -32,16 +33,8 @@ dfppt <- dfppt %>%
 # Compose actual data set from subsets, rbind stacked datasets that share the same header
 dataStacked <- rbind(dfwrd, dfppt)
 
-# Remove readings made for comparison
-data <- dataStacked %>%
-  filter(!(Explanation == "UN007" && Coder == "B"), !(Explanation == "UN007" && Coder == "B"))
-
-# Extract out the subset of rows where there are two coders, I've hardcoded this for now
-dfCoderComp <- dataStacked %>%
-  filter(Explanation == "UN007" | Explanation == "UN006")
-
 # Generate a data set that does not consider notations
-dfRole <- data %>%
+dfRole <- dataStacked %>%
   select(-(Notation:isPartial:isEmphasized:hasMany)) %>%
   distinct()
 
@@ -53,10 +46,10 @@ dfPositions <- dfRole %>%
           , midBound = lowerBound * 2)
 
 # now merge
-dfRole <- merge(dfRole, dfPositions, all=TRUE)
+dfRole <- merge(dataStacked, dfPositions, all=TRUE)
 
 # add relevant columns
-dfRole <- x %>%
+dfRole <- dfRole %>%
   mutate(Location =
            ifelse(Position >= 0 & Position < lowerBound, "Beg"
                 , ifelse(Position >= lowerBound & Position < midBound, "Mid"
@@ -65,10 +58,31 @@ dfRole <- x %>%
 # add index for each observaton relative to begging of each document
 dfRole$ind = seq.int(nrow(dfRole))
 dfRole <- dfRole %>%
-  group_by(Explanation) %>%
+  group_by(Explanation, Coder) %>%
   mutate(index = ind - range(ind)[1]) %>%
   select(-ind) %>%
   select(-(upperBound:midBound))
+
+# Extract out the subset of rows where there are two coders, I've hardcoded this for now
+dfCoderComp <- dfRole %>%
+  filter(Explanation == "UN007" | Explanation == "UN006")
+
+# Remove readings made for comparison
+dfRole <- dfRole %>%
+  filter(!(Explanation == "UN007" && Coder == "B"), !(Explanation == "UN007" && Coder == "B"))
+
+# Spread out the data to get Goal comparison
+dfGoalComp <- dfCoderComp %>%
+  select(Explanation, Coder, Goal, index) %>%
+  spread(Coder, Goal) %>%
+  group_by(Explanation, index) %>%
+  summarise(count = ifelse(A == B, 1, 0))
+
+# Turn an NAs into 0's, NAs occur when one coder coder less, or more than another for a particular document
+dfGoalComp[is.na(dfGoalComp)] <- 0
+
+# Find agreement percentage for each document, between coders
+agGoalRate <- sum(dfGoalComp$count) / nrow(dfGoalComp)
 
 # mosaic plot df
 mdf <- data %>% group_by(Explanation, Goal, Role, Notation, Position) %>% summarise(count = n())
@@ -83,7 +97,7 @@ plt <- ggplot(data, aes(x=Role, fill=Role)) +
   guides(fill=FALSE)
 
 plt
-ggsave(file = "Plots/RolePercentages.png", width = 7, height = 5)
+## ggsave(file = "Plots/RolePercentages.png", width = 7, height = 5)
 
 # same plot just comparing each coder
 plt2 <- ggplot(dfCoderComp, aes(x=Role, fill=Role)) +
@@ -95,7 +109,7 @@ plt2 <- ggplot(dfCoderComp, aes(x=Role, fill=Role)) +
   guides(fill=FALSE)
 
 plt2
-ggsave(file = "Plots/RolePercentagesCoderComp.png", width = 7, height = 5)
+## ggsave(file = "Plots/RolePercentagesCoderComp.png", width = 7, height = 5)
 
 #
 test <- data %>% group_by(Algorithm, Goal, Role, Notation) %>% summarise(count = n()) %>% arrange(desc(count))
@@ -106,13 +120,13 @@ plt3 <- ggplot(test, aes(x=Role, y=count)) +
   theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
   facet_grid(.~ Algorithm)
 
-ggsave(file = "Plots/RoleNotationComposite.png", width = 7, height = 5)
+## ggsave(file = "Plots/RoleNotationComposite.png", width = 7, height = 5)
 
 plt4 <- ggplot(dfRole, aes(x=Position, fill=Goal)) +
   geom_bar(colour="black", aes(y = (..count..)/sum(..count..))) +
   scale_y_continuous(labels = percent)
 plt4
-ggsave(file = "Plots/GoalsbyPosition.png", width = 7, height = 5)
+## ggsave(file = "Plots/GoalsbyPosition.png", width = 7, height = 5)
 
 ## Birds eye view, really need a mosaic plot
 plt5 <- ggplot(dfRole, aes(x=Position, fill=Role)) +
@@ -120,13 +134,13 @@ plt5 <- ggplot(dfRole, aes(x=Position, fill=Role)) +
   scale_y_continuous(labels = percent) +
   facet_grid (Algorithm ~ Goal)
 plt5
-ggsave(file = "Plots/BirdsEyeView.png", width = 7, height = 5)
+## ggsave(file = "Plots/BirdsEyeView.png", width = 7, height = 5)
 
 ## sample spine and mosaic plots
-plt6 <- plot(data$Role, data$Goal, xlab = "Roles", ylab = "Goals")
-jpeg("Plots/RoleGoalMosaic.jpg")
-plot(data$Role, data$Goal, xlab = "Roles", ylab = "Goals")
-dev.off()
+## plt6 <- plot(data$Role, data$Goal, xlab = "Roles", ylab = "Goals")
+## jpeg("Plots/RoleGoalMosaic.jpg")
+## plot(data$Role, data$Goal, xlab = "Roles", ylab = "Goals")
+## dev.off()
 
 
 ## generate a contingecy table
@@ -148,7 +162,7 @@ plt7 <- ggplot(dfGoal, aes(x = Position, y = reorder(Goal, -count), colour = Goa
   facet_grid(fileType ~ Algorithm)
 plt7
 
-ggsave(file = "Plots/GoalsTeachingCycles.png", width = 7, height = 5)
+## ggsave(file = "Plots/GoalsTeachingCycles.png", width = 7, height = 5)
 
 dfRole2 <- dfRole %>%
   select(-(Goal)) %>%
@@ -180,4 +194,4 @@ test
 
 
 
-ggsave(file = "Plots/RolesTeachingCycles.png", width = 7, height = 5)
+## ggsave(file = "Plots/RolesTeachingCycles.png", width = 7, height = 5)
