@@ -8,19 +8,32 @@ library(ggmosaic)
 ## setwd("/home/doyougnu/Research/XOP/XOP_Encoding/R/")
 ############################### Data Munging ###################################
 # read in each data table
-dfppt <- read.table(file="../../data/BellackTransTypology/encodings_ppt_04082017.txt"
+dfppt <- read.table(file="../../data/BellackTransTypology/encodings_ppt_04182017.txt"
                   , sep="/"
                   , header = TRUE
                   , row.names = NULL)
 
-# Convert Explanations to something usable, the ($) operator selects a column in a dataframe
-dfppt$Explanation <- as.character(dfppt$Explanation)
+dfwrd <- read.table(file="../../data/BellackTransTypology/encodings_word_04182017.txt"
+                  , sep="/"
+                  , header = TRUE
+                  , row.names = NULL)
 
 # Add type of file to each datasets
 dfppt <- dfppt %>% mutate(fileType = "ppt")
+dfwrd <- dfwrd %>% mutate(fileType = "word")
+
+# Compose actual data set from subsets, rbind stacked datasets that share the
+# same header
+dfStacked <- rbind(dfwrd, dfppt)
+
+# Convert Explanations to something usable, the ($) operator selects a column in a dataframe
+dfStacked$Explanation <- as.character(dfStacked$Explanation)
+
+# filter out non Codable moves
+dfStacked <- dfStacked %>% filter(Type != "NOC")
 
 # Get Algorithm key out, the (%>%) operating is function composition from dplyr package
-dfAlg <- dfppt %>%
+dfAlg <- dfStacked %>%
   mutate(Algorithm = substring(Explanation, 0, 2))
 
 # add Location that is in relation to the size of each document
@@ -50,9 +63,6 @@ df <- dfInd %>%
 ################################################################################
 
 ################################### Plotting ###################################
-# pull out vector of move types
-types <- df$Type
-
 # this is not idiomatic R, and explicit looping doesn't take advantage of R's
 # vectorization, this is and should be, discouraged
 findCycles <- function(xs, result, acc){
@@ -72,7 +82,7 @@ findCycles <- function(xs, result, acc){
   xss <- xs[-1]
 
   # Inductive cases
-  if (x == "STR"){
+  if (x == "STR" || x == "SOL"){
     # if we find a new STR move then add accumulator to result and recurse
     result[[length(result) + 1]] <- acc
     accumulator <- append(list(), x)
@@ -84,7 +94,10 @@ findCycles <- function(xs, result, acc){
   }
 }
 
+# pull out vector of move types
+types <- df$Type
 listCycles <- findCycles(types, list(), list())
+
 # lapply is R's map function for lists, function(x) is just making a lambda func
 cycles <- lapply(listCycles, function(x) paste(x, collapse = ' ')) %>% unique()
 
@@ -102,7 +115,7 @@ cycleColorization <- function(xs, result, counter){
   xss <- xs[-1]
 
   # Check if STR, if STR increment, if not don't'
-  if (x == "STR"){
+  if (x == "STR" || x == "SOL"){
     counter = counter + 1
   }
   res <- append(result, counter)
@@ -111,6 +124,7 @@ cycleColorization <- function(xs, result, counter){
 
 # add new column
 df$typeColorTemp = cycleColorization(df$Type, list(), 0) %>% unlist() 
+
 # relate column to each explanation
 df <- df %>%
   group_by(Explanation) %>%
@@ -118,6 +132,14 @@ df <- df %>%
   select(-typeColorTemp)
 
 df$typeColor = factor(df$typeColor)
+
+# dot plot for counts
+lastN <- function(string, n){
+  # Given a string, get last n characters from string, this is vectorized.
+  substr(string, nchar(string) - n+1, nchar(string))
+}
+
+df <- df %>% mutate(docNum = lastN(Explanation, 2))
 
 # Observe teaching cycles for one document
 # AVL tree example
@@ -143,20 +165,60 @@ singleDjkCycle <- ggplot(dfDjkSingleton, aes(y = Type, x = index
 
 ggsave(file = "Plots/singleDjkCycle.png", width = 7, height = 5)
 
-# dot plot for counts
-teachCyclesPlt <- ggplot(df, aes(y = Type
+
+teachCyclesPltCombined <- ggplot(df, aes(y = Type
                                , x = index
                                , colour = typeColor
                                , group = typeColor)) +
   geom_point(aes(size = 2)) +
   geom_line(aes(colour = typeColor, size = 1.5)) +
-  facet_grid(Explanation ~., switch = "y", scales = "free_y") +
+  facet_grid(docNum ~ Algorithm
+           , switch = "y"
+           , scales = "free_x"
+           , drop = TRUE) +
   scale_shape_manual(values = 1:nlevels(df$typeColor)) +
   theme_bw() +
   theme(legend.position = "none"
       , axis.title.y=element_blank()
       , axis.title.x = element_blank()
         , text = element_text(size = 13.5))
-        ## , axis.text.x = element_text(size = 12))
 
-ggsave(file = "Plots/teachCyclesPlt.pdf", device = "pdf", dpi = 100)
+ggsave(file = "Plots/teachCyclesPltCombined.pdf", device = "pdf", dpi = 100)
+
+teachCyclesPltppt <- ggplot(df %>% filter(as.numeric(docNum) <= 5), aes(y = Type
+                               , x = index
+                               , colour = typeColor
+                               , group = typeColor)) +
+  geom_point(aes(size = 2)) +
+  geom_line(aes(colour = typeColor, size = 1.5)) +
+  facet_grid(docNum ~ Algorithm
+           , switch = "y"
+           , scales = "free_x"
+           , drop = TRUE) +
+  scale_shape_manual(values = 1:nlevels(df$typeColor)) +
+  theme_bw() +
+  theme(legend.position = "none"
+      , axis.title.y=element_blank()
+      , axis.title.x = element_blank()
+        , text = element_text(size = 13.5))
+
+ggsave(file = "Plots/teachCyclesPltppt.pdf", device = "pdf", dpi = 100)
+
+teachCyclesPltwrd <- ggplot(df %>% filter(as.numeric(docNum) > 5), aes(y = Type
+                               , x = index
+                               , colour = typeColor
+                               , group = typeColor)) +
+  geom_point(aes(size = 2)) +
+  geom_line(aes(colour = typeColor, size = 1.5)) +
+  facet_grid(docNum ~ Algorithm
+           , switch = "y"
+           , scales = "free_x"
+           , drop = TRUE) +
+  scale_shape_manual(values = 1:nlevels(df$typeColor)) +
+  theme_bw() +
+  theme(legend.position = "none"
+      , axis.title.y=element_blank()
+      , axis.title.x = element_blank()
+        , text = element_text(size = 13.5))
+
+ggsave(file = "Plots/teachCyclesPltwrd.pdf", device = "pdf", dpi = 100)
