@@ -17,11 +17,11 @@
 * Sources
 	- DJK001 :: http://www.cs.princeton.edu/~wayne/kleinberg-tardos/pdf/04GreedyAlgorithmsII.pdf
 	- DJK002 :: http://math.mit.edu/~rothvoss/18.304.3PM/Presentations/1-Melissa.pdf	 	 
-	- DJK003 :: https://www.cs.auckland.ac.nz/~jmor159/PLDS210/dijkstra.html	 	 
-	- DJK004 :: http://www.ms.unimelb.edu.au/~moshe@unimelb/620-261/dijkstra/dijkstra.html	 	 
+	- DJK003 :: http://www.cs.princeton.edu/~rs/AlgsDS07/15ShortestPaths.pdf	 	 
+	- DJK004 :: http://mat.uab.cat/~alseda/MasterOpt/MyL09.pdf	 	 
 	- DJK005 :: http://courses.cs.washington.edu/courses/cse373/10sp/lectures/cse373-10sp-lec21-GraphsDijkstra-ink.html
-	- DJK006 :: http://www.cs.princeton.edu/~rs/AlgsDS07/15ShortestPaths.pdf	 	 
+	- DJK006 :: https://www.cs.auckland.ac.nz/~jmor159/PLDS210/dijkstra.html	 	 
 	- DJK007 :: http://www.cs.cornell.edu/courses/cs312/2002sp/lectures/lec20/lec20.htm	 	 
-	- DJK008 :: http://mat.uab.cat/~alseda/MasterOpt/MyL09.pdf	 	 
+	- DJK008 :: http://www.ms.unimelb.edu.au/~moshe@unimelb/620-261/dijkstra/dijkstra.html	 	 
 	- DJK009 :: https://www.utdallas.edu/~sizheng/CS4349.d/l-notes.d/L18.pdf
 	- DJK010 :: https://www.cs.cmu.edu/afs/cs/academic/class/15210-s12/www/lectures/lecture11.pdf

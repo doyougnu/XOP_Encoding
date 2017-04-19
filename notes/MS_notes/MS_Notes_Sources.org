@@ -15,13 +15,13 @@
 #+LaTeX_CLASS_OPTIONS: [10pt, letterpaper]
 
 * Sources
-	- MS001 :: http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Sorting/mergeSort.htm
+	- MS001 :: http://www.cs.toronto.edu/~hojjat/148s07/lectures/week11/12_mergesort.pdf	 	 
 	- MS002 :: http://algs4.cs.princeton.edu/lectures/22Mergesort.pdf	 	 
-	- MS003 :: https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms 
-	- MS004 :: http://algs4.cs.princeton.edu/22mergesort/	 	 
-	- MS005 :: https://secweb.cs.odu.edu/~zeil/cs361/sum14/Public/mergesort/index.html	 	 
-	- MS006 :: http://www.cs.toronto.edu/~hojjat/148s07/lectures/week11/12_mergesort.pdf	 	 
-	- MS007 :: https://www.cs.purdue.edu/cgvlab/courses/251/lectures/slides/03.23-SortingSetsSelection.pdf	 	 
+	- MS003 :: https://www.cs.purdue.edu/cgvlab/courses/251/lectures/slides/03.23-SortingSetsSelection.pdf	 	 
+	- MS004 :: https://webdocs.cs.ualberta.ca/~holte/mergesort.pdf
+  - MS005 :: https://courses.cs.washington.edu/courses/cse373/03wi/slides/lecture14.ppt 
+	- MS006 :: http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Sorting/mergeSort.htm
+	- MS007 :: https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms 
 	- MS008 :: http://pages.cs.wisc.edu/~vernon/cs367/notes/14.SORTING.html	 	 
-	- MS009 :: https://webdocs.cs.ualberta.ca/~holte/mergesort.pdf
-  - MS010 :: https://courses.cs.washington.edu/courses/cse373/03wi/slides/lecture14.ppt 
+	- MS009 :: http://algs4.cs.princeton.edu/22mergesort/	 	 
+	- MS010 :: https://secweb.cs.odu.edu/~zeil/cs361/sum14/Public/mergesort/index.html	 	 
