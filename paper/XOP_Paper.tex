@@ -872,8 +872,8 @@ and varied notations, types of explanations, and different pacing of material,
 all at the request or specification of the user. A typology of explanation can
 serve as the basis, the backbone, of such a DSL by organizing the semantics of
 the DSL into defined concepts. The modified typology presented in this paper, we
-believe, serves as such an organizing tool. In our view, it forms the basis of
-the semantics for the DSL.
+believe, serves as such an organizing tool. In our view, it forms the basis for
+the semantics of such a DSL.
 
 \subsubsection{The Usefulness of a Typology}
 A DSL designed with the modified typology given above will have, as its
@@ -884,21 +884,74 @@ user from non-understanding, to understanding. The modified typology is
 pragmatic for this domain \emph{because} of its level of abstraction. Each move
 would be coded according to the counterpart categories in the typology. Thus,
 the explanation for mergesort may require 15 moves, 5 teaching cycles. The
-initiatory moves would be of a form ``STR/BKG/XPL'' or perhaps ``STR/MOT/VIS'',
+initiatory moves might be of the form ``STR/BKG/XPL'' or ``STR/MOT/VIS'',
 meaning that the explanation would begin with a structuring move in which the
 background of mergesort is explained, or a structuring move where the motivation
-for mergesort is given visually. The typological pedagogical moves therefore
-structure the semantics of the DSL by describing \emph{what this move needs to
-  accomplish and how}. It is because of the level of abstraction in the codes
-that concrete, detailed aspects of explanations, like notation, or cadence
+for mergesort is given visually. The pedagogical moves therefore
+structure the semantics of the DSL by describing \emph{what the pedagogical move needs to
+  accomplish and how}. It is because of the level of abstraction in the codes,
+that concrete detailed aspects of explanations, like notation, or cadence
 become liquid i.e. they become easy to change. Thus, by designing around a
 typology of explanation, one ensures that the DSL has a defined structure, but
-is extensible and not constrained by the design.
+is extensible, and not artificially constrained by the design.
 
-\subsubsection{Dealing with Cadence}
-Cadence in such a DSL could be supported through the fourth category of the
+\subsubsection{Structuring Explanations}
+A secondary benefit of designing around a typology of explanation is that the
+typology provides a rich tool for analyzing explanations in the wild from which
+a language designer could draw a one-to-one plan from. For example, a document
+explains an AVL tree data structure in twenty five moves and four teaching
+cycles, an XOP DSL, could follow such a formula almost exactly because the
+design was based on a typology of explanation. Such a ``harvesting of ideas'' is
+simply not possible without a typology of explanation. One might even imagine a
+program that scours the internet harvesting such explanations and creating a
+corpus of explanations.
+
 \subsubsection{Dealing with Notations}
+An XOP DSL must be able to accommodate a multitude of notations. From
+mathematics, to english, to visual notations and interactive diagrams. A DSL
+designed in the manner above is extensible enough to support such
+notations. For example, imagine a user who is unsatisfied with, or does not
+understand a given pedagogical move, perhaps ``EXP/MAN/XPL'' (An expositing move
+that is explaining the manipulation of something). What might the user do in such a
+circumstance? In an XOP DSL, based on the modified typology, the user would be
+able to request the same pedagogical move, given with a different notation. The move's
+semantics would be the same: an expositing move that explains the
+manipulation of the subject, but the notation may change from text, to a
+diagram, to interactive illustrations freely. It is the ability to change the notation
+that separates this approach with from previous strategies.
 
+\subsubsection{Interactivity via Responding Moves}
+A major result of the analysis of static artifacts given above was that,
+unsurprisingly, static artifacts have no mechanism for a viewer to respond, they
+are in not so many words, static. By designing a DSL according to a typology of
+explanation one is able to provide a mechanism for responding or reacting moves
+in some form. The typology forms the semantics of the DSL, and while the exact
+mechanism to handle such prompts is unclear, a DSL designed in such a way has a
+``hole'' in its structure for such a mechanism. One could easily imagine that
+moving backward or forward in the explanation could be a primitive reacting
+move. Similarly, the prompts to complete some question in many online tutorial
+videos could be seen as a primitive soliciting move that is closed with a
+responding move by the user. By designing with respect to the modified typology,
+these concepts become clear, compartmentalized, and structured, in a way that is
+not possible without a typology of explanation.
+
+\subsubsection{Qualities shared with Passive Explanations}
+Our approach differs from many other successful approaches, \todo{good place for
+  some easy citations} but shares many important features of those approaches.
+Algorithm visualizations and internet based lectures have the property of being
+random access i.e. the user may move forward or backward in the explanation at
+will. This property has shown to be a very effective pedagogical tool
+\todo{another good place for citations}. While such a property ultimately comes
+down to the implementation of the DSL, we believe that our approach is
+commensurable with, and supportive of, such a property. One could easily imagine
+the ability to proceed to the next pedagogical move, or return to the last
+pedagogical move.
+
+It is for the reasons stated above that we believe defining and employing 
+typologies of explanation provide the XOP DSL designer with invaluable tools.
+Tools which serve to enrich the state of XOP and allow the XOP designer to draw
+upon other domains to \todo{clean this up, we need a ``stick the landing''
+  conclusion here}
 
 \section{Related Work} \label{rw}
 In this section we explore work that is related to this analysis and consider other
