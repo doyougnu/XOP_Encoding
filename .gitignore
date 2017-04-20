@@ -8,3 +8,4 @@ paper/XOP_Paper.pdf
 *.synctex.gz
 *.el
 .#*
+*.out

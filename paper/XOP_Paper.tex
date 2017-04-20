@@ -14,7 +14,7 @@
 
 % Add package for well rendered quotations
 \usepackage{dirtytalk}
-
+\usepackage{hyperref}
 \usepackage{graphicx}
 % \graphicspath{{../R/BellackTransTypology/Plots/},{./images/}}
 \graphicspath{{./images/}}
@@ -288,10 +288,13 @@ in the form of lecture notes and slides.
 \item \label{contrib:data}
 %
 We provide a coded qualitative data set of explanation artifacts, using the
-system defined in \ref{contrib:codes}. The data set consists of \todo{XX}
-explanations of Djikstra's shortest path algorithm and \todo{XX} explanations
-of AVL Trees, collected from the Internet, see appendix A for a reference list
-of sources.
+system defined in \ref{contrib:codes}. The data set consists of 30
+explanations, ten explanations per algorithm and five explanations per algorithm
+per document type. For example, there are 10 documents on Dijkstra's shortest
+path algorithm with five of those ten being power point documents and the other
+five being lecture notes. All samples were collected from the internet, see
+\url{https://github.com/lambda-land/XOPTypology_Paper} for list of all sources
+by algorithm. 
 
 \item \label{contrib:valid}
 %
@@ -395,7 +398,7 @@ The speaker category indicates the source of the utterance, is one of:
   \end{enumerate}
 \paragraph{Type of Move}
 The type of move category indicates which type the move
-belongs to. See P1-P4 above.
+belongs to. See P1 -- P4 above.
 
 \paragraph{Substantive Meaning}
 The substantive meaning category refers to
@@ -506,8 +509,7 @@ describe pedagogical moves in relationship to each other. In Bellack's words:
   play in football. Then teaching cycles may be seen as an interrelated series of move or plays}
 
 The focus of teaching cycles is to be able to quantify linguistic events in the
-classroom and combinations of pedagogical moves. \todo{decide if we need to
-  espouse the 21 teaching cycles bellack identifies}
+classroom and combinations of pedagogical moves. 
 
 \section{Experimental Setup}
 In this section we describe the nature of the data collected, the modifications
@@ -735,12 +737,13 @@ the length of any document and post-process the data to normalize all position
 information to the respective length of each document.
 
 % Should I say more about the data pre-processing?
-The data was pre-processed using R and Hadley Wickham's excellent ``dplyr'' library
-\cite{Dplyr}, for the complete code see \todo{make github repo in lambda-land
-  for paper resources}. In short, the pre-processing consists of creating an
-``index'' variable that denotes the order a move was encoded in relation to each
-document considered e.g. an index of 1 means that move happened immediately, and
-sequentially, after the move indexed at 0. 
+The data was pre-processed using R and Hadley Wickham's excellent ``dplyr''
+library \cite{Dplyr}, for the complete code see
+\url{https://github.com/lambda-land/XOPTypology_Paper}. In short, the
+pre-processing consists of creating an ``index'' variable that denotes the order
+a move was encoded in relation to each document considered e.g. an index of 1
+means that move happened immediately, and sequentially, after the move indexed
+at 0.
 
 \section{Results}
 In this section we present our findings. We make two major observations from the data: First,
@@ -797,9 +800,8 @@ Fig.~\ref{fig:cycles-table}.
 
 \section{Discussion and Results}
 In this section we summarize and interpret the results presented above. To
-ensure transparency and openness, the reader may find all raw results, and any
-post-processing scripts published online \todo{make repo holding raw results and
-  R code}.
+ensure transparency and openness, the reader may find all raw data, and any
+post-processing scripts published online \url{https://github.com/lambda-land/XOPTypology_Paper}
 
 \subsection{Observed Teaching Cycles}
 As shown in Fig.~\ref{fig:cycles-plot}, and listed in
