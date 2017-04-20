@@ -165,8 +165,8 @@ DSL}.
 \section{Background}
 \subsection{A Typology of Explanation}
 In this section we present an overview of Bellack et al's typology. We describe
-it's philosophical foundations, its basic unit of analysis - the
-\emph{pedagogical move} - and elucidate the constituents that compose a given
+its philosophical foundations, its basic unit of analysis --- the
+\emph{pedagogical move} --- and elucidate the constituents that compose a given
 move. It should be noted that this is not a exhaustive or comprehensive overview
 of Bellack et al's typology, rather, this section is meant to familiarize the
 reader with the basic structure of such a typology.
@@ -181,28 +181,28 @@ Bellack et al. identify four types of pedagogical moves.
 \begin{enumerate}[P1.]
 
   \item \label{contrib:struct}
-    Structuring Move: a structuring move functions to \emph{set the context} for
+    Structuring move: a structuring move functions to \emph{set the context} for
     subsequent behavior. These are statements that a lecturer makes such as
     ``Let's move on to some examples'' or ``Lambda Calculus has simple
     operational semantics''.
   
   \item \label{contrib:solicit}
-    Soliciting Move: A soliciting move is a verbal statement, made by the
+    Soliciting move: A soliciting move is a verbal statement, made by the
     lecturer, which explicitly elicits a verbal response. These are statements
     such as ``Can anyone tell me the purpose of the dot operator?'' or ``Why is
-    Depth-First Search better suited for certain game trees than Breadth-First Search?''
+    depth-first search better suited for certain game trees than breadth-first search?''
 
    \item \label{contrib:response}
-     Response Move: A response move is reciprocal to a soliciting move, and only
+     Response move: A response move is reciprocal to a soliciting move, and only
      occur in relation to them. Response moves function to fulfill the
      expectation of soliciting moves. In short, these are the answer's to a
      lecturer's questions. Some examples are ``The dot operator represents
-     function composition'' or ``Depth-First Search is memory efficient, while
-     Breadth-First Search is not.''
+     function composition'' or ``depth-first search is memory efficient, while
+     breadth-first search is not.''
 
    % what does contrib:XXX do?
    \item \label{contrib:react}
-     Reacting Move: A reacting move are coincident with structuring, soliciting,
+     Reacting move: A reacting move are coincident with structuring, soliciting,
      and responding moves. Reacting moves are not directly elicited by any other
      move, but are still occasioned by them. These function to \emph{qualify}
      some former move through clarifying some point, expanding on some point, or
@@ -236,8 +236,8 @@ For each category a shorthand indicator is provided that details the
 representation of that category in the terminology of the coding system.
 For example a structuring move is represented as (STR) in the system's
 notation. In this section we present the meanings of each category. We focus on
-categories 1 - 5 for they constitute the bulk of the typology used in section
-\todo{XX}. We refer the interested reader to Bellack et al's work for an
+categories 1 -- 5 for they constitute the bulk of the typology used in section
+III. We refer the interested reader to Bellack et al's work for an
 exhaustive presentation \cite{bellack1966language}.The meanings of each category are as follows:
 
 \begin{enumerate}
@@ -322,18 +322,10 @@ An example coded move has this form:
 
 The interpretation is as follows:
 
-%% This needs formatting help
-\begin{flushleft}
-\begin{verbatim}
-       T / STR / MAN / XPL /  4  / PRC / FAC / 2
-      (1)/ (2) / (3) / (4) / (5) / (6) / (7) /(8)
-\end{verbatim}
-\end{flushleft}
-
-Which is taken to mean: A \emph{teacher} (1) makes a \emph{structuring} (2) move
-in which they \emph{explain} (4) something about \emph{Tree Manipulation} (3) for
-\emph{four} (5) lines of the transcript and also state \emph{facts} (7) about
-classroom \emph{procedures} (6) for \emph{two} (8) lines of the transcript.
+Which is taken to mean: A \emph{teacher} (T) makes a \emph{structuring} (STR) move
+in which they \emph{explain} (XPL) something about \emph{Tree Manipulation} (MAN) for
+\emph{four} (4) lines of the transcript and also state \emph{facts} (FAC) about
+classroom \emph{procedures} (PRC) for \emph{two} (2) lines of the transcript.
 
 This encoding could be used for a statement by a teacher such as:
 
@@ -346,7 +338,7 @@ handle case two and case three.}
 Teaching cycles are cyclic patterns or combinations of pedagogical moves. A
 cycle begins with a structuring move (STR) or a soliciting move (SOL) and ends
 with any move that precedes a new cycle. For example, the pattern ``STR SOL STR
-STR'' has three teaching cycles in it: 1) STR SOL 2) STR and 3) STR. A teaching
+EXP'' has three teaching cycles in it: 1) STR 2) SOL and 3) STR EXP. A teaching
 cycle which has many of the same type of move referring back to a single STR
 move is denoted as: ``STR REA REA \ldots''. Teaching cycles allow one to
 describe pedagogical moves in relationship to each other. In Bellack's words:
@@ -361,16 +353,32 @@ classroom and combinations of pedagogical moves. \todo{decide if we need to
 \section{Experimental Setup}
 In this section we describe the nature of the data collected, the modifications
 made to Bellack et al's typology and the criteria by which static explanatory
-objects were collected. We conclude the section with overviews of two other
+objects were collected. In section \ref{rw}, we provide an overview of other
 typologies of explanation from the pedagogic literature and our reasons for not
-adapting them to this work.
+adapting them to this work. 
 
-\subsection{Modifications to the Typology}
-The modifications made to Bellack et al's system are minor: we remove
-the last 3 categories in Bellack's system (the categories that categorize
-instructional material), we add one type of pedagogical move, two types of
-substantive-logical meanings, and define substantive-meaning categories for each
-algorithm:
+\subsection{A Typology for Static Explanatory Artifacts}
+We make two kinds of changes to adapt Bellack et al's typology to static
+explanatory documents. The first kind is an addition of terms to the typology
+such that they may be applied to static documents. Without these additions,
+applying the typology to a static document would be nonsensical. The second kind
+is a definition of substantive meanings for each algorithm under study.
+Defining substantive meanings is prerequisite to any application of the typology
+in a new domain. Hence, we define the substantive meanings used in this analysis
+for each algorithm.
+
+In a conversation, each interlocutor may solicit and respond in turn, for static
+documents there simply is no way for a reacting or responding move to take
+place. Thus, the language game between the reader and the static document must
+be able to encompass the pure exposition of a subject as a pedagogical move. We
+identify and include in our typology an expository step (EXP), which denotes
+moves that elucidate or introduce information. Visual information and exhaustive
+code exposition are also unique characteristics of static documents, one which
+is not shared with discourse between individuals. Thus a visual (VIS) and a
+defining-operational (DEO) substantive-logical meaning is included in the
+typology; the former denotes moves that require visual cognitive processes,
+while the latter denotes moves that define a thing through exhaustive exposition
+of programming code.
 
 \begin{enumerate}[M1.]
   \item{Categories} 
@@ -582,6 +590,27 @@ document considered e.g. an index of 1 means that move happened immediately, and
 sequentially, after the move indexed at 0. 
 
 
+% Have to put this figure way up here because LaTeX is bad at placing
+% two-column figures.
+\begin{figure*}
+\centering
+\includegraphics[width=\textwidth]{teachCyclesPlt}
+\caption{Plot highlighting teaching cycles observed in collected explanation
+artifacts. The y-axis is faceted to display the type of move for each coded
+explanation. The x-axis indicates the position of a move within the
+explanation. Connected sequences of dots represent a teaching cycle.}
+\label{fig:cycles-plot}
+\end{figure*}
+
+\section{Results}
+In this section we present the method of data collection, the nature of the
+data, and the criteria used to select explanatory objects. We then proceed to
+present our findings. We make two major observations from the data: First,
+we observe the presence of teaching cycles in static explanatory objects.
+Secondly, we observe that the present typology's shortcomings are a limiting
+factor to a more thorough investigation of explanatory objects.
+
+
 \subsection{Teaching Cycles}
 
 To graphically observe, and represent, teaching cycles we form a dot plot for
@@ -674,8 +703,56 @@ semantics-first \cite{erwig2011semantics} manner.
 \subsection{Applications to a DSL}
 
 
-\section{Related Work}
+\section{Related Work} \label{rw}
+In this section we explore work that is related to this analysis and consider other
+typologies from pedagogy scholarship.
 
+\subsection{Other Typologies of Explanation}
+Pedagogic theory has many examples of typologies of explanation which are not
+presented here. We adapt Bellack et al's because it is designed with the same
+motivating research questions in mind as this work, namely quantifying
+real-world examples of explanations. It also is \emph{computational} in nature,
+it adheres to strict semantics and is rigorously, mathematically, defined.
+In this section, we will briefly review alternative typologies and state our
+reasons for not adapting them.
+
+Brown and Armstrong\cite{brown1984explaining} developed a typology that sought
+to qualify characteristics of \emph{good} explanations provided by teachers in a
+classroom setting. Their typology was formed with two stated goals: 1) It should
+be simple, elegant, and easy to pick up for student teachers and 2) It should be
+powerful enough to characterize bad explanations from good ones, and relate to
+previous pedagogic work. Their typology consists of ``keys'', which partition an
+explanation, ``Links'' which form chains of keys that form the
+explanation, and ``Rules'' which define any pertinent rules to for that which is
+being explained. There are three categories of explanation in the typology: 1) The
+Interpretative 2) The Descriptive and 3) The Reason Giving. While promising,
+the presentation of this typology was deemed not formal enough to be actionable
+for our purposes; for example, its presentation lacks definitions for significant terms
+such as ``Links'' and ``Rules''. Furthermore, its desirable features are shared
+with Bellack et al's typology viz. an explanation is a composition of some more
+primitive concepts or categories.
+
+%probably need an introductory sentence here
+Roshenshine's\cite{rosenshine1968objectively} typology is generated through a
+review of thirty lectures and the results of a user study. It's stated purpose
+is to:
+
+\say{objectively measured teaching behaviors that discriminate between more and
+  less successful explanations of social studies material}. 
+
+Rosenshine develops the grammar of terms based on a literature review of four
+categories: 1) Linguistic Categories 2) Instructional Set 3) Presentational
+categories and 4) Multivariate studies of teaching behaviors. Twenty one such
+terms were identified and then tested in a user study for pedagogic impact. The
+terms in the typology may include verbal and non-verbal behaviors in teachers.
+While Rosenshines results were interesting the typology developed is
+un-actionable for our purposes. The terms developed are either too broadly
+defined, not translatable to a DSL, or by Rosenshines own research do not
+correlate to a \emph{good} explanation. Furthermore, there is no set criteria
+presented for encoding lectures with the typology. It is possible to adapt
+Rosenshines work for our purposes but the resultant typology would differ so
+radically from the original that it may no longer be relevant to Rosenshines own
+work. Or to be succinct, Rosenshines typology is not easily extensible.
 
 \section{Conclusion}
 
