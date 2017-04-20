@@ -5,7 +5,9 @@ library(gridExtra)
 # for mosaic plots
 library(ggmosaic)
 
-## setwd("/home/doyougnu/Research/XOP/XOP_Encoding/R/")
+# Change this to the appropriate directory if you're going to run this script
+setwd("/home/doyougnu/Research/XOP/XOP_Encoding/R/BellackTransTypology")
+
 ############################### Data Munging ###################################
 # read in each data table
 dfppt <- read.table(file="../../data/BellackTransTypology/encodings_ppt_04182017.txt"
@@ -73,7 +75,9 @@ findCycles <- function(xs, result, acc){
 
   # base case
   if (length(xs) == 0){
-    res <- append(result, acc)
+    print(length(xs))
+    what <- append(list(), acc)
+    res <- append(result, what)
     return(res)
   }
 
@@ -83,26 +87,46 @@ findCycles <- function(xs, result, acc){
 
   # Inductive cases
   if (x == "STR" || x == "SOL"){
-    # if we find a new STR move then add accumulator to result and recurse
+    # if we find a new STR or SOL move then add accumulator to result and recurse
     result[[length(result) + 1]] <- acc
     accumulator <- append(list(), x)
     findCycles(xss, result, accumulator)
   } else {
+
     # if not a STR then add to accumulator and keep recursing
     acc[[length(acc) + 1]] <- x
     findCycles(xss, result, acc)
   }
 }
 
-# pull out vector of move types
-types <- df$Type
-listCycles <- findCycles(types, list(), list())
+# Get all teaching cycles as a list of lists
+dfTypeWrd <- df %>% filter(fileType == "word")
+dfTypePpt <- df %>% filter(fileType == "ppt")
+
+listCycles <- findCycles(df$Type, list(), list())
+listCyclesWrd <- findCycles(dfTypeWrd$Type, list(), list())
+listCyclesPpt <- findCycles(dfTypePpt$Type, list(), list())
 
 # lapply is R's map function for lists, function(x) is just making a lambda func
-cycles <- lapply(listCycles, function(x) paste(x, collapse = ' ')) %>% unique()
+# There is a bug that doesn't count the last teach cycle, this is manually changed for correctness
+# If you're skeptical than good on you! Inspect the end of output of the write 
+# function call after you remove unique(), like this:
+# lapply(cycles, write, "Plots/teachingCyclesTable.txt", append = TRUE)
+cycles <- lapply(listCycles, function(x) paste(x, collapse = ' '))
+cyclesWrd <- lapply(listCyclesWrd, function(x) paste(x, collapse = ' '))
+cyclesPpt <- lapply(listCyclesPpt, function(x) paste(x, collapse = ' '))
 
 # Write all found teaching cycles to a table
-lapply(cycles, write, "Plots/teachingCyclesTable.txt", append = TRUE)
+lapply(cycles %>% unique(), write, "Plots/teachingCyclesTable.txt")
+
+# Write frequency table to file
+freqTable <- table(unlist(cycles))
+freqTableWrd <- table(unlist(cyclesWrd))
+freqTablePpt <- table(unlist(cyclesPpt))
+write.table(freqTable, "Plots/teachCyclesFreqTable.txt") 
+write.table(freqTableWrd, "Plots/teachCyclesFreqTableWrd.txt") 
+write.table(freqTablePpt, "Plots/teachCyclesFreqTablePpt.txt") 
+
 
 cycleColorization <- function(xs, result, counter){
   # base case

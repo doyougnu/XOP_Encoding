@@ -1,0 +1,11 @@
+"Var1" "Freq"
+"1" "" 1
+"2" "SOL" 8
+"3" "SOL EXP" 3
+"4" "SOL EXP EXP EXP EXP" 1
+"5" "STR" 65
+"6" "STR EXP" 49
+"7" "STR EXP EXP" 13
+"8" "STR EXP EXP EXP" 2
+"9" "STR EXP EXP EXP EXP" 2
+"10" "STR EXP EXP EXP EXP EXP EXP" 1
