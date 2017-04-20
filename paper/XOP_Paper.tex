@@ -1,7 +1,7 @@
 \documentclass[conference]{IEEEtran}
 
 \usepackage{amsmath}
-
+\usepackage{cite}
 \usepackage{color}
 \usepackage{enumerate}
 \usepackage{multicol}
@@ -16,7 +16,7 @@
 \usepackage{dirtytalk}
 
 \usepackage{graphicx}
-\graphicspath{{../R/BellackTransTypology/Plots/}}
+\graphicspath{{../R/BellackTransTypology/Plots/},{./images/}}
 \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
 
 \usepackage{lambda}
@@ -75,6 +75,159 @@ explanations of how those results were computed.
 
 
 \section{Introduction}
+\label{sec:intro}
+
+Data structures and algorithms are at the heart of computer science and must be
+explained to each new generation of students. How can we do this effectively?
+
+
+In this paper, we're concerned largely with explanations as \emph{artifacts}
+that can be shared and reused. In the case of verbal explanations, such as a
+lecture, we're interested in the potentially reusable artifacts that support
+that explanation, such as slides.
+%
+The explanation artifacts associated with data structures and algorithms
+(hereafter just ``algorithms'') are interesting because they typically present
+a complex interaction among many different notations, including natural
+language, mathematics, pseudocode, executable code, various kinds of diagrams,
+animations, and more.
+
+
+Currently, such explanation artifacts are created ad hoc using a variety of
+tools and techniques, and the resulting explanations tend to be static,
+reducing their explanatory value.
+%
+Although there has been a substantial amount of work on algorithm
+visualization~\cite{Gloor92,Gloor98,HDS02,?}, and several tools exist to
+support creating these kinds of supporting artifacts, there is no good solution
+fore creating integrated, multi-notational explanations as a whole. Similarly,
+although some algorithm visualization tools provide a means for the student to
+tweak the parameters or inputs to the algorithm to generate new visualizations,
+they do not support creating cohesive interactive explanations that
+correspondingly modify the surrounding explanation or that allow the student to
+respond to or query the explanation in other ways.
+
+
+To fill this gap, we envision a \emph{domain-specific language} (DSL) that
+supports the creation of rich, interactive, multi-notational artifacts for
+explaining algorithms. 
+%
+The intended users of the DSL are CS educators who want to create
+\emph{interactive artifacts} to support the explanation of algorithms. We
+envision these users as experts on the corresponding data structures and
+algorithms, and also trained and skilled programmers. The produced explanation
+artifacts might supplement a lecture or be posted to a web page to supplement a
+textual explanation.
+%
+The DSL should support pedagogical methods directly (through built-in
+abstractions and language constructs). It should also support a variety of
+forms of student interaction, including ways to automatically generate variant
+explanations using parameterization or explanation equivalence laws, to
+directly build-in responses to anticipated questions, and to move between
+different levels of abstraction.
+
+
+This paper represents a formative step toward this vision. We conduct a
+qualitative analysis of our domain in order to determine the form and content
+of the explanation artifacts that educators are already creating. We base our
+analysis on an established pedagogical theory in order 
+
+In this paper, we conduct a qualitative analysis of our domain, in order to
+determine what kinds of explanation artifacts educators are already using, how
+educators explain algorithms and data structures, and how these artifacts could
+be improved on with more sophisticated tools (e.g.\ a DSL).
+
+
+
+\subsection{Why interactive explanation artifacts?}
+\label{sec:artifacts}
+
+From the student perspective, an ideal approach for explaining algorithms might
+be for a teacher to sit down with each student individually and provide a
+personal explanation of each algorithm. A good \emph{personal explanation} is
+useful because the explainer can \emph{respond} to the student, adjusting the
+pace and strategy as necessary. For example, the teacher can answer questions,
+rephrase parts of an explanation, and provide additional examples as needed.
+%
+Unfortunately, good personal explanations are a scarce resource. First, there
+are limited number of people who can provide high quality personal
+explanations. Second, a personal explanation is usually ephemeral and so cannot
+be directly shared or reused.
+
+
+Since personal explanations are hard to come by, many students learn algorithms
+through \emph{impersonal explanations}, such as recorded lectures, textbooks,
+and online written and graphical resources.
+%
+These impersonal explanations lack the interaction and adaptability of personal
+explanations, but have the significant advantage of being easy to massively
+share and reuse via libraries and the Internet.
+
+
+In-person lectures, such as those covering algorithms in most undergraduate
+computer science programs, exist at a midway point between impersonal and
+personal explanations, perhaps closer to the personal end of the spectrum.
+These \emph{classroom explanations} are adaptable---students can ask questions
+in class, the teacher can respond, and explanations can be adapted on the fly
+if students are confused---but they are not as adaptable as personal
+explanations since the teacher must accommodate many students at once.
+Classroom explanations are more efficient than personal explanations since they
+are shared amongst many students, but not as efficient as impersonal
+explanations since they are still ephemeral and so difficult to reuse.
+
+
+We target another midway point, a bit closer to the impersonal end of the
+spectrum, of rich, \emph{interactive explanation artifacts} that provide as
+much of the responsiveness and adaptability of personal explanations as
+possible, but which can still be massively shared and reused online. Such an
+explanation artifact would be quite expensive to produce with current tools
+since an \emph{explanation designer} must not only construct a high quality
+initial explanation and corresponding visualizations, but also anticipate and
+explicitly program in responses to queries by the student.
+
+
+% To help realize this vision, our medium-term goal is to design a
+% \emph{domain-specific language} (DSL) that supports the creation of interactive
+% explanation artifacts. This DSL is part of our larger effort to explore the
+% paradigm of \emph{explanation-oriented programming}
+
+
+\subsection{Algorithm visualization}
+\label{sec:vis}
+
+\todo{Algorithm visualizations target the same ``sweet spot'' we do but aren't
+comprehensive.}
+
+An \emph{algorithm visualization} is a graphical illustration, such as a
+sequence of diagrams or an animation, of how an algorithm executes on given
+inputs. As an example, consider the visualization in
+Fig.~\ref{fig:negative-dijkstra}.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\columnwidth]{VisDJK010-Clean}
+\caption{Example visualization of Dijkstra's algorithm failing on a graph with
+negative edge weights. This is a (redrawn) visualization extracted from one of
+the explanation artifacts in our data set (DJK010).}
+\label{fig:negative-dijkstra}
+\end{figure}
+
+
+
+\say{With few exceptions, we found that studies in which students merely viewed
+visualizations did not demonstrate significant learning advantages over
+students who used conventional learning materials.}
+%
+\cite{HDS02}.
+
+
+
+\subsection{Explanation-oriented programming}
+
+\emph{Explanation-oriented programming} (XOP) is a new programming paradigm
+where the primary output of a program is not a set of computed values, but an
+\emph{explanation of how} those values were computed. 
+
 
 Our high-level goal is to further develop the paradigm of explanation-oriented
 programming (XOP). In XOP, the primary output of a program is not a set of
@@ -87,18 +240,8 @@ queries. Additionally, the language should help guide the programmer toward the
 creation of \emph{good} explanations.
 
 As a step in this development, we aim to design and implement a domain-specific
-language (DSL) in the XOP paradigm to support computer science education. The
-intended users of the DSL are CS educators who want to create \emph{interactive
-artifacts} to support the explanation of data structures and algorithms to CS
-students. We envision these users as experts on the corresponding data
-structures and algorithms, and also trained and skilled programmers. The
-produced explanation artifacts might supplement a lecture or be posted to a web
-page to supplement a textual explanation.
+language (DSL) in the XOP paradigm to support computer science education. 
 
-In this paper, we conduct a qualitative analysis of our domain, in order to
-determine what kinds of explanation artifacts educators are already using, how
-educators explain algorithms and data structures, and how these artifacts could
-be improved on with more sophisticated tools (e.g.\ a DSL).
 
 \subsection{Typologies of Explanation}
 
@@ -125,10 +268,8 @@ between a lecturer and a pupil. We employ the typology to observe and catalog
 the teaching cycles in static explanatory documents created by universities and
 then show how such a typology forms the basis for a DSL.
 
-\subsection{Explanation Oriented Programming}
-\todo{intro for XOP}
-
 \subsection{Contributions}
+
 This paper makes the following contributions:
 %
 \begin{enumerate}[C1.]
