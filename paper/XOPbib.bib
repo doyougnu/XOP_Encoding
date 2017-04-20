@@ -1,121 +1,140 @@
+% Journals
 @string{JVLC  = {{Journal of Visual Languages and Computing (JVLC)}}}
 
+%Conferences 
+@string{VLHCC = {{IEEE Int.\ Symp.\ on Visual Languages and Human-Centric Computing (VL/HCC)}}}
+@string{SLE   = {{Int.\ Conf.\ on Software Language Engineering (SLE)}}}
+
+% Workshops
+% Series
+@string{LNCS  = {{LNCS}}}
+
 @inproceedings{Gloor92,
-  author = {Gloor, Peter A.},
-  title = {{AACE} -- Algorithm Animation for Computer Science Education},
+  author    = {Gloor, Peter A.},
+  title     = {{AACE} -- Algorithm Animation for Computer Science Education},
   booktitle = {{IEEE Workshop on Visual Languages}},
-  year = 1992,
-  pages = {25--31},
+  year      = 1992,
+  pages     = {25--31},
 }
 
 @incollection{Gloor97,
-  author = {Gloor, Peter},
-  title = {Animated Algorithms},
+  author    = {Gloor, Peter},
+  title     = {Animated Algorithms},
   bookTitle = {Elements of Hypermedia Design: Techniques for Navigation \& Visualization in Cyberspace},
-  year = 1997,
-  pages = {235--241},
+  year      = 1997,
+  pages     = {235--241},
   publisher = {Birkh{\"a}user},
-  address = {Boston},
+  address   = {Boston},
 }
 
 @article{HDS02,
-  author = {Hundhausen, Christopher D. and Douglas, Sarah A. and Stasko, John T.},
-  title = {A Meta-Study of Algorithm Visualization Effectiveness},
+  author  = {Hundhausen, Christopher D. and Douglas, Sarah A. and Stasko, John T.},
+  title   = {A Meta-Study of Algorithm Visualization Effectiveness},
   journal = JVLC,
-  year = 2002,
-  volume = 13,
-  pages = {259--290}
+  year    = 2002,
+  volume  = 13,
+  pages   = {259--290}
 }
 
+@inproceedings{EW11sle,
+  author    = {Erwig, Martin and Walkingshaw, Eric},
+  title     = {{Semantics First! Rethinking the Language Design Process}},
+  booktitle = SLE,
+  series    = LNCS,
+  volume    = 6940,
+  year      = 2011,
+  pages     = {243--262},
+  kind      = {Conference},
+  status    = {Appeared},
+  rate      = {44\%},
+  abstract  = {The design of languages is still more of an art than an engineering discipline. Although recently tools have been put forward to support the language design process, such as language workbenches, these have mostly focused on a syntactic view of languages. While these tools are quite helpful for the development of parsers and editors, they provide little support for the underlying design of the languages. In this paper we illustrate how to support the design of languages by focusing on their semantics first. Specifically, we will show that powerful and general language operators can be employed to adapt and grow sophisticated languages out of simple semantics concepts. We use Haskell as a metalanguage and will associate generic language concepts, such as semantics domains, with Haskell-specific ones, such as data types. We do this in a way that clearly distinguishes our approach to language design from the traditional syntax-oriented one. This will reveal some unexpected correlations, such as viewing type classes as language multipliers. We illustrate the viability of our approach with several real-world examples.},
+}
+
+
+% Books
 @book{bellack1966language,
-  title={The language of the classroom},
-  author={Bellack, Arno A and Smith, Frank L and Kliebard, Herbert M and Hyman, Ronald T},
-  year={1966},
-  publisher={JSTOR}
+  author    = {Bellack, Arno A and Smith, Frank L and Kliebard, Herbert M and Hyman, Ronald T},
+  title     = {The language of the classroom},
+  year      = {1966},
+  publisher = {JSTOR}
+}
+
+@book{brown1984explaining,
+  author     = {Brown, GA and Armstrong, S},
+  title      = {Explaining and explanations},
+  journal    = {Classroom Teaching Skills: The Research Findings of the Teacher Education Project},
+  pages      = {121},
+  year       = {1984},
+  publisher  = {Psychology Press}
 }
 
 @book{westbury1971research,
-  title={Research Into Classroom Processes: Recent Developments and Next Steps},
-  author={Westbury, I. and Bellack, A.A.},
-  chapter=9,
-  lccn={70170131},
-  series={Theory and research in teaching},
-  url={https://books.google.com/books?id=KegSQtuud7MC},
-  year={1971},
-  publisher={Teachers College Press}
+  author    = {Westbury, I. and Bellack, A.A.},
+  title     = {Research Into Classroom Processes: Recent Developments and Next Steps},
+  chapter   = {9},
+  lccn      = {70170131},
+  series    = {Theory and research in teaching},
+  url       = {https://books.google.com/books?id=KegSQtuud7MC},
+  year      = {1971},
+  publisher = {Teachers College Press}
 }
 
 @book{ nla.cat-vn407830,
-author = { Gage, N. L. },
-title = { Teacher effectiveness and teacher education; the search for a scientific basis, by N. L. Gage },
-isbn = { 0870151908 },
-publisher = { Pacific Books Palo Alto, Calif },
-pages = { 226 p. },
-year = { 1972 },
-type = { Book },
-language = { English },
-subjects = { Teachers -- Training of -- United States.; Education -- Research -- United States. },
-life-dates = { 1972 -  },
-catalogue-url = { http://nla.gov.au/nla.cat-vn407830 },
+  author        = {Gage, N. L.},
+  title         = {Teacher effectiveness and teacher education; the search for a scientific basis, by N. L. Gage},
+  isbn          = {0870151908},
+  publisher     = {Pacific Books Palo Alto, Calif},
+  pages         = {226 p.},
+  year          = {1972},
+  type          = {Book},
+  language      = {English},
+  subjects      = {Teachers -- Training of -- United States.; Education -- Research -- United States.},
+  life-dates    = {1972 - },
+  catalogue-url = {http://nla.gov.au/nla.cat-vn407830},
 }
 
 @book{smith1967language,
-  title={Language and concepts in education},
-  author={Smith, Bunnie Othanel and Ennis, Robert Hugh},
-  year={1967},
-  publisher={Rand McNally}
+  title     = {Language and concepts in education},
+  author    = {Smith, Bunnie Othanel and Ennis, Robert Hugh},
+  year      = {1967},
+  publisher = {Rand McNally}
 }
 
-@article{ennis1969logic,
-  title={Logic in teaching},
-  author={Ennis, Robert Hugh},
-  year={1969}
+@book{Ennis1969-ENNLIT,
+	author    = {Robert Hugh Ennis}
+	title     = {Logic in Teaching},
+	publisher = {Englewood Cliffs, N.J., Prentice-Hall},
+	year      = {1969},
 }
 
 @book{hyman1968teaching,
-  title={Teaching: Vantage points for study},
-  author={Hyman, Ronald T and Hyman, Ronald T},
-  year={1968},
-  publisher={Lippincott Philadelphia}
-}
-
-@article{rosenshine1968objectively,
-  title={Objectively measured behavioral predictors of effectiveness in explaining},
-  author={Rosenshine, Barak},
-  journal={Explorations of the Teacher's Effectiveness in Explaining, NL Gage et al., Technical Report},
-  number={4},
-  year={1968}
+  author    = {Hyman, Ronald T and Hyman, Ronald T},
+  title     = {Teaching: Vantage points for study},
+  year      = {1968},
+  publisher = {Lippincott Philadelphia}
 }
 
 @book{wittgenstein2010philosophical,
-  title={Philosophical investigations},
-  author={Wittgenstein, Ludwig},
-  year={2010},
-  publisher={John Wiley \& Sons}
+  title     = {Philosophical investigations},
+  author    = {Wittgenstein, Ludwig},
+  year      = {2010},
+  publisher = {John Wiley \& Sons}
 }
 
+% Articles 
+@article{rosenshine1968objectively,
+  author  = {Rosenshine, Barak},
+  title   = {Objectively measured behavioral predictors of effectiveness in explaining},
+  journal = {Explorations of the Teacher's Effectiveness in Explaining, NL Gage et al., Technical Report},
+  number  = {4},
+  year    = {1968}
+}
+
+% Other
 @online{Dplyr,
-  author = {Hadley Wickham},
-  title = {Introduction to Dplyr},
-  year = 2016,
-  url = {https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html},
+  author  = {Hadley Wickham},
+  title   = {Introduction to Dplyr},
+  year    = 2016,
+  url     = {https://cran.rstudio.com/web/packages/dplyr/vignettes/introduction.html},
   urldate = {2017-04-13}
-}
-
-@inproceedings{erwig2011semantics,
-  title={Semantics first!},
-  author={Erwig, Martin and Walkingshaw, Eric},
-  booktitle={International Conference on Software Language Engineering},
-  pages={243--262},
-  year={2011},
-  organization={Springer Berlin Heidelberg}
-}
-
-@article{brown1984explaining,
-  title={Explaining and explanations},
-  author={Brown, GA and Armstrong, S},
-  journal={Classroom Teaching Skills: The Research Findings of the Teacher Education Project},
-  pages={121},
-  year={1984},
-  publisher={Psychology Press}
 }
