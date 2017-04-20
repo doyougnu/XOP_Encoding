@@ -135,7 +135,7 @@ analysis on an established pedagogical theory in order
 In this paper, we conduct a qualitative analysis of our domain, in order to
 determine what kinds of explanation artifacts educators are already using, how
 educators explain algorithms and data structures, and how these artifacts could
-be improved on with more sophisticated tools (e.g.\ a DSL).
+be improved with more sophisticated tools (e.g.\ a DSL).
 
 
 
@@ -251,22 +251,22 @@ numerous ``coding systems'', known as \emph{typologies of
   explanation}~\cite{westbury1971research, nla.cat-vn407830,
   rosenshine1968objectively, hyman1968teaching, ennis1969logic,
   smith1967language, bellack1966language}. Typically, typologies are employed to
-quantify methods of teaching, and thus can vary widely to suite the problem at
-hand.
+quantify methods of teaching, and thus can vary widely to suit the problem 
+domain.
 
-We translate one such Typology, created by Bellack et
+We translate one such typology, created by Bellack et
 al.\cite{bellack1966language} to explore patterns of explanation in static
 explanatory objects, such as slideshow presentations and lecture notes. The
 typology at hand was designed for exploring patterns of explanation that occur
 in the discourse between a pupil and lecturer in a classroom setting. The
-Typology's basic conceptual unit is called a \emph{pedagogical move}, which
+typology's basic conceptual unit is called a \emph{pedagogical move}, which
 represents a single step in the explanatory process. A series of cyclic
 pedagogical moves constitute a \emph{teaching cycle}. Teaching cycles identify
 \emph{how} a topic is being explained in a lecture. In general one can think of
 them as representing the structure, cadence, and substance of a discourse
 between a lecturer and a pupil. We employ the typology to observe and catalog
 the teaching cycles in static explanatory documents created by universities and
-then show how such a typology forms the basis for a DSL.
+then show how such a typology can form the basis for a DSL.
 
 \subsection{Contributions}
 
@@ -276,7 +276,7 @@ This paper makes the following contributions:
 
 \item \label{contrib:codes}
 %
-We extend Bellack's system for analyzing \emph{explanation activities} in the
+We extend Bellack's typology for analyzing \emph{explanation activities} in the
 form of classroom discourse to support analyzing \emph{explanation artifacts}
 in the form of lecture notes and slides.
 
@@ -637,8 +637,7 @@ even in an unmodified typology.
     \end{enumerate}
   \end{enumerate}
 
-The modifications made to Bellack et al's typology are orthogonal to the
-original. While we did remove the last three categories, one could easily
+While the last three categories were removed, one could easily
 imagine these being included and merely coded as $\bot$ or (NOC) in the original
 typology. Any discussion of instructional material that was observed during
 encoding was not considered and is not present in the data.
@@ -739,12 +738,12 @@ document considered e.g. an index of 1 means that move happened immediately, and
 sequentially, after the move indexed at 0. 
 
 \section{Results}
-In this section we present the method of data collection, the nature of the
-data, and the criteria used to select explanatory objects. We then proceed to
-present our findings. We make two major observations from the data: First,
+In this section we present our findings. We make two major observations from the data: First,
 we observe the presence of teaching cycles in static explanatory objects.
 Secondly, we observe that the present typology's shortcomings are a limiting
-factor to a more thorough investigation of explanatory objects.
+factor to a more thorough investigation of explanatory objects. Third,
+document type appears to be a correlative factor to the nature and type of
+teaching cycles.
 
 
 \subsection{Teaching Cycles}
@@ -757,10 +756,11 @@ Each dot represents a single pedagogical move. The y-axis is faceted to display
 the Type of Move for each coded document. For example ``AVL001'', the first
 coded document for AVL Trees, has 3 types of pedagogical moves: STR, SOL, EXP.
 One may also observe that this document has 4 different types of teaching cycles
-viz. ``STR EXP SOL'', ``STR'', ``STR EXP'' and ``STR \emph{EXP}''.
+viz. ``STR EXP SOL'', ``STR'', ``STR EXP'' and ``STR \emph{EXP}''. Documents
+indexed 1 -- 5, inclusive correspond to power point documents, documents index 6
+-- 10, correspond to lecture notes documents (word, html, or pdf).
 
-
-Due to modifications to Bellack et al's typology we observe todo{XX} types
+Due to modifications to Bellack et al's typology we observe six types
 teaching cycles for static explanatory objects. These are shown in the table in
 Fig.~\ref{fig:cycles-table}.
 
@@ -768,20 +768,29 @@ Fig.~\ref{fig:cycles-table}.
 % \newcommand{\Freq}[1]{\ensuremath{\text{Freq}_\text{#1}}}
 \newcommand{\Freq}[1]{\ensuremath{\text{Freq}_\text{#1}}}
 
-% should we include NOC in the results?
+% Don't know how you want to format this, perhaps we make a bar graph?
+\todo{determine the formatting of this table, do we want to show totals?}
 \begin{figure}
 \centering\footnotesize
 \begin{tabular}{r|r|l}
 \multicolumn{2}{c}{Frequency} & \\
-\multicolumn{1}{c}{Slides}
+\multicolumn{1}{c}{File Type}
   & \multicolumn{1}{c}{Notes}
   & \multicolumn{1}{l}{Teaching cycle} \\ \hline
-& 87  & STR \\
-& 18  & SOL \\
-& 126 & STR EXP \\
-& 49  & STR EXP \ldots \\
-& 4   & SOL EXP \\
-& 1   & SOL EXP \ldots \\
+ppt & 65  & STR \\
+ppt & 8   & SOL \\
+ppt & 49  & STR EXP \\
+ppt & 19  & STR EXP \ldots \\
+ppt & 3   & SOL EXP \\
+ppt & 1   & SOL EXP \ldots \\
+% total teach cycle ppt observations: 145
+word & 21 & STR \\
+word & 10  & SOL \\
+word & 78 & STR EXP \\
+word & 31  & STR EXP \ldots \\
+word & 1   & SOL EXP \\
+word & 0   & SOL EXP \ldots \\
+% total teach cycle ppt observations: 141
 \end{tabular}
 \caption{Type and frequency of teaching cycles in explanation artifacts.}
 \label{fig:cycles-table}
@@ -789,22 +798,27 @@ Fig.~\ref{fig:cycles-table}.
 
 \section{Discussion and Results}
 In this section we summarize and interpret the results presented above. To
-ensure transparency and openness, the reader may find all raw results published
-online \todo{make repo holding raw results and R code}.
+ensure transparency and openness, the reader may find all raw results, and any
+post-processing scripts published online \todo{make repo holding raw results and
+  R code}.
 
 \subsection{Observed Teaching Cycles}
-As shown in Figure 1, and listed in Table 1, we observe several types of
-teaching cycles. Explanations in static documents adhere to a general pattern of
-an introductory structuring (STR) move, followed by either a expositing (EXP).
-Very rarely an explanation takes the form of teaching cycle that begins with a
-soliciting (SOL) move. Some cycles were \emph{atomic} in that they were isolated
-to a single pedagogical move. These cycles are coded as a single STR move and
-are synonymous with a single EXP move i.e. the document sets the context for an
+As shown in Fig.~\ref{fig:cycles-plot}, and listed in
+Fig.~\ref{fig:cycles-table}, we observe several types of teaching cycles.
+Explanations in static documents adhere to a general pattern of an introductory
+structuring (STR) move, followed by either a expositing (EXP). Very rarely an
+explanation takes the form of teaching cycle that begins with a soliciting (SOL)
+move. Some cycles were \emph{atomic} in that they were isolated to a single
+pedagogical move. These cycles are coded as a single STR or SOL move and are
+synonymous with a single EXP move i.e. the document sets the context for an
 explanation and then concludes the explanation within one \emph{unit} of the
-document viz. a single slide for power point documents, or a single paragraph
+document viz. a single slide for power point documents, or a single statement
 for lecture notes. It is unsurprising that such atomic moves are observed with
-more frequency in power point presentations than lecture notes. \todo{verify
-  this claim after encoding lecture notes}
+more frequency in power point presentations than lecture notes, given the
+mediums form. The majority of STR EXP moves come from word or html (lecture
+note) documents. Again, this is an anticipated result, as one would expect
+explanations in these documents to make more short moves that correspond to a
+single paragraph of thought or explanation.
 
 \subsection{Observed Typological Deficiencies}
 Of particular note in our data is the \emph{absence} of any teaching cycle which
@@ -831,7 +845,59 @@ Explanation-Oriented DSL. One which would allow a static document \emph{to
 paper serves as a scaffold or paradigm from which to design such a DSL in a
 semantics-first \cite{erwig2011semantics} manner.
 
+\subsection{Observations While Encoding}
+In general, the better structured the explanatory artifact, the easier it was to
+encode. This observation is also represented in the data, namely in the number
+of \emph{atomic} teaching cycles observed in a document. Documents which tend to
+have a high amount of atomic teach cycles were more difficult to encode, while
+documents that have a organizing internal structure were perceived to be easier.
+Whether there is any pedagogical difference between the two, or if this is just
+an artifact of a single coder, or an artifact of the typology, is outside the
+scope of this paper, but the fact that such patterns were observed does comport
+with Bellack et al.'s results. To be specific:
+
+\say{With respect to the percentages of pedagogical moves, there seems to be
+  little to differentiate the two groups --- with the exception, perhaps, of the
+percentages of structuring moves. The range for the three classes judged
+significantly high is very restricted (4.1 per cent to 5.2 per cent), but the
+group judged significantly low includes both extremes of the range for all 15
+classes (1.2 per cent and 13.2 per cent). This suggests that there may be an
+optimum frequency for the use of the structuring move by the teacher as a way of
+launching interaction between teacher and pupils and as a means of introducing
+subject matter.}
+
 \subsection{Applications to a DSL}
+An interactive DSL constructed in an XOP paradigm requires support for multiple
+and varied notations, types of explanations, and different pacing of material,
+all at the request or specification of the user. A typology of explanation can
+serve as the basis, the backbone, of such a DSL by organizing the semantics of
+the DSL into defined concepts. The modified typology presented in this paper, we
+believe, serves as such an organizing tool. In our view, it forms the basis of
+the semantics for the DSL.
+
+\subsubsection{The Usefulness of a Typology}
+A DSL designed with the modified typology given above will have, as its
+fundamental conceptual unit, a pedagogical move. Much like a DSL for displaying
+graphics might have as its conceptual unit a Pixel. An explanation is then the
+sequential composition of pedagogical moves into teaching cycles, that lead the
+user from non-understanding, to understanding. The modified typology is
+pragmatic for this domain \emph{because} of its level of abstraction. Each move
+would be coded according to the counterpart categories in the typology. Thus,
+the explanation for mergesort may require 15 moves, 5 teaching cycles. The
+initiatory moves would be of a form ``STR/BKG/XPL'' or perhaps ``STR/MOT/VIS'',
+meaning that the explanation would begin with a structuring move in which the
+background of mergesort is explained, or a structuring move where the motivation
+for mergesort is given visually. The typological pedagogical moves therefore
+structure the semantics of the DSL by describing \emph{what this move needs to
+  accomplish and how}. It is because of the level of abstraction in the codes
+that concrete, detailed aspects of explanations, like notation, or cadence
+become liquid i.e. they become easy to change. Thus, by designing around a
+typology of explanation, one ensures that the DSL has a defined structure, but
+is extensible and not constrained by the design.
+
+\subsubsection{Dealing with Cadence}
+Cadence in such a DSL could be supported through the fourth category of the
+\subsubsection{Dealing with Notations}
 
 
 \section{Related Work} \label{rw}
@@ -842,8 +908,8 @@ typologies from pedagogy scholarship.
 Pedagogic theory has many examples of typologies of explanation which are not
 presented here. We adapt Bellack et al's because it is designed with the same
 motivating research questions in mind as this work, namely quantifying
-real-world examples of explanations. It also is \emph{computational} in nature,
-it adheres to strict semantics and is rigorously, mathematically, defined.
+real-world examples of explanations. It also is \emph{computational} in nature
+--- it adheres to a strict semantics and is rigorously, mathematically, defined.
 In this section, we will briefly review alternative typologies and state our
 reasons for not adapting them.
 
@@ -868,7 +934,7 @@ Roshenshine's\cite{rosenshine1968objectively} typology is generated through a
 review of thirty lectures and the results of a user study. It's stated purpose
 is to:
 
-\say{objectively measured teaching behaviors that discriminate between more and
+\say{objectively measure teaching behaviors that discriminate between more and
   less successful explanations of social studies material}. 
 
 Rosenshine develops the grammar of terms based on a literature review of four
