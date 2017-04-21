@@ -249,23 +249,24 @@ language (DSL) in the XOP paradigm to support computer science education.
 
 \subsection{Our Approach}
 The method presented in this paper is to harvest conceptual tools from the
-pedagogic scholarship, called \emph{typologies of explanation}. With these tools in hand we analyze static explanatory
-artifacts, whose purpose is to explain one of three common CS algorithms or data
-structures: Dijkstra's algorithm, merge sort, and AVL Trees. We show that useful
-conceptual units identified in the pedagogic literature are observed in
-real-world explanations of these algorithms, and then posit that by forming a
-DSL around these conceptual tools, an explanation designer will have several
-advantages in constructing explanations over previous approaches. These
-advantages are: 1) An explanation designer could use the conceptual tools we
-specify to ``harvest'' explanations in the wild and create a one-to-one
-correspondence to an explanation they would like to design. 2) By building a DSL
-around these conceptual tools the semantics of an explanation becomes clear and
-focused in a way that was not possible prior. 3) A DSL built in such a manner
-would have well placed ``holes'' in its design to accommodate varied
-interactions between user and system, and varied forms of notation, available
-upon request. Lastly, A DSL designed according to the method presented here
-would not sacrifice an important property of impersonal explanations, namely
-that the user may rewind, forward, or re-watch as many times as necessary.
+pedagogic scholarship, called \emph{typologies of explanation}. With these tools
+in hand we analyze static explanatory artifacts, whose purpose is to explain one
+of three common CS algorithms or data structures: Dijkstra's algorithm, merge
+sort, and AVL Trees. We show that useful conceptual units identified in the
+pedagogic literature are observed in real-world explanations of these
+algorithms, and then posit that by forming a DSL around these conceptual tools,
+an explanation designer will have several advantages in constructing
+explanations over previous approaches. \todo{review this and explicitly add to contributions?}These advantages are: 1) An explanation
+designer could use the conceptual tools we specify to ``harvest'' explanations
+in the wild and create a one-to-one correspondence to an explanation they would
+like to design. 2) By building a DSL around these conceptual tools the semantics
+of an explanation becomes clear and focused in a way that was not possible
+prior. 3) A DSL built in such a manner would have well placed ``holes'' in its
+design to accommodate varied interactions between user and system, and varied
+forms of notation, available upon request. Lastly, A DSL designed according to
+the method presented here would not sacrifice an important property of
+impersonal explanations, namely that the user may rewind, forward, or re-watch
+as many times as necessary.
 
 
 \subsection{Typologies of Explanation}
@@ -310,7 +311,7 @@ in the form of lecture notes and slides.
 We provide a coded qualitative data set of explanation artifacts, using the
 system defined in \ref{contrib:codes}. The data set consists of 30
 explanations, ten explanations per algorithm and five explanations per algorithm
-per document type. For example, there are 10 documents on Dijkstra's shortest
+per document type. Hence, there are 10 documents on Dijkstra's shortest
 path algorithm with five of those ten being power point documents and the other
 five being lecture notes. All samples were collected from the internet, see
 \url{https://github.com/lambda-land/XOPTypology_Paper} for list of all sources
@@ -325,10 +326,18 @@ system, such as \emph{teaching cycles}.
 
 \item \label{contrib:valid}
 %
-We analyze the data set and observe that \todo{something about one-sided
-discussion, hopefully some other insights that are relevant to designing a
-DSL}.
+We analyze the data set and observe that of the teaching cycles identified, none
+had reacting or responding pedagogical moves. While containing explanatory
+value, static documents therefore do not conform to the basic premise of Bellack's
+typology, that is, that explanations between individuals form a \emph{language
+  game}. Thus, static documents, of the kind analyzed here treat the user as a
+one-sided sink of information with no recourse for query or response, thereby
+mitigating their explanatory throughput.
 
+\item \label{contrib:dsl}
+ %
+We provide an explanation for integrating Bellack et al.'s theory into a DSL and
+identify several advantages such a DSL might have vis-a-vis traditional methods. 
 \end{enumerate}
 
 \section{Background}
