@@ -1,6 +1,6 @@
 \documentclass[conference]{IEEEtran}
 
-\usepackage{amsmath}
+\usepackage{amsmath,amssymb}
 \usepackage{cite}
 \usepackage{color}
 \usepackage{enumerate}
@@ -119,79 +119,49 @@ respond to or query the explanation in other ways.
 
 To fill this gap, we envision a \emph{domain-specific language} (DSL) that
 supports the creation of rich, interactive, multi-notational artifacts for
-explaining algorithms. 
+explaining algorithms.
 %
-The intended users of the DSL are CS educators who want to create
-\emph{interactive artifacts} to support the explanation of algorithms. We
-envision these users as experts on the corresponding data structures and
-algorithms, and also trained and skilled programmers. The produced explanation
-artifacts might supplement a lecture or be posted to a web page as a
-self-contained (textual and graphical) explanation.
+The development of this DSL is part of a larger effort to explore the new
+paradigm of \emph{explanation-oriented programming}, briefly described in
+Section~\ref{sec:back:xop}.
+
+
+The intended users of the envisioned DSL are CS educators who want to create
+\emph{interactive artifacts} to support the explanation of algorithms. These
+users are experts on the corresponding algorithms, and also trained and skilled
+programmers. The produced explanation artifacts might supplement a lecture or
+be posted to a web page as a self-contained (textual and graphical)
+explanation.
 %
 The DSL should support pedagogical methods directly through built-in
 abstractions and language constructs. It should also support a variety of forms
-of student interaction, including ways to automatically generate variant
-explanations using parameterization and equivalence laws, to build in responses
-to anticipated questions, and to move between different levels of abstraction.
+of student interaction. For example, teachers should be able to define
+equivalence relations enabling users to automatically generate variant
+explanations~\cite{EW13jvlc}, to build in specific responses to anticipated
+questions, and to provide explanations at multiple levels of abstraction.
 
 
 This paper represents a formative step toward this vision. We conduct a
 \emph{qualitative analysis} of our domain in order to determine the form and
-content of the explanation artifacts that educators are already creating. We
-base our analysis on an established pedagogical theory in order to better
+content of the explanation artifacts that educators are already creating.
+%
+We base our analysis on an established pedagogical theory in order to better
 understand how well existing artifacts support the pedagogical process of
 explaining a complex topic.
 
 
-\subsection{Our Approach}
+More specifically, we collect 30 explanation artifacts from the internet,
+consisting of slide decks and lecture notes that explain two algorithms and one
+data structure commonly covered in undergraduate computer science courses:
+Dijkstra's shortest path algorithm~\cite[pp.~137--142]{KT05}, merge sort
+\cite[210--214]{KT05}, and AVL trees \cite[?]{?}.
+%
+We analyze these artifacts by applying a classic pedagogical theory by Bellack
+et al.~\cite{bellack1966language} that describes the patterns of language used
+in the process of teaching. Bellack et al.\ define a typology for coding
+transcripts of teacher and student verbalizations during teaching. An overview
+of the typology is given in Section~\ref{sec:back:typ}.
 
-The method presented in this paper is to harvest conceptual tools from the
-pedagogic scholarship, called \emph{typologies of explanation}. With these tools
-in hand we analyze static explanatory artifacts, whose purpose is to explain one
-of three common CS algorithms or data structures: Dijkstra's algorithm, merge
-sort, and AVL Trees. We show that useful conceptual units identified in the
-pedagogic literature are observed in real-world explanations of these
-algorithms, and then posit that by forming a DSL around these conceptual tools,
-an explanation designer will have several advantages in constructing
-explanations over previous approaches. \todo{review this and explicitly add to contributions?}These advantages are: 1) An explanation
-designer could use the conceptual tools we specify to ``harvest'' explanations
-in the wild and create a one-to-one correspondence to an explanation they would
-like to design. 2) By building a DSL around these conceptual tools the semantics
-of an explanation becomes clear and focused in a way that was not possible
-prior. 3) A DSL built in such a manner would have well placed ``holes'' in its
-design to accommodate varied interactions between user and system, and varied
-forms of notation, available upon request. Lastly, A DSL designed according to
-the method presented here would not sacrifice an important property of
-impersonal explanations, namely that the user may rewind, forward, or re-watch
-as many times as necessary.
-
-
-\subsection{Typologies of Explanation}
-
-% This is bad, needs to be rewritten, ick I don't like it
-Empirical branches of pedagogic theory have created, deployed, and analyzed
-numerous ``coding systems'', known as \emph{typologies of
-  explanation}~\cite{westbury1971research, nla.cat-vn407830,
-  rosenshine1968objectively, hyman1968teaching, Ennis1969-ENNLIT,
-  smith1967language, bellack1966language}. Typically, typologies are employed to
-quantify methods of teaching, and thus can vary widely to suit the problem 
-domain.
-
-We translate one such typology, created by Bellack et
-al.\cite{bellack1966language} to explore patterns of explanation in static
-explanatory objects, such as slideshow presentations and lecture notes. The
-typology at hand was designed for exploring patterns of explanation that occur
-in the discourse between a pupil and lecturer in a classroom setting. The
-typology's basic conceptual unit is called a \emph{pedagogical move}, which
-represents a single step in the explanatory process. A series of cyclic
-pedagogical moves constitute a \emph{teaching cycle}. Teaching cycles identify
-\emph{how} a topic is being explained in a lecture. In general one can think of
-them as representing the structure, cadence, and substance of a discourse
-between a lecturer and a pupil. We employ the typology to observe and catalog
-the teaching cycles in static explanatory documents created by universities and
-then show how such a typology can form the basis for a DSL.
-
-\subsection{Contributions}
 
 This paper makes the following contributions:
 %
@@ -199,43 +169,98 @@ This paper makes the following contributions:
 
 \item \label{contrib:codes}
 %
-We extend Bellack's typology for analyzing \emph{explanation activities} in the
-form of classroom discourse to support analyzing \emph{explanation artifacts}
-in the form of lecture notes and slides.
+We adapt Bellack et al.'s typology for analyzing \emph{explanation activities}
+in the form of classroom discourse to support analyzing \emph{explanation
+artifacts} for algorithms in the form of lecture notes and slides
+(Section~\ref{sec:exp:typ}).
 
 \item \label{contrib:data}
 %
 We provide a coded qualitative data set of explanation artifacts, using the
-system defined in \ref{contrib:codes}. The data set consists of 30
-explanations, ten explanations per algorithm and five explanations per algorithm
-per document type. Hence, there are 10 documents on Dijkstra's shortest
-path algorithm with five of those ten being power point documents and the other
-five being lecture notes. All samples were collected from the internet, see
-\url{https://github.com/lambda-land/XOPTypology_Paper} for list of all sources
-by algorithm. 
+system defined in C\ref{contrib:codes} applied to our sample of 30 collected
+explanation artifacts (Section~\ref{sec:exp:data}).
 
 \item \label{contrib:valid}
 %
-We provide evidence that our adaptation of Bellack's system to explanation
-artifacts is sound since we can identify high-level patterns in artifacts
-consistent with patterns in explanation activities coded in the original
-system, such as \emph{teaching cycles}.
+We note that conceptual units called \emph{teaching cycles}, described in the
+pedagogy literature, can be observed in the collected artifacts. This suggests
+that the adaptation of Bellack's system to artifacts is valid and that similar
+teaching strategies are used in explanation artifacts as in verbal explanations
+(Section~\ref{sec:res:cycles}).
 
-\item \label{contrib:valid}
+\item \label{contrib:analysis}
 %
-We analyze the data set and observe that of the teaching cycles identified, none
-had reacting or responding pedagogical moves. While containing explanatory
-value, static documents therefore do not conform to the basic premise of Bellack's
-typology, that is, that explanations between individuals form a \emph{language
-  game}. Thus, static documents, of the kind analyzed here treat the user as a
-one-sided sink of information with no recourse for query or response, thereby
-mitigating their explanatory throughput.
+We further analyze the data set to motivate the need for a DSL and to extract
+insights that will be useful for the design of such a DSL
+(Section~\ref{sec:res:analysis}). For example, we note that the artifacts do
+not include any steps coded with the \emph{reacting} or \emph{responding}
+pedagogical moves defined by Bellack et al.'s typology, reflecting the fact
+that static artifacts treat the learner as an information sink with no recourse
+for query or response.
 
 \item \label{contrib:dsl}
- %
-We provide an explanation for integrating Bellack et al.'s theory into a DSL and
-identify several advantages such a DSL might have vis-a-vis traditional methods. 
+%
+We describe how Bellack et al.'s theory can directly provide a semantics basis
+for a DSL and argue for the advantages of such an approach (Section~\ref{sec:res:dsl}).
+%
 \end{enumerate}
+
+\noindent
+%
+In Section~\ref{sec:rw} we discuss related work in the areas of algorithm
+visualization and argue that visualization alone is an insufficient form of
+explanation artifact; we also provide an overview of other typologies of
+explanations and discuss why we chose Bellack et al.'s typology over these
+alternatives.
+
+
+% We show that useful conceptual units identified in the pedagogic literature are
+% observed in real-world explanations of these algorithms, and then posit that by
+% forming a DSL around these conceptual tools, an explanation designer will have
+% several advantages in constructing explanations over previous approaches.
+% %
+% These advantages are:
+% %
+% 1) An explanation designer could use the conceptual tools we specify to
+% ``harvest'' explanations in the wild and create a one-to-one correspondence to
+% an explanation they would like to design.
+% %
+% 2) By building a DSL around these conceptual tools the semantics of an
+% explanation becomes clear and focused in a way that was not possible prior.
+% %
+% 3) A DSL built in such a manner would have well placed ``holes'' in its design
+% to accommodate varied interactions between user and system, and varied forms of
+% notation, available upon request.
+% %
+% Lastly, A DSL designed according to the method presented here would not
+% sacrifice an important property of impersonal explanations, namely that the
+% user may rewind, forward, or re-watch as many times as necessary.
+
+
+% \subsection{Typologies of Explanation}
+% 
+% % This is bad, needs to be rewritten, ick I don't like it
+% Empirical branches of pedagogic theory have created, deployed, and analyzed
+% numerous ``coding systems'', known as \emph{typologies of
+%   explanation}~\cite{westbury1971research, nla.cat-vn407830,
+%   rosenshine1968objectively, hyman1968teaching, Ennis1969-ENNLIT,
+%   smith1967language, bellack1966language}. Typically, typologies are employed to
+% quantify methods of teaching, and thus can vary widely to suit the problem 
+% domain.
+% 
+% We translate one such typology, created by Bellack et
+% al.\cite{bellack1966language} to explore patterns of explanation in static
+% explanatory objects, such as slideshow presentations and lecture notes. The
+% typology at hand was designed for exploring patterns of explanation that occur
+% in the discourse between a pupil and lecturer in a classroom setting. The
+% typology's basic conceptual unit is called a \emph{pedagogical move}, which
+% represents a single step in the explanatory process. A series of cyclic
+% pedagogical moves constitute a \emph{teaching cycle}. Teaching cycles identify
+% \emph{how} a topic is being explained in a lecture. In general one can think of
+% them as representing the structure, cadence, and substance of a discourse
+% between a lecturer and a pupil. We employ the typology to observe and catalog
+% the teaching cycles in static explanatory documents created by universities and
+% then show how such a typology can form the basis for a DSL.
 
 
 \section{Background}
@@ -314,7 +339,7 @@ language (DSL) in the XOP paradigm to support computer science education.
 
 
 \subsection{A Typology of Explanation}
-\label{sec:back:typology}
+\label{sec:back:typ}
 
 In this section we present an overview of Bellack et al's typology. We describe
 its philosophical foundations, its basic unit of analysis --- the
@@ -522,6 +547,8 @@ typologies of explanation from the pedagogic literature and our reasons for not
 adapting them to this work. 
 
 \subsection{A Typology for Static Explanatory Artifacts}
+\label{sec:exp:typ}
+
 We make two kinds of changes to adapt Bellack et al's typology to static
 explanatory documents. The first kind is an addition of terms to the typology
 that enable the typology to be applied to static documents. Without these additions,
@@ -656,6 +683,8 @@ explanation. Connected sequences of dots represent a teaching cycle.}
 \end{figure*}
 
 \subsection{The Data}
+\label{sec:exp:data}
+
 We restrict the scope of data collection to include only objects that provide an
 explanation of common computer science algorithms from computer
 science departments at accredited universities. Restricting the scope of objects
@@ -690,7 +719,15 @@ a move was encoded in relation to each document considered e.g. an index of 1
 means that move happened immediately, and sequentially, after the move indexed
 at 0.
 
+% explanations, ten explanations per algorithm and five explanations per algorithm
+% per document type. Hence, there are 10 documents on Dijkstra's shortest
+% path algorithm with five of those ten being power point documents and the other
+% five being lecture notes. All samples were collected from the internet, see
+% \url{https://github.com/lambda-land/XOPTypology_Paper} for list of all sources
+% by algorithm. 
+
 \section{Results}
+
 In this section we present our findings. We make three major observations from
 the data: First, we observe the presence of teaching cycles in static
 explanatory objects. Secondly, we observe that the present typology's
@@ -700,6 +737,8 @@ the nature and type of teaching cycles.
 
 
 \subsection{Teaching Cycles}
+\label{sec:res:cycles}
+
 To graphically observe, and represent, teaching cycles we form a dot plot for
 each coded document, with lines connecting pedagogical moves that make up the
 teaching cycle, as shown in Fig.~\ref{fig:cycles-plot}.
@@ -942,7 +981,7 @@ simplistic\cite{shaffer2010algorithm} \todo{this may be another contribution,
   the DSL as a platform for cataloging Algorithm visualizations via a library system}
 
 \subsection{Other Typologies of Explanation}
-\label{sec:rw:typology}
+\label{sec:rw:typ}
 
 Pedagogic theory has many examples of typologies of explanation which are not
 presented here \cite{Smith1970-SMIASO-13, smith1967language, hyman1968teaching, swift1961explanation} . We adapt Bellack et al's because it is designed with the same
@@ -999,7 +1038,7 @@ The conclusion goes here.
 
 The authors would like to thank...
 
-\bibliography{XOPbib.bib}
+\bibliography{XOPbib.bib,eric.bib}
 \bibliographystyle{abbrv}
 
 \end{document}
