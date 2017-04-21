@@ -62,7 +62,7 @@
 Explanations of data structures and algorithms are complex interactions of
 several notations, including natural language, mathematics, pseudocode, and
 diagrams. Currently, such explanations are created ad hoc using a variety of
-tools, and the resulting artifacts are static reducing explanatory value. We
+tools, and the resulting artifacts are static, reducing explanatory value. We
 envision a domain-specific language for developing rich, interactive
 explanations of data structures and algorithms. In this paper, we analyze this
 domain to sketch requirements for our language. We build on an existing
@@ -105,7 +105,7 @@ reducing their explanatory value.
 Although there has been a substantial amount of work on algorithm
 visualization~\cite{Gloor92,Gloor97,HDS02,?}, and several tools exist to
 support creating these kinds of supporting artifacts, there is no good solution
-fore creating integrated, multi-notational explanations as a whole. Similarly,
+for creating integrated, multi-notational explanations as a whole. Similarly,
 although some algorithm visualization tools provide a means for the student to
 tweak the parameters or inputs to the algorithm to generate new visualizations,
 they do not support creating cohesive interactive explanations that
@@ -178,7 +178,7 @@ if students are confused---but they are not as adaptable as personal
 explanations since the teacher must accommodate many students at once.
 Classroom explanations are more efficient than personal explanations since they
 are shared amongst many students, but not as efficient as impersonal
-explanations since they are still ephemeral and so difficult to reuse.
+explanations since they are still ephemeral and therefore difficult to reuse.
 
 
 We target another midway point, a bit closer to the impersonal end of the
@@ -218,7 +218,7 @@ the explanation artifacts in our data set (DJK010).}
 \end{figure}
 
 
-
+\todo{finish this paragraph}
 \say{With few exceptions, we found that studies in which students merely viewed
 visualizations did not demonstrate significant learning advantages over
 students who used conventional learning materials.}
@@ -246,6 +246,26 @@ creation of \emph{good} explanations.
 
 As a step in this development, we aim to design and implement a domain-specific
 language (DSL) in the XOP paradigm to support computer science education. 
+
+\subsection{Our Approach}
+The method presented in this paper is to harvest conceptual tools from the
+pedagogic scholarship. With these tools in hand we analyze static explanatory
+artifacts, whose purpose is to explain one of three common CS algorithms or data
+structures: Dijkstra's algorithm, merge sort, and AVL Trees. We show that useful
+conceptual units identified in the pedagogic literature are observed in
+real-world explanations of these algorithms, and then posit that by forming a
+DSL around these conceptual tools, an explanation designer will have several
+advantages in constructing explanations over previous approaches. These
+advantages are: 1) An explanation designer could use the conceptual tools we
+specify to ``harvest'' explanations in the wild and create a one-to-one
+correspondence to an explanation they would like to design. 2) By building a DSL
+around these conceptual tools the semantics of an explanation becomes clear and
+focused in a way that was not possible prior. 3) A DSL built in such a manner
+would have well placed ``holes'' in its design to accommodate varied
+interactions between user and system, and varied forms of notation, available
+upon request. Lastly, A DSL designed according to the method presented here
+would not sacrifice an important property of impersonal explanations, namely
+that the user may rewind, forward, or re-watch as many times as necessary.
 
 
 \subsection{Typologies of Explanation}
