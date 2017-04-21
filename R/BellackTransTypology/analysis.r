@@ -6,7 +6,7 @@ library(gridExtra)
 library(ggmosaic)
 
 # Change this to the appropriate directory if you're going to run this script
-setwd("/home/doyougnu/Research/XOP/XOP_Encoding/R/BellackTransTypology")
+## setwd("/home/doyougnu/Research/XOP/XOP_Encoding/R/BellackTransTypology")
 
 ############################### Data Munging ###################################
 # read in each data table
@@ -192,10 +192,9 @@ ggsave(file = "Plots/singleDjkCycle.png", width = 7, height = 5)
 # Cycles plot with ppt and wrd combined
 teachCyclesPltCombined <- ggplot(df, aes(y = Type
                                , x = index
-                               , colour = typeColor
                                , group = typeColor)) +
-  geom_point(aes(size = 2)) +
-  geom_line(aes(colour = typeColor, size = 1.5)) +
+  geom_point(aes(size = 4)) +
+  geom_line() +
   facet_grid(docNum ~ Algorithm
            , switch = "y"
            , scales = "free_x"
