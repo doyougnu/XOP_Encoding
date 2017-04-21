@@ -86,31 +86,33 @@ Data structures and algorithms are at the heart of computer science and must be
 explained to each new generation of students. How can we do this effectively?
 
 
-In this paper, we're concerned largely with explanations as \emph{artifacts}
-that can be shared and reused. In the case of verbal explanations, such as a
-lecture, we're interested in the potentially reusable artifacts that support
-that explanation, such as slides.
+In this paper, we focus on the \emph{artifacts} that constitute or support
+explanations of data structures and algorithms (hereafter just ``algorithms''),
+which can be shared and reused.
 %
-The explanation artifacts associated with data structures and algorithms
-(hereafter just ``algorithms'') are interesting because they typically present
-a complex interaction among many different notations, including natural
-language, mathematics, pseudocode, executable code, various kinds of diagrams,
-animations, and more.
+For verbal explanations, such as a lecture, the supporting artifact might be
+the associated slides. For written explanations, the artifact is the
+explanation as a whole, including the text and any supporting figures.
+%
+Explanation artifacts associated with algorithms are interesting because they
+typically present a complex interaction among many different notations,
+including natural language, mathematics, pseudocode, executable code, various
+kinds of diagrams, animations, and more.
 
 
-Currently, such explanation artifacts are created ad hoc using a variety of
-tools and techniques, and the resulting explanations tend to be static,
-reducing their explanatory value.
+Currently, explanation artifacts for algorithms are created ad hoc using a
+variety of tools and techniques, and the resulting explanations tend to be
+static, reducing their explanatory value.
 %
 Although there has been a substantial amount of work on algorithm
-visualization~\cite{Gloor92,Gloor97,HDS02,?}, and several tools exist to
-support creating these kinds of supporting artifacts, there is no good solution
-for creating integrated, multi-notational explanations as a whole. Similarly,
-although some algorithm visualization tools provide a means for the student to
-tweak the parameters or inputs to the algorithm to generate new visualizations,
-they do not support creating cohesive interactive explanations that
-correspondingly modify the surrounding explanation or that allow the student to
-respond to or query the explanation in other ways.
+visualization~\cite{Gloor92,Gloor97,HDS02,?}, and tools exist for creating
+these kinds of supporting artifacts, there is no good solution for creating
+integrated, multi-notational explanations as a whole. Similarly, although some
+algorithm visualization tools provide a means for the student to tweak the
+parameters or inputs to an algorithm to generate new visualizations, they do
+not support creating cohesive interactive explanations that correspondingly
+modify the surrounding explanation or that allow the student to respond to or
+query the explanation in other ways.
 
 
 To fill this gap, we envision a \emph{domain-specific language} (DSL) that
@@ -121,26 +123,22 @@ The intended users of the DSL are CS educators who want to create
 \emph{interactive artifacts} to support the explanation of algorithms. We
 envision these users as experts on the corresponding data structures and
 algorithms, and also trained and skilled programmers. The produced explanation
-artifacts might supplement a lecture or be posted to a web page to supplement a
-textual explanation.
+artifacts might supplement a lecture or be posted to a web page as a
+self-contained (textual and graphical) explanation.
 %
-The DSL should support pedagogical methods directly (through built-in
-abstractions and language constructs). It should also support a variety of
-forms of student interaction, including ways to automatically generate variant
-explanations using parameterization or explanation equivalence laws, to
-directly build-in responses to anticipated questions, and to move between
-different levels of abstraction.
+The DSL should support pedagogical methods directly through built-in
+abstractions and language constructs. It should also support a variety of forms
+of student interaction, including ways to automatically generate variant
+explanations using parameterization and equivalence laws, to build in responses
+to anticipated questions, and to move between different levels of abstraction.
 
 
 This paper represents a formative step toward this vision. We conduct a
-qualitative analysis of our domain in order to determine the form and content
-of the explanation artifacts that educators are already creating. We base our
-analysis on an established pedagogical theory in order 
-
-In this paper, we conduct a qualitative analysis of our domain, in order to
-determine what kinds of explanation artifacts educators are already using, how
-educators explain algorithms and data structures, and how these artifacts could
-be improved with more sophisticated tools (e.g.\ a DSL).
+\emph{qualitative analysis} of our domain in order to determine the form and
+content of the explanation artifacts that educators are already creating. We
+base our analysis on an established pedagogical theory in order to better
+understand how well existing artifacts support the pedagogical process of
+explaining a complex topic.
 
 
 
