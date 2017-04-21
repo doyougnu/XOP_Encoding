@@ -141,111 +141,8 @@ understand how well existing artifacts support the pedagogical process of
 explaining a complex topic.
 
 
-
-\subsection{Why interactive explanation artifacts?}
-\label{sec:artifacts}
-
-From the student perspective, an ideal approach for explaining algorithms might
-be for a teacher to sit down with each student individually and provide a
-personal explanation of each algorithm. A good \emph{personal explanation} is
-useful because the explainer can \emph{respond} to the student, adjusting the
-pace and strategy as necessary. For example, the teacher can answer questions,
-rephrase parts of an explanation, and provide additional examples as needed.
-%
-Unfortunately, good personal explanations are a scarce resource. First, there
-are limited number of people who can provide high quality personal
-explanations. Second, a personal explanation is usually ephemeral and so cannot
-be directly shared or reused.
-
-
-Since personal explanations are hard to come by, many students learn algorithms
-through \emph{impersonal explanations}, such as recorded lectures, textbooks,
-and online written and graphical resources.
-%
-These impersonal explanations lack the interaction and adaptability of personal
-explanations, but have the significant advantage of being easy to massively
-share and reuse via libraries and the Internet.
-
-
-In-person lectures, such as those covering algorithms in most undergraduate
-computer science programs, exist at a midway point between impersonal and
-personal explanations, perhaps closer to the personal end of the spectrum.
-These \emph{classroom explanations} are adaptable---students can ask questions
-in class, the teacher can respond, and explanations can be adapted on the fly
-if students are confused---but they are not as adaptable as personal
-explanations since the teacher must accommodate many students at once.
-Classroom explanations are more efficient than personal explanations since they
-are shared amongst many students, but not as efficient as impersonal
-explanations since they are still ephemeral and therefore difficult to reuse.
-
-
-We target another midway point, a bit closer to the impersonal end of the
-spectrum, of rich, \emph{interactive explanation artifacts} that provide as
-much of the responsiveness and adaptability of personal explanations as
-possible, but which can still be massively shared and reused online. Such an
-explanation artifact would be quite expensive to produce with current tools
-since an \emph{explanation designer} must not only construct a high quality
-initial explanation and corresponding visualizations, but also anticipate and
-explicitly program in responses to queries by the student.
-
-
-% To help realize this vision, our medium-term goal is to design a
-% \emph{domain-specific language} (DSL) that supports the creation of interactive
-% explanation artifacts. This DSL is part of our larger effort to explore the
-% paradigm of \emph{explanation-oriented programming}
-
-
-\subsection{Algorithm visualization}
-\label{sec:vis}
-
-\todo{Algorithm visualizations target the same ``sweet spot'' we do but aren't
-comprehensive.}
-
-An \emph{algorithm visualization} is a graphical illustration, such as a
-sequence of diagrams or an animation, of how an algorithm executes on given
-inputs. As an example, consider the visualization in
-Fig.~\ref{fig:negative-dijkstra}.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.9\columnwidth]{VisDJK010-Clean}
-\caption{Example visualization of Dijkstra's algorithm failing on a graph with
-negative edge weights. This is a (redrawn) visualization extracted from one of
-the explanation artifacts in our data set (DJK010).}
-\label{fig:negative-dijkstra}
-\end{figure}
-
-
-\todo{finish this paragraph}
-\say{With few exceptions, we found that studies in which students merely viewed
-visualizations did not demonstrate significant learning advantages over
-students who used conventional learning materials.}
-%
-\cite{HDS02}.
-
-
-
-\subsection{Explanation-oriented programming}
-
-\emph{Explanation-oriented programming} (XOP) is a new programming paradigm
-where the primary output of a program is not a set of computed values, but an
-\emph{explanation of how} those values were computed. 
-
-
-Our high-level goal is to further develop the paradigm of explanation-oriented
-programming (XOP). In XOP, the primary output of a program is not a set of
-computed values, but an \emph{explanation of how} those values were computed.
-However, programming languages for XOP should not merely produce explanations
-as a byproduct, but should provide language features for manipulating
-explanation objects directly, creating application-specific notations and
-visualizations, and providing alternative explanations in response to user
-queries. Additionally, the language should help guide the programmer toward the
-creation of \emph{good} explanations.
-
-As a step in this development, we aim to design and implement a domain-specific
-language (DSL) in the XOP paradigm to support computer science education. 
-
 \subsection{Our Approach}
+
 The method presented in this paper is to harvest conceptual tools from the
 pedagogic scholarship, called \emph{typologies of explanation}. With these tools
 in hand we analyze static explanatory artifacts, whose purpose is to explain one
@@ -338,8 +235,86 @@ We provide an explanation for integrating Bellack et al.'s theory into a DSL and
 identify several advantages such a DSL might have vis-a-vis traditional methods. 
 \end{enumerate}
 
+
 \section{Background}
+\label{sec:back}
+
+\subsection{Explanation-oriented programming}
+\label{sec:back:xop}
+
+\emph{Explanation-oriented programming} (XOP) is a new programming paradigm
+where the primary output of a program is not a set of computed values, but an
+\emph{explanation of how} those values were computed. 
+
+
+Our high-level goal is to further develop the paradigm of explanation-oriented
+programming (XOP). In XOP, the primary output of a program is not a set of
+computed values, but an \emph{explanation of how} those values were computed.
+However, programming languages for XOP should not merely produce explanations
+as a byproduct, but should provide language features for manipulating
+explanation objects directly, creating application-specific notations and
+visualizations, and providing alternative explanations in response to user
+queries. Additionally, the language should help guide the programmer toward the
+creation of \emph{good} explanations.
+
+
+From the student perspective, an ideal approach for explaining algorithms might
+be for a teacher to sit down with each student individually and provide a
+personal explanation of each algorithm. A good \emph{personal explanation} is
+useful because the explainer can \emph{respond} to the student, adjusting the
+pace and strategy as necessary. For example, the teacher can answer questions,
+rephrase parts of an explanation, and provide additional examples as needed.
+%
+Unfortunately, good personal explanations are a scarce resource. First, there
+are limited number of people who can provide high quality personal
+explanations. Second, a personal explanation is usually ephemeral and so cannot
+be directly shared or reused.
+
+
+Since personal explanations are hard to come by, many students learn algorithms
+through \emph{impersonal explanations}, such as recorded lectures, textbooks,
+and online written and graphical resources.
+%
+These impersonal explanations lack the interaction and adaptability of personal
+explanations, but have the significant advantage of being easy to massively
+share and reuse via libraries and the Internet.
+
+
+In-person lectures, such as those covering algorithms in most undergraduate
+computer science programs, exist at a midway point between impersonal and
+personal explanations, perhaps closer to the personal end of the spectrum.
+These \emph{classroom explanations} are adaptable---students can ask questions
+in class, the teacher can respond, and explanations can be adapted on the fly
+if students are confused---but they are not as adaptable as personal
+explanations since the teacher must accommodate many students at once.
+Classroom explanations are more efficient than personal explanations since they
+are shared amongst many students, but not as efficient as impersonal
+explanations since they are still ephemeral and therefore difficult to reuse.
+
+
+We target another midway point, a bit closer to the impersonal end of the
+spectrum, of rich, \emph{interactive explanation artifacts} that provide as
+much of the responsiveness and adaptability of personal explanations as
+possible, but which can still be massively shared and reused online. Such an
+explanation artifact would be quite expensive to produce with current tools
+since an \emph{explanation designer} must not only construct a high quality
+initial explanation and corresponding visualizations, but also anticipate and
+explicitly program in responses to queries by the student.
+
+
+% To help realize this vision, our medium-term goal is to design a
+% \emph{domain-specific language} (DSL) that supports the creation of interactive
+% explanation artifacts. This DSL is part of our larger effort to explore the
+% paradigm of \emph{explanation-oriented programming}
+
+
+As a step in this development, we aim to design and implement a domain-specific
+language (DSL) in the XOP paradigm to support computer science education. 
+
+
 \subsection{A Typology of Explanation}
+\label{sec:back:typology}
+
 In this section we present an overview of Bellack et al's typology. We describe
 its philosophical foundations, its basic unit of analysis --- the
 \emph{pedagogical move} --- and elucidate the constituents that compose a given
@@ -541,7 +516,7 @@ events and combinations of pedagogical moves. In Bellack's words:
 \section{Experimental Setup}
 In this section we describe the nature of the data collected, the modifications
 made to Bellack et al's typology, and the criteria by which static explanatory
-objects were collected. In section \ref{rw}, we provide an overview of other
+objects were collected. In section \ref{sec:rw}, we provide an overview of other
 typologies of explanation from the pedagogic literature and our reasons for not
 adapting them to this work. 
 
@@ -921,11 +896,49 @@ typologies of explanation provide the an explanation designer with invaluable
 tools. Tools which serve to enrich the state of XOP and allow the explanation
 designer to draw upon other domains to form their explanations.
 
-\section{Related Work} \label{rw}
+\section{Related Work}
+\label{sec:rw}
+
 In this section we explore work that is related to this analysis and consider other
 typologies from pedagogy scholarship.
 
+\subsection{Algorithm Visualization}
+\label{sec:rw:vis}
+
+\todo{Algorithm visualizations target the same ``sweet spot'' we do but aren't
+comprehensive.}
+
+An \emph{algorithm visualization} is a graphical illustration, such as a
+sequence of diagrams or an animation, of how an algorithm executes on given
+inputs. As an example, consider the visualization in
+Fig.~\ref{fig:negative-dijkstra}.
+
+
+\todo{Move this figure and use it as an example of a \emph{negative} example,
+which are not typically supported by algorithm visualizations.}
+
+\begin{figure}
+\centering
+\includegraphics[width=0.9\columnwidth]{VisDJK010-Clean}
+\caption{Example visualization of Dijkstra's algorithm failing on a graph with
+negative edge weights. This is a (redrawn) visualization extracted from one of
+the explanation artifacts in our data set (DJK010).}
+\label{fig:negative-dijkstra}
+\end{figure}
+
+
+\todo{finish this paragraph}
+\say{With few exceptions, we found that studies in which students merely viewed
+visualizations did not demonstrate significant learning advantages over
+students who used conventional learning materials.}
+%
+\cite{HDS02}.
+
+
+
 \subsection{Other Typologies of Explanation}
+\label{sec:rw:typology}
+
 Pedagogic theory has many examples of typologies of explanation which are not
 presented here \cite{Smith1970-SMIASO-13, smith1967language, hyman1968teaching, swift1961explanation} . We adapt Bellack et al's because it is designed with the same
 motivating research questions in mind as this work, namely quantifying
