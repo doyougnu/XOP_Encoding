@@ -703,12 +703,12 @@ following the same procedures used to encode this data.
 
 If a document changed subject abruptly, or the algorithm of interest was
 discussed in a middle section, the coder was instructed just code for the
-algorithm and stop when the document changed focus. For
-example, if a fifty page document started to discuss quicksort on page
-thirty-two after discussing mergesort the data would only include codings for
-the first thirty-two pages of that document. We made no effort to control for
-the length of any document and post-process the data to normalize all position
-information to the respective length of each document.
+algorithm and stop when the document changed focus. For example, if a fifty page
+document started to discuss quicksort on page thirty-two after discussing
+mergesort the data would only include codings for the first thirty-two pages of
+that document. We made no effort to control for the length of any document and
+the data was post-processed to normalize all position information to the
+length of each document.
 
 % Should I say more about the data pre-processing?
 The data was pre-processed using R and Hadley Wickham's excellent ``dplyr''
@@ -720,26 +720,25 @@ means that move happened immediately, and sequentially, after the move indexed
 at 0.
 
 \section{Results}
-In this section we present our findings. We make two major observations from the data: First,
-we observe the presence of teaching cycles in static explanatory objects.
-Secondly, we observe that the present typology's shortcomings are a limiting
-factor to a more thorough investigation of explanatory objects. Third,
-document type appears to be a correlative factor to the nature and type of
-teaching cycles.
+In this section we present our findings. We make three major observations from
+the data: First, we observe the presence of teaching cycles in static
+explanatory objects. Secondly, we observe that the present typology's
+shortcomings are a reflection of the nature of static documents. Lastly, we
+observe that document type appears to be a correlative factor to
+the nature and type of teaching cycles.
 
 
 \subsection{Teaching Cycles}
-
 To graphically observe, and represent, teaching cycles we form a dot plot for
 each coded document, with lines connecting pedagogical moves that make up the
 teaching cycle, as shown in Fig.~\ref{fig:cycles-plot}.
 %
-Each dot represents a single pedagogical move. The y-axis is faceted to display
+Each dot is representative of a single pedagogical move. The y-axis is faceted to display
 the Type of Move for each coded document. For example ``AVL001'', the first
 coded document for AVL Trees, has 3 types of pedagogical moves: STR, SOL, EXP.
 One may also observe that this document has 4 different types of teaching cycles
-viz. ``STR EXP SOL'', ``STR'', ``STR EXP'' and ``STR \emph{EXP}''. Documents
-indexed 1 -- 5, inclusive correspond to power point documents, documents index 6
+viz. ``STR EXP EXP'', ``SOL'', ``STR'' and ``STR EXP \ldots''. Documents
+indexed 1 -- 5 inclusive, correspond to power point documents, documents index 6
 -- 10, correspond to lecture notes documents (word, html, or pdf).
 
 Due to modifications to Bellack et al's typology we observe six types
@@ -790,7 +789,7 @@ explanation and then concludes the explanation within one \emph{unit} of the
 document viz. a single slide for power point documents, or a single statement
 for lecture notes. It is unsurprising that such atomic moves are observed with
 more frequency in power point presentations than lecture notes, given the
-mediums form. The majority of STR EXP moves come from word or html (lecture
+medium's form. The majority of STR EXP moves come from word or html (lecture
 note) documents. Again, this is an anticipated result, as one would expect
 explanations in these documents to make more short moves that correspond to a
 single paragraph of thought or explanation.
@@ -803,33 +802,33 @@ discourse in the classroom such a foundation is easy to interpret. The lecturer
 makes a move in the language game, and the pupil can then respond with a move of
 their own. Bellack et al's typology captures the essence of this dynamic through
 structuring, soliciting, responding and reacting moves. However, when applied to
-a static document, the foundations of which the typology rest into conflict with
-the nature of the document. Simply put, observing a responding or reacting move,
-\emph{in} a static document would be nonsensical because the document has no way
-to participate in the language game. Our analysis concludes this fact, as
-expected, viz. that the modified typology, when applied to static documents,
-constitute a category mistake regarding the foundations of the modified typology
-of which it is based on. This fact may also be observed in the very
-modifications made to Bellack et al's typology. The modifications to Bellack et
-al's typology \emph{were required} in order to apply the typology to static
+a static document, the foundations of which the typology rest are brought into
+conflict with the nature of the document. Simply put, observing a responding or
+reacting move, \emph{in} a static document would be nonsensical because the
+document has no way to participate in the language game. Our analysis concludes
+this fact, as expected, viz. that the modified typology, when applied to static
+documents, constitutes a category mistake regarding the foundations of the
+typology from which it is based. This fact may also be observed in the very
+modifications made to Bellack et al's typology. Such modifications \emph{were
+  required} in order to \emph{be able to} apply the typology to static
 explanatory objects.
 
 We believe that such deficiencies are promising ground for the creation of an
-Explanation-Oriented DSL. One which would allow a static document \emph{to
-  participate} in the language game. The modified typology presented in this
+DSL in the XOP paradigm. One which would allow a static document \emph{to
+  participate} in a language game. The modified typology presented in this
 paper serves as a scaffold or paradigm from which to design such a DSL in a
-semantics-first \cite{EW11sle}  manner.
+semantics-first \cite{EW11sle} manner.
 
 \subsection{Observations While Encoding}
 In general, the better structured the explanatory artifact, the easier it was to
 encode. This observation is also represented in the data, namely in the number
 of \emph{atomic} teaching cycles observed in a document. Documents which tend to
-have a high amount of atomic teach cycles were more difficult to encode, while
-documents that have a organizing internal structure were perceived to be easier.
-Whether there is any pedagogical difference between the two, or if this is just
-an artifact of a single coder, or an artifact of the typology, is outside the
-scope of this paper, but the fact that such patterns were observed does comport
-with Bellack et al.'s results. To be specific:
+have a high amount of atomic teaching cycles were perceived to be more difficult
+to encode, while documents that have an organizing internal structure were
+perceived to be easier. Whether there is any pedagogical difference between the
+two, or if this is just an artifact of a single coder, or an artifact of the
+typology, is outside the scope of this paper, but the fact that such patterns
+were observed does comport with Bellack et al.'s results. To be specific:
 
 \say{With respect to the percentages of pedagogical moves, there seems to be
   little to differentiate the two groups --- with the exception, perhaps, of the
@@ -847,8 +846,8 @@ and varied notations, types of explanations, and different pacing of material,
 all at the request or specification of the user. A typology of explanation can
 serve as the basis, the backbone, of such a DSL by organizing the semantics of
 the DSL into defined concepts. The modified typology presented in this paper, we
-believe, serves as such an organizing tool. In our view, it forms the basis for
-the semantics of such a DSL.
+believe, serves as such an organizing tool. In this section we will discuss what
+we believe the advantages are of designing around such a conceptual framework.
 
 \subsubsection{The Usefulness of a Typology}
 A DSL designed with the modified typology given above will have, as its
@@ -862,12 +861,12 @@ the explanation for mergesort may require 15 moves, 5 teaching cycles. The
 initiatory moves might be of the form ``STR/BKG/XPL'' or ``STR/MOT/VIS'',
 meaning that the explanation would begin with a structuring move in which the
 background of mergesort is explained, or a structuring move where the motivation
-for mergesort is given visually. The pedagogical moves therefore
-structure the semantics of the DSL by describing \emph{what the pedagogical move needs to
+for mergesort is given visually. The pedagogical moves therefore structure the
+semantics of the DSL by describing \emph{what the pedagogical move needs to
   accomplish and how}. It is because of the level of abstraction in the codes,
-that concrete detailed aspects of explanations, like notation, or cadence
-become liquid i.e. they become easy to change. Thus, by designing around a
-typology of explanation, one ensures that the DSL has a defined structure, but
+that concrete detailed aspects of explanations, like notation, or cadence become
+liquid i.e. they become easy to change. Thus, by designing around a typology of
+explanation, one ensures that the DSL has a defined pedagogical structure, but
 is extensible, and not artificially constrained by the design.
 
 \subsubsection{Structuring Explanations}
@@ -919,14 +918,13 @@ will. This property has shown to be a very effective pedagogical tool
 \todo{another good place for citations}. While such a property ultimately comes
 down to the implementation of the DSL, we believe that our approach is
 commensurable with, and supportive of, such a property. One could easily imagine
-the ability to proceed to the next pedagogical move, or return to the last
-pedagogical move.
+the ability to proceed to the next pedagogical move, return to the last
+pedagogical move or jump to an arbitrary move in the explanation.
 
-It is for the reasons stated above that we believe defining and employing 
-typologies of explanation provide the XOP DSL designer with invaluable tools.
-Tools which serve to enrich the state of XOP and allow the XOP designer to draw
-upon other domains to \todo{clean this up, we need a ``stick the landing''
-  conclusion here}
+It is for the reasons stated above that we believe defining and employing
+typologies of explanation provide the an explanation designer with invaluable
+tools. Tools which serve to enrich the state of XOP and allow the explanation
+designer to draw upon other domains to form their explanations.
 
 \section{Related Work} \label{rw}
 In this section we explore work that is related to this analysis and consider other
@@ -947,14 +945,14 @@ classroom setting. Their typology was formed with two stated goals: 1) It should
 be simple, elegant, and easy to pick up for student teachers and 2) It should be
 powerful enough to characterize bad explanations from good ones, and relate to
 previous pedagogic work. Their typology consists of ``keys'', which partition an
-explanation, ``Links'' which form chains of keys that form the
-explanation, and ``Rules'' which define any pertinent rules to for that which is
-being explained. There are three categories of explanation in the typology: 1) The
-Interpretative 2) The Descriptive and 3) The Reason Giving. While promising,
-the presentation of this typology was deemed not formal enough to be actionable
-for our purposes; for example, its presentation lacks definitions for significant terms
-such as ``Links'' and ``Rules''. Furthermore, its desirable features are shared
-with Bellack et al's typology viz. an explanation is a composition of some more
+explanation, ``Links'' which form chains of keys that form the explanation, and
+``Rules'' which define any pertinent rules to for that which is being explained.
+There are three categories of explanation in the typology: 1) The Interpretative
+2) The Descriptive and 3) The Reason Giving. While promising, the presentation
+of this typology was deemed not formal enough to be actionable for our purposes;
+for example, its presentation lacks definitions for significant terms such as
+``Links'' and ``Rules''. Furthermore, its desirable features are shared with
+Bellack et al's typology viz. an explanation is a composition of more
 primitive concepts or categories.
 
 %probably need an introductory sentence here
