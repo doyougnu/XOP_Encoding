@@ -25,6 +25,10 @@
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+% Used in grammars
+\newcommand{\Category}[1]{\multicolumn{4}{l}{\textrm{#1:}}}
+\newcommand{\Informal}[1]{\multicolumn{2}{l}{(\textrm{#1})}}
+
 \begin{document}
 
 \title{A Domain Analysis of Data Structure and Algorithm Explanations in the Wild}
@@ -356,162 +360,171 @@ We expected that DSLs for XOP can help alleviate this burden.
 % language (DSL) in the XOP paradigm to support computer science education. 
 
 
+\input{bellack-grammar}
+
 \subsection{A Typology of Explanation}
 \label{sec:back:typ}
 
-In this section we present an overview of Bellack et al's typology. We describe
-its philosophical foundations, its basic unit of analysis --- the
-\emph{pedagogical move} --- and elucidate the constituents that compose a given
-move. It should be noted that this is not a exhaustive or comprehensive overview
-of Bellack et al's typology, rather, this section is meant to familiarize the
-reader with the basic structure of the typology.
+In this section we present an overview of Bellack et al.'s
+typology~\cite{bellack1966language}. We describe its philosophical foundations,
+its basic unit of analysis---the \emph{pedagogical move}---and describe the
+components of an individual move. Note that this is not a comprehensive
+overview of Bellack et al.'s typology, but an overview of its basic structure
+so that the reader can understand its use in our study.
 
-Bellack's system is founded upon, and formalizes rules to a \emph{language
-  game}\cite{wittgenstein2010philosophical} that takes place between a pupil,
-and a lecturer in a classroom setting. The consequent typology reflects this
-foundation in terms of \emph{pedagogical moves}. A pedagogical move is the basic
-unit of discourse in the pedagogic interlocution between pupil and lecturer.
-Bellack et al. identify four types of pedagogical moves.
+
+Bellack's system is founded on the concept of a \emph{language game} that takes
+place between a pupil and a lecturer in a classroom setting.
 %
-\begin{enumerate}[P1.]
+Each coded step in the typology represents a pedagogical move, a basic unit of
+discourse in the language game between pupil and lecturer.
+%
+The coding syntax is summarized in Fig.~\ref{fig:bellack}.
+%
+A coded move (\emph{Code}) consists of eight parts. The speaker
+(\emph{Speaker}) indicates the source of the utterance, either teacher, pupil,
+or some other audio-video device.
+%
+A pedagogical move (\emph{Move}) is one of four types:
+%
+\begin{enumerate}
 
-  \item \label{contrib:struct}
-    Structuring move: a structuring move functions to \emph{set the context} for
-    subsequent behavior. These are statements that a lecturer makes such as
-    ``Let's move on to some examples'' or ``Lambda Calculus has simple
-    operational semantics''.
-  
-  \item \label{contrib:solicit}
-    Soliciting move: A soliciting move is a verbal statement, made by the
-    lecturer, which explicitly elicits a verbal response. These are statements
-    such as ``Can anyone tell me the purpose of the dot operator?'' or ``Why is
-    depth-first search better suited for certain game trees than breadth-first search?''
+\item A \emph{structuring move} (\prog{STR}) functions to \emph{set the
+context} for subsequent behavior. These are statements that a lecturer makes
+such as, ``let's move on to some examples'' or, ``the basic structure of merge
+sort is easy''.
 
-   \item \label{contrib:response}
-     Response move: A response move is reciprocal to a soliciting move, and only
-     occur in relation to them. Response moves function to fulfill the
-     expectation of soliciting moves. In short, these are the answer's to a
-     lecturer's questions. Some examples are ``The dot operator represents
-     function composition'' or ``depth-first search is memory efficient, while
-     breadth-first search is not.''
+\item A \emph{soliciting move} (\prog{SOL}) is a verbal statement made by the
+lecturer, which explicitly elicits a verbal response. These are statements such
+as, ``can anyone tell me the purpose of the dot operator?'' or, ``why is
+depth-first search better suited for certain game trees than breadth-first
+search?''.
 
-   % what does contrib:XXX do?
-   \item \label{contrib:react}
-     Reacting move: A reacting move is coincident with structuring, soliciting,
-     and responding moves. Reacting moves are not directly elicited by any other
-     move, but are still occasioned by them. These function to \emph{qualify}
-     some former move through clarifying some point, expanding on some point, or
-     even by synthesizing a new move altogether. Examples of these moves include
-     % could probably use a more illustrative example, or we could use the free
-     % trade example that Bellack employs.
-     statements such as ``That's partly correct; Depth-First Search is more
-     memory efficient but that is not the only reason..''
+\item A \emph{response move} (\prog{RES}) is reciprocal to a soliciting move
+and only occur in relation to them. Response moves function to fulfill the
+expectation of soliciting moves. In short, these are the answers to a
+lecturer's questions. Some examples are, ``the dot operator represents function
+composition'' or ``depth-first search is memory efficient, while breadth-first
+search is not''.
+
+\item A \emph{reacting move} (\prog{REA}) is coincident with structuring,
+soliciting, and responding moves. Reacting moves are not directly elicited by
+any other move, but are still occasioned by them. These function to
+\emph{qualify} some former move through clarifying some point, expanding on
+some point, or even by synthesizing a new move altogether. Examples of these
+moves include statements such as, ``that's partly correct; depth-first search
+is more memory efficient but that is not the only reason''.
 
 \end{enumerate}
 
-The coding notation in Bellack et al's system consists of eight categories
-separated by a ``/''. We have affixed each category with an index for
-specificity and following Bellack's presentation. The eight categories are as
-follows:
-% any thoughts on how to get this in BNF, or even if we should?
+\noindent
+%
+The substantive meaning (\emph{Sub}) of a move captures an aspect of the
+application domain that this pedagogical move is about. For example, in the
+context of explanations of algorithms, the substantive meaning of a particular
+step might be ``performance'', for a pedagogical move related to the
+performance of the algorithm. Thus, the set of labels for this syntactic
+category must be instantiated anew for each new application domain under study.
 
+The substantive-logical meaning (\emph{SubL}) of a move indicates the cognitive
+process used to address the substantive meaning of the move.
+%
+This category has three subcategories, described below, plus a special label
+\prog{NCL} indicating that the cognitive process is unclear.
+
+empirical process (\emph{Empirical}), and evaluative process
+(\emph{Evaluative})---plus 
+
+
+A move using an analytic process (\emph{Analytic}) relies on established rules
+of language or logic. This subcategory includes the following
+substantive-logical meanings of moves:
+%
 \begin{enumerate}
-  \item Speaker
-  \item Type of Move
-  \item Substantive Meaning
-  \item Substantive-Logical Meanings
-  \item Number of Lines in 3 or 4
-  \item Instructional Meaning
-  \item Instructional-Logical Meanings
-  \item Number of Lines in 6 or 7
+
+\item Defining-denotative (\prog{DED}): To define denotatively is to refer to
+the objects to which the term is applicable. One may think of this type of
+definition as citing which objects constitute the denotation of a term. For
+example, ``an AVL Tree is a type of binary search tree''.
+
+\item Defining-connotative (\prog{DEC}): To define connotatively is to refer to
+characteristics or properties of some class or term. For example, ``an AVL tree
+is a binary search tree with specific height, insert, and delete conditions''.
+
+\item Defining-general (\prog{DEF}): To define generally is to provide the
+defining characteristics of a class of objects and to give an example of some
+item within that class. This category is also used when the type of definition
+is unclear.
+
+\item Interpreting (\prog{INT}): A verbal equivalent to a statement, slogan,
+aphorism, or proverb.
+
 \end{enumerate}
 
-% should this be ``the Semantics of each ...'''???
-For each category a shorthand indicator is provided that details the
-representation of that category in the terminology of the coding system.
-For example a structuring move is represented as (STR) in the system's
-notation. In this section we present the meanings of each category. We focus on
-categories 1 -- 5 for they constitute the bulk of the typology used in section
-III. The interested reader may refer to Bellack et al's work for an
-exhaustive presentation \cite{bellack1966language}.The meanings of each category are as follows:
-
-\paragraph{Speaker}
-The speaker category indicates the source of the utterance, is one of:
-  \begin{enumerate}
-    \item \emph{Teacher} (T)
-    \item \emph{Pupil} (P)
-    \item \emph{Audio-Visual Device} (A)
-  \end{enumerate}
-\paragraph{Type of Move}
-The type of move category indicates which type the move
-belongs to. See P1 -- P4 above.
-
-\paragraph{Substantive Meaning}
-The substantive meaning category refers to
-the subject matter under study.
-\paragraph{Substantive-Logical Meaning}
-The substantive-logical meaning
-category indicates a reference to the cognitive process involved
-in dealing with subject matter under study. This category has three
-subcategories: \emph{Analytic Process}, \emph{Empirical Process},
-\emph{Evaluative Process}, each with their own subcategories:
+\noindent
+%
+A move using an empirical process (\emph{Empirical}) relies on a sense of
+experience as a criterion of truth. This subcategory includes:
+%
 \begin{enumerate}
-  \item{Analytic Process}: Use of language or established rules of logic.
-  \begin{enumerate}
-    \item \emph{Definining-Denotative} (DED): To define denotatively is to
-      refer to the objects to which the term is applicable. One may think of
-      this type of definition as citing which objects constitute the
-      denotation of a term. For example, ``An AVL Tree is a type of Binary
-      Search Tree''
-    \item \emph{Defining-Connotative} (DEC): To define connotatively is to
-      refer to characteristics or properties of some class or term. For example ``An
-      AVL tree is a BST with specific height, insert, delete conditions''
-    \item \emph{Defining-General} (DEF): To define generally is to provide the
-      defining characteristics of a \emph{class} of objects \emph{and} to give
-      an example of some item within that class. This category is also used
-      when the type of definition is unclear.
-    \item \emph{Interpreting} (INT): A verbal equivalent of a statement, slogan, aphorism, or proverb
-  \end{enumerate}
-  \item{Empirical Process}: Use of a sense experience as criterion of truth.
-  \begin{enumerate}
-    \item \emph{Fact-Stating} (FAC): A statement about what is, was, or will be without explanation or evaluation.
-    \item \emph{Explaining} (XPL): a statement about relation between objects, events, principles, conditional inference, cause-effect, explicit comparison-contrast, statement of principles, theories or laws
-    \end{enumerate}
-  \item{Evaluative Process}: set of criteria or value system as basis for verification
-    \begin{enumerate}
-      \item \emph{Opining} (OPN): personal values for statement of policy, judgment or evaluation of event, idea, state of affairs, direct and indirect evaluation included
-      \item \emph{Justifying} (JUS): reasons or argument for or against opinion or judgment
-    \end{enumerate}
-  \item \emph{Logical Process Not Clear} (NCL): represents a $\bot$ value for Substantive-Logical Meanings
-  \end{enumerate}
-  \paragraph{Number of Lines}
-  This category represents the length
-  of the pedagogical move for categories 3 or 4. A ``line'' is a sentence in
-  the discourse between lecturer and pupil.
-  \paragraph{Instructional Meanings} The instructional meanings category
-  refers factors related to classroom management. Its sub-categories are not
-  listed or explained here.
-    % \begin{enumerate}
-    %   \item \emph{Assignment} (ASG): language suggesting or requiring student activity; reports, tests, readings etc.
-    %   \item \emph{Material} (MAT): Use of teaching aids and instructional devices
-    %   \item \emph{Logical Process} (LOG): Function of language or rule of logic; reference to definitions or arguments, but not presentation of such
-    %   \item \emph{Action-Cognitive} (ACC): Cognitive process, but not the language or logic of a specific utterance; thinking, knowing, understanding, or listening
-    % \end{enumerate}
-    \paragraph{Instructional-Logic Meaning} The instructional-logic meaning
-    category refers to the cognitive processes related to the distinctly
-    didactic verbal moves in the instructional situation. Its sub-categories are
-    not listed or explained here.
-  % \begin{enumerate}
-  %   \item{Analytic Process}: see (4) above
-  %   \item{Empirical Process}: see (4) above
-  %   \item{Evaluative Process}: includes the definitions in (4) above and:
-  %   \begin{enumerate}
-  %     \item{Rating}: reference to metacommunication; usually an evaluative reaction (REA)
-  %     \begin{enumerate}
-  %       \item \emph{Repeating} (RPT):  implicit positive rating when statement (STA) is repeated by another speaker; also for SOL to repeat a vocal action (ACV)
-  %       \item \emph{Qualifying} (QAL): explicit reservation stated in rating; exception
-  %       \item \emph{Not Admitting} (NAD): rating that rejects by stating the contrary; a direct refutation
-  %     \end{enumerate}
+
+\item Fact-stating (\prog{FAC}): A statement about what is, was, or will be
+without explanation or evaluation.
+
+\item Explaining (\prog{XPL}): A statement about relations between objects,
+events, principles, conditional inference, cause and effect, explicit
+comparison-contrast, statement of principles, theories, or laws.
+
+\end{enumerate}
+
+\noindent
+%
+A move using an evaluative process (\emph{Evaluative}) relies on a set of
+criteria or a value system as basis for verification. This subcategory includes:
+%
+\begin{enumerate}
+
+\item Opining (\prog{OPN}): Personal values for statement of policy, judgment
+or evaluation of event, idea, state of affairs, direct and indirect evaluation
+included.
+
+\item Justifying (\prog{JUS}): Reasons or argument for or against opinion or
+judgment.
+
+\end{enumerate}
+
+\noindent
+%
+The code component \emph{SubN} is a natural number representing the length of
+the pedagogical move, specific to the substantive and substantive-logical
+meanings. The length is measured in terms of \emph{lines}, the number of
+sentences in the fragment of discourse between a teacher and pupil.
+
+
+The instructional meaning (\emph{Inst}) of a move captures aspects related to
+classroom management and procedures. The instructional-logic meaning
+(\emph{InstL}) of a move captures cognitive processes related to instructional
+meanings, in a way similar to how substantive-logic meanings capture cognitive
+processes related to substantive meanings.
+%
+Since classroom procedure is not relevant to our analysis, we do not present
+details for this part of Bellack et al.'s typology.
+%
+The instructional lines (\emph{InstN}) component captures the number of lines
+allocated to the instructional meaning and instructional-logic meanings of a
+move.
+
+% \begin{enumerate}
+%   \item{Analytic Process}: see (4) above
+%   \item{Empirical Process}: see (4) above
+%   \item{Evaluative Process}: includes the definitions in (4) above and:
+%   \begin{enumerate}
+%     \item{Rating}: reference to metacommunication; usually an evaluative reaction (REA)
+%     \begin{enumerate}
+%       \item \emph{Repeating} (RPT):  implicit positive rating when statement (STA) is repeated by another speaker; also for SOL to repeat a vocal action (ACV)
+%       \item \emph{Qualifying} (QAL): explicit reservation stated in rating; exception
+%       \item \emph{Not Admitting} (NAD): rating that rejects by stating the contrary; a direct refutation
+%     \end{enumerate}
 %     \item Extra-logical Process (SOL): expecting physical action or when logical nature of verbal response cannot be determined. 
 %     \begin{enumerate}
 %       \item \emph{Performing} (PRF): asking, demanding; explicit directive or imperative
@@ -520,23 +533,22 @@ subcategories: \emph{Analytic Process}, \emph{Empirical Process},
 %     \end{enumerate}
 %   \end{enumerate}
 % \end{enumerate}
-    \paragraph{Number of lines} This category refers to the number of lines of
-    the pedagogical move for instructional meanings or instructional-logic meanings.
 
-An example coded move has this form:
-\begin{verbatim}
-       T/STR/MAN/XPL/4/PRC/FAC/2
-\end{verbatim}
 
-The interpretation is as follows:
-
-Which is taken to mean: A \emph{teacher} (T) makes a \emph{structuring} (STR) move
-in which they \emph{explain} (XPL) something about \emph{Tree Manipulation} (MAN) for
-\emph{two} (2) lines of the transcript and also state \emph{facts} (FAC) about
-classroom \emph{procedures} (PRC) for \emph{two} (2) lines of the transcript.
-
-This encoding could be used for a statement by a teacher such as:
-
+An example of a pedagogical move coded in Bellack et al.'s system is shown
+below.
+%
+\[ \prog{T/STR/MAN/XPL/4/PRC/FAC/2} \]
+%
+The interpretation of this code is as follows: a \emph{teacher} (\prog{T})
+makes a \emph{structuring} (\prog{STR}) move in which they \emph{explain}
+(\prog{XPL}) something about \emph{tree manipulation} (\prog{MAN}) for
+\emph{two} (\prog{2}) lines of the transcript and also state \emph{facts}
+(\prog{FAC}) about classroom \emph{procedures} (\prog{PRC}) for \emph{two}
+(\prog{2}) lines of the transcript.
+%
+This encoding might be used for the following statement by a teacher:
+%
 \say{Single
 Rotation will not work for case two because after a single rotation is applied,
 the tree will still not be balanced. Thus, double rotations are required to

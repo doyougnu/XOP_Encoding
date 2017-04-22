@@ -1,0 +1,68 @@
+\begin{figure*}
+\centering
+
+\begin{minipage}[t]{0.45\textwidth}
+\begin{syntax}
+\textit{Speaker}
+ &::=& \prog{T} & \textit{teacher} \\
+ & | & \prog{P} & \textit{pupil} \\
+ & | & \prog{A} & \textit{audio-visual device} \\
+\\
+\textit{Type}
+ &::=& \prog{STR} & \textit{structuring move} \\
+ & | & \prog{SOL} & \textit{soliciting move} \\
+ & | & \prog{RES} & \textit{response move} \\
+ & | & \prog{REA} & \textit{reacting move} \\
+\\
+\textit{SubN}
+ &=& \mathbb{N} & \textit{substantive lines} \\
+\textit{InstN}
+ &=& \mathbb{N} & \textit{instructional lines} \\
+\\
+\textit{Inst}
+ &::=& \ldots & \textit{instructional meaning} \\
+\textit{InstL}
+ &::=& \ldots & \textit{instructional-logical meaning} \\
+\end{syntax}
+\end{minipage}
+%
+\begin{minipage}[t]{0.47\textwidth}
+\begin{syntax}
+% \Category{Substantive and substantive-logical meanings} \\
+\textit{Sub}
+ &::=& \Informal{instantiated for application domain} \\[1ex]
+\textit{SubL}
+ &::=& \textit{Analytic}   & \textit{analytic process} \\
+ & | & \textit{Empirical}  & \textit{empirical process} \\
+ & | & \textit{Evaluative} & \textit{empirical process} \\
+ & | & \prog{NCL}          & \textit{not clear} \\[1ex]
+\textit{Analytic}
+ &::=& \prog{DED} & \textit{defining-denotative} \\
+ & | & \prog{DEC} & \textit{defining-connotative} \\
+ & | & \prog{DEF} & \textit{defining-general} \\
+ & | & \prog{INT} & \textit{interpreting} \\[1ex]
+\textit{Empirical}
+ &::=& \prog{FAC} & \textit{fact-stating} \\
+ & | & \prog{XPL} & \textit{explaining} \\[1ex]
+\textit{Evaluative}
+ &::=& \prog{OPN} & \textit{opining} \\
+ & | & \prog{JUS} & \textit{justifying} \\[1ex]
+\end{syntax}
+\end{minipage}
+
+\begin{syntax}
+\textit{Code}
+ &::=& \textit{Speaker} ~\prog{/}~
+       \textit{Type}    ~\prog{/}~
+       \textit{Sub}     ~\prog{/}~
+       \textit{SubL}    ~\prog{/}~
+       \textit{SubN}    ~\prog{/}~
+       \textit{Inst}    ~\prog{/}~
+       \textit{InstL}   ~\prog{/}~
+       \textit{InstN}
+\end{syntax}
+
+\caption{A relevant subset of Bellack et al.~\cite{bellack1966language}'s
+typology for coding classroom discourse.}
+\label{fig:bellack}
+\end{figure*}
