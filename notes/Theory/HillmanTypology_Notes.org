@@ -123,7 +123,9 @@
       /and then/ building on that assignment in class.
 
 * Hillman's modifications to Bellack's Typology
-** Pedagogical Moves are denoted by Purpose. Purpose has 6 Types:
+  Hillman's Typology consists of three Tiers with the first being Purpose:
+** Purpose
+   Pedagogical Moves are denoted by Purpose. Purpose has 7 Categories:
    1. Organizing: Similar to Structuring moves, organizing sentences do not
       elicit a response and are not responses. Organizing sentences set an
       agenda, organize a discussion or recitation, and function as a means to
@@ -151,4 +153,95 @@
       
       Ex. "Yeah I hear, I hear." [Responding/Rating/Person]
 
-   4. 
+   4. Lecturing: Lecturing consists of talk about the course content that is
+      neither explaining a change in topic (Organising), soliciting a response
+      (Eliciting), nor Responding. Lecturing is differentiated from Responding
+      in that Responding is directly applicable to an Eliciting purpose. When
+      the Responding move has moved away from the purpose of merely answering
+      the Eliciting, it is then Lecturing. For example, suppose a student asked
+      a teacher what colour fire engines were. The immediate answer, "red" (or
+      "fluorescent yellow-green") would be a Responding sentence, but anything
+      beyond that, such as explaining why so many fire engines are red, would be
+      Lecturing.
+
+      Ex. "We went a little over tonight, but that's all right."
+      [Lecturing/Fact-Stating/Content]
+
+   5. Humanizing: Humanizing moves create an atmosphere conducive to interaction
+      by means of making student feel welcome jokes or small talk. Humanizing
+      moves' purpose is to make some feel at ease or maintain the relationship.
+      These moves are free from pedagogic content. This type also includes the
+      use of emoticons. Hillman speaks more to this latter use, it is not
+      represented here.
+      
+      Ex. "You don't prefer to be called Jill?" [Humanising/Fact-Stating/Person]
+
+   6. Idling: This category has no analogy to Bellack's typology, rather this is
+      a pure addition. Idling sentences are sentences which are intelligible but
+      serve no pedagogical function, and unlike Humanizing sentences have no
+      defined goal e.g. to create a comforting environment. This type of move is
+      included because it is a way for the teacher to pause and collect their
+      thoughts.
+      
+      Ex. "That you, you know when you, oh no, no, no." [Idling/Filler/Not Clear]
+
+   7. Not Clear: The bottom value for the Purpose tier. This is encoded when
+      words are unintelligible. 
+** Mechanism
+   Mechanisms are similar to Instructional-Logical Meanings (Hillman uses
+   Instructional-Logical meanings, but I think he means Substantive-Logical),
+   they describe /how/ the subject of the sentence is being discussed. There are
+   9 sub-categories:
+   1. Fact-Stating: This is identical to Bellack et al.'s definition of
+      Fact-Stating
+
+   2. Explaining: This is a combination of Bellack et al.'s definitions of
+      Interpreting, and Explaining. This is used for sentences in which
+      clarification, definition, or rationale is explicitly given.
+      
+      Ex. "It's a tool, and just like other tools (say automobiles, guns, and
+      chain saws), people can use it constructively and destructively, wisely
+      and wastefully." [Responding/Explaining/Content]
+
+   3. Opining: This is identical to Bellack et al.'s definition of Opining.
+
+   4. Performing: The Mechanism of Performing is similar to Bellack et al.'s
+      instructional-logical meanings of Performing and Directing, in which one
+      requests or expects an action to occur. Quite simply, Performing is the
+      process of telling someone to do something. 
+
+      Ex. "When you are finished with the student biography, pass them towards
+      the center, please." [Eliciting/Performing/Action]
+
+   5. Repeating: Hillman's own words are required for this one: 
+      The definition of Repeating is similar to that of Bellack et al. in which
+      one (in their case, presumably the teacher) repeats or rephrases what is
+      said (presumably by a student) as a way to indicate "an implicit
+      admitting" that the offered response was correct. An illustration from the
+      FTF transcripts:
+
+      Teacher: Now remember, the output of analysis is the input to--
+      [Eliciting/Performing/Content] Student: To design.
+      [Responding/Fact-Stating/Content]
+   
+      Teacher: To design. What else do you need to know?
+      [Responding/Repeating/Content, Eliciting/Fact-Stating/Content]
+
+      My coding system, however, has broadened this definition to also include
+      repetition used for the purposes of setting context, which is not
+      necessarily an indication of agreement. In this example, the use of
+      repeating isn't merely to show one agrees (in the sense that the student
+      is correct), but it is also used for getting attention -- as a point of
+      focus -- to provide context for actions to follow. In this case, the
+      context is "You say 'design.' I acknowledge your answer, and use it as a
+      point of focus or context for my next move." This is also used in
+      asynchronous communications, such as USENET newsgroups or courses
+      delivered via CMC, in which text is quoted so that other participants will
+      understand what the respondent is talking about.
+
+   6. Rating: A combination of Bellack's Rating, and Acknowledgment. This
+      serves to appraise or acknowledge a participant's move.
+      
+      Ex. "He's right." [Responding/Rating/Person]
+
+   7. 
