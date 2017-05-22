@@ -1,0 +1,68 @@
+                    ________________________________
+
+                     PRIMER ON DAN HILLMAN'S THESIS
+
+                             Jeffrey Young
+                    ________________________________
+
+
+                              Mar 30, 2017
+
+
+
+
+
+Context
+=======
+
+  This document is for the XOP Encoding project, participants include
+  Eric Walkingshaw and Jeffrey Young. This is the third such primer in
+  the project, the first one is a primer on DN-Theory, the second a
+  primer on typologies of explanation, specifically Bellack et al's
+  typology. This document expands on bellack et al's typology by
+  summarizing the thesis of Dan Hillman. Dan Hillman iterated on
+  bellack's typology, changing and improving it in several ways, and
+  hence his typology is of interest to the XOP project. Dan Hillman was
+  also kind enough to provide the data he compiled with his typology for
+  the XOP Project.
+
+
+Orientation
+===========
+
+  This document is meant to explicate three things:
+  1. What are Hillman's changes to Bellack's typology and why
+  2. What is the nature of the data that Hillman compiled and it is
+     useful to the XOP project?
+  3. What did Hillman learn from his data, what were the conclusions of
+     his thesis?
+
+
+Executive Summary
+=================
+
+
+Details on Hillman's Data
+=========================
+
+General Details of the Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+  - Data is composed of Face-To-Face (FTF) and
+    Computer-Mediated-Communication (CMC)
+  - All data is from courses taught at New York School of Education
+    between 1994 - 1995
+  - Data was recorded from 2 classes:
+    1. Systems Analysis and Design
+    2. Database Management and Systems
+  - Both courses had FTF and CMC versions, and both versions taught the
+    same material
+
+
+Details on the Transcription of the Data
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+FTF courses
+-----------
+
+§ Recorded on audio casette, transcribed to word docs, then munged into a database
