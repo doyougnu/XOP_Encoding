@@ -29,13 +29,26 @@
   1. What are Hillman's changes to Bellack's typology and why
   2. What is the nature of the data that Hillman compiled and it is useful to the
      XOP project?
-  3. What did Hillman learn from his data, what were the conclusions of his thesis? 
+  3. What did Hillman learn from his data, what were the conclusions of his
+     thesis?
      
   The document assumes you are familiar with Bellack et al's typology, and the
   XOP Projects goals, progress, and current issues. If any of those is not the
   case then please refer to prior documents to orientate yourself before reading
   on.
 * Executive Summary 
+  Is Hillman's data suitable for our us: Yes. I believe we will be able to make
+  use of his data, but we will not be able to say anything in regards to
+  Substantive Meaning using this data. 
+
+  Is Hillman's typology more expressive or less expressive than Bellack's,
+  should we us Hillman's or Bellack's: We should use Hillman's Typology, in many
+  ways it is a large improvement over Bellack's and his agreement rate is > 90%.
+  We will need to modify his typology as he collapses the Substantive meaning
+  category so that it /does not/ need to be described /for every/ topic.
+
+  What did Hillman learn from his data: TBD, I ran out of time and didn't get to
+  this.
 
 * Details on Hillman's Data 
 
@@ -125,7 +138,15 @@
 * Hillman's modifications to Bellack's Typology
   Hillman's Typology consists of three Tiers with the first being Purpose:
 ** Purpose
-   Pedagogical Moves are denoted by Purpose. Purpose has 7 Categories:
+   Pedagogical Moves are denoted by Purpose. Purpose has 7 Categories. Hillman
+   describes Purpose as a highway. In order to use a highway, one must get
+   directions to it, know the length of the journey, and the destination; these
+   would correspond to orienting utterances. When on the Highway, one moves
+   forward by the Lecturing purpose. A rest stop, to relax, recover, get gas or
+   food would be a Humanizing purpose. And finally an off-ramp would be an
+   Eliciting move, while an on-ramp would be a responding move. The exact
+   definitions of each are as follows:
+
    1. Organizing: Similar to Structuring moves, organizing sentences do not
       elicit a response and are not responses. Organizing sentences set an
       agenda, organize a discussion or recitation, and function as a means to
@@ -244,4 +265,90 @@
       
       Ex. "He's right." [Responding/Rating/Person]
 
-   7. 
+   7. Rhetorical Device: an Eliciting move that is /not intended/ to solicit a
+      response. This can be a graphic or some other prop used in the classroom.
+      A rhetorical device may be used in a series of Lecturing or Fact-Stating
+      moves for such a purpose. A rhetorical question would be an eliciting
+      purpose in conjunction with a rhetorical device mechanism.
+      
+      Ex. See Hillman's thesis for a detailed example.
+
+   8. Filler: Analogous with the Idling Purpose, but for mechanisms.
+
+   9. Not Clear: The bottom value.
+** Subject
+   This tier describes /what/ is being discussed in the sentence, the content
+   being considered or statements /about/ something.
+
+   1. Person: The subject of a sentence is literally a person.
+
+      Ex. "I was pleased to have the opportunity to get to know you a bit
+      through my role as Client in the Systems Analysis course Case Study."
+      [Lecturing/Opining/Person]
+
+   2. Action: a person or object does something, this definition includes
+      Bellack et al.'s definition of Action.
+      
+      Ex. "Those of you who do not have books, look on."
+      [Eliciting/Performing/Action]
+
+   3. Procedure: A subset of Action, in which one is told /how/ to do something,
+      rather than just /to do/ something.
+      
+      Ex. "If you've already made a new replica of the User's Guide, please do
+      not replicate it further until the above mentioned posting."
+      [Eliciting/Performing/Procedure]
+
+   4. Content: This code is used for sentences related to course content. This
+      is Bellack's Substantive Meaning category, except that instead of defining
+      it in terms of the specific content of the subject, it is defined as being
+      /on-topic/. If a sentence refers to the /subject/ of the course, then it
+      is /on-topic/, and is Content.
+      
+      Ex. "With relational, you basically retrieve multiple records at a single
+      time and the system decides how to access based on your call."
+      [Lecturing/Explaining/Content]
+
+   5. Supplies: The subject of the sentence deals with course material, teaching
+      aids, and devices, be they books, forms, projectors, computers etc..
+      
+      Ex. "This tape is about three years old." [Lecturing/Fact-Stating/Supplies]
+
+   6. Not Clear: The bottom value for the Supply tier.
+** Handling Combined moves
+   If a sentence encompasses more than one subject, it is coded as the highest
+   appropriate level. Thus, to use Bellack et al.'s example, a teacher directing
+   students to engage in some classroom procedure which required the use of
+   supplies would be coded as Procedure-Supplies. The rationale is that to have
+   the course, one must have students (Person). These students may be directed
+   (Action) to engage in some classroom Procedure (Procedure) which required the
+   use of Supplies (Supplies).
+
+* References that will be of use and why
+  1. Paper: Weber, R. P. (1985). Basic content analysis. Beverly Hills: Sage
+     Publications.
+
+     Why: This paper defines and describes general steps to classify a text into
+     categories of content.
+
+  2. Paper: Atkinson, P. (1981). Inspecting classroom talk. In C. Adelman (Ed.),
+     Uttering, muttering: Collecting, using and reporting talk for social and
+     educational research, (pp. 98-113). London: Grant McIntyre Ltd. 
+
+     Why: This paper explains that, the ability to respond, and participate in
+     interactions, in synchronous communication, is made possible by the /typing/
+     of utterances that immediately precede that one.
+
+  3. Paper: Sacks, H., Schegloff, E., & Jefferson, G. (1974). A simplest
+     systematics for the organisation of turn-taking for conversation. Language,
+     50, 696-735.
+
+     Why: This paper expands on Atkinson's paper by describing interactions as
+     an adjacency pair.
+
+
+* Other thoughts
+  1. Bellack's system is synchronous i.e. based on discourse and inter-locution.
+     Computer based learning artifacts are asynchronous i.e. one sided exegeses.
+     The DSL we are trying to make is...synchronous? or asynchronous, I'm
+     pretty sure we discussed this as synchronous.
