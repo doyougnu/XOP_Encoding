@@ -1,6 +1,6 @@
 #+AUTHOR: Jeffrey Young
 #+TITLE: Primer on Dan Hillman's Thesis
-#+DATE: Mar 30, 2017
+#+DATE: May 21, 2017
 
 # Fix the margins
 #+LATEX_HEADER: \usepackage[margin=1in]{geometry}
@@ -15,6 +15,28 @@
 #+LaTeX_CLASS: article
 #+LaTeX_CLASS_OPTIONS: [10pt, letterpaper]
 
+* Executive Summary 
+** Is Hillman's data suitable for our us:
+  Yes. I believe we will be able to make
+  use of his data, but we will not be able to say anything in regards to
+  Substantive Meaning using this data.
+
+** Is Hillman's typology more expressive or less expressive than Bellack's, should we us Hillman's or Bellack's:
+  We should use Hillman's Typology, in many
+  ways it is a large improvement over Bellack's and his agreement rate is > 90%.
+  We will need to modify his typology as he collapses the Substantive meaning
+  category so that it /does not/ need to be described /for every/ topic. 
+
+** What did Hillman learn from his data: 
+   TBD, I ran out of time and didn't get to this.
+
+** Other considerations
+   You may want to look over the "Reference that will be useful" section as this
+   paper is well sources, and is a good branching point for other papers to
+   check out. I've highlighted some interesting ones.
+* Source Document
+  The source document, for this primer is located here:
+  http://www.quahog.org/thesis/new.html
 * Context
   This document is for the XOP Encoding project, participants include Eric
   Walkingshaw and Jeffrey Young. This is the third such primer in the project,
@@ -36,23 +58,10 @@
   XOP Projects goals, progress, and current issues. If any of those is not the
   case then please refer to prior documents to orientate yourself before reading
   on.
-* Executive Summary 
-  Is Hillman's data suitable for our us: Yes. I believe we will be able to make
-  use of his data, but we will not be able to say anything in regards to
-  Substantive Meaning using this data. 
-
-  Is Hillman's typology more expressive or less expressive than Bellack's,
-  should we us Hillman's or Bellack's: We should use Hillman's Typology, in many
-  ways it is a large improvement over Bellack's and his agreement rate is > 90%.
-  We will need to modify his typology as he collapses the Substantive meaning
-  category so that it /does not/ need to be described /for every/ topic.
-
-  What did Hillman learn from his data: TBD, I ran out of time and didn't get to
-  this.
-
 * Details on Hillman's Data 
 
-** General Details of the Data
+** General Details of the Data 
+   - n = ~51,000
    - Data is composed of Face-To-Face (FTF) and Computer-Mediated-Communication
      (CMC)
    - All data is from courses taught at New York School of Education between
@@ -60,7 +69,8 @@
    - Data was recorded from 2 classes:
      1. Systems Analysis and Design
      2. Database Management and Systems
-   - Both courses had FTF and CMC versions, and both versions taught the same material 
+   - Both courses had FTF and CMC versions, and both versions taught the same
+     material
 ** Details on the Transcription of the Data 
    - FTF courses were recorded on audio cassette, transcribed to word docs, then
      munged into a database
@@ -74,11 +84,11 @@
 
 ** Database and data information details
 *** Database Contains
-    1. All text
-    2. Participants sex
-    3. Participants role (Teacher/Student)
-    4. Number of words in each sentence
-    5. Metadata of course (Course name, date etc.)
+    * All text
+    * Participants sex
+    * Participants role (Teacher/Student)
+    * Number of words in each sentence
+    * Metadata of course (Course name, date etc.)
 *** Data alterations
     - All audio recordings were pre-pended with a character to denote the speaker, one of:
       1. t \triangleq teacher
@@ -348,7 +358,7 @@
 
 
 * Other thoughts
-  1. Bellack's system is synchronous i.e. based on discourse and inter-locution.
-     Computer based learning artifacts are asynchronous i.e. one sided exegeses.
-     The DSL we are trying to make is...synchronous? or asynchronous, I'm
-     pretty sure we discussed this as synchronous.
+  - Bellack's system is synchronous i.e. based on discourse and inter-locution.
+    Computer based learning artifacts are asynchronous i.e. one sided exegeses.
+    The DSL we are trying to make is...synchronous? or asynchronous, I'm
+    pretty sure we discussed this as synchronous.
