@@ -1,0 +1,246 @@
+                 Trees 4: AVL Trees
+                     • Section 4.4
+                                                1
+                            Motivation
+     •  When building a binary search tree, what type of 
+        trees would we like?  Example: 3, 5, 8, 20, 18, 13, 22
+          3
+           5                                  13
+             8                                        20
+               13                       5
+                 18                  3      8     18       22
+                   20
+                      22
+                                                              2
+                            Motivation
+     •  Complete binary tree is hard to build when we allow 
+        dynamic insert and remove.
+         – We want a tree that has the following properties
+            • Tree height = O(log(N))
+            • allows dynamic insert and remove with O(log(N)) time 
+              complexity.
+         – The AVL tree is one of this kind of trees.
+              13                                   8
+                       20                    5         18
+         5
+     3      8      18       22            3        13      20
+                                                                22
+                                                               3
+        AVL (Adelson-Velskii and Landis) Trees
+   • An AVL Tree is a                       4
+      binary search tree                  44
+      such that for every        2                       3
+      internal node v of T,        17                   78
+                                        1       2            1
+      the heights of the               32        50        88
+      children of v can differ              1         1
+      by at most 1.                          48     62
+                                 An example of an AVL tree where the 
+                                 heights are shown next to the nodes:
+                                                          4
+        AVL (Adelson-Velskii and Landis) Trees
+     • AVL tree is a binary search tree with balance condition
+        – To ensure depth of the tree is O(log(N))
+        – And consequently, search/insert/remove complexity bound 
+          O(log(N))
+     • Balance condition
+        – For every node in the tree, height of left and right subtree can 
+          differ by at most 1
+                                                           5
+               Which is an AVL Tree?
+                                                6
+                 Height of an AVL tree
+     •  Theorem: The height of an AVL tree storing n keys is O(log n).
+     •  Proof: 
+        – Let us bound n(h), the minimum number of internal nodes of an AVL 
+        – tree of height h.
+          We easily see that n(0) = 1 and n(1) = 2
+        – For h > 2, an AVL tree of height h contains the root node, one AVL 
+        – subtree of height h-1 and another of height h-2 (at worst).
+          That is, n(h) >= 1 + n(h-1) + n(h-2)
+        – Knowing n(h-1) > n(h-2), we get n(h) > 2n(h-2). So
+           n(h) > 2n(h-2), n(h) > 4n(h-4), n(h) > 8n(n-6), … (by 
+             induction),
+                 i
+           n(h) > 2n(h-2i)
+        – Solving the base case we get: n(h) > 2 h/2-1
+        – Taking logarithms: h < 2log n(h) +2
+        – Since n>=n(h), h < 2log(n)+2 and  the height of an AVL tree is O(log 
+          n)
+                                                     7
+              AVL Tree Insert and Remove
+      •  Do binary search tree insert and remove
+      •  The balance condition can be violated 
+         sometimes
+        – Do something to ifx it : rotations
+        – After rotations, the balance of the whole tree is 
+            maintained
+                                                         8
+            Balance Condition Violation
+     • If condition violated after a node insertion
+       – Which nodes do we need to rotate?
+       – Only nodes on path from insertion point to root may have their balance 
+         altered 
+     • Rebalance the tree through rotation at the deepest node with 
+       balance violated
+       – The entire tree will be rebalanced
+     • Violation cases at node k (deepest node)
+       1.An insertion into left subtree of left child of k
+       2.An insertion into right subtree of left child of k
+       3.An insertion into left subtree of right child of k
+       4.An insertion into right subtree of right child of k
+       – Cases 1 and 4 equivalent 
+         •  Single rotation to rebalance
+       – Cases 2 and 3 equivalent
+         •  Double rotation to rebalance
+                                                9
+                 AVL Trees Complexity
+     • Overhead
+        – Extra space for maintaining height information at each node
+        – Insertion and deletion become more complicated, but still 
+          O(log N) 
+     • Advantage
+        – Worst case O(log(N)) for insert, delete, and search
+                                                   10
+                 Single Rotation (Case 1)
+      • Replace node k  by node k
+                       2          1
+      • Set node k  to be right child of node k
+                   2                        1
+      • Set subtree Y to be left child of node k2
+      • Case 4 is similar
+                                                          11
+                      Example
+     • After inserting 6
+        – Balance condition at node 8 is violated
+                                               12
+              Single Rotation (Case 1)
+                                               13
+                          Example
+      • Inserting 3, 2, 1, and then 4 to 7 sequentially into 
+        empty AVL tree
+                    3                   2
+                 2                           3
+               1                   1
+                                                        14
+                     Example (Cont’d)
+      • Inserting 4
+                         2
+                    1         3
+                                  4
+      • Inserting 5
+               2                          2
+           1         3                1         4
+                         4                  3      5
+                            5
+                                                       15
+                     Example (Cont’d)
+      • Inserting 6                      4
+                      2
+                 1         4          2        5
+                              5     1    3        6
+                       3
+      • Inserting 7               6
+              4                       4
+          2        5               2       6
+        1     3        6         1    3   5    7
+                          7
+                                                       16
+          Single Rotation Will Not Work for the 
+                          Other Case
+      •  For case 2
+      •  After single rotation, k  still not balanced
+                              1
+      •  Double rotations needed for case 2 and case 3
+                                                           17
+                  Double Rotation (Case 2)
+      •  Left-right double rotation to ifx case 2
+      •  First rotate between k  and k
+                               1      2
+      •  Then rotate between k  and k
+                               2       3
+      •  Case 3 is similar
+                                                             18
+                            Example
+      •  Continuing the previous example by inserting
+          – 16 down to 10, and then 8 and 9
+      •  Inserting 16 and 15                 4
+                   4                      2        6
+               2        6                             15
+             1     3   5    7          1     3   5
+                               16                   7     16
+                            15
+                                                            19
+                      Example (Cont’d)
+      • Inserting 14
+               4                         4
+            2        6               2        7
+         1     3   5    15         1     3   6    15
+                      7    16              5   14    16
+                        14
+      • Other cases as exercises
+                                                           20
+              Double Rotation (Case 2)
+                                               21
+                            Summary
+               Violation cases at node k (deepest node)
+                  1. An insertion into left subtree of left child of k
+                  2. An insertion into right subtree of left child of k
+                  3. An insertion into left subtree of right child of k
+                  4. An insertion into right subtree of right child of k
+              Case 1                       Case 2
+                                            Case 4?
+             Case 3                                          22
+            Implementation of AVL Tree
+                                               23
+                                             Case 1
+                                             Case 2
+                                              Case 4
+                                             Case 3
+                                                    24
+              Single Rotation (Case 1)
+                                               25
+              Double Rotation (Case 2)
+                                               26
+             Review Insertion -- Case 1
+                    h+2
+        h+1             Height = h
+     h        h
+                         Before insert
+                                     h+2
+       h+2                                h+1
+                       h        h+1
+  h+1        h                       h        h
+                                 After rotation
+         After insert                          27
+             Review Insertion -- Case 2
+                              Determine all heights
+                      Height = h
+                       Before insert
+         After insert            After double rotation
+                                               28
+                  Delete -- Case 1
+                        •Consider deepest unbalanced node
+                          – Case 1: Left child’s left side is too high
+                    h+2   – Case 4: Right child’s right side is too high
+        h+1               – The parents may need to be recursively 
+                            rotated
+                        Height = h
+     h      h/h-1    DeleteBefore Deletion
+                                     h+1/h+2
+       h+1                                h/h+
+                       h-1      h         1
+            h/h-1                    h/h-1    h-1
+    h
+                              After single rotation
+         After delete                          29
+                  Delete -- Case 2
+                      • Consider deepest unbalanced node
+                        – Case 2: Left child’s right side is too high
+                        – Case 3: Right child’s left side is too high
+                        – The parents may need to be recursively rotated
+                      Height = h
+                   Delete          Determine all heights
+                        Before Deletion
+         After Delete            After double rotation
+                                               30

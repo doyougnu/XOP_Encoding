@@ -1,422 +1,0 @@
-                                            Lecture Notes on
-                                                AVLTrees
-                                   15-122: Principles of Imperative Computation
-                                                FrankPfenning
-                                                  Lecture 18
-                                                March22,2011
-                         1   Introduction
-                         Binary search trees are an excellent data structure to implement associa-
-                         tive arrays, maps, sets, and similar interfaces. The main difﬁculty, as dis-
-                         cussedinlastlecture, is that they are efﬁcient only when they are balanced.
-                         Straightforwardsequencesofinsertionscanleadtohighlyunbalancedtrees
-                         withpoorasymptoticcomplexityandunacceptablepracticalefﬁciency. For
-                         example, if we insert n elements with keys that are in strictly increasing or
-                                                             2
-                         decreasing order, the complexity will be O(n ). On the other hand, if we
-                         can keep the height to O(log(n)), as it is for a perfectly balanced tree, then
-                         the commplexity is bounded by O(n∗log(n)).
-                            The solution is to dynamically rebalance the search tree during insert
-                         or search operations. We have to be careful not to destroy the ordering
-                         invariant of the tree while we rebalance. Because of the importance of bi-
-                         nary search trees, researchers have developed many different algorithms
-                         for keepingtreesinbalance,suchasAVLtrees,red/blacktrees,splaytrees,
-                         orrandomizedbinarysearchtrees. Theydifferintheinvariantstheymain-
-                         tain (in addition to the ordering invariant), and when and how the rebal-
-                         ancing is done.
-                            In this lecture we use AVL trees, which is a simple and efﬁcient data
-                         structure to maintain balance, and is also the ﬁrst that has been proposed.
-                         It is named after its inventors, G.M. Adelson-Velskii and E.M. Landis, who
-                         described it in 1962.
-                         LECTURE NOTES                                 MARCH22,2011
-                     AVLTrees                                   L18.2
-                     2  TheHeightInvariant
-                     Recall the ordering invariant for binary search trees.
-                        Ordering Invariant. At any node with key k in a binary search
-                        tree, all keys of the elements in the left subtree are strictly less
-                        than k, while all keys of the elements in the right subtree are
-                        strictly greater than k.
-                       To describe AVL trees we need the concept of tree height, which we de-
-                     ﬁne as the maximal length of a path from the root to a leaf. So the empty
-                     tree has height 0, the tree with one node has height 1, a balanced tree with
-                     three nodes has height 2. If we add one more node to this last tree is will
-                     haveheight3. Alternatively, we can deﬁne it recursively by saying that the
-                     emptytreehasheight0,andtheheightofanynodeisonegreaterthanthe
-                     maximal height of its two children. AVL trees maintain a height invariant
-                     (also sometimes called a balance invariant).
-                        HeightInvariant. Atanynodeinthetree,theheightsoftheleft
-                        andrightsubtreesdiffers by at most 1.
-                       Asanexample,considerthefollowingbinarysearchtreeofheight3.
-                                10 
-                                              height = 3 
-                          4            16     height inv. sa4sﬁed 
-                          1    7   13   19 
-                     LECTURE NOTES                        MARCH22,2011
-                AVLTrees                          L18.3
-                If we insert a new element with a key of 14, the insertion algorithm for
-                binary search trees without rebalancing will put it to the right of 13.
-                         10 
-                                   height = 4 
-                    4          16  height inv. sa.sﬁed 
-                    1   7  13  19 
-                             14 
-                Nowthetreehasheight4,andonepathislongerthantheothers. However,
-                it is easy to check that at each node, the height of the left and right subtrees
-                still differ only by one. Forexample,atthenodewithkey16,theleftsubtree
-                hasheight2andtherightsubtreehasheight1,whichstillobeysourheight
-                invariant.
-                  Nowconsider another insertion, this time of an element with key 15.
-                This is inserted to the right of the node with key 14.
-                         10 
-                                   height = 5 
-                    4          16  height inv. violated at 13, 16, 10 
-                    1   7  13  19 
-                             14 
-                               15 
-                LECTURE NOTES                MARCH22,2011
-                AVLTrees                          L18.4
-                All is well at the node labeled 14: the left subtree has height 0 while the
-                right subtree has height 1. However, at the node labeled 13, the left subtree
-                has height 0, while the right subtree has height 2, violating our invariant.
-                Moreover, at the node with key 16, the left subtree has height 3 while the
-                right subtree has height 1, also a difference of 2 and therefore an invariant
-                violation.
-                  Wetherefore have to take steps to rebalance tree. We can see without
-                too much trouble, that we can restore the height invariant if we move the
-                node labeled 14 up and push node 13 down and to the right, resulting in
-                the following tree.
-                         10 
-                                   height = 4 
-                    4          16  height inv. restored at 14, 16, 10 
-                    1   7  14  19 
-                         13  15 
-                  Thequestionishowtodothisingeneral. Inordertounderstandthiswe
-                needafundamentaloperationcalledarotation, whichcomesintwoforms,
-                left rotation and right rotation.
-                3 Left and Right Rotations
-                Below, we show the situation before a left rotation. We have generically
-                denoted the crucial key values in question with x and y. Also, we have
-                summarized whole subtrees with the intervals bounding their key values.
-                Eventhoughwewrote−∞and+∞,whenthewholetreeisasubtreeofa
-                larger tree these bounds will be generic bounds α which is smaller than x
-                LECTURE NOTES                MARCH22,2011
-                 AVLTrees                            L18.5
-                 andωwhichisgreaterthany. Thetreeontherightisaftertheleftrotation.
-                    (‐∞, +∞) 
-                                          (‐∞, +∞) 
-                       x                  y 
-                             le, rota1on at x 
-                         y 
-                  (‐∞, x)               x 
-                                             (y, +∞) 
-                     (x, y) (y, +∞) 
-                                       (‐∞, x) (x, y) 
-                 Fromtheintervalswecanseethattheorderinginvariantsarepreserved,as
-                 are the contents of the tree. We can also see that it shifts some nodes from
-                 the right subtree to the left subtree. We would invoke this operation if the
-                 invariants told us that we have to rebalance from right to left.
-                   We implement this with some straightforward code. First, recall the
-                 type of trees from last lecture. We do not repeat the function is_ordtree
-                 that checks if a tree is ordered.
-                 struct tree {
-                   elem data;
-                   struct tree* left;
-                   struct tree* right;
-                 };
-                 typedef struct tree* tree;
-                 bool is_ordtree(tree T);
-                 The main point to keep in mind is to use (or save) a component of the
-                 input before writing to it. We apply this idea systematically, writing to a
-                 location immediatelyafter using it on the previous line. We repeat the type
-                 speciﬁcation of tree from last lecture.
-                 tree rotate_left(tree T)
-                 //@requires is_ordtree(T);
-                 //@requires T != NULL && T->right != NULL;
-                 //@ensures is_ordtree(\result);
-                 //@ensures \result != NULL && \result->left != NULL;
-                 {
-                   tree root = T->right;
-                 LECTURE NOTES                  MARCH22,2011
-                      AVLTrees                                       L18.6
-                        T->right = root->left;
-                        root->left = T;
-                        return root;
-                      }
-                         Therightrotation is entirely symmetric. First in pictures:
-                               (‐∞, +∞) 
-                                                       (‐∞, +∞) 
-                               z                       y 
-                            y           right rota1on at z 
-                                  (z, +∞)                     z 
-                                                     (‐∞, y) 
-                           (‐∞, y) (y, z) 
-                                                         (y, z) (z, +∞) 
-                      Thenincode:
-                      tree rotate_right(tree T)
-                      //@requires is_ordtree(T);
-                      //@requires T != NULL && T->left != NULL;
-                      //@ensures is_ordtree(\result);
-                      //@ensures \result != NULL && \result->right != NULL;
-                      {
-                        tree root = T->left;
-                        T->left = root->right;
-                        root->right = T;
-                        return root;
-                      }
-                      4  SearchingforaKey
-                      Searching for a key in an AVL tree is identical to searching for it in a plain
-                      binary search tree as described in Lecture 17. The reason is that we only
-                      needtheorderinginvarianttoﬁndtheelement;theheightinvariantisonly
-                      relevant for inserting an element.
-                      LECTURE NOTES                           MARCH22,2011
-                      AVLTrees                                       L18.7
-                      5  Inserting an Element
-                      The basic recursive structure of inserting an element is the same as for
-                      searching for an element. We compare the element’s key with the keys
-                      associated with the nodes of the trees, inserting recursively into the left or
-                      right subtree. When we ﬁnd an element with the exact key we overwrite
-                      the element in that node. If we encounter a null tree, we construct a new
-                      tree with the element to be inserted and no children and then return it. As
-                      wereturn the new subtrees (with the inserted element) towards the root,
-                      wecheck if we violate the height invariant. If so, we rebalance to restore
-                      the invariant and then continue up the tree to the root.
-                         The main cleverness of the algorithm lies in analyzing the situations
-                      when we have to rebalance and applying the appropriate rotations to re-
-                      store the height invariant. It turns out that one or two rotations on the
-                      wholetreealwayssufﬁceforeachinsertoperation, which is a very elegant
-                      result.
-                         First, we keep in mind that the left and right subtrees’ heights before
-                      the insertion can differ by at most one. Once we insert an element into one
-                      of the subtrees, they can differ by at most two. We now draw the trees in
-                      such a way that the height of a node is indicated by the height that we are
-                      drawingitat.
-                         Theﬁrstsituation we describe is where we insert into the right subtree,
-                      which is already of height h + 1 where the left subtree has height h. If
-                      weareunlucky, the result of inserting into the right subtree will give us a
-                      newrightsubtreeofheighth+2whichraisestheheightoftheoveralltree
-                      to h +3, violating the height invariant. In the new right subtree has height
-                      h+2,eitheritsrightortheleftsubtreemustbeofheighth+1(andonlyone
-                      of them; think about why). If it is the right subtree we are in the situation
-                      depicted below on the left.
-                             (‐∞, +∞)        h+3 
-                                 x 
-                                                       (‐∞, +∞) 
-                                    y        h+2       y 
-                                         le1 rota6on at x 
-                                      z      h+1   x           z 
-                                             h 
-                      (‐∞, x) (x, y) (y, z) (z, +∞) (‐∞, x) (x, y) (y, z) (z, +∞) 
-                      LECTURE NOTES                           MARCH22,2011
-                      AVLTrees                                       L18.8
-                      Weﬁxthiswithaleftrotation,theresultofwhichisdisplayedtotheright.
-                         In the second case we consider we once again insert into the right sub-
-                      tree, but now the left subtree of the right subtree has height h + 1.
-                             (‐∞, +∞)        h+3 
-                                 x 
-                                                       (‐∞, +∞) 
-                                   z         h+2       y 
-                                       double rota8on at z and x 
-                                 y           h+1   x           z 
-                                             h 
-                      (‐∞, x) (x, y) (y, z) (z, +∞) (‐∞, x) (x, y) (y, z) (z, +∞) 
-                      In that case, a left rotation alone will not restore the invariant (see Exer-
-                      cise 1). Instead, we apply a so-called double rotation: ﬁrst a right rotation at
-                      z, then a left rotation at the root. When we do this we obtain the picture on
-                      the right, restoring the height invariant.
-                         There are two additional symmetric cases to consider, if we insert the
-                      newelementontheleft(seeExercise4).
-                         Wecanseethat in each of the possible cases where we have to restore
-                      the invariant, the resulting tree has the same height h + 2 as before the
-                      insertion. Therefore, the height invariant above the place where we just
-                      restored it will be automatically satisﬁed.
-                      6  CheckingInvariants
-                      Theinterfacefortheimplementationisexactlythesameasforbinarysearch
-                      trees, as is the code for searching for a key. In various places in the algo-
-                      rithmwehavetocomputetheheightofthetree. Thiscouldbeanoperation
-                      ofasymptoticcomplexityO(n),unlesswestoreitineachnodeandjustlook
-                      it up. So we have:
-                      struct tree {
-                        elem data;
-                        int height;
-                        struct tree* left;
-                        struct tree* right;
-                      };
-                      LECTURE NOTES                           MARCH22,2011
-                AVLTrees                          L18.9
-                typedef struct tree* tree;
-                /* height(T) returns the precomputed height of T in O(1) */
-                int height(tree T) {
-                 return T == NULL ? 0 : T->height;
-                }
-                  Whenchecking if a tree is balanced, we also check that all the heights
-                that have been computed are correct.
-                bool is_balanced(tree T) {
-                 if (T == NULL) return true;
-                 int h = T->height;
-                 int hl = height(T->left);
-                 int hr = height(T->right);
-                 if (!(h == (hl > hr ? hl+1 : hr+1))) return false;
-                 if (hl > hr+1 || hr > hl+1) return false;
-                 return is_balanced(T->left) && is_balanced(T->right);
-                }
-                  Atree is an AVL tree if it is both ordered (as deﬁned and implementa-
-                tion in the last lecture) and balanced.
-                bool is_avl(tree T) {
-                 return is_ordtree(T) && is_balanced(T);
-                }
-                  We use this, for example, in a utility function that creates a new leaf
-                fromanelement(whichmaynotbenull).
-                tree leaf(elem e)
-                //@requires e != NULL;
-                //@ensures is_avl(\result);
-                {
-                 tree T = alloc(struct tree);
-                 T->data = e;
-                 T->height = 1;
-                 T->left = NULL;
-                 T->right = NULL;
-                 return T;
-                }
-                LECTURE NOTES                MARCH22,2011
-                     AVLTrees                                    L18.10
-                     7  ImplementingInsertion
-                     The code for inserting an element into the tree is mostly identical with
-                     the code for plain binary search trees. The difference is that after we in-
-                     sert into the left or right subtree, we call a function rebalance_left or
-                     rebalance_right,respectively,torestoretheinvariantifnecessaryandcal-
-                     culate the new height.
-                     tree tree_insert(tree T, elem e)
-                     //@requires is_avl(T);
-                     //@ensures is_avl(\result);
-                     {
-                       assert(e != NULL); /* cannot insert NULL element */
-                       if (T == NULL) {
-                        T = leaf(e); /* create new leaf with data e */
-                       } else {
-                        int r = compare(elem_key(e), elem_key(T->data));
-                        if (r < 0) {
-                          T->left = tree_insert(T->left, e);
-                          T = rebalance_left(T); /* also fixes height */
-                        } else if (r == 0) {
-                          T->data = e;
-                        } else { //@assert r > 0;
-                          T->right = tree_insert(T->right, e);
-                          T = rebalance_right(T); /* also fixes height */
-                        }
-                       }
-                       return T;
-                     }
-                     LECTURE NOTES                         MARCH22,2011
-                AVLTrees                         L18.11
-                  Weshowonlythefunctionrebalance_right;rebalance_leftissym-
-                metric.
-                tree rebalance_right(tree T)
-                //@requires T != NULL;
-                //@requires is_avl(T->left) && is_avl(T->right);
-                /* also requires that T->right is result of insert into T */
-                //@ensures is_avl(\result);
-                {
-                 tree l = T->left;
-                 tree r = T->right;
-                 int hl = height(l);
-                 int hr = height(r);
-                 if (hr > hl+1) {
-                   //@assert hr == hl+2;
-                   if (height(r->right) > height(r->left)) {
-                    //@assert height(r->right) == hl+1;
-                    T = rotate_left(T);
-                    //@assert height(T) == hl+2;
-                    return T;
-                   } else {
-                    //@assert height(r->left) == hl+1;
-                    /* double rotate left */
-                    T->right = rotate_right(T->right);
-                    T = rotate_left(T);
-                    //@assert height(T) == hl+2;
-                    return T;
-                   }
-                 } else { //@assert !(hr > hl+1);
-                   fix_height(T);
-                   return T;
-                 }
-                }
-                  Note that the preconditions are weaker than we would like. In partic-
-                ular, they do not imply some of the assertions we have added in order to
-                show the correspondence to the pictures. This is left as the (difﬁcult) Ex-
-                ercise 5. Such assertions are nevertheless useful because they document
-                expectations based on informal reasoning we do behind the scenes. Then,
-                if they fail, they may be evidence for some error in our understanding, or
-                in the code itself, which might otherwise go undetected.
-                LECTURE NOTES                MARCH22,2011
-                         AVLTrees                                            L18.12
-                         8   ExperimentalEvaluation
-                         We would like to assess the asymptotic complexity and then experimen-
-                         tally validate it. It is easy to see that both insert and search operations take
-                         typeO(h),wherehistheheightofthetree. Buthowistheheightofthetree
-                         related to the number of elements stored, if we use the balance invariant of
-                         AVLtrees? It turns out that h is O(log(n)). It is not difﬁcult to prove this,
-                         but it is beyond the scope of this course.
-                            Toexperimentallyvalidatethisprediction,wehavetorunthecodewith
-                         inputs of increasing size. A convenient way of doing this is to double the
-                         size of the input and compare running times. If we insert n elements into
-                         the tree and look them up, the running time should be bounded by c ∗ n ∗
-                         log(n) for some constant c. Assume we run it at some size n and observe
-                         r = c∗n∗log(n). Ifwedoubletheinputsizewehavec∗(2∗n)∗log(2∗n) =
-                         2 ∗ c ∗ n ∗ (1 + log(n)) = 2 ∗ r + 2 ∗ c ∗ n, we mainly expect the running
-                         timetodoublewithanadditionalsummandthatroughlydoubleswithasn
-                         doubles. In order to smooth out minor variations and get bigger numbers,
-                         weruneachexperiment100times. Hereisthetablewiththeresults:
-                                        n   AVLtrees increase   BSTs
-                                         9
-                                        2      0.129 −         1.018
-                                         10
-                                        2      0.281 2r +0.023 2.258
-                                         11
-                                        2      0.620 2r +0.058 3.094
-                                         12
-                                        2      1.373 2r +0.133 7.745
-                                         13
-                                        2      2.980 2r +0.234 20.443
-                                         14
-                                        2      6.445 2r +0.485 27.689
-                                         15
-                                        2      13.785 2r+0.895 48.242
-                         Weseeinthethirdcolumn, where 2r stands for the doubling of the previ-
-                         ousvalue,wearequiteclosetothepredictedrunningtime,withaapprox-
-                         imately linearly increasing additional summand.
-                            In the fourth column we have run the experiment with plain binary
-                         search trees which do not rebalance automatically. First of all, we see that
-                         they are much less efﬁcient, and second we see that their behavior with
-                         increasing size is difﬁcult to predict, sometimes jumping considerably and
-                         sometimes not much at all. In order to understand this behavior, we need
-                         to know more about the order and distribution of keys that were used in
-                         this experiment. They were strings, compared lexicographically. The keys
-                         LECTURE NOTES                                MARCH22,2011
-                AVLTrees                         L18.13
-                weregenerated by counting integers upward and then converting them to
-                strings. The distribution of these keys is haphazard, but not random. For
-                example,if we start counting at 0
-                "0" < "1" < "2" < "3" < "4" < "5" < "6" < "7" < "8" < "9"
-                     < "10" < "12" < ...
-                the ﬁrst ten strings are in ascending order but then numbers are inserted
-                between "1" and "2". This kind of haphazard distribution is typical of
-                many realistic applications, and we see that binary search trees without
-                rebalancing perform quite poorly and unpredictably compared with AVL
-                trees.
-                Thecompletecodeforthislecturecanbefoundindirectory18-avl/onthe
-                course website.
-                Exercises
-                Exercise 1 Show that in the situation on page 8 a single left rotation at the root
-                will not necessarily restore the height invariant.
-                Exercise 2 Show, in pictures, that a double rotation is a composition of two ro-
-                tations. Discuss the situation with respect to the height invariants after the ﬁrst
-                rotation.
-                Exercise 3 Showthatleft and right rotations are inverses of each other. What can
-                yousayaboutdouble rotations?
-                Exercise 4 Show the two cases that arise when inserting into the left subtree
-                might violate the height invariant, and show how they are repaired by a right ro-
-                tation, or a double rotation. Which two single rotations does the double rotation
-                consist of in this case?
-                Exercise 5 Strengthen the invariants in the AVL tree implementation so that the
-                assertions and postconditions which guarantee that rebalancing restores the height
-                invariant and reduces the height of the tree follow from the preconditions.
-                LECTURE NOTES                MARCH22,2011

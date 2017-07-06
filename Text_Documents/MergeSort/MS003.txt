@@ -1,0 +1,732 @@
+         Merge Sort
+                            7  2 ⏐ 9  4  → 2  4  7  9
+                        7 ⏐ 2  → 2  7 9 ⏐ 4  → 4  9
+                       7 → 7 2 → 2   9 → 9 4 → 4
+                            Sets                  1
+         Outline and Reading
+             Divide-and-conquer paradigm (§10.1.1)
+             Merge-sort (§10.1)
+               Algorithm
+               Merging two sorted sequences
+               Merge-sort tree
+               Execution example
+               Analysis
+             Generic merging and set operations (§10.2)
+             Summary of sorting algorithms
+                                    Sets                         2
+            Divide-and-Conquer
+                 Divide-and conquer is a                Merge-sort is a sorting 
+                 general algorithm design               algorithm based on the 
+                 paradigm:                              divide-and-conquer 
+                   Divide: divide the input data       paradigm 
+                     S in two disjoint subsets S1       Like heap-sort
+                     and S2                               It uses a comparator
+                   Recur: solve the                      It has O(n log n) running 
+                     subproblems associated                 time
+                     with S1 and S2                     Unlike heap-sort
+                   Conquer: combine the                  It does not use an 
+                     solutions for S and S into a 
+                     solution for S 1    2                  auxiliary priority queue
+                 The base case for the                    It accesses data in a 
+                 recursion are subproblems of               sequential manner 
+                 size 0 or 1                                (suitable to sort data on a 
+                                                            disk)
+                                               Sets                                 3
+           Merge-Sort
+               Merge-sort on an input          Algorithm mergeSort(S, C)
+               sequence S with n                  Input sequence S with n
+               elements consists of                  elements, comparator C
+               three steps:                       Outputsequence S sorted
+                 Divide: partition S into           according to C
+                  two sequences S and S           if S.size() > 1
+                                   1      2
+                  of about n/2 elements              (S , S ) ← partition(S, n/2) 
+                  each                                 1  2
+                                                     mergeSort(S , C)
+                 Recur: recursively sort S                     1
+                                          1          mergeSort(S , C)
+                  and S                                         2
+                        2                            S←merge(S ,S )
+                 Conquer: merge S and                           1  2
+                                    1
+                  S into a unique sorted 
+                    2 
+                  sequence
+                                           Sets                              4
+       Merging Two Sorted Sequences
+         The conquer step of Algorithmmerge(A, B)
+         merge-sort consists Input sequences A and B with
+         of merging two       n/2 elements each 
+         sorted sequences A Outputsorted sequence of A ∪ B
+         and B into a sorted S ←empty sequence
+         sequence S 
+                            while ¬A.isEmpty()  
+         containing the union          ∧¬B.isEmpty()
+         of the elements of A if A.first().element() < B.first().element()
+         and B                 S.insertLast(A.remove(A.first()))
+         Merging two sorted   else
+         sequences, each       S.insertLast(B.remove(B.first()))
+         with n/2 elements  while ¬A.isEmpty()
+         and implemented by   S.insertLast(A.remove(A.first()))
+         means of a doubly  while ¬B.isEmpty()
+         linked list, takes   S.insertLast(B.remove(B.first()))
+         O(n) time          return S
+                            Sets                  5
+          Merge-Sort Tree
+              An execution of merge-sort is depicted by a binary tree
+                each node represents a recursive call of merge-sort and stores
+                    unsorted sequence before the execution and its partition
+                    sorted sequence at the end of the execution
+                the root is the initial call 
+                the leaves are calls on subsequences of size 0 or 1
+                             7  2 ⏐ 9  4  → 2  4  7  9
+                      7 ⏐ 2  → 2  7              9 ⏐ 4  → 4  9
+                     7 → 7       2 → 2         9 → 9       4 → 4
+                                          Sets                             6
+        Execution Example
+           Partition
+                  7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2  9  4  → 2  4  7  9   3  8  6  1  → 1  3  8  6
+        7  2  → 2  7 9  4  → 4  9  3  8  → 3  8 6  1  → 1  6
+       7 → 7 2 → 2  9 → 9 4 → 4   3 → 3 8 → 8  6 → 6 1 → 1
+                              Sets                   7
+       Execution Example (cont.)
+           Recursive call, partition
+                 7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2 ⏐ 9  4 → 2  4  7  9  3  8  6  1  → 1  3  8  6
+        7  2  → 2  79  4  → 4  9  3  8  → 3  86  1  → 1  6
+       7 → 7 2 → 2  9 → 94 → 4   3 → 3 8 → 8 6 → 6 1 → 1
+                             Sets                   8
+       Execution Example (cont.)
+           Recursive call, partition
+                 7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2 ⏐ 9  4 → 2  4  7  9  3  8  6  1  → 1  3  8  6
+        7 ⏐ 2 → 2  79  4  → 4  9  3  8  → 3  86  1  → 1  6
+       7 → 7 2 → 2  9 → 94 → 4   3 → 3 8 → 8 6 → 6 1 → 1
+                             Sets                   9
+       Execution Example (cont.)
+          Recursive call, base case
+                 7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2 ⏐ 9  4 → 2  4  7  9 3  8  6  1  → 1  3  8  6
+        7 ⏐ 2 → 2  79  4  → 4  9 3  8  → 3  86  1  → 1  6
+       7 → 72 → 2  9 → 94 → 4   3 → 38 → 8  6 → 61 → 1
+                            Sets                 10
+       Execution Example (cont.)
+          Recursive call, base case
+                 7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2 ⏐ 9  4 → 2  4  7  9 3  8  6  1  → 1  3  8  6
+        7 ⏐ 2 → 2  79  4  → 4  9 3  8  → 3  86  1  → 1  6
+       7 → 72 → 2  9 → 94 → 4   3 → 38 → 8  6 → 61 → 1
+                            Sets                 11
+       Execution Example (cont.)
+          Merge
+                 7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2 ⏐ 9  4 → 2  4  7  9 3  8  6  1  → 1  3  8  6
+        7 ⏐ 2 → 2  79  4  → 4  9 3  8  → 3  86  1  → 1  6
+       7 → 72 → 2  9 → 94 → 4   3 → 38 → 8  6 → 61 → 1
+                            Sets                 12
+       Execution Example (cont.)
+          Recursive call, …, base case, merge
+                 7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2 ⏐ 9  4 → 2  4  7  9 3  8  6  1  → 1  3  8  6
+        7 ⏐ 2 → 2  79  4  → 4  9 3  8  → 3  86  1  → 1  6
+       7 → 72 → 2  9 → 94 → 4   3 → 38 → 8  6 → 61 → 1
+                            Sets                 13
+       Execution Example (cont.)
+          Merge
+                 7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2 ⏐ 9  4 → 2  4  7  9 3  8  6  1  → 1  3  8  6
+        7 ⏐ 2 → 2  79  4  → 4  9 3  8  → 3  86  1  → 1  6
+       7 → 72 → 2  9 → 94 → 4   3 → 38 → 8  6 → 61 → 1
+                            Sets                 14
+       Execution Example (cont.)
+          Recursive call, …, merge, merge
+                 7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2 ⏐ 9  4 → 2  4  7  9 3  8  6  1  → 1  3  6  8
+        7 ⏐ 2 → 2  79  4  → 4  9 3  8 → 3  8 6  1  → 1  6
+       7 → 72 → 2  9 → 94 → 4   3 → 38 → 8  6 → 61 → 1
+                            Sets                 15
+       Execution Example (cont.)
+          Merge
+                 7  2  9  4 ⏐ 3  8  6  1 → 1  2  3  4  6  7  8  9
+           7  2 ⏐ 9  4 → 2  4  7  9 3  8  6  1  → 1  3  6  8
+        7 ⏐ 2 → 2  79  4  → 4  9 3  8 → 3  8 6  1  → 1  6
+       7 → 72 → 2  9 → 94 → 4   3 → 38 → 8  6 → 61 → 1
+                            Sets                 16
+           Analysis of Merge-Sort
+                The height h of the merge-sort tree is O(log n)
+                  at each recursive call we divide in half the sequence, 
+                The overall amount or work done at the nodes of depth i is O(n)
+                                            i                    i
+                  we partition and merge 2 sequences of size n/2
+                              i+1
+                  we make 2     recursive calls
+                Thus, the total running time of merge-sort is O(n log n)
+                 depth #seqs size
+                   0      1     n
+                   1      2    n/2
+                          i       i
+                   i     2     n/2
+                  …      …     …
+                                              Sets                                17
+         Summary of Sorting Algorithms
+            Algorithm       Time      Notes
+                                        slow
+                                2       in-place
+           selection-sort    O(n )
+                                        for small data sets (< 1K)
+                                        slow
+                                2       in-place
+           insertion-sort    O(n )
+                                        for small data sets (< 1K)
+                                        fast
+             heap-sort     O(nlog n)    in-place
+                                        for large data sets (1K — 1M)
+                                        fast
+            merge-sort     O(nlog n)    sequential data access
+                                        for huge data sets (> 1M)
+                                    Sets                       18
+         Sets
+                            Sets                 19
+         Storing a Set in a List
+             We can implement a set with a list
+             Elements are stored sorted according to some 
+             canonical ordering
+             The space used is O(n)
+                Nodes storing set elements in order
+        List                                                     ∅
+                                              Set elements
+                                    Sets                        20
+           Generic Merging (§10.2)
+               Generalized merge  AlgorithmgenericMerge(A, B)
+               of two sorted lists      S ←empty sequence
+                                        while ¬A.isEmpty()  
+               A and B                                     ∧¬B.isEmpty()
+               Template method             a ←A.first().element();  b ← B.first().element()
+               genericMerge                if a < b
+                                               aIsLess(a, S);  A.remove(A.first())
+               Auxiliary methods           else if b < a
+                 aIsLess                      bIsLess(b, S);  B.remove(B.first())
+                 bIsLess                  else { b = a }
+                 bothEqual                    bothEqual(a, b, S)
+                                               A.remove(A.first());  B.remove(B.first())
+               Runs in O(n +n )         while ¬A.isEmpty()
+                            A   B          aIsLess(a, S);  A.remove(A.first())
+               time provided the 
+               auxiliary methods        while ¬B.isEmpty()
+               run in O(1) time            bIsLess(b, S);  B.remove(B.first())
+                                        return S
+                                              Sets                               21
+         Using Generic Merge 
+         for Set Operations
+             Any of the set operations can be 
+             implemented using a generic merge
+             For example:
+               For intersection: only copy elements that 
+                are duplicated in both list
+               For union: copy every element from both 
+                lists except for the duplicates
+             All methods run in linear time.
+                                     Sets                        22
+            Set Operations
+                We represent a set by the             Set union:
+                sorted sequence of its                  aIsLess(a, S)
+                elements                                    S.insertFirst(a)
+                By specializing the auxliliary          bIsLess(b, S)
+                methods he generic merge                    S.insertLast(b)
+                algorithm can be used to                bothAreEqual(a, b, S)
+                perform basic set                           S. insertLast(a)
+                operations:                           Set intersection:
+                  union                                aIsLess(a, S)
+                  intersection                             { do nothing }
+                  subtraction                          bIsLess(b, S)
+                The running time of an                      { do nothing }
+                operation on sets A and B               bothAreEqual(a, b, S)
+                should be at most O(n +n )
+                                        A    B              S. insertLast(a)
+                                               Sets                                23
+         Quick-Sort
+                          7  4  9  6 2  → 2  4  6 7  9
+                       4 2  → 2  4    7 9  → 7 9
+                      2 → 2                9 → 9
+                            Sets                 24
+        Outline and Reading
+            Quick-sort (§10.3)
+              Algorithm
+              Partition step
+              Quick-sort tree
+              Execution example
+            Analysis of quick-sort (§10.3.1)
+            In-place quick-sort (§10.3.1)
+            Summary of sorting algorithms
+                                  Sets                      25
+          Quick-Sort
+              Quick-sort is a randomized 
+              sorting algorithm based                           x
+              on the divide-and-conquer 
+              paradigm:
+                Divide: pick a random 
+                 element x (called pivot) and                 x
+                 partition S into 
+                    L elements less than x
+                    E elements equal x            L          E         G
+                    G elements greater than x
+                Recur: sort L and G
+                Conquer: join L, E and G                    x
+                                          Sets                           26
+            Partition
+                 We partition an input             Algorithmpartition(S, p)
+                 sequence as follows:                 Input sequence S, position p of pivot 
+                   We remove, in turn, each          Outputsubsequences L, E, G of the 
+                     element y from S and                elements of S less than, equal to,
+                   We insert y into L, E or G,          or greater than the pivot, resp.
+                     depending on the result of       L, E, G ← empty sequences
+                     the comparison with the          x ←S.remove(p)
+                     pivot x                          while ¬S.isEmpty()
+                 Each insertion and removal              y ←S.remove(S.first())
+                 is at the beginning or at the           if y < x
+                 end of a sequence, and                      L.insertLast(y)
+                 hence takes O(1) time                   else if y = x
+                 Thus, the partition step of                 E.insertLast(y)
+                 quick-sort takes O(n) time              else { y > x }
+                                                             G.insertLast(y)
+                                                      return L, E, G
+                                               Sets                                 27
+         Quick-Sort Tree
+             An execution of quick-sort is depicted by a binary tree
+               Each node represents a recursive call of quick-sort and stores
+                  Unsorted sequence before the execution and its pivot
+                  Sorted sequence at the end of the execution
+               The root is the initial call 
+               The leaves are calls on subsequences of size 0 or 1
+                        7  4  9  6 2  → 2  4  6 7  9
+                    4 2  → 2  4            7 9  → 7 9
+                   2 → 2                            9 → 9
+                                     Sets                         28
+       Execution Example
+          Pivot selection
+                  7  2  9  4 3  7  6 1 → 1  2  3  4  6  7  8  9
+           7  2  9  4  → 2  4  7  9 3  8  6  1  → 1  3  8  6
+          2 → 2     9  4  → 4  9   3 → 3       8 → 8
+                   9 → 9 4 → 4
+                             Sets                 29
+       Execution Example (cont.)
+           Partition, recursive call, pivot selection
+                  7  2  9  4  3  7  6 1 → 1  2  3  4  6  7  8  9
+           2 4  3  1 → 2  4  7  9    3  8  6  1  → 1  3  8  6
+          2 → 2     9  4  → 4  9    3 → 3       8 → 8
+                    9 → 94 → 4
+                             Sets                  30
+       Execution Example (cont.)
+           Partition, recursive call, base case
+                 7  2  9  4 3  7  6 1 →→ 1  2  3  4  6  7  8  9
+           2 4  3  1 →→ 2  4  7      3  8  6  1  → 1  3  8  6
+          1 → 1     9  4  → 4  9    3 → 3       8 → 8
+                    9 → 94 → 4
+                             Sets                  31
+       Execution Example (cont.)
+          Recursive call, …, base case, join
+                 7  2  9  4 3  7  6 1 → 1  2  3  4  6  7  8  9
+           2 4  3  1  → 1  2 3  4   3  8  6  1  → 1  3  8  6
+          1 → 1     4  3 → 3 4    3 → 3       8 → 8
+                   9 → 94 → 4
+                            Sets                 32
+       Execution Example (cont.)
+          Recursive call, pivot selection
+                  7  2  9  4 3  7  6 1 → 1  2  3  4  6  7  8  9
+           2 4  3  1  → 1  2 3  4   7  9  7 1  → 1  3  8  6
+          1 → 1     4  3 → 3 4     8 → 8       9 → 9
+                   9 → 9 4 → 4
+                             Sets                 33
+       Execution Example (cont.)
+          Partition, …, recursive call, base case
+                  7  2  9  4 3  7  6 1 → 1  2  3  4  6  7  8  9
+           2 4  3  1  → 1  2 3  4   7  9  7 1  → 1  3  8  6
+          1 → 1     4  3 → 3 4     8 → 8       9 → 9
+                   9 → 9 4 → 4
+                             Sets                 34
+        Execution Example (cont.)
+            Join, join
+                    7  2  9  4  3  7  6 1  → 1  2  3  4  6 7  7  9
+            2 4  3  1  → 1  2 3  4        7 9  7 → 1779
+           1 → 1      4  3 → 3 4       8 → 8         9 → 9
+                     9 → 9  4 → 4
+                                Sets                    35
+          Worst-case Running Time
+              The worst case for quick-sort occurs when the pivot is the unique 
+              minimum or maximum element
+              One of L and G has size n − 1 and the other has size 0
+              The running time is proportional to the sum
+                                n+(n−1) + …+2 + 1
+                                                              2
+              Thus, the worst-case running time of quick-sort is O(n )
+                        depth time
+                          0    n
+                          1   n−1
+                         …     …                              …
+                        n−1    1
+                                       Sets                          36
+            Expected Running Time
+                Consider a recursive call of quick-sort on a sequence of size s
+                  Good call: the sizes of L and G are each less than 3s/4
+                  Bad call: one of L and G has size greater than 3s/4
+                          7  2  9  4 3  7   6 1 9              7  2  9  4 3  7  6  1
+                  2  4  3  1          7  9  7 1  → 1     1                 7 2 9 4 3 7 6
+                           Good call                            Bad call
+                A call is good with probability 1/2
+                  1/2 of the possible pivots cause good calls:
+                                  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+                             Bad pivots     Good pivots      Bad pivots
+                                               Sets                                37
+           Expected Running Time, Part 2
+              Probabilistic Fact:The expected number of coin tosses required in 
+              order to get k heads is 2k
+              For a node of depth i, we expect
+                i/2 ancestors are good calls
+                The size of the input sequence for the current call is at most (3/4)i/2n
+               Therefore, we have                 expected height                 time per level
+                 For a node of depth 2log n,                        s(r)             O(n)
+                                          4/3
+                  the expected input size is one
+                 The expected height of the                    s(a)       s(b)       O(n)
+                  quick-sort tree is O(log n)
+               The amount or work done at the O(log n)
+               nodes of the same depth is O(n)               s(c)s(d)    s(e) s(f)    O(n)
+               Thus, the expected running time 
+               of quick-sort is O(n log n)
+                                                                       total expected time: O(n log n)
+                                              Sets                                38
+            In-Place Quick-Sort
+                Quick-sort can be implemented 
+                to run in-place
+                In the partition step, we use       AlgorithminPlaceQuickSort(S, l, r)
+                replace operations to rearrange        Input sequence S, ranks l and r
+                the elements of the input              Output sequence S with the
+                sequence such that                        elements of rank between l and r
+                  the elements less than the             rearranged in increasing order
+                   pivot have rank less than h         if l ≥ r
+                  the elements equal to the pivot         return
+                   have rank between h and k           i ←a random integer between l and r
+                  the elements greater than the       x ←S.elemAtRank(i)
+                   pivot have rank greater than k      (h, k) ← inPlacePartition(x)
+                The recursive calls consider           inPlaceQuickSort(S, l, h − 1)
+                  elements with rank less than h      inPlaceQuickSort(S, k + 1,r)
+                  elements with rank greater 
+                   than k
+                                               Sets                                39
+         In-Place Partitioning
+             Perform the partition using two indices to split S into L 
+             and EΥG (a similar method can split EΥG into E and G).
+                  jk
+                  3  2  5  1  0  7  3  5  9  2  7  9  8  9  7  6 9(pivot = 6)
+             Repeat until j and k cross:
+               Scan j to the right until finding an element >x.
+               Scan k to the left until finding an element < x.
+               Swap elements at indices j and k
+                              jk
+                   3  2  5  1  0  7  3  5  9  2  7  9  8  9  7  6 9
+                                          Sets                            40
+         Summary of Sorting Algorithms
+              Algorithm          Time       Notes
+                                     2       in-place
+            selection-sort       O(n )       slow (good for small inputs)
+                                     2       in-place
+             insertion-sort      O(n )       slow (good for small inputs)
+              quick-sort       O(nlog n)     in-place, randomized
+                               expected      fastest (good for large inputs)
+              heap-sort        O(nlog n)     in-place
+                                             fast (good for large inputs)
+              merge-sort       O(nlog n)     sequential data access
+                                             fast  (good for huge inputs)
+                                     Sets                        41
+          Bucket-Sort and Radix-Sort
+                     1, c    3, a 3, b   7, d 7, g7, e
+                  B ∅∅∅∅∅∅∅
+                     0 1 2 3 4 5 6 7 8 9
+                              Sets                    42
+            Bucket-Sort (§10.5.1)
+                Let be S be a sequence of n          AlgorithmbucketSort(S, N)
+                (key, element) items with keys          Input sequence S of (key, element)
+                in the range [0, N − 1]                     items with keys in the range
+                Bucket-sort uses the keys as                [0, N − 1]
+                indices into an auxiliary array B       Outputsequence S sorted by
+                of sequences (buckets)                      increasing keys
+                 Phase 1: Empty sequence S by           B ←array of N empty sequences
+                   moving each item (k, o) into its     while ¬S.isEmpty()
+                   bucket B[k]                              f ←S.first()
+                 Phase 2: For i = 0, …, N − 1, move         (k, o) ← S.remove(f)
+                   the items of bucket B[i] to the          B[k].insertLast((k, o))
+                   end of  sequence S                   for i ← 0 to N − 1
+                Analysis:                                   while ¬B[i].isEmpty()
+                  Phase 1 takes O(n) time                     f ←B[i].first()
+                  Phase 2 takes O(n + N) time                 (k, o) ← B[i].remove(f)
+                Bucket-sort takes O(n + N) time                S.insertLast((k, o))
+                                               Sets                                43
+        Example
+           Key range [0, 9]
+            7, d    1, c    3, a    7, g     3, b    7, e
+                                    Phase 1
+             1, c         3, a  3, b       7, d   7, g  7, e
+         B ∅∅∅∅∅∅∅
+             0  1  2  3  4  5  6  7  8  9
+                                    Phase 2
+            1, c    3, a    3, b    7, d     7, g    7, e
+                                 Sets                     44
+           Properties and Extensions
+               Key-type Property           Extensions
+                 The keys are used as          Integer keys in the range [a, b]
+                  indices into an array             Put item (k, o) into bucket
+                  and cannot be arbitrary            B[k − a]
+                  objects                       String keys from a set D of 
+                 No external comparator          possible strings, where D has 
+                                                  constant size (e.g., names of 
+               Stable Sort Property               the 50 U.S. states)
+                 The relative order of             Sort D and compute the rank 
+                  any two items with the             r(k) of each string k of D in 
+                                                     the sorted sequence 
+                  same key is preserved             Put item (k, o) into bucket 
+                  after the execution of             B[r(k)]
+                  the algorithm
+                                           Sets                             45
+           Lexicographic Order
+                A d-tuple is a sequence of d keys (k , k , …, k ), where 
+                                                         1   2       d
+                key ki is said to be the i-th dimension of the tuple
+                Example:
+                  The Cartesian coordinates of a point in space are a 3-tuple
+                The lexicographic order of two d-tuples is recursively 
+                defined as follows
+                                 (x , x , …, x ) < (y , y , …, y )
+                                  1  2      d ⇔1 2        d
+                            x <y ∨ x =y ∧ (x , …, x ) < (y , …, y )
+                             1   1     1   1    2     d     2     d
+                I.e., the tuples are compared by the first dimension, 
+                then by the second dimension, etc.
+                                           Sets                             46
+          Lexicographic-Sort
+             Let Ci be the comparator     Algorithm lexicographicSort(S)
+             that compares two tuples by     Input sequence S of  d-tuples
+             their i-th dimension            Outputsequence S sorted in
+             Let stableSort(S, C) be a          lexicographic order
+             stable sorting algorithm that 
+             uses comparator C               for i ← d downto 1
+             Lexicographic-sort sorts a         stableSort(S, C)
+             sequence of d-tuples in                         i
+             lexicographic order by       Example:
+             executingd times algorithm 
+             stableSort, one per          (7,4,6) (5,1,5) (2,4,6) (2, 1, 4) (3, 2, 4)
+             dimension                    (2, 1, 4) (3, 2, 4) (5,1,5) (7,4,6) (2,4,6)
+             Lexicographic-sort runs in 
+             O(dT(n)) time, where T(n) is (2, 1, 4) (5,1,5) (3, 2, 4) (7,4,6) (2,4,6)
+             the running time of          (2, 1, 4) (2,4,6) (3, 2, 4) (5,1,5) (7,4,6)
+             stableSort 
+                                        Sets                          47
+        Radix-Sort (§10.5.2)
+           Radix-sort is a 
+           specialization of 
+           lexicographic-sort that 
+           uses bucket-sort as the 
+           stable sorting algorithm 
+           in each dimension   Algorithm radixSort(S, N)
+           Radix-sort is applicable Input sequence S of  d-tuples such
+           to tuples where the     that (0, …, 0) ≤ (x1, …, xd) and
+           keys in each dimension i (x , …, x ) ≤ (N − 1, …, N − 1)
+                                     1   d
+                                   for each tuple (x , …, x ) in S
+           are integers in the               1    d
+           range [0, N − 1]      Outputsequence S sorted in
+           Radix-sort runs in time lexicographic order
+           O(d( n + N))          for i ← d downto 1
+                                   bucketSort(S, N)
+                              Sets                   48
+         Radix-Sort for 
+         Binary Numbers
+             Consider a sequence of n
+             b-bit integers 
+                 x = x   …xx
+                      b−1    1 0           Algorithm binaryRadixSort(S)
+             We represent each element        Input sequence S of b-bit
+             as a b-tuple of integers in        integers 
+             the range [0, 1] and apply       Outputsequence S sorted
+             radix-sort with N = 2            replace each element x
+             This application of the            of S with the item (0, x)
+             radix-sort algorithm runs in     for i ← 0 to b − 1
+             O(bn) time                         replace the key k of 
+             For example, we can sort a            each item (k, x) of S
+             sequence of 32-bit integers           with bit xi of x
+             in linear time                     bucketSort(S, 2)
+                                     Sets                        49
+        Example
+            Sorting a sequence of 4-bit integers
+           1001       0010       1001       1001       0001
+           0010       1110       1101       0001       0010
+           1101       1001       0001       0010       1001
+           0001       1101       0010       1101       1101
+           1110       0001       1110       1110       1110
+                                Sets                     50
+         Sorting Lower Bound
+                            Sets                 51
+        Comparison-Based 
+        Sorting (§10.4)
+              Many sorting algorithms are comparison based.
+                They sort by making comparisons between pairs of objects
+                Examples: bubble-sort, selection-sort, insertion-sort, heap-sort, 
+                 merge-sort, quick-sort, ...
+              Let us therefore derive a lower bound on the running 
+              time of any algorithm that uses comparisons to sort n 
+              elements, x , x , …, x .
+                           1  2       n
+                                 yes                        no
+                                           Is x < x?
+                                               i   j
+                                         Sets                            52
+         Counting Comparisons
+             Let us just count comparisons then.
+             Each possible run of the algorithm corresponds 
+             to a root-to-leaf path in a decision tree
+                                xi < xj ?
+                         x  < x  ?     x  < x  ?
+                          a b          c  d
+                     x  < x  ?x  < x  ?x  < x  ?x  < x  ?
+                      e  f  k  l    m  o   p  q
+                                   Sets                      53
+            Decision Tree Height
+                The height of this decision tree is a lower bound on the running time
+                Every possible input permutation must lead to a separate leaf 
+                output.  
+                  If not, some input …4…5… would have same output ordering as 
+                    …5…4…, which would be wrong.
+                Since there are n!=1*2*…*n leaves, the height is at least log (n!)
+                           minimum height (time)       x < x ?
+                                                        i  j
+                                              x  < x  ?        x  < x  ?
+                                               a   b            c  d
+                             log (n!)
+                                          x  < x  ?x  < x  ?x  < x  ?x  < x  ?
+                                           e  f    k  l     m  o    p   q
+                                                         n!
+                                                   Sets                                   54
+         The Lower Bound
+             Any comparison-based sorting algorithms takes at 
+             least log (n!) time
+             Therefore, any such algorithm takes time at least
+                                       n
+                  log (n!) ≥ log ⎛ n⎞2 = (n/2)log(n/2).
+                                  ⎜ 2⎟
+                                  ⎝  ⎠
+             That is, any comparison-based sorting algorithm must 
+             run in Ω(n log n) time.
+                                     Sets                        55
+         Selection
+                            Sets                 56
+         The Selection Problem
+            Given an integer k and n elements x , x , …, x , 
+                                                      1   2       n
+            taken from a total order, find the k-th smallest 
+            element in this set.
+            Of course, we can sort the set in O(n log n) time 
+            and then index the k-th element.
+                k=3     7  4  9  6 2  → 2  4  6 7  9
+            Can we solve the selection problem faster?
+                                     Sets                        57
+           Quick-Select (§10.7)
+             Quick-select is a randomized
+             selection algorithm based on                         x
+             the prune-and-search 
+             paradigm:
+               Prune: pick a random element x
+                (called pivot) and partition S into            x
+                   L elements less than x
+                   E elements equal x
+                   G elements greater than x        L         E          G
+               Search: depending on k, either    k < |L|            k > |L|+|E|
+                answer is in E, or we need to                      k’ = k - |L| - |E|
+                recur on either L or G                 |L| < k < |L|+|E|
+                                                            (done)
+                                           Sets                            58
+            Partition
+               We partition an input               Algorithmpartition(S, p)
+               sequence as in the quick-sort          Input sequence S, position p of pivot 
+               algorithm:                             Outputsubsequences L, E, G of the 
+                 We remove, in turn, each               elements of S less than, equal to,
+                   element y from S and                  or greater than the pivot, resp.
+                 We insert y into L, E or G,         L, E, G ← empty sequences
+                   depending on the result of         x ←S.remove(p)
+                   the comparison with the            while ¬S.isEmpty()
+                   pivot x                               y ←S.remove(S.first())
+               Each insertion and removal is             if y < x
+               at the beginning or at the                    L.insertLast(y)
+               end of a sequence, and                    else if y = x
+               hence takes O(1) time                         E.insertLast(y)
+               Thus, the partition step of               else { y > x }
+               quick-select takes O(n) time                  G.insertLast(y)
+                                                      return L, E, G
+                                               Sets                                 59
+           Quick-Select Visualization
+              An execution of quick-select can be visualized by a 
+              recursion path
+                Each node represents a recursive call of quick-select, and 
+                  stores k and the remaining sequence
+                         k=5, S=(7  4  9  3 2  6  5  1  8)
+                              k=2, S=(7  4  9  6  5  8)
+                                k=2, S=(7  4 6  5)
+                                  k=1, S=(7  6  5)
+                                           5
+                                           Sets                             60
+            Expected Running Time
+                Consider a recursive call of quick-select on a sequence of size s
+                  Good call: the sizes of L and G are each less than 3s/4
+                  Bad call: one of L and G has size greater than 3s/4
+                          7  2  9  4 3  7   6 1 9              7  2  9  4 3  7  6  1
+                  2  4  3  1          7  9  7 1  → 1     1                 7 2 9 4 3 7 6
+                           Good call                            Bad call
+                A call is good with probability 1/2
+                  1/2 of the possible pivots cause good calls:
+                                  1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16
+                             Bad pivots     Good pivots      Bad pivots
+                                               Sets                                61
+           Expected Running Time, 
+           Part 2
+              Probabilistic Fact #1:The expected number of coin tosses required in 
+              order to get one head is two
+              Probabilistic Fact #2:Expectation is a linear function:
+                E(X + Y ) = E(X ) + E(Y )
+                E(cX) = cE(X)
+              Let T(n) denote the expected running time of quick-select.
+              By Fact #2,
+                T(n) < T(3n/4) + bn*(expected # of calls before a good call)
+              By Fact #1,
+                T(n) < T(3n/4) + 2bn
+              That is, T(n) is a geometric series:
+                                                2           3
+                T(n) < 2bn + 2b(3/4)n + 2b(3/4) n + 2b(3/4) n + …
+              So T(n) is O(n).
+              We can solve the selection problem in O(n) expected 
+              time.
+                                             Sets                               62
+           Deterministic Selection 
+               We can do selection in O(n) worst-case time.
+               Main idea: recursively use the selection algorithm itself to find a 
+               good pivot for quick-select:
+                 Divide S into n/5 sets of 5 each
+                 Find a median in each set
+                 Recursively find the median of the “baby” medians. 
+         Min size      1  1   1   1   1   1   1   1   1   1   1
+           for L      2   2   2   2   2   2   2   2   2   2   2
+                      3   3   3   3   3   3   3   3   3   3   3    Min size
+                       4  4   4   4   4   4   4   4   4   4   4     for G
+                      5   5   5   5   5   5   5   5   5   5   5
+               See Exercise C-4.24 for details of analysis.
+                                           Sets                            63
+         Master Method
+            Many divide-and-conquer recurrence equations have 
+            the form:                 c           if n < d
+                    T(n)=⎧
+                            ⎨aT(n/b)+ f(n)       if n ≥ d
+                            ⎩
+            The Master Theorem:
+            1.  if f (n) is O(nlogba−ε ), then T(n) is Θ(nlogba)
+            2.  if f (n) is Θ(nlogba logk n), then T(n) is Θ(nlogba logk+1 n)
+            3.  if f (n) is Ω(nlogba+ε ), then T(n) is Θ( f (n)),
+               provided  af (n/b) ≤δf (n)  for some δ <1.
+                                     Sets                        64

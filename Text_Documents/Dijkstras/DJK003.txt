@@ -1,0 +1,653 @@
+                          Shortest Paths
+                                          Dijkstra’s algorithm
+                                          implementation
+                                          negative weights
+                                           References:
+                                               Algorithms in Java, Chapter 21
+                                               http://www.cs.princeton.edu/introalgsds/55dijkstra
+                                                                                    1
+       Edsger W. Dijkstra: a few select quotes
+                 The question of whether computers can think is like 
+                 the question of whether submarines can swim.
+                 Do only what only you can do.
+                 In their capacity as a tool, computers will be but a 
+                 ripple on the surface of our culture.  In their 
+                 capacity as intellectual challenge, they are without               Edger Dijkstra
+                 precedent in the cultural history of mankind.                      Turing award 1972
+                 The use of COBOL cripples the mind; its teaching 
+                 should, therefore, be regarded as a criminal offence. 
+                 APL is a mistake, carried through to perfection. It is 
+                 the language of the future for the programming 
+                 techniques of the past:  it creates a new generation 
+                 of coding bums.
+                                                                                                         2
+      Shortest paths in a weighted digraph
+                                                                                       3
+       Shortest paths in a weighted digraph
+                                                                                         s to t.
+              Given a weighted digraph, find the shortest directed path from 
+                                                                     cost of path = sum of edge costs in path
+                            9                                   32
+               0            2               24                   3
+                      9
+               s                  14            18
+                          14                           2         6           Path: s635t
+                                  6                            45
+                                       30               11       4    19     Cost:  14 + 18 + 2 + 16 = 50
+                      15         5           5
+                                     20     34           16          6
+                             7                 44                          t
+                            15                                           50
+              Note: weights are arbitrary numbers 
+               not necessarily distances
+               need not satisfy the triangle inequality
+               Ex: airline fares [stay tuned for others]
+                                                                                                         4
+       Versions
+              
+              source-target (s-t)
+              single source
+              all pairs.
+              nonnegative edge weights
+              arbitrary weights
+              Euclidean weights.
+                                                                                                   5
+      Early history of shortest paths algorithms
+            Shimbel (1955).  Information networks.
+            Ford (1956).  RAND, economics of transportation.
+            Leyzorek, Gray, Johnson, Ladew, Meaker, Petry, Seitz (1957).
+            Combat Development Dept. of the Army Electronic Proving Ground.
+            Dantzig (1958).  Simplex method for linear programming.
+            Bellman (1958).  Dynamic programming.
+            Moore (1959).    Routing long-distance telephone calls for Bell Labs.  
+            Dijkstra (1959).  Simpler and faster version of Ford's algorithm.
+                                                                                            6
+      Applications
+            Shortest-paths is a broadly useful problem-solving model
+             Maps
+             Robot navigation. 
+             Texture mapping.
+             Typesetting in TeX.
+             Urban traffic planning.
+             Optimal pipelining of VLSI chip.
+             Subroutine in advanced algorithms.
+             Telemarketer operator scheduling.
+             Routing of telecommunications messages.
+             Approximating piecewise linear functions.
+             Network routing protocols (OSPF, BGP, RIP).
+             Exploiting arbitrage opportunities in currency exchange.
+             Optimal truck routing through given traffic congestion pattern.
+             Reference:  Network Flows:  Theory, Algorithms, and Applications, R. K. Ahuja, T. L. Magnanti, and J. B. Orlin, Prentice Hall, 1993.
+                                                                                         7
+                                       Dijkstra’s algorithm
+                                       implementation
+                                       negative weights
+                                                                                    8
+       Single-source shortest-paths
+                                                              s.
+              Given. Weighted digraph, single source 
+              Distance from s to v: length of the shortest path from s to v .
+              Goal.  Find distance (and shortest path) from s to every other vertex.
+                                     9                                    32
+                        0            2               24                    3
+                              9
+                        s                                18
+                                  14       14                              6
+                                            6                   2        45
+                                                30                11       4    19
+                               15         5           5
+                                              20     34           16           6
+                                      7                 44                           t
+                                     15                                            50
+              Shortest paths form a tree
+                                                                                                           9
+       Single-source shortest-paths: basic plan
+              Goal:  Find distance (and shortest path) from s to every other vertex.
+              Design pattern:
+               ShortestPaths class (WeightedDigraph client)
+               instance variables: vertex-indexed arrays dist[] and pred[] 
+               client query methods return distance and path iterator
+                                                                       v   s   2   3   4   5   6   7   t
+                          9                                       dist[ ]  0   9  32  45  34  14  15  50
+                                                              32  pred[ ]  0   0   6   5   3   0   0   5
+             0            2              24                   3                    shortest path tree
+                   9
+             s                                                                  (parent-link representation)
+                       14      14            18               6                             s
+                                6                   2       45
+                                    30                        4    19                 2     6     7
+                                          5          11
+                    15        5                                                             3
+                                  20     34           16          6
+                                                                                            5
+                          7                 44                           t
+                         15                                            50                2     t
+                Note: Same pattern as Prim, DFS, BFS; BFS works when weights are all 1.
+                                                                                                        10
+        Edge relaxation
+              For all v, dist[v] is the length of some path from s to v.
+              Relaxation along edge e from v to w.
+               dist[v] is length of some path from s to v
+               dist[w] is length of some path from s to w
+               if v-w gives a shorter path to w through v, update dist[w] and pred[w]
+                             if (dist[w] > dist[v] + e.weight())
+                             {   
+                                 dist[w] = dist[v] + e.weight());
+                                 pred[w] = e;
+                             }
+                  0                           47              0                           44
+                  s                            w              s                           w
+                                  11                                         11      33
+                                  v                                           v
+              Relaxation sets dist[w] to the length of a shorter path from s to w (if v-w gives one)
+                                                                                                      11
+      Dijkstra's algorithm
+             S: set of vertices for which the shortest path length from s is known.
+             Invariant: for v in S, dist[v] is the length of the shortest path from s to v.
+             Initialize S to s, dist[s] to 0, dist[v] to  for all other v
+             Repeat until S contains all vertices connected to s
+              find e with v in S and w in S’ that minimizes dist[v] + e.weight()
+              relax along that edge
+              add w to S
+                                    dist[v]      e        w
+                       S               v
+                     s
+                                                                                             12
+      Dijkstra's algorithm
+             S: set of vertices for which the shortest path length from s is known.
+             Invariant: for v in S, dist[v] is the length of the shortest path from s to v.
+             Initialize S to s, dist[s] to 0, dist[v] to  for all other v
+             Repeat until S contains all vertices connected to s
+              find e with v in S and w in S’ that minimizes dist[v] + e.weight()
+              relax along that edge
+              add w to S
+                                    dist[v]      e        w
+                       S               v
+                     s
+                                                                                             13
+       Dijkstra's algorithm proof of correctness
+              S: set of vertices for which the shortest path length from s is known.
+              Invariant: for v in S, dist[v] is the length of the shortest path from s to v.
+              Pf.  (by induction on |S|)
+               Let w be next vertex added to S.
+               Let P* be the s-w path through v.
+               Consider any other s-w path P, and let x be first node on path outside S.
+               P is already longer than P* as soon as it reaches x by greedy choice.
+                                                                 P   x
+                                         s
+                                                S        v
+                                                                 w
+                                                                                                        14
+       Shortest Path Tree
+                           25%                                                    50%
+                           75%                                                    100%
+                                                                                                     15
+                                       Dijkstra’s algorithm
+                                       implementation
+                                       negative weights
+                                                                                    16
+        Weighted directed edge data type
+                public class Edge implements Comparable<Edge>
+                {
+                   public final int v, int w;
+                   public final double weight;
+                   public Edge(int v, int w, double weight)
+                   {
+                      this.v = v;
+                      this.w = w;
+                      this.weight = weight;
+                   }
+                   public int from()                                                 code is the same as for
+                   {  return v; }                                                    (undirected) WeightedGraph
+                   public int to()
+                   {  return w; }                                                    except
+                   public int weight()                                                from() and to() replace
+                   {  return weight; }                                                either() and other()
+                   public int compareTo(Edge that)
+                   {
+                      if      (this.weight < that.weight) return -1;
+                      else if (this.weight > that.weight) return +1;
+                      else if (this.weight > that.weight) return  0;
+                   }
+                }
+                                                                                                               17
+      Weighted digraph data type
+            Identical to WeightedGraph but just one representation of each Edge.
+                    public class WeightedDigraph
+                    {
+                       private int V; 
+                       private SET<Edge>[] adj;
+                       public Graph(int V)
+                       {
+                          this.V = V;
+                          adj = (SET<Edge>[]) new SET[V];
+                          for (int v = 0; v < V; v++)
+                             adj[v] = new SET<Edge>();
+                       }
+                       public void addEdge(Edge e)
+                       {
+                          int v = e.from();
+                          adj[v].add(e);
+                       }
+                       public Iterable<Edge> adj(int v)
+                       {  return adj[v];  }
+                    }
+                                                                                         18
+       Dijkstra's algorithm: implementation approach
+             Initialize S to s, dist[s] to 0, dist[v] to  for all other v
+             Repeat until S contains all vertices connected to s
+              find v-w with v in S and w in S’ that minimizes dist[v] + weight[v-w]
+              relax along that edge
+              add w to S
+             Idea 1 (easy): Try all edges
+             Total running time proportional to VE
+                                                                                                  19
+       Dijkstra's algorithm: implementation approach
+              Initialize S to s, dist[s] to 0, dist[v] to  for all other v
+              Repeat until S contains all vertices connected to s
+               find v-w with v in S and w in S’ that minimizes dist[v] + weight[v-w]
+               relax along that edge
+               add w to S
+              Idea 2 (Dijkstra) :  maintain these invariants
+               for v in S, dist[v] is the length of the shortest path from s to v.
+               for w in S’, dist[w] minimizes dist[v] + weight[v-w]. 
+              Two implications
+               find v-w in V steps (smallest dist[] value among vertices in S’)
+               update dist[] in at most V steps (check neighbors of w)
+                                                       2
+              Total running time proportional to V
+                                                                                                      20
+       Dijkstra's algorithm implementation
+              Initialize S to s, dist[s] to 0, dist[v] to  for all other v
+              Repeat until S contains all vertices connected to s
+               find v-w with v in S and w in S’ that minimizes dist[v] + weight[v-w]
+               relax along that edge
+               add w to S
+              Idea 3 (modern implementations): 
+               for all v in S, dist[v] is the length of the shortest path from s to v.
+               use a priority queue to find the edge to relax 
+                                                                                     sparse     dense
+                                                                          easy         V2        EV
+                                                                                         2         2
+                                                                        Dijkstra       V          V
+              Total running time proportional to E lg E                 modern       E lg E     E lg E
+                                                                                                          21
+      Dijkstra's algorithm implementation
+            Q. What goes onto the priority queue?
+            A. Fringe vertices connected by a single edge to a vertex in S
+            Starting to look familiar?
+                                                                                           22
+       Lazy implementation of Prim's MST algorithm
+              public class LazyPrim
+              {
+                 Edge[] pred = new Edge[G.V()];
+                 public LazyPrim(WeightedGraph G)
+                 {
+                    boolean[] marked = new boolean[G.V()];               marks vertices in MST
+                    double[] dist = new double[G.V()];                   distance to MST
+                    for (int v = 0; v < G.V(); v++)
+                       dist[v] = Double.POSITIVE_INFINITY;
+                    MinPQplus<Double, Integer> pq;                       edges to MST
+                    pq = new MinPQplus<Double, Integer>();               key-value PQ
+                    dist[s] = 0.0;
+                    pq.put(dist[s], s);
+                    while (!pq.isEmpty())
+                    {
+                       int v = pq.delMin();
+                       if (marked[v]) continue;                         get next vertex
+                       marked(v) = true;                                ignore if already in MST
+                       for (Edge e : G.adj(v))
+                       {
+                          int w = e.other(v);
+                          if (!marked[w] && (dist[w] > e.weight() ))
+                          {                                             add to PQ any vertices
+                              dist[w] = e.weight();                     brought closer to S by v
+                              pred[w] = e;
+                              pq.insert(dist[w], w);
+                          }
+                       }
+                    }
+                 }
+              }
+                                                                                                 23
+       Lazy implementation of Dijkstra's SPT algorithm
+              public class LazyDijkstra
+              {
+                 double[] dist = new double[G.V()];
+                 Edge[] pred = new Edge[G.V()];
+                 public LazyDijkstra(WeightedDigraph G, int s)
+                 {
+                    boolean[] marked = new boolean[G.V()];
+                    for (int v = 0; v < G.V(); v++)
+                       dist[v] = Double.POSITIVE_INFINITY;
+                    MinPQplus<Double, Integer> pq;
+                    pq = new MinPQplus<Double, Integer>();
+                    dist[s] = 0.0;
+                    pq.put(dist[s], s);
+                    while (!pq.isEmpty())
+                    {
+                       int v = pq.delMin();                       code is the same as Prim’s (!!)
+                       if (marked[v]) continue;
+                       marked(v) = true;                          except
+                       for (Edge e : G.adj(v))                      WeightedDigraph, not WeightedGraph
+                       {                                            weight is distance to s, not to tree
+                          int w = e.to();                           add client query for distances
+                          if (dist[w] > dist[v] + e.weight())
+                          {
+                              dist[w] = dist[v] + e.weight();
+                              pred[w] = e;
+                              pq.insert(dist[w], w);
+                          }
+                       }
+                    }
+                 }
+              }
+                                                                                                 24
+       Dijkstra’s algorithm example
+              Dijkstra’s algorithm.  [ Dijkstra 1957]
+              Start with vertex 0 and greedily grow tree T. At each step,
+              add cheapest path ending in an edge that has exactly one endpoint in T.
+                      0                   0                     0
+                                  1                    1                    1
+                         5                    5                    5                         0-1 0.41 
+                              4                    4                     4                   0-5 0.29
+                                                                                             1-2 0.51 
+                                                                                             1-4 0.32 
+                      3           2       3            2        3           2                2-3 0.50
+                    0-5 .29 0-1 .41        0-1 .41 5-4 .50                                   3-0 0.45
+                                                                5-4 .50 1-2 .92              3-5 0.38
+                    0                         0                   0                          4-2 0.32
+                                 1                        1                   1              4-3 0.36
+                                                                                             5-1 0.29 
+                        5                        5                   5                       5-4 0.21
+                             4                        4                    4
+                    3            2           3            2       3           2
+                 4-2 .82 4-3 .86 1-2 .92      4-3 .86 1-2 .92         1-2 .92
+                                                                                                        25
+      Eager implementation of Dijkstra’s algorithm
+             Use indexed priority queue that supports
+              contains: is there a key associated with value v in the priority queue?
+              decrease key: decrease the key associated with value v
+             [more complicated data structure, see text]
+             Putative “benefit”: reduces PQ size guarantee from E to V
+              no signficant impact on time since lg E < 2lg V
+              extra space not important for huge sparse graphs found in practice
+               [ PQ size is far smaller than E or even V in practice]
+              widely used, but practical utility is debatable (as for Prim’s)               26
+       Improvements to Dijkstra’s algorithm
+             Use a d-way heap (Johnson, 1970s)
+              easy to implement
+                reduces costs to E d log  V 
+                                       d
+              indistinguishable from linear for huge sparse graphs found in practice
+             Use a Fibonacci heap (Sleator-Tarjan, 1980s)
+              very difficult to implement
+              reduces worst-case costs (in theory) to E + V lg V 
+              not quite linear (in theory)
+              practical utility questionable
+             Find an algorithm that provides a linear worst-case guarantee?
+                  [open problem]
+                                                                                               27
+       Dijkstra's Algorithm:  performance summary
+             Fringe implementation directly impacts performance 
+             Best choice depends on sparsity of graph.
+              2,000 vertices, 1 million edges.         heap 2-3x slower than array
+              100,000 vertices, 1 million edges.       heap gives 500x speedup.
+              1 million vertices, 2 million edges.     heap gives 10,000x speedup.
+             Bottom line.
+              array implementation optimal for dense graphs
+              binary heap far better for sparse graphs
+              d-way heap worth the trouble in performance-critical situations
+              Fibonacci heap best in theory, but not worth implementing
+                                                                                                 28
+      Priority-first search
+            Insight: All of our graph-search methods are the same algorithm!
+            Maintain a set of explored vertices S
+            Grow S by exploring edges with exactly one endpoint leaving S.
+            DFS.         Take edge from vertex which was discovered most recently.
+            BFS.         Take from vertex which was discovered least recently.
+            Prim.         Take edge of minimum weight.
+            Dijkstra.   Take edge to vertex that is closest to s.
+            ...               Gives simple algorithm for many graph-processing problems
+                                   dist[v]      e        w
+                       S               v
+                     s
+            Challenge: express this insight in (re)usable Java code
+                                                                                           29
+      Priority-first search: application example
+            Shortest s-t paths in Euclidean graphs (maps) 
+             Vertices are points in the plane.
+             Edge weights are Euclidean distances.
+            A sublinear algorithm.
+             Assume graph is already in memory.
+             Start Dijkstra at s.
+             Stop when you reach t.
+            Even better: exploit geometry
+             For edge v-w, use weight d(v, w) + d(w, t) – d(v, t).
+             Proof of correctness for Dijkstra still applies.
+                                     1/2                            Euclidean distance
+             In practice only O(V     ) vertices examined.
+             Special case of A* algorithm
+            [Practical map-processing programs precompute many of the paths.]
+                                                                                           30
+                                       Dijkstra’s algorithm
+                                       implementation
+                                       negative weights
+                                                                                    31
+       Shortest paths application:  Currency conversion
+              Currency conversion.  Given currencies and exchange rates, what is 
+              best way to convert one ounce of gold to US dollars?
+               1 oz. gold    $327.25.
+               1 oz. gold    £208.10                             $327.00.     [ 208.10  1.5714 ]
+               1 oz. gold    455.2 Francs   304.39 Euros    $327.28.          [ 455.2  .6677  1.0752 ]
+                      Currency           £        Euro         ¥       Franc        $        Gold
+                      UK Pound         1.0000     0.6853   0.005290    0.4569     0.6368    208.100
+                        Euro           1.4599     1.0000   0.007721    0.6677     0.9303    304.028
+                    Japanese Yen      189.050    129.520    1.0000    85.4694    120.400    39346.7
+                     Swiss Franc       2.1904     1.4978   0.011574    1.0000     1.3941    455.200
+                      US Dollar        1.5714     1.0752   0.008309    0.7182     1.0000    327.250
+                      Gold (oz.)      0.004816   0.003295 0.0000255 0.002201     0.003065   1.0000
+                                                                                                          32
+       Shortest paths application:  Currency conversion
+              Graph formulation.
+               Vertex = currency.
+               Edge = transaction, with weight equal to exchange rate.
+               Find path that maximizes product of weights.
+                                                   327.25
+                               G                  0.003065                    $
+                                                                                   0.008309
+                     0.004816 208.100    455.2                  1.3941       1.0752        ¥
+                                                                                   129.520
+                               £       2.1904         F       0.6677          E
+                                                                                                        33
+       Shortest paths application:  Currency conversion
+              Reduce to shortest path problem by taking logs
+               Let weight(v-w) = - lg (exchange rate from currency v to w)
+               multiplication turns to addition
+               Shortest path with costs c corresponds to best exchange sequence.
+                                                   327.25
+                               G                  0.003065                    $
+                                                                                   0.008309
+                                     -lg(455.2) = -8.8304                   -0.1046
+                     0.004816 208.100    455.2                  0.7182       1.0752        ¥
+                                                                                   129.520
+                                                               0.5827
+                               £       2.1904         F       0.6677          E
+              Challenge.  Solve shortest path problem with negative weights. 
+                                                                                                        34
+      Shortest paths with negative weights:  failed attempts
+            Dijkstra.  Doesn’t work with negative edge weights.
+                             0        4        1
+                             2                 6     Dijkstra selects vertex 3 immediately after 0.
+                                                     But shortest path from 0 to 3 is 0123.
+                             3       -9        2
+            Re-weighting.  Adding a constant to every edge weight also doesn’t work.
+                             0       13        1
+                                                     Adding 9 to each edge changes the shortest path
+                            11                15     because it adds 9 to each segment, wrong thing to do 
+                                                     for paths with many segments.
+                             3        0        2
+            Bad news: need a different algorithm.
+                                                                                         35
+       Shortest paths with negative weights:  negative cycles
+              Negative cycle.  Directed cycle whose sum of edge weights is negative.
+                                                     -6       -4
+                                                      7
+              Observations. 
+               If negative cycle C on path from s to t, then shortest path can be 
+                 made arbitrarily negative by spinning around cycle
+               There exists a shortest s-t path that is simple.
+                                          s                                  t
+                                                      C
+                                                                 cost(C) < 0
+              Worse news: need a different problem
+                                                                                                        36
+       Shortest paths with negative weights
+              Problem 1.  Does a given digraph contain a negative cycle?
+                                                        -6      -4
+                                                        7
+              Problem 2. Find the shortest simple path from s to t. 
+                                                                   s                                  t
+                                                                                C
+              Bad news: Problem 2 is intractable                                          cost(C) < 0
+              Good news: Can solve problem 1 in O(VE) steps
+              Good news: Same algorithm solves problem 2 if no negative cycle
+              Bellman-Ford algorithm
+               detects a negative cycle if any exist
+               finds shortest simple path if no negative cycle exists
+                                                                                                        37
+        Edge relaxation
+              For all v, dist[v] is the length of some path from s to v.
+              Relaxation along edge e from v to w.
+               dist[v] is length of some path from s to v
+               dist[w] is length of some path from s to w
+               if v-w gives a shorter path to w through v, update dist[w] and pred[w]
+                                if (dist[w] > dist[v] + e.weight())
+                                {
+                                    dist[w] = dist[v] + e.weight());
+                                    pred[w] = e;
+                                }
+                  0                           47              0                           44
+                  s                            w              s                           w
+                                  11                                         11      33
+                                  v                                           v
+              Relaxation sets dist[w] to the length of a shorter path from s to w (if v-w gives one)
+                                                                                                     38
+      Shortest paths with negative weights:  dynamic programming algorithm
+            A simple solution that works!
+             Initialize dist[v] = ,  dist[s]= 0.
+             Repeat V times:  relax each edge e.
+                                                            phase i
+                    for (int i = 1; i <= G.V(); i++)
+                       for (int v = 0; v < G.V(); v++)
+                          for (Edge e : G.adj(v))
+                          {
+                             int w = e.to();
+                             if (dist[w] > dist[v] + e.weight())              relax v-w
+                             {
+                                 dist[w] = dist[v] + e.weight())
+                                 pred[w] = e;
+                             }
+                          }
+                                                                                          39
+      Shortest paths with negative weights:  dynamic programming algorithm
+            Running time proportional to E V
+            Invariant.  At end of phase i, dist[v]  length of any path from s to v 
+            using at most i edges. 
+            Theorem.  If there are no negative cycles, upon termination dist[v] is 
+            the length of the shortest path from from s to v.
+                                                          and pred[] gives the shortest paths
+                                                                                           40
+       Shortest paths with negative weights:  Bellman-Ford-Moore algorithm
+              Observation.  If dist[v] doesn't change during phase i,
+                                    no need to relax any edge leaving v in phase i+1.
+              FIFO implementation.
+              Maintain queue of vertices whose distance changed.
+                                   be careful to keep at most one copy of each vertex on queue
+              Running time.  
+               still could be proportional to EV in worst case
+               much faster than that in practice
+                                                                                                      41
+       Shortest paths with negative weights:  Bellman-Ford-Moore algorithm
+               Initialize  dist[v] =  and marked[v]= false for all vertices v.
+                                 Queue<Integer> q = new Queue<Integer>(); 
+                                 marked[s] = true;
+                                 dist[s] = 0;
+                                 q.enqueue(s);      
+                                 while (!q.isEmpty())
+                                 {
+                                    int v = q.dequeue(); 
+                                    marked[v] = false;
+                                    for (Edge e : G.adj(v))
+                                    {             
+                                       int w = e.target();                 
+                                       if (dist[w] > dist[v] + e.weight())
+                                       {   
+                                           dist[w] = dist[v] + e.weight();
+                                           pred[w] = e;                  
+                                           if (!marked[w])
+                                           {                        
+                                              marked[w] = true;                          
+                                              q.enqueue(w);
+                                           } 
+                                       }
+                                    }  
+                                 }
+                                                                                                             42
+       Single Source Shortest Paths Implementation:  Cost Summary
+                                          algorithm            worst case           typical case
+                                                                     2                    2
+                                      Dijkstra (classic)            V                    V
+            nonnegative costs
+                                       Dijkstra (heap)            E lg E                 E
+                                   Dynamic programming              EV                   EV
+            no negative cycles
+                                    Bellman-Ford-Moore              EV                   E
+              Remark 1.  Negative weights makes the problem harder.
+              Remark 2.  Negative cycles makes the problem intractable.
+                                                                                                          43
+       Shortest paths application: arbitrage
+              Is there an arbitrage opportunity in currency graph?
+               Ex:  $1    1.3941 Francs   0.9308 Euros    $1.00084.
+               Is there a negative cost cycle?
+               Fastest algorithm is valuable!
+                                                   327.25
+                               G                  0.003065                    $
+                                                                                   0.008309
+                     0.004816 208.100                           -0.4793     -0.1046
+                                         455.2                  1.3941       1.0752        ¥
+                                                                                   129.520
+                                                               0.5827
+                               £       2.1904         F       0.6677          E
+                                         -0.4793 + 0.5827 - 0.1046 < 0
+                                                                                                        44
+       Negative cycle detection
+              If there is a negative cycle reachable from s.
+              Bellman-Ford-Moore gets stuck in loop, updating vertices in cycle.
+                     s           2            6              3                 4
+                                              7              5     pred[v]     v
+              Finding a negative cycle.  If any vertex v is updated in phase V,
+              there exists a negative cycle, and we can trace back pred[v] to find it.
+                                                                                                        45
+       Negative cycle detection
+              Goal.  Identify a negative cycle (reachable from any vertex).
+              Solution.  Add 0-weight edge from artificial source s to each vertex v. 
+              Run Bellman-Ford from vertex s.
+                                                         s
+                                                                -0.48    -0.11
+                                                                0.58
+                                                                                                        46
+      Shortest paths summary
+             Dijkstra’s algorithm
+              easy and optimal for dense digraphs
+              PQ/ST data type gives near optimal for sparse graphs
+             Priority-first search
+              generalization of Dijkstra’s algorithm
+              encompasses DFS, BFS, and Prim
+              enables easy solution to many graph-processing problems
+             Negative weights
+              arise in applications
+              make problem intractable in presence of negative cycles (!)
+              easy solution using old algorithms otherwise
+             Shortest-paths is a broadly useful problem-solving model
+                                                                                             47

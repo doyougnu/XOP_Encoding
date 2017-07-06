@@ -1,0 +1,95 @@
+           DIJKSTRA’S ALGORITHM 
+           Melissa Yan 
+      Edsger Wybe Dijkstra 
+      ¨  May 11, 1930 – August 6, 2002 
+      ¨  Dutch computer scientist from Netherlands 
+      ¨  Received the 1972 A. M. Turing Award, widely considered 
+        the most prestigious award in computer science 
+      ¨  Known for his many essays on programming 
+   How do we get from 2-151 to Logan? 
+      Single-Source Shortest Path Problem 
+      ¨  The problem of finding shortest paths from a source 
+        vertex v to all other vertices in the graph. 
+      ¨  Weighted graph G = (E,V) 
+      ¨  Source vertex s ˥ V to all vertices v ˥ V 
+      Dijkstra’s Algorithm 
+      ¨  Solution to the single-source shortest path problem 
+        in graph theory 
+        ¤ Both directed and undirected graphs 
+        ¤ All edges must have nonnegative weights 
+        ¤ Graph must be connected 
+      Pseudocode 
+     dist[s]  	ˡ0  	  	  	  	  	  	  	  	  	  	  	(distance  	to  	source  	vertex  	is  	zero)  	
+     for  	  	all  	v  	˥  	V–{s}  	
+       	  	  	  	  	  	  	  	do  	  	dist[v]  	ˡ∞  	  	  	(set  	all  	other  	distances  	to  	inﬁnity)  	  	
+     Sˡ∅  	  	  	  	  	(S,  	the  	set  	of  	visited  	vertices  	is  	initially  	empty)  	  	
+     QˡV  	  	  	  	  	  	(Q,  	the  	queue  	initially  	contains  	all  	vertices)  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	
+     while  	Q  	≠∅  	  	  	  	(while  	the  	queue  	is  	not  	empty)  	  	
+     do  	  	  	u  	ˡ  	mindistance(Q,dist)  	  	(select  	the  	element  	of  	Q  	with  	the  	min.  	distance)  	  	
+       	  	  	  	  	  	SˡS˫{u}  	  	  	  	(add  	u  	to  	list  	of  	visited  	vertices)  	  	
+       	  	  	  	  	  	  	for  	all  	v  	˥  	neighbors[u]   	  	  	  	
+       	  	  	  	  	  	  	  	  	  	  	  	  	  	do  	  	if  	  	  	dist[v]  	>  	dist[u]  	+  	w(u,  	v)  	  	(if  	new  	shortest  	path  	found)  	
+       	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	  	then  	  	  	  	  	  	d[v]  	ˡd[u]  	+  	w(u,  	v)  	(set  	new  	value  	of  	shortest  	path)  	
+            	  	  	  	  	(if  	desired,  	add  	traceback  	code)  	
+     return  	dist  	
+      Output of Dijkstra’s Algorithm 
+      ¨  Original algorithm outputs value of shortest path 
+       not the path itself 
+      ¨  With slight modification we can obtain the path 
+                  Value: Ў(1,6) = 6 
+                    Path: {1,2,5,6} 
+      Why It Works Intuitively 
+      ¨  Lemma 1: Optimal Substructure 
+       The subpath of any shortest path is itself a shortest 
+       path. 
+      ¨  Lemma 2: Triangle inequality 
+       If Ў(u,v) is the shortest path length between u and 
+       v,  Ў(u,v) ≤ Ў(u,x) + Ў(x,v)  
+      Proof of Correctness 1 
+      ¨  Invariant: d[v] ≥ Ў(s,v) for all v ˥ V 
+       ¤ Holds after initialization and any sequence of 
+         relaxation steps 
+        
+       Proof 
+        
+       Hint: We will need the relaxation part of the 
+       pseudocode. 
+                   d[v] ß d[u] + w(u,v) 
+      Proof of Correctness 1.5 
+      ¨  Relaxation step not only maintains the invariant but 
+       allows us to find next shortest path 
+      ¨  Suppose s à ... à u à v is a shortest path 
+       ¤ If d[u] = Ў(s,u) 
+       ¤ And we relax edge (u,v) 
+       ¤ Then d[v] = Ў(s,v) after relaxation 
+       
+      Proof 
+      Proof of Correctness 2 
+      ¨  When Dijkstra terminates,  
+               d[v] = Ў(s,v) for all v ˥ V 
+                         
+      ¨  Proof 
+      Hint: We will need min-extraction part of the pseudo-
+      code. 
+                u ˡ mindistance(Q,dist)  
+   Applications of Dijkstra’s Algorithm 
+      Why do we use Dijkstra’s Algorithm? 
+      ¨  Algorithms for calculating shortest path from source 
+        to sink about as computationally expensive as 
+        calculating shortest paths from source to any vertex 
+       Currency Exchange Problem 
+       ¨  Is there an arbitrage opportunity? 
+       ¨  Ex. $1 à 1.3941 Francs à 0.9308 Euros à 
+         $1.00084  
+      Currency Exchange Problem (con.) 
+      ¨  Vertex = currency, edge = transaction 
+      ¨  Weight = exchange rate 
+      ¨  Find path that maximizes product of weights à 
+       reduce to sum of weights 
+      ¨  Is there a negative cost cycle? 
+      Bellman-Ford Algorithm 
+      ¨  Works for negative weights 
+       ¤ Detects a negative cycle if any exist 
+       ¤ Finds shortest simple path if no negative cycle exists 
+       If graph G = (V,E) contains negative-weight cycle, then 
+       some shortest paths may not exist. 

@@ -1,0 +1,315 @@
+             CSCE 3110
+             Data Structures & 
+             Algorithm Analysis
+           AVL Trees
+           Reading: Chap. 4, Weiss
+                              
+        Sorting with BST
+       Use binary search trees for sorting
+       Start with unsorted sequence
+       Insert all elements in a BST
+       Traverse the tree…. how ?
+       Running time?
+                           
+          Better Binary Search Trees
+      Prevent the degeneration of the BST :
+         A BST can be set up to maintain balance during 
+         updating operations (insertions and removals)
+         Types of BST which maintain the optimal 
+         performance:
+            splay trees
+            AVL trees
+            Red-Black trees
+            B-trees
+                                   
+          AVL Trees
+      Balanced binary 
+      search trees
+      An AVL Tree is a 
+      binary search tree                  4
+      such that for every               44
+      internal node v of T,    2                        3
+      the heights of the         17                   78
+      children of v can                1      2             1
+                                     32        50        88
+      differ by at most 1.                 1
+                                            48     62 1
+                                 
+        Height of an AVL Tree
+     Proposition: The height of an AVL tree T storing n keys is O(log n).
+     Justiifcation: The easiest way to approach this problem is to ifnd n(h): 
+     the minimum number of nodes of an AVL tree of height h.
+     n(1) = 2 and n(2) = 4
+     for n ≥ 3, an AVL tree of height h contains the root node, one AVL 
+     subtree of height n-1 and the other AVL subtree of height n-2.
+      n(h) = 1 + n(h-1) + n(h-2)
+     given n(h-1) > n(h-2)   n(h) > 2n(h-2)
+      n(h) > 2n(h-2)
+      n(h) > 4n(h-4)
+      …
+      n(h) > 2in(h-2i)
+     pick i = h/2 – 1    n(h) ≥ 2 h/2-1
+     follow h < 2log n(h) +2
+      height of an AVL tree is O(log n)
+                            
+       Insertion
+     A binary search tree T is called balanced if for every node v, the 
+     height of v’s children differ by at most one.
+     Inserting a node into an AVL tree involves performing an 
+     expandExternal(w) on T, which changes the heights of some of 
+     the nodes in T.
+     If an insertion causes T to become unbalanced, we travel up the 
+     tree from the newly created node until we ifnd the ifrst node x 
+     such that its grandparent z is unbalanced node.
+     Since z became unbalanced by an insertion in the subtree rooted 
+     at its child y, height(y) = height(sibling(y)) + 2 
+     Need to rebalance...
+                           
+        Insertion: Rebalancing
+       To rebalance the subtree rooted at z, we must 
+       perform a restructuring 
+       we rename x, y, and z to a, b, and c based on the 
+       order of the nodes in an in-order traversal.
+       z is replaced by b, whose children are now a 
+       and c whose children, in turn, consist of the four 
+       other subtrees formerly children of x, y, and z.
+                                
+              Insertion (cont’d)
+    unbalanced...
+                44 5
+                                    z  6
+     2                                  4
+       17                2 y          78   7
+              1        3                     1
+           32       1   50      2 4 x     88
+                  1
+                    48     13    62 5
+                             54           T
+                                            3            ...balanced
+                                    T
+                    T                2               4
+                      0                           44                4
+                                        2                         3   x
+                                         17                2 y      62    z 6
+                                                1        2                78 2
+                                              32     1 1   50   3       5       7
+                                                                  1               1
+                                                       48       54             88
+                                                                        T2
+                                                       T        T              T
+                                                        0        1              3
+           Restructuring
+        The four ways to rotate nodes in an AVL tree, graphically represented
+           -Single Rotations:
+               a = z              single rotation  b = y
+                     b = y                   a = z        c = x
+                           c = x
+             T                                                T
+             0                                                3
+                   T           T           T     T     T
+                    1           3           0     1     2
+                         T
+                          2
+                           c = z single rotation   b = y
+                    b = y                   a = x        c = z
+              a = x
+                              T           T
+                               3          0
+           T            T                       T1    T     T
+            0            2                             2     3
+                  T
+                  1
+           Restructuring (cont’d)
+      double rotations:
+             a = z             double rotation b = x
+                        c = y            a = z       c = y
+                   b = x
+           T                                      T
+           0                T          T     T     2    T
+                      T      3          0    1           3
+                       2
+                 T
+                 1
+                        c = z double rotation b = x
+             a = y                       a = y      c = z
+                  b = x
+                            T               T
+          T                 0         T      1    T2    T
+           3    T
+                 2                      0                 3
+                      T
+                      1
+        Restructure Algorithm
+   Algorithm restructure(x):
+     Input: A node x of a binary search tree T that has both a parent y and 
+     a grandparent z
+     Output: Tree T restructured by a rotation (either 
+     single or double) involving nodes x, y, and z.
+   1: Let (a, b, c) be an inorder listing of the nodes x, y, and z, and let (T0, 
+     T1, T2, T3) be an inorder listing of the the four subtrees of x, y, and z, 
+     rooted at x, y, or z. 
+   2. Replace the subtree rooted at z with a new subtree rooted at b
+   3. Let a be the left child of b and let T0, T1 be the left and right subtrees 
+     of a, respectively.
+   4. Let c be the right child of b and let T2, T3 be the left and right 
+     subtrees of c, respectively.
+                           
+          Cut/Link Restructure 
+          Algorithm
+      Let’s go into a little more detail on this algorithm...
+      Any tree that needs to be balanced can be grouped into 7 
+      parts: x, y, z, and the 4 trees anchored at the children of 
+      those nodes (T0-3) z
+                    44            y
+             17                    62     x
+                            50           78
+            T
+             0          48     54            88
+                                       T2
+                            T1               T3
+                                 
+           Cut/Link Restructure 
+           Algorithm
+                         z
+                        44              y
+               17                        62       x
+                                50               78
+             T
+               0            48       54              88
+                                               T2
+                                 T1                   T3
+        Make a new tree which is balanced and put the 7 parts from 
+        the old tree into the new tree so that the numbering is still 
+        correct when we do an in-order-traversal of the new tree.
+        This works regardless of how the tree is originally 
+        unbalanced.
+        Let’s see how it works!
+                                       
+          Cut/Link Restructure 
+          Algorithm
+    Number the 7 parts by doing an in-order-traversal. (note that x,y, 
+    and z are now renamed based upon their order within the 
+    traversal)
+                    z (a)
+          1       2
+                    44                y (b)4
+          17               3            62      x (c)
+                                                    6
+                              50           5     78        7
+        T0               48        54                  88
+                                               T
+                                                2
+                              T                        T
+                                1                        3
+          Cut/Link Restructure 
+          Algorithm
+     Now create an Array, numbered 1 to 7 (the 0th element can 
+     be ignored with minimal waste of space)
+              1      2        3      4        5      6       7
+   •
+    Cut() the 4 T trees and place them in their inorder rank in the array
+           T0        T1        T2        T3
+             1      2        3      4        5      6       7
+                                    
+          Cut/Link Restructure 
+          Algorithm
+   Now cut x,y, and z in that order (child,parent,grandparent) 
+   and place them in their inorder rank in the array.
+             T0    a  T1      b T2      c T3
+                 44         62        78
+   •       1        2       3        4       5       6       7
+    Now we can re-link these subtrees to the main tree.
+   •
+    Link in rank 4 (b) where the subtree’s root formerly 
+                       4b
+                         62
+                                    
+         Cut/Link Restructure 
+         Algorithm
+   Link in ranks 2 (a) and 6 (c) as 4’s children.
+                   4 b
+                    62
+           2 a               c6
+             44            78
+                                 
+          Cut/Link Restructure 
+          Algorithm
+    Finally, link in ranks 1,3,5, and 7 as the children of 2 
+    and 6.
+                                     4 y
+                                       62
+                              2 z              x6
+                                44            78
+                                3        5         7
+                       17          50           88
+                                           T
+                               48      54   2
+                        T                        T3
+                         0
+ •                                 T1
+       Now you have a balanced tree!
+                                    
+         Cut/Link Restructure 
+         Algorithm
+        This algorithm for restructuring has the exact 
+        same effect as using the four rotation cases 
+        discussed earlier.
+        Advantages: no case analysis, more elegant
+        Disadvantage: can be more code to write
+        Same time complexity
+                                
+           Removal
+     We can easily see that performing a 
+     removeAboveExternal(w) can cause T to become 
+     unbalanced.
+     Let z be the ifrst unbalanced node encountered 
+     while traveling up the tree from w. Also, let y be the 
+     child of z with the larger height, and let x be the 
+     child of y with the larger height.
+     We can perform operation restructure(x) to restore 
+     balance at the subtree rooted at z.
+     As this restructuring may upset the balance of 
+     another node higher in the tree, we must continue 
+     checking for balance until the root of T is reached
+                                 
+           Removal (cont’d)
+         example of deletion from an AVL tree:
+                     44 4
+          1                         y   3
+            17                       62       x
+                          2  50              78 2
+                        1          1      0         1
+          T0             48      54               88
+                                           T2
+             32
+                             T   1
+                                      y 4
+                      z              62
+                   3                           x 2
+                     44                       78
+            1                   2       0
+             17              50                        1
+                        1            1              88
+                         48       54      T2
+            T0                                      T3
+             Removal (cont’d)
+      example of deletion from an AVL tree:
+                      z
+                      44 4
+         1                              y    3
+           17                     x       62
+                             2 50                  78 2
+                         1             1       0           1
+          T
+           0               48        54                 88
+            32
+                           T1        T2                  T3
+                                   4  x
+                                    50
+                     2  z                    y
+                       44                     62 3
+            1               1          1                 2
+              17              48         54       0   78
+                                                             1
+                                                           88
+              T0             T1          T2 

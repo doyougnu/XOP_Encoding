@@ -17,7 +17,7 @@ case "$1" in
         outPath="$last"
         ;;
     *) ## Then we make in the same dir
-        outPath="./"
+        outPath="."
         ;;
 esac
 
@@ -25,8 +25,8 @@ esac
 totxt () {
     ## Given an integer will grab the filename corresponding to that integer and
     ## run ghostscript conversion on it
-    newFName="${1%%.pdf}.txt"
-    gs -sDEVICE=txtwrite -o "$outPath/$newFName" $1
+    file=$(basename -s $1)
+    gs -sDEVICE=txtwrite -o "$outPath/$( basename -s .pdf $1 ).txt" $1
 }
 
 ## File Check

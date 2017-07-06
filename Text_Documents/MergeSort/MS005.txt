@@ -1,0 +1,374 @@
+    Sorting (Part II: Divide and 
+         Conquer)
+          CSE 373
+        Data Structures
+          Lecture 14
+                      Readings
+      • Reading 
+        › Section 7.6, Mergesort
+        › Section 7.7, Quicksort
+      2/19/03        Divide and Conquer Sorting - Lect2
+                     ure 14
+              “Divide and Conquer”
+      •  Very important strategy in computer science:
+         ›  Divide problem into smaller parts
+         ›  Independently solve the parts
+         ›  Combine these solutions to get overall solution
+      •  Idea 1: Divide array into two halves, 
+         recursively sort left and right halves, then 
+         merge two halves  Mergesort
+      •  Idea 2 : Partition array into items that are 
+         “small” and items that are “large”, then 
+         recursively sort the two sets  Quicksort 
+      2/19/03           Divide and Conquer Sorting - Lect   3
+                        ure 14
+                       Mergesort
+                  8  2   9   4   5   3  1   6
+      •  Divide it in two at the midpoint
+      •  Conquer each side in turn (by 
+         recursively sorting)
+      •  Merge two halves together
+      2/19/03          Divide and Conquer Sorting - Lect   4
+                       ure 14
+                Mergesort Example
+                          8  2  9   4  5  3   1  6
+            Divide
+        Divide      8  2   9   4            5   3   1   6
+      Divide 8   2        9   4            5   3        1   6
+  1 element 8     2            9        4    53        1    6
+     Merge   2   8                4    9        3   5       1   6
+         Merge
+                     2   4   8   9                 1   3   5   6
+                 Merge         1   2   3   4   5   6   8   9
+      2/19/03           Divide and Conquer Sorting - Lect    5
+                        ure 14
+                   Auxiliary Array
+      • The merging requires an auxiliary array.
+                 2  4   8  9   1  3   5  6
+                                              Auxiliary array
+      2/19/03         Divide and Conquer Sorting - Lect 6
+                      ure 14
+                   Auxiliary Array
+      • The merging requires an auxiliary array.
+                 2  4   8  9   1  3   5  6
+                 1                            Auxiliary array
+      2/19/03         Divide and Conquer Sorting - Lect 7
+                      ure 14
+                   Auxiliary Array
+      • The merging requires an auxiliary array.
+                 2  4   8  9   1  3   5  6
+                 1  2   3  4   5              Auxiliary array
+      2/19/03         Divide and Conquer Sorting - Lect 8
+                      ure 14
+                     Merging
+                  i        j             normal
+                        target
+                copy  i    j             Left completed
+                                         ifrst
+                         target
+     2/19/03       Divide and Conquer Sorting - Lect9
+                   ure 14
+                     Merging
+                                    ifrst
+            secondi         j            Right completed
+                                         ifrst
+                             target
+     2/19/03       Divide and Conquer Sorting - Lect10
+                   ure 14
+                           Merging
+    Merge(A[], T[] : integer array, left, right : integer) : {
+      mid, i, j, k, l, target : integer;
+      mid := (right + left)/2;
+      i := left; j := mid + 1; target := left;
+      while i < mid and j < right do
+        if A[i] < A[j] then T[target] := A[i] ; i:= i + 1; 
+          else T[target] := A[j]; j := j + 1;
+        target := target + 1;
+      if i > mid then //left completed//
+        for k := left to target-1 do A[k] := T[k];
+      if j > right then //right completed//
+        k : = mid; l := right;
+        while k > i do A[l] := A[k]; k := k-1; l := l-1;
+        for k := left to target-1 do A[k] := T[k];
+    }
+      2/19/03           Divide and Conquer Sorting - Lect   11
+                        ure 14
+            Recursive Mergesort
+    Mergesort(A[], T[] : integer array, left, right : integer) : {
+      if left < right then
+        mid := (left + right)/2;
+        Mergesort(A,T,left,mid);
+        Mergesort(A,T,mid+1,right);
+        Merge(A,T,left,right);
+    }
+    MainMergesort(A[1..n]: integer array, n : integer) : {
+      T[1..n]: integer array;
+      Mergesort[A,T,1,n];
+    }
+      
+     2/19/03       Divide and Conquer Sorting - Lect12
+                   ure 14
+             Iterative Mergesort
+                                     Merge by 1
+                                     Merge by 2
+                                     Merge by 4
+                                     Merge by 8
+     2/19/03       Divide and Conquer Sorting - Lect13
+                   ure 14
+             Iterative Mergesort
+                                            Merge by 1
+                                            Merge by 2
+                                            Merge by 4
+                                            Merge by 8
+                                            Merge by 16
+         Need of a  last copy
+     2/19/03       Divide and Conquer Sorting - Lect14
+                   ure 14
+             Iterative Mergesort
+    IterativeMergesort(A[1..n]: integer array, n : integer) : {
+    //precondition: n is a power of 2//
+      i, m, parity : integer;
+      T[1..n]: integer array;
+      m := 2; parity := 0;
+      while m < n do
+        for i = 1 to n – m + 1 by m do
+           if parity = 0 then Merge(A,T,i,i+m-1);
+             else Merge(T,A,i,i+m-1);
+        parity := 1 – parity;
+        m := 2*m;
+      if parity = 1 then 
+        for i = 1 to n do A[i] := T[i];    
+    }
+                         How do you handle non-powers of 2?
+                         How can the ifnal copy be avoided?
+     2/19/03       Divide and Conquer Sorting - Lect15
+                   ure 14
+              Mergesort Analysis
+     • Let T(N) be the running time for an array 
+       of N elements
+     • Mergesort divides array in half and calls 
+       itself on the two halves. After returning, 
+       it merges both halves using a temporary 
+       array
+     • Each recursive call takes T(N/2) and 
+       merging takes O(N)
+     2/19/03        Divide and Conquer Sorting - Lect16
+                    ure 14
+              Mergesort Recurrence 
+                           Relation
+      • The recurrence relation for T(N) is:
+          › T(1) < a  
+             • base case: 1 element array  constant time
+          › T(N) < 2T(N/2) + bN
+             • Sorting N elements takes 
+                – the time to sort the left half 
+                – plus the time to sort the right half 
+                – plus an O(N) time to merge the two halves
+      • T(N) = O(n log n) (see Lecture 5 Slide17)
+      2/19/03           Divide and Conquer Sorting - Lect   17
+                        ure 14
+            Properties of Mergesort
+      • Not in-place
+         › Requires an auxiliary array (O(n) extra 
+           space)
+      • Stable
+         › Make sure that left is sent to target on 
+           equal values.
+      • Iterative Mergesort reduces copying.
+      2/19/03          Divide and Conquer Sorting - Lect 18
+                       ure 14
+                          Quicksort
+      • Quicksort uses a divide and conquer strategy, 
+         but does not require the O(N) extra space that 
+         MergeSort does
+          › Partition array into left and right sub-arrays
+             • Choose an element of the array, called pivot
+             • the elements in left sub-array are all less than pivot
+             • elements in right sub-array are all greater than pivot
+          › Recursively sort left and right sub-arrays
+          › Concatenate left and right sub-arrays in O(1) time
+      2/19/03            Divide and Conquer Sorting - Lect    19
+                         ure 14
+                  “Four easy steps”
+      • To sort an array S
+         1. If the number of elements in S is 0 or 1, then 
+           return.  The array is sorted.
+         2. Pick an element v in S.  This is the pivot 
+           value.
+         3. Partition S-{v} into two disjoint subsets, S  = 
+                                                         1
+           {all values xv}, and S  = {all values xv}.
+                                    2
+         4. Return QuickSort(S ), v, QuickSort(S )
+                                  1                  2
+      2/19/03           Divide and Conquer Sorting - Lect   20
+                        ure 14
+                   The steps of QuickSort
+             S             81             31     57                           select pivot value
+                     13             43                   75
+                              92                              0
+                                        65          26
+               S                                 S                            partition S
+                 1      0        31                2         75
+                   13      43               65
+                                                       92         81
+                        26     57
+                                                                             QuickSort(S ) and
+              S                                  S                                       1
+                1                                  2                           QuickSort(S2)
+                 0 13 26 31 43 57          65        75   81  92
+                 S      0 13 26 31 43 57 65     75  81  92                    Voila!  S is sorted
+                                                                    [Weiss]
+         2/19/03                    Divide and Conquer Sorting - Lect                     21
+                                    ure 14
+                    Details, details
+      • Implementing the actual partitioning
+      •  Picking the pivot
+         › want a value that will cause |S | and |S | to 
+                                            1        2
+           be non-zero, and close to equal in size if 
+           possible
+      • Dealing with cases where the element 
+        equals the pivot
+      2/19/03          Divide and Conquer Sorting - Lect 22
+                       ure 14
+              Quicksort Partitioning
+    •  Need to partition the array into left and right sub-
+       arrays
+       ›  the elements in left sub-array are  pivot
+       ›  elements in right sub-array are  pivot
+    •  How do the elements get to the correct partition?
+       ›  Choose an element from the array as the pivot
+       ›  Make one pass through the rest of the array and 
+          swap as needed to put elements in partitions
+      2/19/03          Divide and Conquer Sorting - Lect 23
+                       ure 14
+      Partitioning:Choosing the pivot
+      •   One implementation (there are others)
+          › median3 ifnds pivot and sorts left, center, 
+            right
+            •  Median3 takes the median of leftmost, middle, and 
+               rightmost elements
+            •  An alternative is to choose the pivot randomly (need a 
+               random number generator; “expensive”)
+            •  Another alternative is to choose the ifrst element (but 
+               can be very bad. Why?)
+          › Swap pivot with next to last element
+      2/19/03           Divide and Conquer Sorting - Lect   24
+                        ure 14
+               Partitioning in-place
+         › Set pointers i and j to start and end of array
+         › Increment i until you hit element A[i] > pivot
+         › Decrement j until you hit elmt A[j] < pivot
+         › Swap A[i] and A[j]
+         › Repeat until i and j cross
+         › Swap pivot (at A[N-2]) with A[i]
+      2/19/03          Divide and Conquer Sorting - Lect 25
+                       ure 14
+                               Example
+                     Choose the pivot as the median of three
+                        0  1  2   3  4  5   6  7  8   9
+                        8  1  4   9  0  3   5  2  7   6
+                      Median of 0, 6, 8 is 6. Pivot is 6
+                        0  1  4   9  7  3   5  2  6   8
+                        i                         j
+                       Place the largest at the right
+                       and the smallest at the left.
+                       Swap pivot with next to last element.
+                       Example
+                  i                   j
+                   0 1  4 9  7 3  5 2  6 8
+                          i            j
+                   0 1  4 9  7 3  5 2  6 8
+                          i         j
+                   0 1  4 9  7 3  5 2  6 8
+                          i         j
+                   0 1  4 2  7 3  5 9  6 8
+                 Move i to the right up to A[i]  larger than pivot.
+                 Move j to the left up to A[j] smaller than pivot.
+                 Swap
+      2/19/03         Divide and Conquer Sorting - Lect27
+                      ure 14
+                                 Example
+                                       i          j
+                         0  1   4  2   7   3  5   9  6   8
+                                       i      j
+                         0  1   4  2   7   3  5   9  66  8
+                                       i      j
+                         0  1   4  2   5   3  7   9  6   8
+                                              i j
+                         0  1   4  2   5   3  7   9  6   8
+                                           j  i
+                         0  1   4  2   5   3  7   9  66  8    Cross-over i > j
+                                           j  i
+                         0  1   4  2   5   3  6   9  7   8
+                            S < pivot    pivot    S > pivot
+                              1                    2
+                Recursive Quicksort
+       Quicksort(A[]: integer array, left,right : integer): {
+       pivotindex : integer;
+       if left + CUTOFF  right then
+         pivot := median3(A,left,right);
+         pivotindex := Partition(A,left,right-1,pivot);
+         Quicksort(A, left, pivotindex – 1);
+         Quicksort(A, pivotindex + 1, right);
+       else
+         Insertionsort(A,left,right);
+       }
+                  Don’t use quicksort for small arrays.
+                  CUTOFF = 10 is reasonable.
+      2/19/03           Divide and Conquer Sorting - Lect   29
+                        ure 14
+               Quicksort Best Case 
+                      Performance
+      • Algorithm always chooses best pivot and 
+         splits sub-arrays in half at each 
+         recursion
+         › T(0) = T(1) = O(1)
+             • constant time if 0 or 1 element
+         › For N > 1, 2 recursive calls plus linear time 
+           for partitioning
+         › T(N) = 2T(N/2) + O(N)
+             • Same recurrence relation as Mergesort
+         › T(N) = O(N log N)
+      2/19/03           Divide and Conquer Sorting - Lect  30
+                        ure 14
+              Quicksort Worst Case 
+     •                 Performance
+        Algorithm always chooses the worst pivot – one 
+        sub-array is empty at each recursion
+         › T(N)  a for N  C
+         › T(N)  T(N-1) + bN
+         ›          T(N-2) + b(N-1) + bN 
+         ›          T(C) + b(C+1)+ … + bN
+         ›          a +b(C + (C+1) + (C+2) +  … + N)
+         ›            2
+           T(N) = O(N )
+     • Fortunately, average case performance is    
+        O(N log N) (see text for proof)
+      2/19/03            Divide and Conquer Sorting - Lect    31
+                         ure 14
+            Properties of Quicksort
+      • Not stable because of long distance 
+        swapping.
+      • No iterative version (without using a stack).
+      • Pure quicksort not good for small arrays.
+      • “In-place”, but uses auxiliary storage because 
+        of recursive call (O(logn) space).
+      • O(n log n) average case performance, but 
+            2
+        O(n ) worst case performance.
+      2/19/03         Divide and Conquer Sorting - Lect32
+                      ure 14
+                      Folklore
+     • “Quicksort is the best in-memory sorting 
+       algorithm.”
+     • Truth
+        › Quicksort uses very few comparisons on 
+          average.
+        › Quicksort does have good performance in 
+          the memory hierarchy.
+           • Small footprint
+           • Good locality
+     2/19/03        Divide and Conquer Sorting - Lect33
+                    ure 14

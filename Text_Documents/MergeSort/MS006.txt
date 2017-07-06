@@ -1,0 +1,176 @@
+                    MERGESORT
+                                               1
+                   Sorting Recursively
+    Do you remember any iterative sorting methods? How fast are they?
+    Can we produce a good sorting method by thinking recursively?
+    Wetry to divide and conquer: break into subproblems and put their solutions
+    together.
+                                                 2
+                  Divide and Conquer
+    Let’s try it on the following list of letters:
+      P E N G U I N S
+    Break it into two lists:
+      P E N G
+      U I N S
+    Sort them:
+      E G N P
+      I N S U
+    Is putting these two lists together easier than sorting the whole list?
+                                               3
+                           Merging
+    Combining two sorted lists into one sorted list is called merging.
+       E G N P
+       I N S U
+    Starting at the front of both lists, we keep picking the smallest letter:
+      *E* GN P
+       I N S U
+         G N P
+      *I* NS U
+        *G* N P
+         N S U
+    etc.
+                                                       4
+                  Code for Mergesort
+    We’ll implement it for arrays. We only care about the order of elements so
+    we assume only that the elements are Comparable.
+    Also, we’ll try sorting the array ‘in place’, rather than creating a new array
+    to contain the result.
+    /** Sort list[s..e] in non-decreasing order. */
+    public static void mergeSort(Comparable[] list,
+                      int s,
+                      int e) {
+      if (s < e) { // More than one element
+         int mid = (s + e) / 2;
+         mergeSort(list, s, mid);
+         mergeSort(list, mid + 1, e);
+         ...merge list[s..m] and list[m+1..e]
+           into list[s..e]...
+      } // else just 1 element, so already sorted.
+    }
+                                               5
+    Except possibly for the merge portion, this was very simple to write. What
+    can we do to understand how it works?
+     • if the recursive calls work, the method will clearly work
+     • trace it
+    Exercise: Write a requires clause for the method.
+    Exercise: Write a wrapper method for the common case of mergesorting an
+    entire array.
+    Exercise: Would mergeSort still work if the two recursive calls were:
+         mergeSort(list, s, mid-1);
+         mergeSort(list, mid, e);
+                                               6
+                       Generics?
+    Before proceeding, let’s note that the Java API’s sort() methods don’t expect
+    to be given parameters that are arrays of Comparable elements.
+     • In Arrays:
+      public static void sort(Object[] a)
+     • In Collections:
+      public static <T extends Comparable<? super T>> void sort(List<T>list)
+      (!)
+    Whyarethetwomethods’parametertypesdiﬀerent? (Whydoesn’tArrays.sort()
+    require an array of Comparables as parameter?)
+    The descriptions of both methods explain — in English, not Java — that
+    the caller is responsible for making sure all the objects in the list or array are
+    mutually comparable.
+    A good exercise in programming with generics would be to take the array-
+    based code in these slides and redo them with ArrayLists.
+                                               7
+                   Header for Merge
+    Let’s make it a helper method.
+    What header should it have? Imagine calling it from mergeSort:
+         merge(list, s, mid, e);
+    This gets us started with the header.
+    /** Merge list[s..m] with list[m+1..e].
+     * Requires: the two sublists are sorted
+     * in non-decreasing order.
+     * Ensures: list[s..e] is sorted. */
+    private static void merge(Comparable[] list,
+                    int s,
+                    int m,
+                    int e)
+                                               8
+                    Body of Merge
+    int p1 = s; // index of current candidate in list[s..m]
+    int p2 = m + 1; // index of current candidate
+              // in list[m+1..e]
+    // Temporary storage to accumulate the merged result.
+    Comparable[] merged = new Comparable[e - s + 1];
+    int p = 0; // index to put next element into merged
+    // merged[0..p] contains list[s..p1-1] merged
+    // with list[m+1..p2-1]
+    while (p1 != m + 1 && p2 != e + 1) {
+      if (list[p1].compareTo(list[p2]) < 0) {
+         merged[p] = list[p1];
+         ++p1;
+      } else {
+         merged[p] = list[p2];
+         ++p2;
+      }
+      ++p;
+    }
+    ... to be continued ...
+                                               9
+   What’s true at the end of the while loop?
+   What’s left to do?
+    /*
+                                      */
+    if (p1 != m + 1) {
+      System.arraycopy(list, p1,
+                 list, s + p,
+                 m + 1 - p1);
+    }
+    System.arraycopy(merged, 0, list, s, p);
+    Exercise: Finish the requires clause for the method.
+    Exercise: If we had copied the remainder of the unﬁnished sublist to merged
+    and then copied all of merged back to list, would that have changed the big-O
+    time complexity?
+                                               10
+    Exercise: Rewrite mergeSort and merge to follow the Java convention for
+    ranges: passing s and e as the start and end of a sublist of list means
+    list[s..e) (i.e. list[s..e-1]).
+    Exercise: Write a recursive merge method.
+    Exercise: Write a mergesort for linked lists.
+    Exercise: Does the following approach to an in-place merge work: If the
+    next element is in the ﬁrst list, then leave it there and move forward in the
+    ﬁrst list, otherwise swap it with the next element in the second list and move
+    forward in both lists.
+                                               11
+             Eﬃciency of Sorting Methods
+    What sorting methods other than mergesort do you know? How eﬃcient are
+    they?
+    Let’s see how merge sort compares.
+    With loops, we know how to analyze eﬃciency. What to do with recursion?
+    Strategy: Determine (1) the total number of calls to mergeSort and (2) the
+    time per call. Multiply them together.
+                                               12
+                       Analysis of mergeSort
+     Suppose we call mergeSort with a list of 8 elements. What happens?
+                                  ms(8)
+                     ms(4)                     ms(4)
+               ms(2)       ms(2)        ms(2)       ms(2)
+           ms(1) ms(1)   ms(1) ms(1) ms(1) ms(1) ms(1) ms(1)
+     Do you notice anything about the rows in the tree of calls?
+                                                              13
+                   Analysis of mergeSort
+    How much time is required to merge two sorted lists into one list with total
+    size s?
+    So how much time in total is required for all the merging in any single row?
+    How many rows are there?
+    So what is the total amount of time required?
+    Exercise: What eﬀect would it have on the time required for mergesort if
+    we split the list into 3 pieces instead of 2?
+    Exercise: How much time would a (good version of) mergesort take for
+    linked lists?
+                                                   14
+              Comparing with other sorts
+    Many familiar sorts are O(n2) in the worst case, including:
+      bubble sort, selection sort, insertion sort
+    Someothersorts are O(nlogn) in the worst case (like mergesort), for example
+    heap sort.
+    But that’s only part of the story. We also care about
+     • the average case.
+      This is much harder to determine, because it requires arguing about the
+      probability of seeing various cases.
+     • special cases, such as a list that is only slightly out of sorted order, is
+      already sorted, or is sorted in the reverse order.
+                                               15

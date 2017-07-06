@@ -1,0 +1,297 @@
+             Parallel and Sequential Data Structures and Algorithms — Lecture 1115-210 (Spring 2012)
+                              Lecture 11 — Shortest Weighted Paths II
+                  Parallel and Sequential Data Structures and Algorithms, 15-210 (Spring 2012)
+                              Lectured by Margaret Reid-Miller — 21 February 2012
+                - Continuation of Dijkstra’s algorithm
+                - Bellman-Ford’s Algorithm, which allows negative weights
+             1 Dijkstra’s Algorithm for SSSP
+             The crux of Dijkstra’s algorithm is the following lemma, which suggests prioritiy values to use and
+             guarantees that such a priority setting will lead to the weighted shortest paths.
+             Lemma 1.1. Consider a (directed) weighted graph G = (V,E), w: E → R+ ∪{0} with no negative
+             edge weights, a source vertex s and an arbitrary distance value d ∈ R+ ∪{0}. Let X = X′ ∪X′′, where
+             X′ ={v ∈V : δ(s,v)<d} be the set of vertices that are less than d from s, X′′ ⊆ {v ∈ V : δ(s,v) = d}
+             be the set of vertices that are exactly d from s. Also, let d′ = min{δ(s,u) : u ∈ V \ X} be the nearest
+             distance greater than or equal to d. Then, if V \ X 6= ;, there must exist a vertex u such that δ(s,u) = d′
+             and a shortest path to u that only goes through vertices in X.
+             Proof. Let Y = {v ∈ V : δ(s,v) = d′} be all vertices at distance exactly d′. Note that the set Y is
+             nonempty by deﬁnition of d′ and since V \X 6= ;.
+                                               d'   y
+                                             s   d
+                                                              z
+             Pick any y ∈ Y. We’ll assume for a contradiction that that all shortest paths to y go through some
+             vertex in Z = V \(X ∪Y) (i.e., outside of both X and Y). But for all z ∈ Z, d(s,z) > d′. Thus, it
+             must be the case that d(s, y) ≥ d(s,z) > d′ because all edge weights are non-negative. This is a
+             contradiction. Therefore, there exists a shortest path from s to y that uses only the vertices in X ∪ Y.
+             Since s ∈ X and the path ends at y ∈ Y, it must contain an edge v ∈ X and u ∈ Y. The ﬁrst such edge
+             has the property that a shortest path to u only uses X’s vertices, which proves the lemma.
+                This suggests an algorithm that by knowing X, derives d′ and one such vertex u. Indeed, X
+             is the set of explored vertices, and we can derive d′ and a vertex u attaining it by computing
+                †Lecture notes by Guy E Blelloch, Margaret Reid-Miller, and Kanat Tangwongsan.
+                                                 1                              Version 1.0
+                   Parallel and Sequential Data Structures and Algorithms — Lecture 11              15-210 (Spring 2012)
+                   min{d(s,x)+w(xu): x ∈ X,u ∈ N (x)}. Notice that the vertices we’re taking the minimum over
+                                                        G
+                   is simply N (X). In the pseudocode shown below Dijkstra’s algorithm basically operates on three
+                               G
+                   data structures: (1) a structure for the graph itself, (2) a dictionary to maintain the shortest path
+                   distance to each vertex that has already been visited, and (3) a priority queue to hold the upper
+                   bound distances of vertices that are neighbors of the visited vertices. The priority queue makes
+                   ﬁnding the minimum distance in N (X) fast.
+                                                       G
+                       This version of Dijkstra’s algorithm differes somewhat from another version that is sometimes
+                   used. First, the relax function is often implemented as a decreaseKey operation. In our algorithm,
+                   we simply add in a new value in the priority queue. Although this causes the priority queue to
+                   contain more entries, it doesn’t affect the asympotic complexity and obviates the need to have the
+                   decreaseKeyoperation, which can be tricky to support in many priority queue implementations.
+                       Second, since we keep multiple distances for a vertex, we have to make sure that only the
+                   shortest-path distance is registered in our answer. We can show inductively through the lemma we
+                   proved already that the ﬁrst time we see a vertex v (i.e., when deleteMin returns that vertex) gives
+                   the shortest path to v. Therefore, all subsequence occurences of this particular vertex can be ignored.
+                   This is easy to support because we keep the shortest-path distances in a dictionary which has fast
+                   lookup.
+                     1   fun dijkstra(G,s)=
+                     2   let
+                     3     fun dijkstra′(D,Q)=
+                     4        case PQ.deleteMin (Q) of
+                     5           (NONE,    ) ⇒ D
+                     6          | (SOME(d,v),Q′)⇒
+                     7            if ( (v,  ) ∈ D ) then dijkstra′(D,Q′)
+                     8            else let
+                     9               fun relax (Q,(u,w))= PQ.insert (d+w,u) Q
+                   10                val N = N (v)
+                                                 G
+                   11                val Q′′ =iterate relax Q′ N
+                   12             in dijkstra′( D∪{(v,d)} ,Q′′) end
+                   13    in
+                   14      dijkstra′({},PQ.insert(;,(0,s)))
+                   15    end
+                       The PQ.insert in Line 14 is called only once, so we can ignore it. Of the remaining operations,
+                   Lines 10 and 11 are on the graph, Lines 7 and 12 are on the table of visited vertices, and Lines 4
+                   and 9 are on the priority queue. For the priority queue operations, we have only discussed one cost
+                   model, which for a queue of size n requires O(logn) for each of PQ.insert and PQ.deleteMin.
+                   Wehavenoneedforameldoperationhere. Forthegraph, we can either use a tree-based table or an
+                                                 1
+                   array to access the neighbors There is no need for single threaded array since we are not updating
+                   the graph. For the table of distances to visited vertices we can use a tree table, an array sequence, or
+                   a single threaded array sequences. The following table summarizes the costs of the operations, along
+                     1Wecould also use a hash table, but we have not yet discussed them.
+                                                                      2                                           Version 1.0
+              Parallel and Sequential Data Structures and Algorithms — Lecture 1115-210 (Spring 2012)
+              with the number of calls made to each operation. There is no parallelism in the algorithm so we only
+              need to consider the sequential execution of the calls.
+                    Operation   Line  #ofcalls     PQ       Tree Table  Array  STArray
+                    deleteMin    4     O(m)     O(logm)         -         -       -
+                    insert       9     O(m)     O(logm)         -         -       -
+                  Priority Q total             O(mlogm)         -         -       -
+                    find         7     O(m)        -         O(logn)     O(1)    O(1)
+                    insert       12    O(n)        -         O(logn)     O(n)    O(1)
+                                                                           2
+                  Distances total                  -        O(mlogn)    O(n )   O(m)
+                    N (v)        10    O(n)        -         O(logn)     O(1)     -
+                      G
+                    iterate      11    O(m)        -          O(1)       O(1)     -
+                  Graph access total               -      O(m+nlogn)    O(m)      -
+                 Wecancalculate the total number of calls to each operation by noting that the body of the let
+              starting on Line 8 is only run once for each vertex. This means that Lines 10 and 12 are only called
+              O(n) times. Everything else is done once for every edge.
+                 Based on the table one should note that when using either tree tables or single threaded arrays
+              the cost is no more than the cost of the priority queue operations. Therefore there is no asymptotic
+              advantage of using one over the other, although there might be a constant factor speedup that is not
+              insigniﬁcant. One should also note that using regular purely functional arrays is not a good idea
+              since then the cost is dominated by the insertions and the algorithm runs in Θ(n2) work.
+                 The total work for Dijkstra’s algorithm using a tree table O(mlogm+mlogn+m+nlogn) =
+              O(mlogn)since m≤n2.
+              2 TheBellmanFordAlgorithm
+              Wenowturntosolvingthesingle source shortest path problem in the general case where we allow
+              negative weights in the graph. One might ask how negative weights make sense. If talking about
+              distances on a map, they probably do not, but various other problems reduce to shortest paths, and
+              in these reductions negative weights show up. Before proceeding we note that if there is a negative
+              weight cycle (the sum of weights on the cycle is negative), then there cannot be a solution. This
+              is because every time we go around the cycle we get a shorter path, so to ﬁnd a shortest path we
+              would just go around forever. In the case that a negative weight cycle can be reached from the source
+              vertex, we would like solutions to the SSSP problem to return some indicator that such a cycle exists
+              and terminate.
+              Exercise 1. Consider the following currency exchange problem: given the a set currencies, a set of
+              exchange rates between them, and a source currency s, ﬁnd for each other currency v the best sequence of
+              exchanges to get from s to v. Hint: how can you convert multiplication to addition.
+              Exercise 2. In your solution to the previous exercise can you get negative weight cycles? If so, what does
+              this mean?
+                                                     3                                 Version 1.0
+              Parallel and Sequential Data Structures and Algorithms — Lecture 1115-210 (Spring 2012)
+                 So why is it that Dijkstra’s algorithm does not work with negative edges? What is it in the proof
+              of correctness that fails? Consider the following very simple example:
+                                       ∞                3               0 
+                                       a                a               a 
+                                   3                3               3 
+                               0        - 2     0        - 2    0        - 2 
+                                 s                s               s 
+                                    2  b            2   b           2   b 
+                                       ∞                2               2 
+              Dijkstra’s algorithm would visit b then a and leave b with a distance of 2 instead of the correct −1.
+              The problem is that it is no longer the case that if we consider the closest vertex v not in the visited
+              set, then its shortest path is through only the visited set and then extended by one edge out of the
+              visited set to v.
+                 So how can we ﬁnd shortest paths on a graph with negative weights? As with most algorithms,
+              weshouldthink of some inductive hypothesis. In Dijkstra, the hypothesis was that if we have found
+              the i nearest neighbors, then we can add one more to ﬁnd the i +1 nearest neighbors. Unfortunately,
+              as discussed, this does not work with negative weights, at least not in a simple way.
+                 What other things can we try inductively? There are not too many choices. We could think
+              about adding the vertices one by one in an arbitrary order. Perhaps we could show that if we have
+              solved the problem for i vertices then we can add one more along with its edges and ﬁx up the graph
+              cheaply to get a solution for i+1 vertices. Unfortunately, this does not seem to work. Similarly, doing
+              induction on the number of edges does not seem to work. You should think through these ideas and
+              ﬁgure out why they don’t work.
+                 Howaboutinduction on the unweighted path length (from now on we will refer to path length
+              as the number of edges in the path, and path weight as the sum of the weights on the edges in the
+              path)? In particular the idea based on induction is that, given the shortest weighted path of length
+              at most i (i.e. involving at most i edges) from s to all vertices, then we can ﬁgure out the shortest
+              weighted path of length at most i +1 from s to all vertices. It turns out that this idea does pan out,
+              unlike the others. Here is an example:
+                                                     4                                Version 1.0
+              Parallel and Sequential Data Structures and Algorithms — Lecture 1115-210 (Spring 2012)
+                                 ∞     ∞            3     ∞            0      4 
+                                    1                  1                  1 
+                                 a      c           a      c           a      c 
+                             3                  3                  3 
+                                 - 2     1           - 2    1   0       - 2    1 
+                          0  s               0  s                s 
+                             2   b      d       2   b      d       2   b      d 
+                                    1                  1                  1 
+                                 ∞     ∞            2     ∞            2      3 
+                             path lengths = 0  path lengths ≤ 1  path lengths ≤ 2
+                                          0      1            0      1 
+                                             1                   1 
+                                          a      c            a      c 
+                                       3                  3 
+                                   0       - 2    1    0       - 2    1 
+                                     s                   s 
+                                       2  b      d         2  b      d 
+                                              1                  1 
+                                          2      3            2      2 
+                                       path lengths ≤ 3   path lengths ≤ 4
+                 Here is an outline of a proof that this idea works by induction. This proof also leads to an
+              algorithm. We use the convention that a vertex that is not reachable with a path length i has distance
+              inﬁnity (∞) and set the initial distance to all vertices to ∞ except the source s which has distance 0.
+              For the base case, on step zero no vertices except for the source are reachable with path length 0,
+              and the distance to all such vertices is ∞. The distance to the source is zero. For the inductive case
+              wenotethat any path of length i +1 has to go through a path of length i plus one additional edge.
+              Therefore, we can ﬁgure out the shortest length i +1 path to v by considering all the in-neighbors
+              u∈N−(v)andtakingtheminimumof d(u)+w(u,v).
+                   G
+                 HereistheBellmanFordalgorithmbasedonthisidea. Thenotationδi (s,v)indicatestheshortest
+                                                                       G
+              path from s to v in G that uses at most i edges.
+                                                     5                                Version 1.0
+                   Parallel and Sequential Data Structures and Algorithms — Lecture 11               15-210 (Spring 2012)
+                     1   %implements: the SSSP problem
+                     2   fun BellmanFord(G =(V,E),s)=
+                     3   let
+                     4      %requires: all{Dv =δi (s,v): v ∈ V}
+                                                     G
+                     5      fun BF(D,i)=
+                     6        let
+                     7           val D′ ={v 7→minu∈N−(v)(Du+w(u,v)): v ∈ V}
+                     8        in                         G
+                     9           if (i = |V|) then ⊥
+                   10            else if (all{Dv = D′ : v ∈ V}) then D
+                                             ′        v
+                   11            else BF(D ,i+1)
+                   12         end
+                   13       val D={v7→if v=s then 0 else ∞:v∈V}
+                   14    in BF(D,0) end
+                       In Line 9 the algorithm returns ⊥ (undeﬁned) if there is a negative weight cycle. In particular
+                   since no simple path can be longer than |V|, if the distance is still changing after |V| rounds, then
+                   there must be a negative weight cycle.
+                       Wecananalyze the cost of the algorithm. First we assume the graph is represented as a table
+                   of tables, as we suggested for the implementation of Dijkstra. We then consider representing it as a
+                   sequence of sequences.
+                   CostofBellmanFordusingaTables HereweassumethegraphGisrepresentedasa(R vTable) vTable,
+                   where vTable maps vertices to values. The R are the real valued weights on the edges. We assume
+                   the distances D are represented as a R vTable. Lets consider the cost of one call to BF, not including
+                   the recursive calls. The only non trivial computations are on lines 7 and 10. Line 7 consists of a
+                   tabulate over the vertices. As the table indicates, to calculated the work we take the sum of the work
+                   for each vertex, and for the span we take the maximum of the spans, and add O(logn). Now consider
+                   what the algorithm does for each vertex. First it has to ﬁnd the neighbors in the graph (using a find
+                   G v). This requires O(log|V|) work and span. Then it involves a map over the neighbors. Each
+                   instance of this map requires a ﬁnd in the distance table to get Du and an addition of the weight.
+                   The ﬁnd takes O(log|V|) work and span. Finally there is a reduce that takes O(1+|N (v)| work and
+                                                                                                            G
+                   O(log|N (v))| span. Using n = |V| and m =|E|, the overall work and span are therefore
+                            G
+                                                   X                          X               
+                                                                                              
+                                        W = O               logn+|N (v)|+            (1+logn)
+                                                   v∈V              G       u∈N (v)           
+                                                                                G
+                                             = O (n+m)logn
+                                                                                                 
+                                         S = O max logn+log|N (v)|+ max(1+logn)
+                                                      v∈V                 G       u∈N(v)
+                                             = O(logn)
+                   Line 10 is simpler to analyze since it only involves a tabulate and a reduction. It requires O(nlogn)
+                   work and O(logn) span.
+                                                                       6                                           Version 1.0
+                   Parallel and Sequential Data Structures and Algorithms — Lecture 11               15-210 (Spring 2012)
+                       Now the number of calls to BF is bounded by n, as discussed earlier. These calls are done
+                   sequentially so we can take multiply the work and span for each call by the number of calls giving:
+                                                          W(n,m) = O(nmlogn)
+                                                           S(n,m) = O(nlogn)
+                   CostofBellmanFordusingSequences Ifweassumetheverticesaretheintegers{0,1,...,|V|−1}
+                   then we can use array sequences to implement a vTable. Instead of using a find which requires
+                   O(logn) work, we can use nth requiring only O(1) work. This improvement in costs can be applied
+                   for looking up in the graph to ﬁnd the neighbors of a vertex, and looking up in the distance table to
+                   ﬁndthecurrent distance. By using the improved costs we get:
+                                                          X                      X 
+                                               W = O 1+|N (v)|+                       1
+                                                          v∈V          G       u∈N (v) 
+                                                                                    G
+                                                   = O(m)
+                                                S = Omax1+log|N (v)|+ max 1
+                                                            v∈V             G        u∈N(v)
+                                                   = O(logn)
+                   and hence the overall complexity for Bellman Ford with array sequences is:
+                                                           W(n,m) = O(nm)
+                                                            S(n,m) = O(nlogn)
+                   By using array sequences we have reduced the work by a O(logn) factor.
+                   3 SMLcode
+                   Here we present the SML code for Dijkstra.
+                   functor TableDijkstra(Table : TABLE) =
+                   struct
+                     structure PQ = Default.RealPQ
+                     type vertex = Table.key
+                     type ’a table = ’a Table.table
+                     type weight = real
+                     type ’a pq = ’a PQ.pq
+                     type graph = (weight table) table
+                     (* Out neighbors of vertex v in graph G *)
+                     fun N(G : graph, v : vertex) =
+                                                                       7                                           Version 1.0
+           Parallel and Sequential Data Structures and Algorithms — Lecture 1115-210 (Spring 2012)
+             case (Table.find G v) of
+               NONE => Table.empty()
+             | SOME(ngh) => ngh
+            fun Dijkstra(u : vertex, G : graph) =
+             let
+               val insert = Table.insert (fn (x,_) => x)
+               fun Dijkstra’(Distances : weight table,
+                         Q      : vertex pq) =
+                case (PQ.deleteMin(Q)) of
+                   (NONE, _)   => Distances
+                  | (SOME(d, v), Q) =>
+                   case (Table.find Distances v) of
+                     (* if distance already set, then skip vertex *)
+                     SOME(_) => Dijkstra’(Distances, Q)
+                   | NONE =>
+                     let
+                      val Distances’ = insert (v, d) Distances
+                      fun relax (Q,(u,l)) = PQ.insert (d+l, u) Q
+                      (* relax all the out edges *)
+                      val Q’ = Table.iter relax Q (N(G,v))
+                     in
+                      Dijkstra’(Distances’, Q’)
+                     end
+             in
+               Dijkstra’(Table.empty(), PQ.singleton (0.0, u))
+             end
+           end
+                                       8                       Version 1.0
