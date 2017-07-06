@@ -1,0 +1,52 @@
+#!/bin/bash
+
+## Usage
+USAGE="Usage: $0 {-move} pdf-file/s"
+
+## Error Handler
+handle () {
+    echo $USAGE >&2
+    exit 1
+}
+
+## Handle the move flag
+for last; do true; done ##get the last argument passed to the script
+
+case "$1" in
+    -m*) ## Then we move all files to a new dir
+        outPath="$last"
+        ;;
+    *) ## Then we make in the same dir
+        outPath="./"
+        ;;
+esac
+
+## Produce the text file
+totxt () {
+    ## Given an integer will grab the filename corresponding to that integer and
+    ## run ghostscript conversion on it
+    newFName="${1%%.pdf}.txt"
+    gs -sDEVICE=txtwrite -o "$outPath/$newFName" $1
+}
+
+## File Check
+validateFile () {
+    ## Given a filename, validate that the file exists, isn't empty, and is
+    ## is readable, if so run the txt converter
+    if [[ -s $1 ]] && [[ -r $1 ]]
+    then
+        totxt $1
+    else
+        echo "File: $1 not readable or does not exist" >&2
+        handle
+    fi
+}
+
+## Iterate through all inputs
+for n in "$@"
+do
+    if ! ([ $n == $last ] || [ $n == $1 ]) ## If not move flag, or to-path
+    then 
+           validateFile $n
+    fi
+done

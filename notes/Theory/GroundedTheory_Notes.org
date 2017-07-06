@@ -32,10 +32,6 @@
    gives us a sound, systematic way to create the codes that are required to
    analyze algorithm explanations.
    
-** Other considerations
-   You may want to look over the "Reference that will be useful" section as this
-   paper is well sources, and is a good branching point for other papers to
-   check out. I've highlighted some interesting ones.
 * Context
   This document is for the XOP Encoding project, participants include Eric
   Walkingshaw and Jeffrey Young. This is the fourth such primer in the project,
