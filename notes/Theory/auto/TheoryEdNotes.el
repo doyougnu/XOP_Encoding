@@ -3,6 +3,7 @@
  (lambda ()
    (LaTeX-add-bibitems
     "brown1984explaining"
+    "doi:10.1177/1525822X02239569"
     "corbin2014basics"
     "charmaz2006constructing"
     "Smith1970-SMIASO-13"
