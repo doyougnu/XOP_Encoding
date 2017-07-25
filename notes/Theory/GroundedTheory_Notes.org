@@ -28,7 +28,7 @@
    describe the content in algorithm explanations
 
 ** Why is it of use to XOP project?
-   It is roots the project in a well used, well studied, research method and
+   It roots the project in a well used, well studied, research method and
    gives us a sound, systematic way to create the codes that are required to
    analyze algorithm explanations.
    
@@ -144,6 +144,36 @@
 *** Saturation
     One is done coding when introducing more data does not generate any new
     tags. This is called /saturation/ by grounded theorists.
+
+** More Notes on Coding in General
+   Here is what some grounded theorists recommend one thinks about when coding. Use of the word text below could mean any qualitative data, not just text.
+
+*** Ask
+    Things to ask when coding a text are as follows:
+    - What is going on in this text?
+    - What are the people saying? What are they actually trying to get at?
+    - What are the people doing? What are they trying to accomplish?
+    - What do these actions and statements take for granted? What is Assumed?
+    - How do structure and context serve to support, maintain, impede or change these actions and statements?
+
+*** Lofland Suggests, and guidelines of what codes can be about:
+    - Pay attention to acts, what are the brief events happening in the text?
+    - Activities, what are the long events happening in the text?
+    - Meanings, what concepts do people use to understand their world? What are their in vivo terms?
+    - Participation, what are the involvement or adaptations happening to a setting?
+    - Relationships, What are the relationships between people in the text? Familial, power &c?
+    - Settings, what are the contexts in which this text exists?
+
+*** How to Identify Codes and Themes
+    Source for most of this is Graham Gibbs youtube channel, and cite:doi:10.1177/1525822X02239569
+    - Use repetition, what is being said over and over again? What is the /meaning/ of that which is being repeated?
+    - Indigenous Typologies (in vivo), what are the in-group terms that are being used? What is the vernacular someone uses to express they belong?
+    - Metaphor and Analogies, look for metaphors and analogies in the text and see why they are being used, how they are used etc.
+    - Transitions, look for transitions in the text to demarcate new topics and therefore new codes
+    - Similarities and differences, use constant comparison, i.e. always ask how is this code similar or different to another use of the same code
+    - Linguistic Connectives, things like because, before and after, suggest causal links. Look for Linguistic connectives to establish hierarchy in the code.
+    - Omission, what is not being said?
+
 
 * How will we apply grounded theory to our project?
   The product of grounded theory is a theory that is grounded in the data. For

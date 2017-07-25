@@ -11,6 +11,7 @@
            these pieces? The answer is to apply divide-and-conquer to them, thus further breaking them down.
            The process ends when you are left with such tiny pieces remaining (e.g. one or two items) that it is
            trivial to solve them.
+
            Summarizing, the main elements to a divide-and-conquer solution are11
              • Divide (the problem into a small number of pieces),
              • Conquer (solve each piece, by applying divide-and-conquer recursively to it), and
@@ -25,6 +26,7 @@
            useful for analyzing the sort of recursive programs that naturally arise in divide-and-conquer solutions.
            For the next couple of lectures we will discuss some examples of divide-and-conquer algorithms, and
            howtoanalyze them using recurrences.
+
          MergeSort: Theﬁrstexampleofadivide-and-conquer algorithm which we will consider is perhaps the best
            known. This is a simple and very efﬁcient algorithm for sorting a list of numbers, called MergeSort.
            Wearegivenansequence of n numbers A, which we will assume is stored in an array A[1...n]. The
@@ -32,6 +34,7 @@
            by permuting the elements within the array A.
            How can we apply divide-and-conquer to sorting? Here are the major elements of the MergeSort
            algorithm.                          22
+
            Divide: Split A down the middle into two subsequences, each of size roughly n/2.
            Conquer: Sort each subsequence (by calling MergeSort recursively on each).
            Combine: Mergethetwosortedsubsequences into a single sorted list.
@@ -39,6 +42,7 @@
            of length one is trivially sorted. The key operation where all the work is done is in the combine stage,
            which merges together two sorted lists into a single sorted list. It turns out that the merging process is
            quite easy to implement.
+
            Thefollowing ﬁgure gives a high-level view of the algorithm. The “divide” phase is shown on the left.
            It works top-down splitting up the list into smaller sublists. The “conquer and combine” phases are
            shownontheright. They work bottom-up, merging sorted lists together into larger sorted lists.
@@ -49,11 +53,13 @@
                         7   5 2   4 1   63   0    5   7 2   4 1   60   3
                         7  5 2  4  1  6  3  0     7 5  2  4  1  6  3  0
                                         Figure 4: MergeSort.33
+
              MergeSort: Let’s design the algorithm top-down. We’ll assume that the procedure that merges two sorted
                  list is available to us. We’ll implement it later. Because the algorithm is called recursively on sublists,
                  in addition to passing in the array itself, we will pass in two indices, which indicate the ﬁrst and last
                  indices of the subarray that we are to sort. The call MergeSort(A, p, r) will sort the subarray
                  A[p..r] and return the sorted result in the same subarray.
+
                  Hereistheoverview. Ifr = p,thenthismeansthatthereisonlyoneelementtosort,andwemayreturn
                  immediately. Otherwise (if p<r) there are at least two elements, and we will invoke the divide-and-
                  conquer. We ﬁnd the index q, midway between p and r, namely q =(p+r)/2(rounded down to the
@@ -70,6 +76,7 @@
                            Merge(A, p, q, r)             // merge everything together
                         }
                      }
+
              Merging: All that is left is to describe the procedure that merges two sorted lists. Merge(A, p, q, r)
                  assumes that the left subarray, A[p..q], and the right subarray, A[q +1..r], have already been sorted.
                  Wemerge these two subarrays by copying the elements to a temporary working array called B.For
@@ -98,6 +105,7 @@
                              while (j <= r) B[k++] = A[j++]
                              for i = p to r do A[i] = B[i]           // copy B back to A
                          }
+
                      This completes the description of the algorithm. Observe that of the last two while-loops in the Merge
                      procedure, only one will be executed. (Do you see why?)
                      If you ﬁnd the recursion to be a bit confusing. Go back and look at the earlier ﬁgure. Convince yourself
@@ -105,6 +113,7 @@
                      in the ﬁgure. As calls are made you walk down towards the leaves, and as you return you are walking
                      up towards the root. (We have drawn two trees in the ﬁgure, but this is just to make the distinction
                      between the inputs and outputs clearer.)
+
                 Discussion: One of the little tricks in improving the running time of this algorithm is to avoid the constant
                      copying from A to B and back to A. This is often handled in the implementation by using two arrays,
                      both of equal size. At odd levels of the recursion we merge from subarrays of A to a subarray of B.At
@@ -116,13 +125,14 @@
                      sequence sizes fall below constant, e.g. 20. Then invoke a simple Θ(n2) algorithm, like insertion sort
                      on these small lists. Often brute force algorithms run faster on small subsequences, because they do
                      not have the added overhead of recursion. Note that since they are running on subsequences of size at
-                                              2) = Θ(1). Thus, this will not affect the overall asymptotic running
-                     most20,therunningtimesisΘ(20
+                     2) = Θ(1). Thus, this will not affect the overall asymptotic running most20,therunningtimesisΘ(20
                      time.
+
                      It might seem at ﬁrst glance that it should be possible to merge the lists “in-place”, without the need
                      for additional temporary storage. The answer is that it is, but it no one knows how to do it without
                      destroying the algorithm’s efﬁciency. It turns out that there are faster ways to sort numbers in-place,
                      e.g. using either HeapSort or QuickSort.
+
                      Here is a subtle but interesting point to make regarding this sorting algorithm. Suppose that in the if-
                      statement above, we have A[i]=A[j]. Observe that in this case we copy from the left sublist. Would
                      it have mattered if instead we had copied from the right sublist? The simple answer is no—since the
@@ -136,7 +146,7 @@
                      fromtheleftsublist over the right, we will be preserving the relative order of elements. It can be shown
                      that as a result, MergeSort is a stable sorting algorithm. (This is not immediate, but it can be proved by
                      induction.)
-                                                       22
+
          Lecture Notes                          CMSC251
          Analysis: What remains is to analyze the running time of MergeSort. First let us consider the running time
            of the procedure Merge(A, p, q, r). Let n = r −p+1denote the total length of both the left
@@ -146,6 +156,7 @@
            times in total, because each execution copies one new element to the array B, and B only has space for
            nelements.) Thus the running time to Merge n items is Θ(n). Let us write this without the asymptotic
            notation, simply as n. (We’ll see later why we do this.)
+
            Now,howdowedescribetherunningtimeoftheentireMergeSortalgorithm? Wewilldothisthrough
            the use of a recurrence, that is, a function that is deﬁned recursively in terms of itself. To avoid
            circularity, the recurrence for a given value of n is deﬁned in terms of values that are strictly smaller
@@ -155,6 +166,7 @@
            number of comparisons, number of array accesses, since these will only differ by a constant factor.
            Since all of the real work is done in the Merge procedure, we will count the total time spent in the
            Mergeprocedure.
+
            First observe that if we call MergeSort with a list containing a single element, then the running time is a
            constant. Since we are ignoring constant factors, we can just write T(n)=1. When we call MergeSort
            withalistoflengthn>1,e.g. Merge(A, p, r),wherer−p+1=n,thealgorithmﬁrstcomputes
@@ -166,6 +178,7 @@
            Finally, to merge both sorted lists takes n time, by the comments made above. In conclusion we have
                         1             if n =1,
                     T(n)= T(⌈n/2⌉)+T(⌊n/2⌋)+notherwise.
+
          Lecture 7: Recurrences
          (Tuesday, Feb 17, 1998)
          Read: Chapt. 4 on recurrences. Skip Section 4.4.
@@ -174,6 +187,7 @@
            divide the problem into a small number of subproblems, (2) solve each subproblem recursively, and (3)
            combine the solutions to the subproblems to a global solution. We also described MergeSort, a sorting
            algorithm based on divide-and-conquer.
+
            Because divide-and-conquer is an important design technique, and because it naturally gives rise to
            recursive algorithms, it is important to develop mathematical techniques for solving recurrences, either
            exactly or asymptotically. To do this, we introduced the notion of a recurrence, that is, a recursively
