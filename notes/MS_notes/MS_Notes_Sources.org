@@ -21,7 +21,8 @@
 	- MS004 :: https://webdocs.cs.ualberta.ca/~holte/mergesort.pdf
   - MS005 :: https://courses.cs.washington.edu/courses/cse373/03wi/slides/lecture14.ppt 
 	- MS006 :: http://www.personal.kent.edu/~rmuhamma/Algorithms/MyAlgorithms/Sorting/mergeSort.htm
-	- MS007 :: https://www.khanacademy.org/computing/computer-science/algorithms/merge-sort/a/divide-and-conquer-algorithms 
+	- MS007 :: www.cs.umd.edu/~meesh/351/mount/lectures/lect6-divide-conquer-mergesort.pdf
 	- MS008 :: http://pages.cs.wisc.edu/~vernon/cs367/notes/14.SORTING.html	 	 
 	- MS009 :: http://algs4.cs.princeton.edu/22mergesort/	 	 
-	- MS010 :: https://secweb.cs.odu.edu/~zeil/cs361/sum14/Public/mergesort/index.html	 	 
+	- MS010 :: https://secweb.cs.odu.edu/~zeil/cs361/sum14/Public/mergesort/index.html
+  - MS011 :: www.cim.mcgill.ca/~langer/250/12-mergesort.pdf

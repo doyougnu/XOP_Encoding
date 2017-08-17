@@ -25,5 +25,5 @@
   - AVT008 :: http://www.cs.columbia.edu/~allen/S14/NOTES/avltrees_with_GUI.pdf
   - AVT009 :: https://www.cs.umd.edu/~meesh/351/mount/lectures/extra-AVL.pdf
   - AVT010 :: https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec06.pdf
-  - AVT011 :: https://www.ics.uci.edu/~pattis/ICS-46/lectures/notes/avl.txt 
-
+  - AVT011 :: https://www.ics.uci.edu/~pattis/ICS-46/lectures/notes/avl.txt
+  - AVT012 :: https://www.ida.liu.se/~TDDC32/lectures/tddc32-01.pdf  
