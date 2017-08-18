@@ -13,9 +13,9 @@ import Data.List (foldl', reverse)
 --
 --   The type parameters represent:
 --
---     * c -- "content" labels nodes
---     * m -- "modifiers" annotated nodes
---     * a -- "actions" annotated both up and down edges
+--     * c -- "content" labels on nodes
+--     * m -- "modifiers", which decorate nodes
+--     * a -- "actions" associated with downward and upward movement on edges
 --
 type Tree c m a = Node c m a
 
