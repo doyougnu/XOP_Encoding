@@ -1,13 +1,26 @@
 \documentclass[sigconf]{acmart}
 
 \usepackage{booktabs} % For formal tables
-\usepackage{qtree}
 \usepackage{amsmath,amssymb}
 % \usepackage{cite}   % importing cite is throwing errors for some reason
 \usepackage{color}
 \usepackage{enumerate}
 \usepackage{multicol}
 
+\usepackage{tikz}
+\tikzset{
+  treenode/.style = {shape=rectangle, rounded corners,
+                     draw, align=center,
+                     top color=white, bottom color=blue!20},
+  root/.style     = {treenode, font=\Large, bottom color=red!30},
+  env/.style      = {treenode, font=\ttfamily\normalsize},
+  dummy/.style    = {circle,draw}
+}
+
+\usepackage{tikz-qtree}
+\usepackage{tikz-qtree-compat}
+\usetikzlibrary{positioning}
+\usepackage{ textcomp }
 % Get todos to render properly
 \usepackage[obeyFinal]{easy-todo}
 
@@ -71,20 +84,22 @@
 
 
 \begin{abstract}
-Explanations of data structures and algorithms are complex interactions of
-several notations, including natural language, mathematics, pseudocode, and
-diagrams. Currently, such explanations are created ad hoc using a variety of
-tools, and the resulting artifacts are static, reducing explanatory value. We
-envision a domain-specific language for developing rich, interactive
-explanations of data structures and algorithms. In this paper, we analyze this
-domain to sketch requirements for our language. We build on an existing
-pedagogic theory of explanation, which we adapt to a qualitative coding system
-for explanation artifacts collected online. We show that explanations of
-algorithms and data structures in the wild exhibit patterns predicted by the
-pedagogic theory and derive insights for our language. This work is part of our
-effort to develop the paradigm of explanation-oriented programming, which
-shifts the focus of programming from computing results to producing rich
-explanations of how those results were computed.
+  Explanations of data structures and algorithms are complex interactions of
+  several notations, including natural language, mathematics, pseudocode, and
+  diagrams. Currently, such explanations are created ad hoc using a variety of
+  tools, and the resulting artifacts are static, reducing explanatory value. We
+  envision a domain-specific language for developing rich, interactive
+  explanations of data structures and algorithms. In this paper, we analyze this
+  domain to sketch requirements for our language. We perform a grounded theory
+  analysis, to generate a qualitative coding system for explanation artifacts
+  collected online. We show that grounded theory provides a robust methodology
+  for analyzing qualitative objects and that the resultant coding system forms
+  the skeleton of a domain-specific language. This work is part of our effort to
+  develop the paradigm of explanation-oriented programming, which shifts the
+  focus of programming from computing results to producing rich explanations of
+  how those results were computed.
+  \todo{I want to say something here about using formal qualitative methods to
+    expand the reach of computer science}
 \end{abstract}
 
 %
@@ -129,29 +144,12 @@ explanations of how those results were computed.
 
 \maketitle
 
-\begin{abstract}
-  Explanations of data structures and algorithms are complex interactions of
-  several notations, including natural language, mathematics, pseudocode, and
-  diagrams. Currently, such explanations are created ad hoc using a variety of
-  tools, and the resulting artifacts are static, reducing explanatory value. We
-  envision a domain-specific language for developing rich, interactive
-  explanations of data structures and algorithms. In this paper, we analyze this
-  domain to sketch requirements for our language. We utilize research methods
-  common in sociological work, which we adapt to form a qualitative coding
-  system for explanation artifacts collected online. We show that explanations
-  of algorithms and data structures in the wild exhibit patterns predicted by
-  the pedagogic theory and derive insights for our language. This work is part
-  of our effort to develop the paradigm of explanation-oriented programming,
-  which shifts the focus of programming from computing results to producing rich
-  explanations of how those results were computed.
-\end{abstract}
-
 \section{Introduction}
 \label{sec:intro}
 
 Data structures and algorithms are at the heart of computer science and must be
-explained to each new generation of students. How can we do this effectively?
-
+explained to each new generation of students. A pressing question is: How can we
+do this effectively?
 
 In this paper, we focus on the \emph{artifacts} that constitute or support
 explanations of data structures and algorithms (hereafter just ``algorithms''),
@@ -209,63 +207,60 @@ This paper represents a formative step toward this vision. We conduct a
 \emph{qualitative analysis} of our domain in order to determine the form and
 content of the explanation artifacts that educators are already creating.
 %
-We base our analysis on an established pedagogical theory in order to better
-understand how well existing artifacts support the pedagogical process of
-explaining a complex topic.
+We base our analysis on an established qualitative research method called
+\emph{grounded theory} in order to better understand how well existing artifacts
+explain complex topics
 
 
-More specifically, we collect 30 explanation artifacts from the internet,
-consisting of slide decks and lecture notes that explain two algorithms and one
+More specifically, we collect 15 explanation artifacts from the internet,
+consisting of only lecture notes that explain two algorithms and one
 data structure commonly covered in undergraduate computer science courses:
 Dijkstra's shortest path algorithm~\cite[pp.~137--142]{KT06}, merge sort
 \cite[210--214]{KT06}, and AVL trees \cite[pp.~458--475]{KnuthArt3}.
 %
-We analyze these artifacts by applying a classic pedagogical theory by Bellack
-et al.~\cite{bellack1966language} that describes the patterns of language used
-in the process of teaching. Bellack et al.\ define a typology for coding
-transcripts of teacher and student verbalizations during teaching. An overview
-of the typology is given in Section~\ref{sec:back:typ}.
+We analyze these artifacts through the application of grounded theory,
+\todo{cite Strauss and Corbin on first grounded theory paper} a formal method
+for analyzing qualitative data that originated in sociological research. Through
+the application of grounded theory, we develop a coding system that captures
+the structure of explanation for each document. An overview of the coding system
+is given in Section\todo{create grounded theory overview section}.
+
+% We analyze these artifacts by applying a classic pedagogical theory by Bellack
+% et al.~\cite{bellack1966language} that describes the patterns of language used
+% in the process of teaching. Bellack et al.\ define a typology for coding
+% transcripts of teacher and student verbalizations during teaching. An overview
+% of the typology is given in Section~\ref{sec:back:typ}.
 
 
 This paper makes the following contributions:
 %
 \begin{enumerate}[C1.]
 
-\item \label{contrib:codes}
-%
-We adapt Bellack et al.'s typology for analyzing \emph{explanation activities}
-in the form of classroom discourse to support analyzing \emph{explanation
-artifacts} for algorithms in the form of lecture notes and slides
-(Section~\ref{sec:exp:typ}).
+\item \label{contrib:method}
+  We provide a case study on analyzing \emph{qualitative data} through the
+  application of a formal research method \emph{grounded theory}, that is not
+  part of the computer science parlance.
 
 \item \label{contrib:data}
 %
 We provide a coded qualitative data set of explanation artifacts, using the
-system defined in C\ref{contrib:codes} applied to our sample of 30 collected
+system defined in C\ref{contrib:codes} applied to our sample of 15 collected
 explanation artifacts (Section~\ref{sec:exp:data}).
 
-\item \label{contrib:valid}
+\item \label{contrib:codes}
 %
-We note that conceptual units called \emph{teaching cycles}, described in the
-pedagogy literature, can be observed in the collected artifacts. This suggests
-that the adaptation of Bellack's system to artifacts is valid and that similar
-teaching strategies are used in explanation artifacts as in verbal explanations
-(Section~\ref{sec:res:cycles}).
+\todo{decide if we need to split this contribution up}
+We provide a coding system for analyzing \emph{explanation artifacts} in the
+form of lecture notes, and we show that through the application of the coding
+system, each such artifact forms a tree structure, which we have termed a
+\emph{explanation tree}.
 
-\item \label{contrib:analysis}
-%
-We further analyze the data set to motivate the need for a DSL and to extract
-insights that will be useful for the design of such a DSL
-(Section~\ref{sec:res:analysis}). For example, we note that the artifacts do
-not include any steps coded with the \emph{reacting} or \emph{responding}
-pedagogical moves defined by Bellack et al.'s typology, reflecting the fact
-that static artifacts treat the learner as an information sink with no recourse
-for query or response.
 
 \item \label{contrib:dsl}
 %
-We describe how Bellack et al.'s theory can directly provide a semantics basis
-for a DSL and argue for the advantages of such an approach (Section~\ref{sec:res:dsl}).
+  We describe how a coding system grounded in data can directly provide a
+  semantics basis for a DSL and argue for the advantages of such an approach
+  (Section~\ref{sec:res:dsl}).
 %
 \end{enumerate}
 
@@ -274,15 +269,7 @@ for a DSL and argue for the advantages of such an approach (Section~\ref{sec:res
 \section{Background}
 \label{sec:back}
 
-\begin{figure}
-\Tree[.IP [.NP [.Det \textit{the} ]
-               [.N\1 [.N \textit{package} ]]]
-          [.I\1 [.I \textsc{3sg.Pres} ]
-                [.VP [.V\1 [.V \textit{is} ]
-                           [.AP [.Deg \textit{really} ]
-                                [.A\1 [.A \textit{simple} ]
-                                      \qroof{\textit{to use}}.CP ]]]]]]
-\end{figure}
+\include{AVT_tree}
 
 \bibliography{XOPbib.bib,eric.bib}
 \bibliographystyle{ACM-Reference-Format}
