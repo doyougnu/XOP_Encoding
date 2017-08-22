@@ -146,7 +146,8 @@
     tags. This is called /saturation/ by grounded theorists.
 
 ** More Notes on Coding in General
-   Here is what some grounded theorists recommend one thinks about when coding. Use of the word text below could mean any qualitative data, not just text.
+   Here is what some grounded theorists recommend one thinks about when coding.
+   Use of the word text below could mean any qualitative data, not just text.
 
 *** Ask
     Things to ask when coding a text are as follows:
