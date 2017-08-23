@@ -219,12 +219,12 @@ data structure commonly covered in undergraduate computer science courses:
 Dijkstra's shortest path algorithm~\cite[pp.~137--142]{KT06}, merge sort
 \cite[210--214]{KT06}, and AVL trees \cite[pp.~458--475]{KnuthArt3}.
 %
-We analyze these artifacts through the application of grounded theory,
-\todo{cite Strauss and Corbin on first grounded theory paper} a formal method
-for analyzing qualitative data that originated in sociological research. Through
-the application of grounded theory, we develop a coding system that captures
-the structure of explanation for each document. An overview of the coding system
-is given in Section\todo{create grounded theory overview section}.
+We analyze these artifacts through the application of grounded
+theory\cite{Strauss67discoveryof}, a formal method for analyzing qualitative
+data that originated in sociological research. Through the application of
+grounded theory, we develop a coding system that captures the structure of
+explanation for each document. An overview of the coding system is given in
+Section \ref{sec:res:sys}.
 
 % We analyze these artifacts by applying a classic pedagogical theory by Bellack
 % et al.~\cite{bellack1966language} that describes the patterns of language used
@@ -254,7 +254,7 @@ explanation artifacts (Section~\ref{sec:exp:data}).
 We provide a coding system for analyzing \emph{explanation artifacts} in the
 form of lecture notes, and we show that through the application of the coding
 system, each such artifact forms a tree structure, which we have termed a
-\emph{explanation tree}.
+\emph{explanation tree} (Section \ref{sec:res:xopTree}).
 
 
 \item \label{contrib:dsl}
@@ -347,7 +347,7 @@ artifact would be quite expensive to produce with current tools since an
 explanation and corresponding visualizations, but also anticipate and
 explicitly program in responses to queries by the student.
 %
-We expected that DSLs for XOP can help alleviate this burden.
+We expect that DSLs for XOP can help alleviate this burden.
 
 
 % To help realize this vision, our medium-term goal is to design a
@@ -386,7 +386,7 @@ the phenomena it represents}.
 
 \subsubsection{How to do grounded theory}
 Like any methodology, grounded theory employs a specific vocabulary to refer to
-stages and practices of research. This section will introduce grounded theory
+stages and phases of research. This section will introduce grounded theory
 terminology in concert with an operational example that will show how one may
 actually perform a grounded theory analysis.
 
@@ -395,7 +395,7 @@ Imagine a researcher who is attempting to find out why factory workers are
 leaving within a year of being hired from a given manufacturing center. The
 first task for a grounded theorist would be to collect data from the subject
 they wish to study. In our example this data would most likely be in the form of
-interviews with the people who work there, their work schedule, perhaps an
+interviews with the people who work there, their work schedule, and perhaps an
 organization chart. Once some data has been collected the researching will enter
 a phase called \emph{coding}, coding is the act of taking some qualitative data
 e.g lecture notes, an interview, personal letters and assigning tags that
@@ -433,7 +433,7 @@ and struggling to make ends meet'' and conclude that the selective code would be
 ``poor benefits''.
  
 Grounded theory and coding proceed in parallel to data collection and analysis.
-That is to say that the research in our example will be simultaneously
+That is to say that the researcher in our example will be simultaneously
 collecting data, coding, forming their theory from the data, and moving back and
 forth between each activity. This is a marked departure from quantitative
 methods which seek to restrict access to the data and analysis of the data,
@@ -452,11 +452,11 @@ researcher must think back and ask themselves if they are being consistent.
 Researchers should perform this check at every stage of coding, it is pivotal to
 the validity of the method\cite{Strauss67discoveryof}.
  
-The second tenet is the concept of \emph{theoretical sampling}, theoretical
+The second tenet is the concept of \emph{theoretical sampling}; theoretical
 sampling, as opposed to representative sampling, focuses on filling in the
-perceived gaps in data based on the current theory. To put this into context, if
+\emph{perceived} gaps in data based on the current theory. To put this into context, if
 the researcher in our example were a quantitative researcher they would
-determine the total population at the plant, and then use statistics to generate
+determine the total population at the factory, and then use statistics to generate
 a representative data set. The grounded theory researcher, would look at their
 data and determine that they do not have any interviews from the night shift,
 thus they will go and collect more data to fill the gap \emph{based on their
@@ -475,11 +475,12 @@ saturation at 11 documents.
 %% How it was used and Why
 In this study, grounded theory was employed to generate a \emph{coding paradigm}
 about explanation artifacts. Our resultant theory is that explanation artifacts
-correspond to a pre-order traversal of a \emph{explanation tree}. Such trees,
+correspond to a pre-order traversal of an \emph{explanation tree}. Such trees,
 expressed in the coding system, distill the essence of a given explanation
 artifact. \todo{Eric's thoughts on flowery language}
 
-\subsection{Experimental Setup}
+\section{Experimental Setup}
+\label{sec:exp:data}
 In this section we describe how the data was collected, any preprocessing the
 data may have undergone, and the system used to apply tags to the data. 
 
@@ -500,10 +501,13 @@ should be considered with the concomitant lecture.
 All data was coded by hand with the aid of Atlast.ti software \todo{reference
   for software here} by a single researcher. The use of the Atlast.ti software
 was primarily for organizational and representational benefit, such as
-generating the code list, and performing constant comparison. This analysis, and
-any other grounded theory analysis, could be performed without such an aid. If a
-document drifted substantially into a different algorithm then that section was
-not considered. For example, if a document explaining Dijkstra's algorithm,
+generating the code list, and performing constant comparison.
+%
+The use of such software is contingent with respect to grounded theory.
+% This analysis, and any other grounded theory analysis, could be performed without such an aid.
+%
+If a document drifted substantially into a different algorithm then that section
+was not considered. For example, if a document explaining Dijkstra's algorithm,
 discussed shortest-path problems, then this was considered as it is directly
 relevant to Dijkstra's algorithm, but if that document included a section on
 Bellman-Ford's algorithm, then this section was not considered.
@@ -517,48 +521,119 @@ We made no attempt to restrict the size of the data collected, in order to
 collect a diverse set of data. The smallest document collected had only a page
 and a half of relevant material while the longest consist of eighteen pages. All
 data can be found the projects github repository \todo{move stuff to github}.
+\url{https://github.com/lambda-land/XOPTypology_Paper}. Fifteen documents were
+coded in total, with five documents each per algorithm.
 
 \section{Results}
 In this section we present our findings. We make three major observations from
 the data. First, we observe that the data is able to be expressed in the coding
-system. Second, we observe that when the data is expressed through the lens of
-the coding system, the result is an explanation tree. Third, we observe that
-the content of each document is expressed with a pre-order traversal of the
-corresponding explanation tree.
-\todo{any more observations? That gt is well suited to a task like this?}
+system and provide an overview of the coding system in Section
+\ref{sec:res:sys}. In Section \ref{sec:res:xopTree} we observe that when the
+data is expressed through the lens of the coding system, the result is an
+explanation tree, and that the content of each document is expressed with a
+pre-order traversal of the corresponding explanation tree. \todo{any more
+  observations? That gt is well suited to a task like this?}
 
 \subsection{The Coding System}
 \label{sec:res:sys}
 
-The coding system consists of 4 ``types'' of tags, these were modeled as
+In this section we present an instructive example of the coding system developed
+through grounded theory. There are several instances of each type of tag that
+will not be shown or discussed here. For an exhaustive list please see this
+projects github repository:
+\url{https://github.com/lambda-land/XOPTypology_Paper}.
+
+
+The coding system consists of 4 finite sets of tags, these were modeled as
 ``groupings'' in Atlast.ti, they are: 
-\begin{enumerate} [T1.]
+\begin{enumerate}
   \item \textbf{Context}
   \item \textbf{Content Expression}
   \item \textbf{Actions}
   \item \textbf{Modifiers}
-\end{enumeratee}
+\end{enumerate}
 
-Taken in order: Context tags define
+A typical coding for a paragraph might be:
+\newline
+\newline
+\say{\prog{Algorithm \ldots -> Motivation Description \ldots | Problem Cartoon
+    \ldots <- Example}}
+\newline
+\newline
+\todo{fix this formatting}
 
-The coding system borne out of the data is, in essence, one used to describe a
-tree structure. This conclusion was born out of necessity in axial coding. The
-data often times switches the context of which it is describing. One paragraph
-may be describing how an AVL Tree is a \emph{type} of Binary-Tree, while the
-next may be describing how to insert into an AVL Tree. As such, the system
-needed a way to switch contexts in order to describe the data.
+Where ``Algorithm'', ``Motivation'', ``Problem'', are Context tags; $\rightarrow$,
+|, and $\leftarrow$ are modifiers; ``Description'' and ``Example'' are Actions and
+``Cartoon'' is a Content Expression tag. The \ldots are used here to denote
+several lines or paragraphs of text or images. 
+Shown in the example above, modifiers determine the scoping of their input tags.
+When a context tag is \emph{orphaned}, like ``Algorithm'' above, then that is
+interpreted as returning to the top level scope and then sub scoping in to the
+``Algorithm'' context. The first tag in every document is interpreted as setting
+the \emph{root} node of that particular document. So if the example above was
+the first line in a document and ``Algorithm'', the first context tag, then it
+would be interpreted as setting the root node for that document. The modifier
+$\rightarrow$, read as \emph{push}, takes a content tag as input, and creates a
+sub-scoping of that content tag \emph{with respect to the parent}. So in the
+example above, we have ``Algorithm'' as the parent, and then we push into
+``Motivation'', thus the document would now be discussing the motivation for the
+algorithm at the parent node.
+
+The modifier $\leftarrow$, read as \emph{pop}, denotes the opposite, it moves up one
+level of scoping. The pop operator takes no content tags and instead may be
+orphaned or may take any number of action any content expression tags. In the
+example above this modifier is used to exit the ``Problem'' scope, return to the
+``Algorithm'' scope and then give an example. The pop modifier may be orphaned
+to denote an exiting of scope without any action or context expression occurring.
+
+The modifier |, read as \emph{swap}, takes a single content tag as input, and is
+equivalent to the coding sequence ``$\leftarrow$ $\rightarrow$ <tag>''. That is
+to say we pop out of the current sub-scoping, and then push into the new
+sub-scoping of the input tag. Note that the pop modifier has precedence over the
+push modifier.
+
+Context tags define, in abstract, the topic that is being discussed in a
+particular section of the document. These are abstract descriptors such as:
+Problem, to denote that the text is discussing a problem which may or may not be
+solved later in the document. Motivation, to denote that the text is discussing
+the reason for discussing or analyzing whatever chain of content the scoping is
+set to. These tags, with the modifiers, form the skeleton of an explanation
+tree; where the content tags are the nodes and the modifiers dictate the
+structure. In essence, these tags dictate what the document is discussing.
+
+Action tags are used to denote the explicit action that is being undertaken by
+the document. These tags must be concrete things that are being done in the
+text, such as: Giving an example, providing an outline, describing something,
+concluding a point, or giving a proof. These tags denote, in abstract, what the
+document is doing.
+
+Lastly, Expression tags are used to denote how the content is being expressed in
+the current context. Some examples are: Cartoon, PseudoCode, Code, and Table.
+These tags denote, in abstract, what form the content is being expressed in.
 
 \subsection{Explanation Trees}
 \label{sec:res:xopTree}
+The coding system borne out of the data is, in essence, one used to describe a
+tree structure. This conclusion was born out of necessity during axial coding
+and became the \emph{coding paradigm} for this study. The central problem was to
+keep track of the different topics each document would discuss throughout its'
+duration. This led directly to the creation of Content and Modifier tags, which
+upon retrospection clearly formulate the document into a tree structure. An
+example tree is given below for document \todo{pick good example explanation
+  tree}.
+
+
+As shown in figure 1, the document ... ... \todo{finish this description of the
+  explanation tree}
+
+\include{AVT_tree}
 
 \section{Discussion of Results}
 In this section we summarize and interpret the results presented above. To
-ensure transparency and openness, the reader may find all raw data, and any
-post-processing scripts published online
-\url{https://github.com/lambda-land/XOPTypology_Paper}
+ensure transparency and openness, the reader may find all raw data, and all
+encoded documents at \url{https://github.com/lambda-land/XOPTypology_Paper}.
 
 
-\include{AVT_tree}
 
 \bibliography{XOPbib,eric}
 \bibliographystyle{ACM-Reference-Format}

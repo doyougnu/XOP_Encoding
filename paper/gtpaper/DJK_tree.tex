@@ -1,11 +1,17 @@
-\begin{figure}
-\Tree[.IP [.NP [.Det \textit{the} ]
-               [.N\1 [.N \textit{package} ]]]
-          [.I\1 [.I \textsc{3sg.Pres} ]
-                [.VP [.V\1 [.V \textit{is} ]
-                           [.AP [.Deg \textit{really} ]
-                                [.A\1 [.A \textit{simple} ]
-                                      \qroof{\textit{to use}}.CP ]]]]]]
-
- 
-\end{figure}
+\begin{tikzpicture}
+\Tree [ 
+  .TP [ 
+      .T\1 \node(C){T+verb}; [
+          .vP \qroof{`ana}.DP [
+             .v\1 \node(B){v+\TR{verb}}; [
+                 .VP [
+                     .V\1 \node(A){V+\TR{verb}}; \qroof{taalib}.DP 
+                 ]
+             ]
+          ]
+      ]
+  ]
+]
+\draw [semithick] (A.south) edge [bend left=70,->,shorten >=.2em] (B.south) node (D) [draw, fill, circle, minimum size=2pt,below = -.25em of B.south, inner sep=0pt] {} ;
+\draw [semithick] (D) edge [bend left=70,->,shorten <=.5em] (C);
+\end{tikzpicture}
