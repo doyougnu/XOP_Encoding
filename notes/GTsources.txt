@@ -1,0 +1,44 @@
+              ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+               DATA SOURCES FOR GROUNDED THEORY ANALYSIS
+
+                             Jeffrey Young
+              ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+
+                              Feb 23, 2017
+
+
+
+
+
+Sources
+═══════
+
+AVL Sources
+───────────
+
+  AVT01: [https://www.cs.cmu.edu/~fp/courses/15122-s11/lectures/18-avl.pdf]
+  AVT02: [http://www.cs.columbia.edu/~allen/S14/NOTES/avltrees_with_GUI.pdf]
+  AVT03: [https://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-006-introduction-to-algorithms-fall-2011/lecture-videos/MIT6_006F11_lec06.pdf]
+  AVT04: [https://www.ics.uci.edu/~pattis/ICS-46/lectures/notes/avl.txt]
+  AVT05: [https://www.ida.liu.se/~TDDC32/lectures/tddc32-01.pdf]
+
+
+Dijkstra's Sources
+──────────────────
+
+  DJK01: [https://www.cs.auckland.ac.nz/~jmor159/PLDS210/dijkstra.html]
+  DJK02: [http://www.cs.cornell.edu/courses/cs312/2002sp/lectures/lec20/lec20.htm]
+  DJK03: [http://www.ms.unimelb.edu.au/~moshe@unimelb/620-261/dijkstra/dijkstra.html]
+  DJK04: [https://www.utdallas.edu/~sizheng/CS4349.d/l-notes.d/L18.pdf]
+  DJK05: [https://www.cs.cmu.edu/afs/cs/academic/class/15210-s12/www/lectures/lecture11.pdf]
+
+
+MergeSort Sources
+─────────────────
+
+  MS01: www.cs.umd.edu/~meesh/351/mount/lectures/lect6-divide-conquer-mergesort.pdf
+  MS02: [http://pages.cs.wisc.edu/~vernon/cs367/notes/14.SORTING.html]
+  MS03: [http://algs4.cs.princeton.edu/22mergesort/]
+  MS04: [https://secweb.cs.odu.edu/~zeil/cs361/sum14/Public/mergesort/index.html]
+  MS05: www.cim.mcgill.ca/~langer/250/12-mergesort.pdf
