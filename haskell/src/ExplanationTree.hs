@@ -2,7 +2,6 @@ module ExplanationTree where
 
 import Data.List (foldl', reverse)
 
-
 -- * Explanation Trees
 
 -- | An explanation tree is a rose tree where each each node is labeled by
@@ -88,7 +87,7 @@ type Context c m a = (Dir c m a, Path c m a)
 --   TODO: Handle/report error cases.
 code :: Code c m a -> Context c m a -> Context c m a
 code (New x) (Down, ns)
-    = (Down, ([], Node x [] []) : ns) 
+    = (Down, ([], Node x [] []) : ns)
 code (New x) (Up p2c c c2p, (g2p, p) : ns)
     = (Down, ([], Node x [] []) : (g2p, addEdge (Edge p2c c c2p) p) : ns)
 code (Mod m) (d, (as, n) : ns)
@@ -113,7 +112,7 @@ exit (Up [] c [], []) = reverseTree c
 exit ctx = exit (code Pop ctx)
 
 -- | An example tree. Run the following to test:
---   
+--
 --   ghci> prettyTree (toTree c1)
 --
 c1 = [ New "Root"
