@@ -57,6 +57,7 @@ data Contexts = Advantages
               | Condition
               | Constituent
               | Design
+              | DataStructure
               | Disadvantages
               | Goal
               | History
@@ -95,8 +96,8 @@ exception = [ New Algorithm, Act Assumption ]
 act = Act . A
 expr = Act . E
 
-djk009 :: [Code Contexts m Descriptors]
-djk009 = [ New Algorithm
+djk09 :: [Code Contexts m Descriptors]
+djk09 = [ New Algorithm
            , New Property
              , act Definition
              , expr Mathematic
@@ -134,3 +135,141 @@ djk009 = [ New Algorithm
              , New Implementation
                , act Description
          ]
+
+avt01 :: [Code Contexts Modifiers Descriptors]
+avt01 = [ New DataStructure
+          , New Problem
+            , act Description
+            , act Example
+            , act Proposal
+            , New Solution
+              , act InVivoIntro
+              , New Condition
+                , act Description
+                , Pop
+              , New Class
+                , Mod Meta
+                , Pop
+              , Pop
+            , Pop
+          , New History
+            , act Description
+            , Pop
+          , New Property -- here
+            , Mod Review
+            , act Definition
+            , expr Mathematic
+            , Pop
+          , act Definition
+          , act InVivoIntro
+          , expr Mathematic
+          , act InVivoIntro
+          , New Property
+            , act Definition
+            , act Example
+            , expr Cartoon
+            , New Operation
+              , act Example
+              , expr Cartoon
+              , Pop
+            , New State
+              , act Description
+              , act Observation
+              , expr Cartoon
+              , Pop
+            , New Operation
+              , act Example
+              , act Observation
+              , Pop
+            , New State
+              , act Observation
+              , act Conclusion
+              , act Example
+              , act Proposal
+              , expr Cartoon
+              , Pop
+            , New Problem
+              , act InVivoIntro
+              , Pop
+            , New Operation
+              , act Example
+              , expr Cartoon
+              , act Legend
+              , act Description
+              , expr Cartoon
+              , New State
+                , act Observation
+                , Pop
+              , act Example
+              , Mod Review
+              , expr Code
+              , act Definition
+              , Mod Review
+              , expr Code
+              , Mod Review
+              , expr Code
+              , Mod Review
+              , expr Cartoon
+              , act Example
+              , expr Code
+              , act Example
+              , Pop
+            , New Operation
+              , act Description
+              , Mod Related
+              , Mod Review
+              , Pop
+            , New Operation
+              , act Description
+              , New Advantages
+                , Pop
+              , act Description
+              , New State
+                , act Example
+                , act Observation
+                , expr Cartoon
+                , New Operation
+                  , act Example
+                  , act InVivoIntro
+                  , expr Cartoon
+                  , Pop
+                , Pop
+              , Pop
+            , Pop
+          , New Operation
+          , act Description
+          , Mod Related
+            , New Design
+            , act Description
+            , expr Code
+            , expr Code
+            , act Description
+            , Pop
+          , act Description
+          , expr Code
+          , act Definition
+          , expr Code
+          , act Definition
+          , New Operation
+            , act Example
+            , Pop
+          , expr Code
+          , act Definition
+          , New Operation
+            , Mod Related
+            , act Description
+            , expr Code
+            , act Description
+            , expr Code
+            , act Description
+            , Pop
+          , New DataStructure
+            , Mod Related
+            , Pop
+          , New Application
+            , act Description
+            , New Problem
+              , New Solution
+                , New Application
+                , act Description
+        ]
