@@ -2,6 +2,9 @@ module DocEncodings where
 
 import ExplanationTree
 
+-- * Actions
+
+-- | Simple Sum type to enumerate all legal actions
 data Actions = Abstraction
              | Assumption
              | BaseCase
@@ -24,7 +27,10 @@ data Actions = Abstraction
              | Summary
              deriving Show
 
-data Expressions = Cartoon
+-- * Exprressions
+
+-- | Simple Sum type to enumerate all legal exprressions
+data Exprressions = Cartoon
                  | Code
                  | PseudoCode
                  | Sequence
@@ -32,6 +38,17 @@ data Expressions = Cartoon
                  | Table
                  deriving Show
 
+-- * Descriptors
+
+-- | Simple wrapper for actions and exprressions. This is needed because an edge
+-- can take an action label, or an exprression label
+data Descriptors = A Actions
+                 | E Exprressions
+                 deriving Show
+
+-- * Contexts
+
+-- | Simple Sum type to enumerate all legal Contexts
 data Contexts = Advantages
               | Algorithm
               | Application
@@ -52,6 +69,10 @@ data Contexts = Advantages
               | State
               deriving Show
 
+-- * Modifiers
+
+-- | Simple Sum type to enumerate all legal Modifiers Pop is commented out
+-- because this is handled in a special case in Codes
 data Modifiers = Push
                -- | Pop
                | Swap
@@ -71,21 +92,45 @@ run = prettyTree . toTree
 -- Begin Document Codes
 exception = [ New Algorithm, Act Assumption ]
 
+act = Act . A
+expr = Act . E
+
+djk009 :: [Code Contexts m Descriptors]
 djk009 = [ New Algorithm
            , New Property
-             , Act Definition
+             , act Definition
+             , expr Mathematic
              , Pop
            , New Problem
-             , Act Definition
+             , act Definition
+             , expr Mathematic
              , Pop
            , New Operation
-             , Act Proposal
+             , act Proposal
+             , expr Cartoon
+             , act Description
+             , act Legend
+             , act Cases
+             , act Proof
+             , act BaseCase
+             , act Description
+             , expr Mathematic
+             , act Proposal
+             , act Description
+             , act Cases
+             , act Description
+             , expr Mathematic
+             , act Conclusion
+             , act Description
+             , expr Cartoon
+             , act Proposal
+             , act Description
+             , act Proof
              , Pop
            , New Complexity
-             , Act Description
+             , act Description
              , New Implementation
                , Pop
              , New Implementation
-               , Act Description
+               , act Description
          ]
-
