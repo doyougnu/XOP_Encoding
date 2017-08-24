@@ -9,3 +9,6 @@ paper/XOP_Paper.pdf
 *.el
 .#*
 *.out
+.DS_Store
+.cabal-sandbox
+.stack-work
