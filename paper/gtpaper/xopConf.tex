@@ -98,9 +98,6 @@
   develop the paradigm of explanation-oriented programming, which shifts the
   focus of programming from computing results to producing rich explanations of
   how those results were computed.
-  \todo{I want to say something here about using formal qualitative methods to
-    expand the reach of computer science}
-  \todo{do we mention explanation trees in the abstract and pre-order traversals?}
 \end{abstract}
 
 %
@@ -209,7 +206,7 @@ This paper represents a formative step toward this vision. We conduct a
 content of the explanation artifacts that educators are already creating.
 %
 We base our analysis on an established qualitative research method called
-\emph{grounded theory} in order to better understand how well existing artifacts
+\emph{grounded theory}\cite{Strauss67discoveryof} in order to better understand how well existing artifacts
 explain complex topics
 
 
@@ -254,12 +251,24 @@ explanation artifacts (Section~\ref{sec:exp:data}).
 We provide a coding system for analyzing \emph{explanation artifacts} in the
 form of lecture notes, and we show that through the application of the coding
 system, each such artifact forms a tree structure, which we have termed a
-\emph{explanation tree} (Section \ref{sec:res:xopTree}).
+\emph{explanation tree}
+
+\todo{tie this in} One of the central dilemmas of analyzing explanations in the
+wild is that they vary widely and do not directly map onto any perceivable
+shared, abstract structure. If explanation-oriented programming is to become a
+viable paradigm then this formative problem must be solved. A major step forward
+in this direction is the concept of \emph{explanation trees}. In this paper, use
+a coding system grounded in the data to observe a shared structure between
+explanations of like content and dissimilar content, lengths, authors, and
+institutions. We believe that such a structure forms the building blocks of
+\todo{something}
+
+(Section \ref{sec:res:xopTree}).
 
 
 \item \label{contrib:dsl}
 %
-  We describe how a coding system grounded in data can directly provide a
+  We describe how a coding system grounded in data can provide a
   semantics basis for a DSL and argue for the advantages of such an approach
   (Section~\ref{sec:res:dsl}).
 %
@@ -267,7 +276,7 @@ system, each such artifact forms a tree structure, which we have termed a
 
 \noindent
 
-\section{Background}
+\section{Background And Related Works}
 \label{sec:back}
 
 In this section, we put the present work into context by the describing the
@@ -319,7 +328,7 @@ be directly shared or reused.
 %
 Since personal explanations are hard to come by, many students learn from
 \emph{impersonal explanation artifacts}, such as recorded lectures, textbooks
-and online written nd graphical resources.
+and online written and graphical resources.
 %
 These impersonal explanations lack the interaction and adaptability of personal
 explanations, but have the advantage of being easy to massively share and reuse
@@ -363,145 +372,128 @@ We expect that DSLs for XOP can help alleviate this burden.
 \label{sec:back:gt}
 In this section we present an overview of the research method known as grounded
 theory. This section is meant to help orient the reader to understand the
-process by which the coding system was formed, in addition to providing a
-summary of a qualitative research method that has seen little use inside
-computer science.
-\todo{why did we use grounded theory}
+process by which the coding system was formed.
 
 %% What is it
-\subsubsection{Main Idea}
-Grounded theory was discovered by sociology researchers, Glaser and Strauss in
-the late sixties. Its central idea is to generate, or discover theory,
+The central idea behind grounded theory is to generate, or discover theory,
 inductively, \emph{based on data} rather than to use data to evince a hypothesis
 of a theory. Grounded theory is rooted in a \emph{pragmatist} view of theory
 i.e. that theory should be purposed and suited towards its intended uses
 vis-a-viz logico-deductive theories which are concerned with what can be
 expressed by the theory ~\cite{Strauss67discoveryof}. As Glaser and Strauss
-state: \todo{fix this quotation}
-
-
+state:
+\newline
+\newline
 \say{A grounded theory is one that is inductively derived from the study of
 the phenomena it represents}.
-
-
-\subsubsection{How to do grounded theory}
+\newline
+\newline
 Like any methodology, grounded theory employs a specific vocabulary to refer to
-stages and phases of research. This section will introduce grounded theory
+stages and phases of research. The rest of this section will introduce grounded theory
 terminology in concert with an operational example that will show how one may
 actually perform a grounded theory analysis.
 
 
-Imagine a researcher who is attempting to find out why factory workers are
-leaving within a year of being hired from a given manufacturing center. The
-first task for a grounded theorist would be to collect data from the subject
-they wish to study. In our example this data would most likely be in the form of
-interviews with the people who work there, their work schedule, and perhaps an
-organization chart. Once some data has been collected the researching will enter
-a phase called \emph{coding}, coding is the act of taking some qualitative data
-e.g lecture notes, an interview, personal letters and assigning tags that
-describes the data.
+Imagine a researcher who wants to find out why students drop out of
+Computer Science programs. The first task for a grounded theorist would be to
+collect data from the subject they wish to study. This data would most likely be
+in the form of interviews with the students, their schedule, and example
+homework assignments. Once some data is collected the research will begin
+\emph{coding}, coding is the act of taking qualitative data e.g lecture notes,
+an interview, personal letters and assigning tags that describes the data.
  
-The act of coding consists of three stages\cite{charmaz2006constructing}: First,
-a researcher performs what is known as \emph{open coding}. In open coding, one
-writes down \emph{any} term or terms that describes the data. This first set of
-tags is often varied, numerous, and will typically consist of many concepts that
-are expressed in duplicate, or related tags. In our operational example these
-tags could be things such as the names of a worker's position, nicknames that
-people call one another, things about an interviewees life or family. Open
-coding should make use of \emph{in vivo} terms, these are terms that people in
-the culture use. For example, a computer scientist may discuss the''
-``recurrence relation'', while a factory worker may use the term'' ``floor
-boss'' to mean the floor manager.
+Coding consists of three stages\cite{corbin2014basics}: First, a researcher
+performs \emph{open coding}. In open coding, one writes down \emph{any} term or
+terms that describes the data, regardless of duplicate or related concepts. In
+our example these tags could be things such as the year of a student, nicknames
+that people call one another, things about their life, family, or activities.
+Open coding should make use of \emph{in vivo} terms, these are terms that people
+immersed in the culture use. For example, a computer scientist may discuss the
+``recurrence relation'', while a factory worker may use the term ``floor boss''
+to mean the manager.
  
-The second stage of coding is called \emph{Axial Coding}, in axial
-coding the researcher tries to identify the relationships between the tags that
-were developed in open coding. The goal of this step is to develop a
-\emph{coding paradigm}, which is a theoretical model that visually displays the
-inter-relationship between codes~\cite{corbin2014basics}. These codes should
-provide some answer to the question ``What are the connections between codes?''.
-An axial code for our operational example may coalesce sets of open codes to
-several axial codes. For example, if one had the open codes ``tired, exhausted,
-not enough time with family, called in on days off'', these might inform the
-axial code ``burn out''.
+The second stage of coding is called \emph{axial coding}, in axial coding the
+researcher identifies the relationships between the tags developed in open
+coding. The goal is to develop a \emph{coding paradigm}, which is a model that
+displays the inter-relationship between codes~\cite{corbin2014basics}. An axial
+code for our example may coalesce sets of open codes to several axial codes. For
+example, if one had the open codes ``tired, exhausted, no time for other
+activities, stressed from homework'', these might inform the axial code ``burn
+out''.
  
-\emph{Selective Coding} is the last and final stage of coding, in this stage the
-researcher tries to identify one or two central tags that forms the basis for
-their theory. After identifying these core tags the researcher then seeks to
-relate the core tags to the remaining tags. In our operational example, we might
-have the axial codes ``burn out, little vacation time, worried about retirement,
-and struggling to make ends meet'' and conclude that the selective code would be
-``poor benefits''.
+\emph{selective coding} is the final stage of coding, in this stage the
+researcher tries to identify a few central tags that form the basis for the
+theory. After identifying these core tags the researcher then seeks to relate
+the core tags to the remaining tags. In our example, we might have
+the axial codes ``burn out, no support, everyone is perceived better, anxiety
+over schoolwork'' and conclude that the selective code would be
+``impostor syndrome''.
  
-Grounded theory and coding proceed in parallel to data collection and analysis.
-That is to say that the researcher in our example will be simultaneously
-collecting data, coding, forming their theory from the data, and moving back and
-forth between each activity. This is a marked departure from quantitative
-methods which seek to restrict access to the data and analysis of the data,
-until all of it has been collected\cite{charmaz2006constructing}.
+All phases of research proceed in parallel to data collection and analysis. That
+is to say that the researcher in our example will be simultaneously collecting
+data, coding, forming their theory, and moving between each activity at the
+same time . This is a marked departure from quantitative methods where phases
+are distinct and disjunct\cite{Strauss67discoveryof}.
 
 
-Through the use of coding, the researcher interacts with their
-data. But how does that researcher know when to stop coding? Or how much data to
-code? Such questions are the motivation for three central tenets in grounded
-theory. 
+Through coding, the researcher interacts with their data. But how does that
+researcher know when to stop coding? Or how much data to code? Such questions
+are the motivation for three central tenets in grounded theory.
  
-The first tenet is called \emph{Constant Comparison}, constant comparison is a
-technique in which researchers compare tags that they are currently applying to
-previous uses of that tag. The central idea is that during coding, the
-researcher must think back and ask themselves if they are being consistent.
-Researchers should perform this check at every stage of coding, it is pivotal to
-the validity of the method\cite{Strauss67discoveryof}.
+The first is called \emph{constant comparison}, the idea is that during coding,
+the researcher must think back and ask if they are being consistent. Researchers
+should perform this check constantly and at every stage of coding as it is
+pivotal to the validity of the method\cite{Strauss67discoveryof}.
  
-The second tenet is the concept of \emph{theoretical sampling}; theoretical
-sampling, as opposed to representative sampling, focuses on filling in the
-\emph{perceived} gaps in data based on the current theory. To put this into context, if
-the researcher in our example were a quantitative researcher they would
-determine the total population at the factory, and then use statistics to generate
-a representative data set. The grounded theory researcher, would look at their
-data and determine that they do not have any interviews from the night shift,
-thus they will go and collect more data to fill the gap \emph{based on their
-  current results}.
+The second tenet is \emph{theoretical sampling}; theoretical sampling, focuses
+on filling the \emph{perceived} gaps in data based on current theory. To put
+this into context, if the researcher in our example were a quantitative
+researcher they would determine the total student population of the CS program,
+and then use statistics to generate a representative data set. The grounded
+theory researcher, would look at their data and determine that they do not have
+any data points from people who have taken the operating systems class, thus
+they will collect more data to fill that gap \emph{based on their current
+  results}.
  
 The last tenet describes how to reach an end point in coding; grounded theorists
-call it \emph{Saturation}. Saturation occurs when new data is added to the
+call it \emph{saturation}. Saturation occurs when new data is added to the
 researcher's data set and no new tags or modifications to the coding system are
-required. This represents a point in the research when the researcher's system
-is able to express data that was \emph{not} used to generate it. The requisite
-number of data to reach this point may vary drastically based on factors such as
-researcher, topic, and motivating research questions. For this study, we reached
-saturation at 11 documents.
+required. This is when the researcher's system is able to express data that was
+\emph{not} used to generate it. The requisite number of data to reach this point
+may vary drastically based on factors such as researcher, topic, and motivating
+research questions.
 
 
 %% How it was used and Why
-In this study, grounded theory was employed to generate a \emph{coding paradigm}
-about explanation artifacts. Our resultant theory is that explanation artifacts
-correspond to a pre-order traversal of an \emph{explanation tree}. Such trees,
-expressed in the coding system, distill the essence of a given explanation
-artifact. \todo{Eric's thoughts on flowery language}
+% For this study, saturation was reached at 11 documents.
+% In this study, grounded theory was employed to generate a \emph{coding paradigm}
+% about explanation artifacts. Our resultant theory is that explanation artifacts
+% correspond to a pre-order traversal of an \emph{explanation tree}. Such trees,
+% expressed in the coding system, distill the essence of a given explanation
+% artifact. \todo{Eric's thoughts on flowery language}
 
 \section{Experimental Setup}
 \label{sec:exp:data}
 In this section we describe how the data was collected, any preprocessing the
 data may have undergone, and the system used to apply tags to the data. 
 
-We restrict the scope of data collection to include only objects that provide an
-explanation of common computer science algorithms from computer science
-departments at accredited universities. Restricting the scope of objects in this
-manner provides two benefits: 1) All explanatory objects have a stated,
+We restrict the scope of data collection to include only artifacts that provide
+an explanation of common computer science algorithms from computer science
+departments at accredited universities. Restricting the scope of artifacts in
+this manner provides two benefits: 1) All explanatory artifacts have a stated,
 intrinsic goal to communicate the mechanics, application, or implementation of
 some common computer science algorithm. 2) There are bountiful and varied
 examples of different approaches to explain \emph{the same} algorithm, and
 numerous examples of \emph{like} approaches to explain different algorithms. All
-data collected was either in pdf file format, or an html file that was converted
-to pdf using libreoffice \todo{references references references}. No powerpoint
-lecture notes were considered because we feared that such documents would be
-information scarce i.e. powerpoints are used to structure a lecture and thus
-should be considered with the concomitant lecture.
+data collected was either in PDF file format, or an html file that was converted
+to PDF. No powerpoint lecture notes were considered because we feared that such
+documents would be information scarce; powerpoints are used to structure a
+lecture and thus should be considered with the concomitant lecture.
 
 All data was coded by hand with the aid of Atlast.ti software \todo{reference
   for software here} by a single researcher. The use of the Atlast.ti software
 was primarily for organizational and representational benefit, such as
-generating the code list, and performing constant comparison.
+generating the code list and performing constant comparison.
 %
 The use of such software is contingent with respect to grounded theory.
 % This analysis, and any other grounded theory analysis, could be performed without such an aid.
@@ -512,17 +504,17 @@ discussed shortest-path problems, then this was considered as it is directly
 relevant to Dijkstra's algorithm, but if that document included a section on
 Bellman-Ford's algorithm, then this section was not considered.
 
-Explanatory objects were indexed according to the algorithm that was to be
+Explanatory artifacts were indexed according to the algorithm that was to be
 explained, and a simple counter. For example, the first document regarding AVL
-Trees would be named ``AVT001'' while the sixth would be ``AVT006'' and so on.
+Trees would be named ``AVT01'' while the sixth would be ``AVT06'' and so on.
 All of the data in this paper was collected and analyzed by a single researcher.
 
 We made no attempt to restrict the size of the data collected, in order to
-collect a diverse set of data. The smallest document collected had only a page
-and a half of relevant material while the longest consist of eighteen pages. All
-data can be found the projects github repository \todo{move stuff to github}.
-\url{https://github.com/lambda-land/XOPTypology_Paper}. Fifteen documents were
-coded in total, with five documents each per algorithm.
+collect a diverse set of data. The smallest document collected has only a page
+and a half of relevant material while the longest consists of eighteen pages.
+All data can be found the projects github repository \todo{move stuff to
+  github}. \url{https://github.com/lambda-land/XOPTypology_Paper}. Fifteen
+documents were coded in total, with five documents each per algorithm.
 
 \section{Results}
 In this section we present our findings. We make three major observations from
@@ -546,18 +538,13 @@ projects github repository:
 
 The coding system consists of 4 finite sets of tags, these were modeled as
 ``groupings'' in Atlast.ti, they are: 
-\begin{enumerate}
-  \item \textbf{Context}
-  \item \textbf{Content Expression}
-  \item \textbf{Actions}
-  \item \textbf{Modifiers}
-\end{enumerate}
+\include{grammar}
 
 A typical coding for a paragraph might be:
 \newline
 \newline
-\say{\prog{Algorithm \ldots -> Motivation Description \ldots | Problem Cartoon
-    \ldots <- Example}}
+\say{Algorithm \ldots -> Motivation Description \ldots | Problem Cartoon
+    \ldots <- Example}
 \newline
 \newline
 \todo{fix this formatting}
