@@ -616,12 +616,13 @@ language.
 
 The central problem with designing and constructing an explanation-oriented dsl
 is translating explanations into an abstract computational model. Several issues
-immediately arise with such an approach: 1) What is an \emph{explanation} and how does
-one model it as a computational concept? 2) How does one react
-to user input? 3) How does one capture the varied notation and rigor of static
+immediately arise with such an approach: 1) What is an \emph{explanation} and
+how does one model it as a computational concept? 2) How does one react to user
+input? 3) How does one capture the varied notation and rigor of static
 explanations? 4) Similarly, how does one capture the flexibility and robustness
-of tailored explanations.
-
+of tailored explanations. Throughout this section we refer to the ``consumer''
+of an explanation to mean the end audience for an explanation that the ``user''
+of the dsl creates.
 
 % Problem 1
 Rather than delving into the yawning maw of philosophy \todo{reference
@@ -675,15 +676,41 @@ explanation-tree would simply have another expression tag applied to the same
 node. \todo{this probably needs work}
 
 % Problem 4
+The last issue with an explanation-oriented dsl is that of supporting tailored
+explanation. This problem essentially boils down to \todo{fix this language}
+adapting, in real time, to an explanation consumer. While support for such a
+feature will hinge on the interaction semantics available to the consumer, we
+view explanation trees as being a significant step in the right direction.
+Serving as an abstract model, it becomes possible to collect several explanation
+artifacts of like content, much like the data used in this study. By having a
+database of such artifacts a user could construct an explanation that draws upon
+several explanation artifacts except just one, as is the case with current
+static \emph{and} interactive tools. Thus, if a consumer becomes stuck on a
+certain aspect of an explanation, they may switch to the corresponding point in
+another explanation and attempt to proceed from there, or consume only that
+node, and then return to the previous explanation. While this is still far
+from competing with a one-on-one tutorship on the material, such a feature is
+simply impossible with static documents and without an abstract model of
+explanations, and represents a step toward more interactivity.  
 
-\subsection{The Need for Grounded Theory}
-\label{sec:dis:gt}
+\subsubsection{Qualities shared with Passive Explanations}
+Our approach differs from many other successful
+approaches\cite{brecht2012learning, brecht2008enabling}, but shares many
+important features of those approaches. Algorithm visualizations and internet
+based lectures have the property of being random access i.e. the user may move
+forward, backward, jump around, and increase or decrease the pace, of the
+lecture at will. This property has shown to be a very effective pedagogical
+tool\cite{cardall2008live, zhang2005interactive, zhang2006instructional,
+  Schwan2004293, Merkt2011687} . While such a property ultimately comes down to
+the implementation of the DSL, we believe that our approach directly supports
+such behavior.
 
-\subsection{Applications to a DSL}
-\label{sec:dis:dsl}
-\todo{tie this back to interaction}
-
-
+It is for these reasons that employing the techniques discussed in this paper
+provide the an explanation designer with invaluable tools. Tools which serve to
+enrich the state of XOP and allow the explanation designer to draw upon other
+domains to form their explanations. \todo{do I need to say more about the
+  benefits of having an abstract model? e.g. abstract comparison, database
+  possibilities, an average or universal explanation?}
 
 \section{Future Work}
 \section{Conclusion}
