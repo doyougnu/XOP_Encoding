@@ -622,12 +622,15 @@ to user input? 3) How does one capture the varied notation and rigor of static
 explanations? 4) Similarly, how does one capture the flexibility and robustness
 of tailored explanations.
 
+
+% Problem 1
 Rather than delving into the yawning maw of philosophy \todo{reference
   DN-theory, Constructivist theories, and Sander's explaining explaining (check
   that its been published)}, we offload such concerns to the prospective user's
 of the dsl. The remaining issues, we believe, are significantly alleviated with
 explanation trees.
 
+% Problem 2
 In order to support interaction with an end user a dsl must have an abstract
 model with which the user may interact with. Explanation trees directly enable
 this type of behavior by providing an abstract model of an explanation artifact.
@@ -650,6 +653,28 @@ inquires. Then if a consumer of the explanation inquired about computational
 complexity, the explanation could traverse such a link to the explanation tree
 for computational complexity. Such features are simply not possible with
 traditional static documents.
+
+% Problem 3
+A trivial examination of explanation artifacts or even experience in academia
+reveals that like things are explained using varied and eclectic notations. The
+notations encompassed in the coding system are unlikely to be an exhaustive list
+of notations. However, because content is orthogonal to expression in an
+explanation tree, content may therefore be separated from notation. Thus, the
+expression of content in an explanation tree is extensible. A thorough or
+meticulous user may wish to create explanations that can express content with
+varied notations. Such a user may provide their explanations with a textual
+expression, a cartoon expression or a mathematical formulation, all such
+notations are viable. Such features are matched by traditional static documents,
+an explanation-oriented dsl, that operates on explanation trees, could support
+expressing a single context (a single node in the explanation tree) with
+different expressions. For example, a dsl user may provide a code based
+expression for the relax operation in Dijkstra's algorithm, but they may also
+provide an auxiliary cartoon based expression. The addition of an auxiliary
+expression could then be requested by an explanation consumer. Technically, the
+explanation-tree would simply have another expression tag applied to the same
+node. \todo{this probably needs work}
+
+% Problem 4
 
 \subsection{The Need for Grounded Theory}
 \label{sec:dis:gt}
