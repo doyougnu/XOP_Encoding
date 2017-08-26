@@ -277,6 +277,7 @@ institutions. We believe that such a structure forms the building blocks of
 \section{Background And Related Works}
 \label{sec:back}
 
+\todo{Add related works to this section, get some sources}
 In this section, we put the present work into context by the describing the
 paradigm of \emph{explanation-oriented programming} in
 Section~\ref{sec:back:xop}, the exploration of which is an underlying
@@ -580,18 +581,28 @@ described in Table \ref{res:tbl:grmr}.
 The coding system borne out of the data is, in essence, one used to describe a
 tree structure. This conclusion was born out of necessity during axial coding
 and became the \emph{coding paradigm} for this study. The central problem was to
-keep track of the different topics each document would discuss throughout its''
-duration. This led directly to the creation of Content and Modifier tags, which
+keep track of the different topics each document would discuss throughout its
+duration. This led directly to the creation of content and structure tags, which
 upon retrospection clearly formulate the document into a tree structure. An
 example tree is given below for document.
 
-\include{AVT_tree}
+\include{DJK_tree}
 
-As shown in figure 1, the document ... ... \todo{finish this description of the
-  explanation tree}
-
+Figure \ref{sec:res:xopTree} displays the explanation tree a explanation
+artifact for Dijkstra's algorithm. By observation, a pre-order traversal of this
+tree corresponds with a normal reading of the document. 
 
 \section{Discussion of Results}
+In this section we summarize and interpret the results presented above. In
+section \ref{sec:dis:xopTree} we describe the benefits of translating
+explanation artifacts into explanation trees. Section \ref{sec:dis:gt} reflects
+on the use of grounded theory in this study and section \ref{sec:dis:dsl}
+relates this work to the formation of an explanation-oriented domain-specific
+language. 
+
+\subsection{The Case for Explanation Trees}
+\label{sec:dis:xopTree}
+
 % a requisite to computation is an abstract model of that which is to be
 % computed. If one does not have a model to act on. 
 
@@ -603,8 +614,54 @@ As shown in figure 1, the document ... ... \todo{finish this description of the
 % roll. With an explanation tree, one is able to distill a document into a
 % crystalline structure that represents the structure of  
 
+The central problem with designing and constructing an explanation-oriented dsl
+is translating explanations into an abstract computational model. Several issues
+immediately arise with such an approach: 1) What is an \emph{explanation} and how does
+one model it as a computational concept? 2) How does one react
+to user input? 3) How does one capture the varied notation and rigor of static
+explanations? 4) Similarly, how does one capture the flexibility and robustness
+of tailored explanations.
+
+Rather than delving into the yawning maw of philosophy \todo{reference
+  DN-theory, Constructivist theories, and Sander's explaining explaining (check
+  that its been published)}, we offload such concerns to the prospective user's
+of the dsl. The remaining issues, we believe, are significantly alleviated with
+explanation trees.
+
+In order to support interaction with an end user a dsl must have an abstract
+model with which the user may interact with. Explanation trees directly enable
+this type of behavior by providing an abstract model of an explanation artifact.
+%
+% The relatively simple semantics of an explanation tree are easy to implement and
+% abstract into a simple user interface.
+%
+By distilling an explanation artifact into an explanation tree, a user may
+create an explanation that matches, and extends, the interactivity with static
+documents, but can be arbitrarily extended. For example, a user may want to
+create an explanation of the mergesort algorithm, this would correspond directly
+with a translation of a explanation artifact to an explanation tree. The user
+then may anticipate inquires into other topics related to mergesort but not
+covered in static documents, such as computational complexity or array data
+structures.
+%
+Because explanation trees are, in essence, abstract models of explanations, one
+could imagine the user adding special edges or \emph{links} to support such
+inquires. Then if a consumer of the explanation inquired about computational
+complexity, the explanation could traverse such a link to the explanation tree
+for computational complexity. Such features are simply not possible with
+traditional static documents.
+
+\subsection{The Need for Grounded Theory}
+\label{sec:dis:gt}
+
+\subsection{Applications to a DSL}
+\label{sec:dis:dsl}
+\todo{tie this back to interaction}
 
 
+
+\section{Future Work}
+\section{Conclusion}
 \bibliography{XOPbib,eric}
 \bibliographystyle{ACM-Reference-Format}
 
