@@ -1,18 +1,20 @@
 \begin{table}[h!]
   \centering
   \begin{tabular}{c p{1.8\linewidth}}
-    Tag & Description \\
+    \textbf{Tag} & \textbf{Description} \\
     \hline
     \hline
 
-    Structure &  Structure tags control how the context in the artifact is set \\
+
+    \textbf{Structure} &  Structure tags control how the context in the artifact is set \\
     \hline
     $\rightarrow$ & Push: takes one content tag and sets the context to the conjunction of the input tag and parent context \\
     $\leftarrow$ & Pop: takes any number of action or expression tags as input, sets context up one level, and then applies input tags.\\
     $|$ & Swap: takes one content tag as input, synonymous with the sequence $\leftarrow, \rightarrow \text{<input tag>}$ \\
     $\twoheadleftarrow$ & Return: takes no input, pops until top level is reached \\
-\\
-    Content & Content tags denote \emph{what} is being discussed in a snippet of text \\
+
+    
+    \textbf{Content} & Content tags denote \emph{what} is being discussed in a snippet of text \\
     \hline
     %Tag section
     Advantages & The text is discussing the pros, the upside or the advantages of the parent context. \\
@@ -34,8 +36,9 @@
     Property & the text is discussing some property of the parent context context.\\
     Solution & the text is discussing a solution to some prior introduced problem, which is typically in the parent context\\
     State & the text is now discussing something related to the state or the state of the parent context\\
-\\
-    Actions & Action tags denote \emph{how} the document or author is discussing the context.\\
+
+    
+    \textbf{Actions} & Action tags denote \emph{how} the document or author is discussing the context.\\
     \hline
     %Tag section
     Abstraction & The text is abstracting or generalizing that which the context is set to\\
@@ -59,8 +62,8 @@
     Solicitation & The text is explicitly asking something of the reader\\
     Summary & This code denotes a concluding block of text that summarizes the previous contexts\\
 
-\\
-    Expression & Expression tags denote \emph{how }the content is actually expressed. If not otherwise stated, assumed to be text \\
+    
+    \textbf{Expression} & Expression tags denote \emph{how }the content is actually expressed. If not otherwise stated, assumed to be text \\
     \hline
     %Tag section
     Cartoon & The content is represented in a drawn or animated graphic\\
@@ -69,9 +72,9 @@
     PseudoCode & The content is represented in pseudocode; a programming-like language that is not a executable programming language.\\
     Sequence & The content is being expressed in a ordered, bullted or punctuated way\\
     Table & The content is explicitly displayed in a Table\\
-    \\
 
-    Modifiers & each modifier takes any number of tags of any type as input and alters the meaning of the input tags in a specified way \\
+
+    \textbf{Modifiers} & each modifier takes any number of tags of any type as input and alters the meaning of the input tags in a specified way \\
     \hline
     % Tags
     Aside & Denotes that the input tags describe text that is not directly related to the scope the input tags refer to \\
