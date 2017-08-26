@@ -594,35 +594,25 @@ tree corresponds with a normal reading of the document.
 
 \section{Discussion of Results}
 In this section we summarize and interpret the results presented above. In
-section \ref{sec:dis:xopTree} we describe the benefits of translating
-explanation artifacts into explanation trees. Section \ref{sec:dis:gt} reflects
-on the use of grounded theory in this study and section \ref{sec:dis:dsl}
-relates this work to the formation of an explanation-oriented domain-specific
-language. 
-
-\subsection{The Case for Explanation Trees}
-\label{sec:dis:xopTree}
-
-% a requisite to computation is an abstract model of that which is to be
-% computed. If one does not have a model to act on. 
-
-% this paper shows that such a model is possible and we conjecture that such a
-% model enables the creation of an interactive DSL. The requirements for
-% interaction are: 1) an abstract model, upon which ot operate on. 2) a method
-% to receive input and react to such input 3) a method of displaying the state
-% of the explanation. We posit that explanation trees are able to fill each
-% roll. With an explanation tree, one is able to distill a document into a
-% crystalline structure that represents the structure of  
-
+section \ref{sec:dis:model} we describe the benefits of translating
+explanation artifacts into explanation trees. Section \ref{sec:dis:expr} reflects
+on supporting varied expressions of like content and section \ref{sec:dis:dsl}
+discusses the support of tailored, adaptive, explanations. Although we posit
+several benefits to using work presented in this paper, all such benefits are
+merely conjectures until such a dsl, as is referenced throughout this paper, is
+created. \todo{were do we say this line}
+%
 The central problem with designing and constructing an explanation-oriented dsl
 is translating explanations into an abstract computational model. Several issues
 immediately arise with such an approach: 1) What is an \emph{explanation} and
 how does one model it as a computational concept? 2) How does one react to user
-input? 3) How does one capture the varied notation and rigor of static
-explanations? 4) Similarly, how does one capture the flexibility and robustness
-of tailored explanations. Throughout this section we refer to the ``consumer''
-of an explanation to mean the end audience for an explanation that the ``user''
-of the dsl creates.
+input? 3) How does one capture the varied notation? 4) Similarly, how does one
+capture the flexibility and robustness of tailored explanations. Throughout this
+section we refer to the \emph{consumer} of an explanation to mean the end audience
+for an explanation that the \emph{dsl} of the dsl creates. 
+
+\subsection{Advantages of an Abstract Model}
+\label{sec:dis:model}
 
 % Problem 1
 Rather than delving into the yawning maw of philosophy \todo{reference
@@ -641,12 +631,11 @@ this type of behavior by providing an abstract model of an explanation artifact.
 %
 By distilling an explanation artifact into an explanation tree, a user may
 create an explanation that matches, and extends, the interactivity with static
-documents, but can be arbitrarily extended. For example, a user may want to
-create an explanation of the mergesort algorithm, this would correspond directly
-with a translation of a explanation artifact to an explanation tree. The user
-then may anticipate inquires into other topics related to mergesort but not
-covered in static documents, such as computational complexity or array data
-structures.
+documents. For example, a user may want to create an explanation of the
+mergesort algorithm; this would correspond directly with a translation of an
+explanation artifact to an explanation tree. The user may then anticipate
+inquires into other topics related to mergesort but that are not covered in
+static documents, such as computational complexity or array data structures.
 %
 Because explanation trees are, in essence, abstract models of explanations, one
 could imagine the user adding special edges or \emph{links} to support such
@@ -654,7 +643,15 @@ inquires. Then if a consumer of the explanation inquired about computational
 complexity, the explanation could traverse such a link to the explanation tree
 for computational complexity. Such features are simply not possible with
 traditional static documents.
+%
+Furthermore, the benefits of an abstract model is that one is now able to
+compare, abstractly, different explanations for like things. In fact, one may
+envision having database of explanations for like things which could be used to
+formulate a \emph{general explanation} for a given topic. Such a database would
+have more advantages, some of which are described below.
 
+\subsection{Handling Content Expression}
+\label{sec:dis:expr}
 % Problem 3
 A trivial examination of explanation artifacts or even experience in academia
 reveals that like things are explained using varied and eclectic notations. The
@@ -676,6 +673,8 @@ explanation-tree would simply have another expression tag applied to the same
 node. \todo{this probably needs work}
 
 % Problem 4
+\subsection{Towards Tailored Computational Explanation}
+\label{sec:dis:tailored}
 The last issue with an explanation-oriented dsl is that of supporting tailored
 explanation. This problem essentially boils down to \todo{fix this language}
 adapting, in real time, to an explanation consumer. While support for such a
@@ -693,7 +692,7 @@ from competing with a one-on-one tutorship on the material, such a feature is
 simply impossible with static documents and without an abstract model of
 explanations, and represents a step toward more interactivity.  
 
-\subsubsection{Qualities shared with Passive Explanations}
+\subsection{Qualities shared with Non-Interactive Explanations}
 Our approach differs from many other successful
 approaches\cite{brecht2012learning, brecht2008enabling}, but shares many
 important features of those approaches. Algorithm visualizations and internet
