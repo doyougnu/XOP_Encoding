@@ -546,13 +546,14 @@ The pop tag takes any number of action and expression tags, lifts one level of
 context, and then applies the input tags. Note that if a pop and push tags occur
 in the same sequence, pop is always applied before push. The return tag takes no
 input, and pops until reaching the root context. The swap tag takes a single
-context tag as input, it then pops out of a sub-context, and creates a new
-sub-context with that input tag, it is synonymous with the sequence ``pop push
-<input tag>''.
+context tag as input, and any number of action or expression tags and then pops
+out of a sub-context, creates a new sub-context with that input tag, and
+then applies the non-content tags it is synonymous with the sequence ``pop push
+<input tags>''.
 %
 When a context tag is \emph{orphaned} as in example 1 \todo{reference rows in a
   table?}, then that is interpreted as returning to the top level scope and then
-sub scoping in to that tags context. The first tag in every document is
+sub scoping into that tags context. The first tag in every document is
 interpreted as setting the \emph{root} node of that particular document. For
 instance, in example \ref{res:txt:ex} row 1, the first tag: ``Algorithm'', sets
 the root context for the entire example.
@@ -560,12 +561,18 @@ the root context for the entire example.
 Action tags determine what the document is \emph{doing} for a given section.
 These tags are concrete things that are being done in the text, such as: Giving
 an example, providing an outline, describing something, concluding a point, or
-giving a proof.
+giving a proof. Action tags may occur alone or with any other tags. When action
+tags are orphaned then this is interpreted as adding that action to the current
+context. For example, rows 2, 3 and 4 in Table \ref{res:txt:ex}, occur in the
+context ``Algorithm'', thus these are interpreted as: The document is discussing
+an Algorithm; giving a description of it and introducing an in vivo term (row
+2); 
 %
 Expression tags denote \emph{how} the context is being expressed in the current
-context, some examples are: Cartoon, PseudoCode, Code, and Table. Modifier
-tags alter the semantic meaning of content tags that they are applied, each is a
-special case.
+context, some examples are: Cartoon, PseudoCode, Code, and Table. Expression
+tags may be orphaned or occur with any other tag. Modifier tags alter the
+semantic meaning of content tags that they are applied, each is a special case
+described in Table \ref{res:tbl:grmr}.
 %
 
 \subsection{Explanation Trees}
@@ -573,11 +580,10 @@ special case.
 The coding system borne out of the data is, in essence, one used to describe a
 tree structure. This conclusion was born out of necessity during axial coding
 and became the \emph{coding paradigm} for this study. The central problem was to
-keep track of the different topics each document would discuss throughout its'
+keep track of the different topics each document would discuss throughout its''
 duration. This led directly to the creation of Content and Modifier tags, which
 upon retrospection clearly formulate the document into a tree structure. An
-example tree is given below for document \todo{pick good example explanation
-  tree}.
+example tree is given below for document.
 
 \include{AVT_tree}
 
@@ -586,6 +592,16 @@ As shown in figure 1, the document ... ... \todo{finish this description of the
 
 
 \section{Discussion of Results}
+% a requisite to computation is an abstract model of that which is to be
+% computed. If one does not have a model to act on. 
+
+% this paper shows that such a model is possible and we conjecture that such a
+% model enables the creation of an interactive DSL. The requirements for
+% interaction are: 1) an abstract model, upon which ot operate on. 2) a method
+% to receive input and react to such input 3) a method of displaying the state
+% of the explanation. We posit that explanation trees are able to fill each
+% roll. With an explanation tree, one is able to distill a document into a
+% crystalline structure that represents the structure of  
 
 
 
