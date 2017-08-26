@@ -518,78 +518,55 @@ algorithm.
 \section{Results}
 In this section we present our findings. We make three major observations from
 the data. First, we observe that the data is able to be expressed in the coding
-system and provide an overview of the coding system in Section
-\ref{sec:res:sys}. In Section \ref{sec:res:xopTree} we observe that when the
-data is expressed through the lens of the coding system, the result is an
+system and provide an overview of the coding system in Section \ref{sec:res:sys}
+and provide a sample coding. In Section \ref{sec:res:xopTree} we observe that
+when data is expressed through the lens of the coding system, the result is an
 explanation tree, and that the content of each document is expressed with a
-pre-order traversal of the corresponding explanation tree. \todo{any more
-  observations? That gt is well suited to a task like this?}
+pre-order traversal of the corresponding explanation tree.
 
 \subsection{The Coding System}
 \label{sec:res:sys}
 
-In this section we present an instructive example of the coding system developed
-through grounded theory. There are several instances of each type of tag that
-will not be shown or discussed here. For an exhaustive list please see this
-projects github repository\footnote{anonymized for review}:
-% \url{https://github.com/lambda-land/XOPTypology_Paper}.
+The complete grammar is shown in table \ref{res:tbl:grmr}.
 
-
-The coding system consists of 4 finite sets of tags, these were modeled as
-``groupings'' in Atlast.ti, they are: 
 \include{grammar}
 
-A typical coding for a paragraph might be:
 \include{gramExample}
 
-Where ``Algorithm'', ``Motivation'', ``Problem'', are Context tags; $\rightarrow$,
-|, and $\leftarrow$ are modifiers; ``Description'' and ``Example'' are Actions and
-``Cartoon'' is a Content Expression tag. The \ldots are used here to denote
-several lines or paragraphs of text or images. 
-Shown in the example above, modifiers determine the scoping of their input tags.
-When a context tag is \emph{orphaned}, like ``Algorithm'' above, then that is
-interpreted as returning to the top level scope and then sub scoping in to the
-``Algorithm'' context. The first tag in every document is interpreted as setting
-the \emph{root} node of that particular document. So if the example above was
-the first line in a document and ``Algorithm'', the first context tag, then it
-would be interpreted as setting the root node for that document. The modifier
-$\rightarrow$, read as \emph{push}, takes a content tag as input, and creates a
-sub-scoping of that content tag \emph{with respect to the parent}. So in the
-example above, we have ``Algorithm'' as the parent, and then we push into
-``Motivation'', thus the document would now be discussing the motivation for the
-algorithm at the parent node.
-
-The modifier $\leftarrow$, read as \emph{pop}, denotes the opposite, it moves up one
-level of scoping. The pop operator takes no content tags and instead may be
-orphaned or may take any number of action any content expression tags. In the
-example above this modifier is used to exit the ``Problem'' scope, return to the
-``Algorithm'' scope and then give an example. The pop modifier may be orphaned
-to denote an exiting of scope without any action or context expression occurring.
-
-The modifier |, read as \emph{swap}, takes a single content tag as input, and is
-equivalent to the coding sequence ``$\leftarrow$ $\rightarrow$ <tag>''. That is
-to say we pop out of the current sub-scoping, and then push into the new
-sub-scoping of the input tag. Note that the pop modifier has precedence over the
-push modifier.
-
-Context tags define, in abstract, the topic that is being discussed in a
-particular section of the document. These are abstract descriptors such as:
-Problem, to denote that the text is discussing a problem which may or may not be
-solved later in the document. Motivation, to denote that the text is discussing
-the reason for discussing or analyzing whatever chain of content the scoping is
-set to. These tags, with the modifiers, form the skeleton of an explanation
-tree; where the content tags are the nodes and the modifiers dictate the
-structure. In essence, these tags dictate what the document is discussing.
-
-Action tags are used to denote the explicit action that is being undertaken by
-the document. These tags must be concrete things that are being done in the
-text, such as: Giving an example, providing an outline, describing something,
-concluding a point, or giving a proof. These tags denote, in abstract, what the
-document is doing.
-
-Lastly, Expression tags are used to denote how the content is being expressed in
-the current context. Some examples are: Cartoon, PseudoCode, Code, and Table.
-These tags denote, in abstract, what form the content is being expressed in.
+The coding system consists of 4 finite sets of tags. Context tags determine what
+subject is being discussed in the corresponding section of the document.
+%
+Structuring tags construct and traverse the structure of the document. The
+push and swap tags take a single context tag as input and creates a sub-context
+for that input tag. For example in row 5 of example \ref{res:txt:ex}, the
+snippet exists in the context ``Algorithm'', thus ``push Motivation'' will
+create a sub-context that denotes \emph{the motivation of the Algorithm}.
+%
+The pop tag takes any number of action and expression tags, lifts one level of
+context, and then applies the input tags. Note that if a pop and push tags occur
+in the same sequence, pop is always applied before push. The return tag takes no
+input, and pops until reaching the root context. The swap tag takes a single
+context tag as input, it then pops out of a sub-context, and creates a new
+sub-context with that input tag, it is synonymous with the sequence ``pop push
+<input tag>''.
+%
+When a context tag is \emph{orphaned} as in example 1 \todo{reference rows in a
+  table?}, then that is interpreted as returning to the top level scope and then
+sub scoping in to that tags context. The first tag in every document is
+interpreted as setting the \emph{root} node of that particular document. For
+instance, in example \ref{res:txt:ex} row 1, the first tag: ``Algorithm'', sets
+the root context for the entire example.
+%
+Action tags determine what the document is \emph{doing} for a given section.
+These tags are concrete things that are being done in the text, such as: Giving
+an example, providing an outline, describing something, concluding a point, or
+giving a proof.
+%
+Expression tags denote \emph{how} the context is being expressed in the current
+context, some examples are: Cartoon, PseudoCode, Code, and Table. Modifier
+tags alter the semantic meaning of content tags that they are applied, each is a
+special case.
+%
 
 \subsection{Explanation Trees}
 \label{sec:res:xopTree}
