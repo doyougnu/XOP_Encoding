@@ -584,13 +584,29 @@ and became the \emph{coding paradigm} for this study. The central problem was to
 keep track of the different topics each document would discuss throughout its
 duration. This led directly to the creation of content and structure tags, which
 upon retrospection clearly formulate the document into a tree structure. An
-example tree is given below for document.
+example tree is given below for document, constructed, by hand, via
+graphiz\todo{reference}
 
 \include{DJK_tree}
 
-Figure \ref{sec:res:xopTree} displays the explanation tree a explanation
+Figure \ref{fig:djk-tree} displays the explanation tree of an explanation
 artifact for Dijkstra's algorithm. By observation, a pre-order traversal of this
-tree corresponds with a normal reading of the document. 
+tree corresponds with a normal reading of the document. Content tags become
+nodes in the explanation tree, and the context is set by the path to a given
+node. For example, if the context path is <node>, <node> then the context is
+discussing the <node> of <node> \todo{fill this in once the figure is
+  finalized}, as seen at node <node>. Actions manifest in several ways: if the
+action occurs in the code coincident with a structure and content tag, then it
+is represented in the tree as an edge label connecting the parent context and
+the sub-context, as seen in node <node>. If an action tag appears without a
+content tag, then it represents a terminal leaf attached to the current node, as
+shown in node <node>. If an action tag appears coincident with the pop operator
+then it manifests as a leaf, on the parent of the current node. This corresponds
+with popping the context, and then applying the action . Expression tags are
+represented as terminal leaf nodes, as seen at <node> in figure \ref{djk-tree}.
+Modifier tags are represented as labels that are attached to their input tags,
+regardless of how those input tags manifest, some examples are nodes <node> and
+edge <edge>.
 
 \section{Discussion of Results}
 In this section we summarize and interpret the results presented above. In
