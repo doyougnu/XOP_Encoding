@@ -14,6 +14,7 @@
                      top color=white, bottom color=blue!20},
   root/.style     = {treenode, font=\Large, bottom color=red!30},
   env/.style      = {treenode, font=\ttfamily\normalsize},
+  leaf/.style     = {treenode, font=\small, bottom color=green!30},
   dummy/.style    = {circle,draw}
 }
 
@@ -516,6 +517,10 @@ All data can be found the projects github repository\footnote[1]{anonymized for
   review} Fifteen documents were coded in total, with five documents each per
 algorithm.
 
+Lastly, selective coding was not attempted or performed. The goal of this study
+was to develop a prototype coding system, not to develop an overarching, causal
+theory for these documents.
+
 \section{Results}
 In this section we present our findings. We make three major observations from
 the data. First, we observe that the data is able to be expressed in the coding
@@ -581,7 +586,7 @@ described in Table \ref{res:tbl:grmr}.
 The coding system borne out of the data is, in essence, one used to describe a
 tree structure. This conclusion was born out of necessity during axial coding
 and became the \emph{coding paradigm} for this study. The central problem was to
-keep track of the different topics each document would discuss throughout its
+keep track of the different topics each document would discuss throughout their
 duration. This led directly to the creation of content and structure tags, which
 upon retrospection clearly formulate the document into a tree structure. An
 example tree is given below for document, constructed, by hand, via
@@ -612,11 +617,11 @@ edge <edge>.
 In this section we summarize and interpret the results presented above. In
 section \ref{sec:dis:model} we describe the benefits of translating
 explanation artifacts into explanation trees. Section \ref{sec:dis:expr} reflects
-on supporting varied expressions of like content and section \ref{sec:dis:dsl}
+on supporting varied expressions of like content and section \ref{sec:dis:tail}
 discusses the support of tailored, adaptive, explanations. Although we posit
 several benefits to using work presented in this paper, all such benefits are
 merely conjectures until such a dsl, as is referenced throughout this paper, is
-created. \todo{were do we say this line}
+created. \todo{where do we say this line}
 %
 The central problem with designing and constructing an explanation-oriented dsl
 is translating explanations into an abstract computational model. Several issues
@@ -641,9 +646,6 @@ explanation trees.
 In order to support interaction with an end user a dsl must have an abstract
 model with which the user may interact with. Explanation trees directly enable
 this type of behavior by providing an abstract model of an explanation artifact.
-%
-% The relatively simple semantics of an explanation tree are easy to implement and
-% abstract into a simple user interface.
 %
 By distilling an explanation artifact into an explanation tree, a user may
 create an explanation that matches, and extends, the interactivity with static
@@ -690,7 +692,7 @@ node. \todo{this probably needs work}
 
 % Problem 4
 \subsection{Towards Tailored Computational Explanation}
-\label{sec:dis:tailored}
+\label{sec:dis:tail}
 The last issue with an explanation-oriented dsl is that of supporting tailored
 explanation. This problem essentially boils down to \todo{fix this language}
 adapting, in real time, to an explanation consumer. While support for such a
@@ -721,13 +723,25 @@ the implementation of the DSL, we believe that our approach directly supports
 such behavior.
 
 It is for these reasons that employing the techniques discussed in this paper
-provide the an explanation designer with invaluable tools. Tools which serve to
+provide an explanation designer with invaluable tools. Tools which serve to
 enrich the state of XOP and allow the explanation designer to draw upon other
-domains to form their explanations. \todo{do I need to say more about the
-  benefits of having an abstract model? e.g. abstract comparison, database
-  possibilities, an average or universal explanation?}
+domains to form their explanations.
 
-\section{Future Work}
+\section{Future Work and Reservations}
+
+As described in the previous section, we believe that this work offers several
+avenues of continued research. First an foremost is to begin writing a dsl based
+on the results presented here. Several aspects of the dsl are abstract; for
+instance the semantics of interaction, and the user interface. These aspects of
+the dsl are likely to remain open questions until an implementation is created. 
+
+The coding system is, admittedly, based on few raw documents. While we reached
+saturation with only eleven documents, there is always a risk that the coding
+system is not transferable to other computer science content. Thus, more coding,
+with varied content is pivotal to validate that the coding system can actually
+express radically different content then that which it is grounded in.
+
+
 \section{Conclusion}
 
 \bibliography{XOPbib,eric}
