@@ -1,0 +1,141 @@
+digraph graph_name {
+  graph [
+    charset = "UTF-8";
+    labelloc = "t",
+    labeljust = "c",
+    // bgcolor = "#343434",
+    // fontcolor = white,
+    // fontsize = 18,
+    // style = "filled",
+    // rankdir = TB,
+    margin = 0.2,
+    splines = spline,
+    ordering = out,
+    ranksep = 1.0,
+    nodesep = 0.9
+  ];
+
+  node [
+    // colorscheme = "rdylgn11"
+    // style = "solid,filled",
+    fontsize = 16,
+    fontcolor = 6,
+    fontname = "Migu 1M",
+    color = 7,
+    fillcolor = 11,
+    // fixedsize = true,
+    height = 0.6,
+    width = 1.2
+  ];
+
+  edge [
+    style = solid,
+    fontsize = 14,
+    // fontcolor = white,
+    // fontname = "Migu 1M",
+    // color = white,
+    labelfloat = true,
+    labeldistance = 2.5,
+    labelangle = 70,
+    arrowhead = none,
+  ];
+
+  // node define
+  Algorithm [color = red];
+  // History2 [label = "History"];
+  // Def2 [label = "Definition", style = dotted];
+
+  // leaf define
+  // Description [style = dotted];
+  // Def [label = "Definition", style = dotted];
+  Def2 [label = "Definition", style = dotted];
+  Math [label = "Mathematic", style = dotted];
+  Def3 [label = "Definition", style = dotted];
+  Math2 [label = "Mathematic", style = dotted];
+  // Assu [label = "Abstraction", style = dotted];
+  // Code [label = "Code", style = dotted];
+  Ctn [label = "Cartoon", style = dotted];
+  Lgnd [label = "Legend", style = dotted];
+  Desc [label = "Description", style = dotted];
+  // Prop [label = "Proposal", style = dotted];
+
+  // InVivo [style = dotted];
+  // Definition [style = dotted];
+  // Outline [label = "Outline:Meta", style = dotted];
+  // C1 [label = "Comment:Caveat", style = dotted];
+
+  // Nodes must be defined in order
+  // Algorithm -> History;
+  // Algorithm -> Class;
+
+
+
+  // edges
+  // History -> Description;
+  // Algorithm -> Application [label = "Example"];
+  // Algorithm -> History2 [label = "Description"];
+  // Algorithm -> Motivation [style = dotted];
+  // Algorithm -> InVivo;
+  // Algorithm -> Definition;
+  // Algorithm -> Outline;
+  // Algorithm -> Def2;
+  // Algorithm -> C1;
+
+  // Algorithm -> Assu;
+  // Algorithm -> Code;
+  // Algorithm -> Def;
+  Algorithm -> Property;
+
+  Property -> Def2;
+  Property -> Math;
+  Algorithm -> Problem;
+  Problem -> Def3;
+  Problem -> Math2;
+
+  Algorithm -> Operation [label = "Proposal"];
+  Operation -> Ctn;
+  Operation -> Desc;
+  Operation -> Lgnd;
+  // Cases [label = "Cases", style = dotted];
+  // Prf [label = "Proof", style = dotted];
+  // BCase [label = "Base Case", style = dotted];
+  // Desc2 [label = "Description", style = dotted];
+  // Math3 [label = "Mathematic", style = dotted];
+  // Operation -> Prf;
+  // Operation -> BCase;
+  // Operation -> Desc2;
+  // Operation -> Math3;
+  // Prp [label = "Proposal", style = dotted];
+  // Operation -> Prp;
+  // Desc3 [label = "Description", style = dotted];
+  // Operation -> Desc3;
+  // Cases2 [label = "Cases", style = dotted];
+  // Desc4 [label = "Description", style = dotted];
+  // Math4 [label = "Mathematic", style = dotted];
+  // Operation -> Cases2;
+  // Operation -> Desc4;
+  // Operation -> Math4;
+  // Conc [label = "Conclusion", style = dotted];
+  // Operation -> Conc;
+  // Desc5 [label = "Description", style = dotted];
+  // Operation -> Desc5;
+  // Ctn2 [label = "Cartoon", style = dotted];
+  // Operation -> Ctn2;
+  // Prop [label = "Proposal", style = dotted];
+  // Operation -> Prop;
+  // Desc6 [label = "Description", style = dotted];
+  // Prf2 [label = "Proof", style = dotted];
+  // Operation -> Desc6;
+  // Operation -> Prf2;
+  Algorithm -> Complexity;
+  Desc7 [label = "Description", style = dotted];
+  Complexity -> Desc7;
+  Complexity -> Implementation;
+  Impl [label = "Implementation"];
+  Complexity -> Impl;
+  Desc8 [label = "Description", style = dotted];
+  Impl -> Desc8;
+
+
+
+}
