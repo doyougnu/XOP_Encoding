@@ -3,11 +3,6 @@ digraph graph_name {
     charset = "UTF-8";
     labelloc = "t",
     labeljust = "c",
-    // bgcolor = "#343434",
-    // fontcolor = white,
-    // fontsize = 18,
-    // style = "filled",
-    // rankdir = TB,
     margin = 0.2,
     splines = spline,
     ordering = out,
@@ -16,14 +11,11 @@ digraph graph_name {
   ];
 
   node [
-    // colorscheme = "rdylgn11"
-    // style = "solid,filled",
     fontsize = 16,
     fontcolor = 6,
     fontname = "Migu 1M",
     color = 7,
     fillcolor = 11,
-    // fixedsize = true,
     height = 0.6,
     width = 1.2
   ];
@@ -31,9 +23,6 @@ digraph graph_name {
   edge [
     style = solid,
     fontsize = 14,
-    // fontcolor = white,
-    // fontname = "Migu 1M",
-    // color = white,
     labelfloat = true,
     labeldistance = 2.5,
     labelangle = 70,
@@ -48,8 +37,6 @@ digraph graph_name {
   // leaf define
   // Description [style = dotted];
   // Def [label = "Definition", style = dotted];
-  Def2 [label = "Definition", style = dotted];
-  Math [label = "Mathematic", style = dotted];
   Def3 [label = "Definition", style = dotted];
   Math2 [label = "Mathematic", style = dotted];
   // Assu [label = "Abstraction", style = dotted];
@@ -71,28 +58,19 @@ digraph graph_name {
 
 
   // edges
-  // History -> Description;
-  // Algorithm -> Application [label = "Example"];
-  // Algorithm -> History2 [label = "Description"];
-  // Algorithm -> Motivation [style = dotted];
-  // Algorithm -> InVivo;
-  // Algorithm -> Definition;
-  // Algorithm -> Outline;
-  // Algorithm -> Def2;
-  // Algorithm -> C1;
-
-  // Algorithm -> Assu;
-  // Algorithm -> Code;
-  // Algorithm -> Def;
   Algorithm -> Property;
 
-  Property -> Def2;
-  Property -> Math;
+  // Def2 [label = "Definition", style = dotted];
+  // Math [label = "Mathematic", style = dotted];
+  // Property -> Def2;
+  // Property -> Math;
+  Property -> Dummy1;
+  Dummy1 [label = "⋮" , color="white" , fontsize=30];
   Algorithm -> Problem;
   Problem -> Def3;
   Problem -> Math2;
 
-  Algorithm -> Operation [label = "Proposal"];
+  Algorithm -> Operation;
   Operation -> Ctn;
   Operation -> Desc;
   Operation -> Lgnd;
@@ -135,7 +113,4 @@ digraph graph_name {
   Complexity -> Impl;
   Desc8 [label = "Description", style = dotted];
   Impl -> Desc8;
-
-
-
 }
