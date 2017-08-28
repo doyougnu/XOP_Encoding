@@ -30,20 +30,18 @@ digraph graph_name {
   ];
 
   // node define
-  Algorithm [color = red];
+  Algorithm [color = red, penwidth = 2.5];
   // History2 [label = "History"];
   // Def2 [label = "Definition", style = dotted];
 
   // leaf define
   // Description [style = dotted];
   // Def [label = "Definition", style = dotted];
-  Def3 [label = "Definition", style = dotted];
-  Math2 [label = "Mathematic", style = dotted];
+  // Def3 [label = "Definition", style = dotted];
+  // Math2 [label = "Mathematic", style = dotted];
   // Assu [label = "Abstraction", style = dotted];
   // Code [label = "Code", style = dotted];
-  Ctn [label = "Cartoon", style = dotted];
-  Lgnd [label = "Legend", style = dotted];
-  Desc [label = "Description", style = dotted];
+  // Lgnd [label = "Legend", style = dotted];
   // Prop [label = "Proposal", style = dotted];
 
   // InVivo [style = dotted];
@@ -66,14 +64,20 @@ digraph graph_name {
   // Property -> Math;
   Property -> Dummy1;
   Dummy1 [label = "⋮" , color="white" , fontsize=30];
-  Algorithm -> Problem;
-  Problem -> Def3;
-  Problem -> Math2;
+  // Algorithm -> Problem;
+  // Dummy2 [label = "⋮" , color="white" , fontsize=30];
+  // // Problem -> Def3;
+  // Problem -> Dummy2;
+  // Problem -> Math2;
 
   Algorithm -> Operation;
+  Ctn [label = "Summary", style = dotted];
   Operation -> Ctn;
+  Desc [label = "Description\nCaveat", style = dotted];
   Operation -> Desc;
-  Operation -> Lgnd;
+  Code1 [label = "Code", style = dotted];
+  Algorithm -> Code1;
+  // Operation -> Lgnd;
   // Cases [label = "Cases", style = dotted];
   // Prf [label = "Proof", style = dotted];
   // BCase [label = "Base Case", style = dotted];
@@ -106,9 +110,12 @@ digraph graph_name {
   // Operation -> Desc6;
   // Operation -> Prf2;
   Algorithm -> Complexity;
-  Desc7 [label = "Description", style = dotted];
-  Complexity -> Desc7;
-  Complexity -> Implementation;
+  Deri [label = "Derivation", style = dotted];
+  Complexity -> Deri;
+  // Desc7 [label = "Description", style = dotted];
+  // Complexity -> Desc7;
+  Impl1 [label = "Implementation\nRelated"];
+  Complexity -> Impl1;
   Impl [label = "Implementation"];
   Complexity -> Impl;
   Desc8 [label = "Description", style = dotted];
