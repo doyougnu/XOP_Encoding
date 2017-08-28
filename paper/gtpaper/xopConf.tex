@@ -8,26 +8,24 @@
 \usepackage{multicol}
 \usepackage{float}
 
-\usepackage{tikz}
-\tikzset{
-  treenode/.style = {shape=rectangle, rounded corners,
-                     draw, align=center,
-                     top color=white, bottom color=blue!20},
-  root/.style     = {treenode, font=\Large, bottom color=red!30},
-  env/.style      = {treenode, font=\ttfamily\normalsize},
-  leaf/.style     = {treenode, font=\small, bottom color=green!30},
-  dummy/.style    = {circle,draw}
-}
+% \usepackage{tikz}
+% \tikzset{
+%   treenode/.style = {shape=rectangle, rounded corners,
+%                      draw, align=center,
+%                      top color=white, bottom color=blue!20},
+%   root/.style     = {treenode, font=\Large, bottom color=red!30},
+%   env/.style      = {treenode, font=\ttfamily\normalsize},
+%   leaf/.style     = {treenode, font=\small, bottom color=green!30},
+%   dummy/.style    = {circle,draw}
+% }
 
-\usepackage{tikz-qtree}
-\usepackage{tikz-qtree-compat}
-\usetikzlibrary{positioning}
+% \usepackage{tikz-qtree}
+% \usepackage{tikz-qtree-compat}
+% \usetikzlibrary{positioning}
 \usepackage{ textcomp }
+
 % Get todos to render properly
 \usepackage[obeyFinal]{easy-todo}
-
-% Add package for ::= symbol, can't compile to pdf for some reason
-% \usepackage{txfonts}
 
 % Add package for well rendered quotations
 \usepackage{dirtytalk}
@@ -39,6 +37,8 @@
 % correct bad hyphenation here
 \hyphenation{op-tical net-works semi-conduc-tor}
 
+% macro for angled brackets
+\newcommand{\brackets}[1]{$\langle$\ignorespaces#1\unskip$\rangle$}
 % Copyright
 %\setcopyright{none}
 %\setcopyright{acmcopyright}
@@ -206,7 +206,7 @@ This paper represents a formative step toward this vision. We conduct a
 content of the explanation artifacts that educators are already creating.
 %
 We base our analysis on an established qualitative research method called
-\emph{grounded theory}\cite{Strauss67discoveryof} in order to better understand how well existing artifacts
+\emph{grounded theory}~\cite{Strauss67discoveryof} in order to better understand how well existing artifacts
 explain complex topics
 
 
@@ -214,10 +214,10 @@ More specifically, we collect 15 explanation artifacts from the internet,
 consisting of only lecture notes that explain two algorithms and one
 data structure commonly covered in undergraduate computer science courses:
 Dijkstra's shortest path algorithm~\cite[pp.~137--142]{KT06}, merge sort
-\cite[210--214]{KT06}, and AVL trees \cite[pp.~458--475]{KnuthArt3}.
+~\cite[210--214]{KT06}, and AVL trees~\cite[pp.~458--475]{KnuthArt3}.
 %
 We analyze these artifacts through the application of grounded
-theory\cite{Strauss67discoveryof}, a formal method for analyzing qualitative
+theory~\cite{Strauss67discoveryof}, a formal method for analyzing qualitative
 data that originated in sociological research. Through the application of
 grounded theory, we develop a coding system that captures the structure of
 explanation for each document. An overview of the coding system is given in
@@ -381,7 +381,7 @@ inductively, \emph{based on data} rather than to use data to evince a hypothesis
 of a theory. Grounded theory is rooted in a \emph{pragmatist} view of theory
 i.e. that theory should be purposed and suited towards its intended uses
 vis-a-viz logico-deductive theories which are concerned with what can be
-expressed by the theory ~\cite{Strauss67discoveryof}. As Glaser and Strauss
+expressed by the theory~\cite{Strauss67discoveryof}. As Glaser and Strauss
 state:
 \newline
 \newline
@@ -403,7 +403,7 @@ homework assignments. Once some data is collected the research will begin
 \emph{coding}, coding is the act of taking qualitative data e.g lecture notes,
 an interview, personal letters and assigning tags that describes the data.
  
-Coding consists of three stages\cite{corbin2014basics}: First, a researcher
+Coding consists of three stages~\cite{corbin2014basics}: First, a researcher
 performs \emph{open coding}. In open coding, one writes down \emph{any} term or
 terms that describes the data, regardless of duplicate or related concepts. In
 our example these tags could be things such as the year of a student, nicknames
@@ -434,7 +434,7 @@ All phases of research proceed in parallel to data collection and analysis. That
 is to say that the researcher in our example will be simultaneously collecting
 data, coding, forming their theory, and moving between each activity at the
 same time . This is a marked departure from quantitative methods where phases
-are distinct and disjunct\cite{Strauss67discoveryof}.
+are distinct and disjunct~\cite{Strauss67discoveryof}.
 
 
 Through coding, the researcher interacts with their data. But how does that
@@ -444,7 +444,7 @@ are the motivation for three central tenets in grounded theory.
 The first is called \emph{constant comparison}, the idea is that during coding,
 the researcher must think back and ask if they are being consistent. Researchers
 should perform this check constantly and at every stage of coding as it is
-pivotal to the validity of the method\cite{Strauss67discoveryof}.
+pivotal to the validity of the method~\cite{Strauss67discoveryof}.
  
 The second tenet is \emph{theoretical sampling}; theoretical sampling, focuses
 on filling the \emph{perceived} gaps in data based on current theory. To put
@@ -491,7 +491,7 @@ to PDF. No powerpoint lecture notes were considered because we feared that such
 documents would be information scarce; powerpoints are used to structure a
 lecture and thus should be considered with the concomitant lecture.
 
-All data was coded by hand with the aid of Atlast.ti software \cite{atlast} by a
+All data was coded by hand with the aid of Atlast.ti software~\cite{atlast} by a
 single researcher. The use of the Atlast.ti software was primarily for
 organizational and representational benefit, such as generating the code list
 and performing constant comparison.
@@ -534,7 +534,7 @@ pre-order traversal of the corresponding explanation tree.
 \subsection{The Coding System}
 \label{sec:res:sys}
 
-The complete grammar is shown in table \ref{res:tbl:grmr}.
+The complete grammar is shown in table~\ref{res:tbl:grmr}.
 
 \include{grammar}
 
@@ -545,7 +545,7 @@ subject is being discussed in the corresponding section of the document.
 %
 Structuring tags construct and traverse the structure of the document. The
 push and swap tags take a single context tag as input and creates a sub-context
-for that input tag. For example in row 5 of example \ref{res:txt:ex}, the
+for that input tag. For example in row 5 of example~\ref{res:txt:ex}, the
 snippet exists in the context ``Algorithm'', thus ``push Motivation'' will
 create a sub-context that denotes \emph{the motivation of the Algorithm}.
 %
@@ -558,19 +558,19 @@ out of a sub-context, creates a new sub-context with that input tag, and
 then applies the non-content tags it is synonymous with the sequence ``pop push
 <input tags>''.
 %
-When a context tag is \emph{orphaned} as in example 1 \todo{reference rows in a
-  table?}, then that is interpreted as returning to the top level scope and then
-sub scoping into that tags context. The first tag in every document is
-interpreted as setting the \emph{root} node of that particular document. For
-instance, in example \ref{res:txt:ex} row 1, the first tag: ``Algorithm'', sets
-the root context for the entire example.
+When a context tag is \emph{orphaned} as in example~\ref{res:txt:ex}
+\todo{reference rows in a table?}, then that is interpreted as returning to the
+top level scope and then sub scoping into that tags context. The first tag in
+every document is interpreted as setting the \emph{root} node of that particular
+document. For instance, in example~\ref{res:txt:ex} row 1, the first tag:
+``Algorithm'', sets the root context for the entire example.
 %
 Action tags determine what the document is \emph{doing} for a given section.
 These tags are concrete things that are being done in the text, such as: Giving
 an example, providing an outline, describing something, concluding a point, or
 giving a proof. Action tags may occur alone or with any other tags. When action
 tags are orphaned then this is interpreted as adding that action to the current
-context. For example, rows 2, 3 and 4 in Table \ref{res:txt:ex}, occur in the
+context. For example, rows 2, 3 and 4 in Table~\ref{res:txt:ex}, occur in the
 context ``Algorithm'', thus these are interpreted as: The document is discussing
 an Algorithm; giving a description of it and introducing an in vivo term (row
 2); 
@@ -579,7 +579,7 @@ Expression tags denote \emph{how} the context is being expressed in the current
 context, some examples are: Cartoon, PseudoCode, Code, and Table. Expression
 tags may be orphaned or occur with any other tag. Modifier tags alter the
 semantic meaning of content tags that they are applied, each is a special case
-described in Table \ref{res:tbl:grmr}.
+described in table~\ref{res:tbl:grmr}.
 %
 
 \subsection{Explanation Trees}
@@ -591,16 +591,16 @@ keep track of the different topics each document would discuss throughout their
 duration. This led directly to the creation of content and structure tags, which
 upon retrospection clearly formulate the document into a tree structure. An
 example tree is given below for document, constructed, by hand, via
-graphiz\todo{reference}
+graphiz~\cite{Ellson2002}.
 
 \include{DJK_tree}
 
-Figure \ref{fig:djk-tree} displays the explanation tree of an explanation
+Figure~\ref{fig:djk-tree} displays the explanation tree of an explanation
 artifact for Dijkstra's algorithm, that has been slightly altered to provide a
 useful example. By observation, a pre-order traversal of this
 tree corresponds with a normal reading of the document. Content tags become
 nodes in the explanation tree, and the context is set by the path to a given
-node. For example, if the context path is <node>, <node> then the context is
+node. For example, if the context path is \brackets{node}, <node> then the context is
 discussing the <node> of <node> \todo{fill this in once the figure is
   finalized}, as seen at node <node>. Actions manifest in several ways: if the
 action occurs in the code coincident with a structure and content tag, then it
@@ -610,7 +610,7 @@ content tag, then it represents a terminal leaf attached to the current node, as
 shown in node <node>. If an action tag appears coincident with the pop operator
 then it manifests as a leaf, on the parent of the current node. This corresponds
 with popping the context, and then applying the action . Expression tags are
-represented as terminal leaf nodes, as seen at <node> in figure \ref{djk-tree}.
+represented as terminal leaf nodes, as seen at <node> in figure~\ref{fig:djk-tree}.
 Modifier tags are represented as labels that are attached to their input tags,
 regardless of how those input tags manifest, some examples are nodes <node> and
 edge <edge>.
@@ -714,12 +714,12 @@ explanations, and represents a step toward more interactivity.
 
 \subsection{Qualities shared with Non-Interactive Explanations}
 Our approach differs from many other successful
-approaches\cite{brecht2012learning, brecht2008enabling}, but shares many
+approaches~\cite{brecht2012learning, brecht2008enabling}, but shares many
 important features of those approaches. Algorithm visualizations and internet
 based lectures have the property of being random access i.e. the user may move
 forward, backward, jump around, and increase or decrease the pace, of the
 lecture at will. This property has shown to be a very effective pedagogical
-tool\cite{cardall2008live, zhang2005interactive, zhang2006instructional,
+tool~\cite{cardall2008live, zhang2005interactive, zhang2006instructional,
   Schwan2004293, Merkt2011687} . While such a property ultimately comes down to
 the implementation of the DSL, we believe that our approach directly supports
 such behavior.
