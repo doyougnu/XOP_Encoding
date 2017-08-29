@@ -8,20 +8,6 @@
 \usepackage{multicol}
 \usepackage{float}
 
-% \usepackage{tikz}
-% \tikzset{
-%   treenode/.style = {shape=rectangle, rounded corners,
-%                      draw, align=center,
-%                      top color=white, bottom color=blue!20},
-%   root/.style     = {treenode, font=\Large, bottom color=red!30},
-%   env/.style      = {treenode, font=\ttfamily\normalsize},
-%   leaf/.style     = {treenode, font=\small, bottom color=green!30},
-%   dummy/.style    = {circle,draw}
-% }
-
-% \usepackage{tikz-qtree}
-% \usepackage{tikz-qtree-compat}
-% \usetikzlibrary{positioning}
 \usepackage{ textcomp }
 
 % Get todos to render properly
@@ -482,6 +468,7 @@ traversal of its explanation tree.
 
 The complete grammar is shown in table~\ref{res:tbl:grmr}.
 
+% cleanup the repetitive stuff in the table
 \include{grammar}
 
 \include{gramExample}
@@ -531,6 +518,8 @@ table~\ref{res:tbl:grmr}.
 
 \subsection{Explanation Trees}
 \label{sec:res:xopTree}
+\include{DJK_tree}
+
 The coding system borne out of the data is, in essence, one used to describe a
 tree structure. This conclusion was born out of necessity during axial coding
 and became the \emph{coding paradigm} for this study. The central problem was to
@@ -540,14 +529,15 @@ upon retrospection clearly formulate into a tree structure. An
 example tree is given below, constructed, by hand, via
 graphiz~\cite{Ellson2002}.
 
-\include{DJK_tree}
 
 Figure~\ref{fig:djk-tree} displays the explanation tree of an explanation
 artifact for Dijkstra's algorithm, that has been slightly altered to provide a
-useful example. Solid nodes denote aspect nodes, while dotted nodes denote
-leaves. We us a vertical ellipses to represent an arbitrary sub-tree. By
-observation, a pre-order traversal of this tree corresponds with a normal
-reading of the document.
+useful example. Pentagonal nodes denote aspect nodes, while boxed nodes denote
+leaves, and the oval node is the root. We us a vertical ellipses to represent an
+arbitrary sub-tree. Italicized text represents a modifier or notation tag that
+\emph{has been applied} to another tag. Note that many leaves have been omitted
+for space considerations. By observation, a pre-order traversal of this tree
+corresponds with a normal reading of the document.
 
 Aspect tags become nodes in the explanation tree, and the aspect is set by the
 path to a given node. For example, if the aspect path is \brackets{Algorithm,
@@ -679,6 +669,9 @@ competing with a one-on-one tutorship on the material, such a feature is simply
 impossible with static documents and represents a step toward more interactivity.
 
 \subsection{Qualities shared with Non-Interactive Explanations}
+% move an reframe this section, maybe teaching algorithms, just have two
+% paragaphs that detail other works on algorithm visualization and teaching
+% algorithms, 
 Our approach differs from many other successful
 approaches~\cite{brecht2012learning, brecht2008enabling}, but shares many
 important features of those approaches. Algorithm visualizations and internet
