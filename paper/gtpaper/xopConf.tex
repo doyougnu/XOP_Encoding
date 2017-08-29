@@ -60,8 +60,8 @@
 \acmISBN{123-4567-24-567/08/06}
 
 %Conference
-\acmConference[Seattle'2017]{SIGCSE}{March 2017}{Seattle, Washington USA} 
-\acmYear{2017}
+\acmConference[Baltimore'2018]{SIGCSE}{February 2018}{Baltimore, Maryland USA} 
+\acmYear{2018}
 \copyrightyear{2017}
 
 \acmPrice{15.00}
@@ -199,16 +199,8 @@ Dijkstra's shortest path algorithm~\cite[pp.~137--142]{KT06}, merge sort
 %
 Through the application of grounded theory, we develop a coding system that
 captures the structure of explanation for each document. An overview of the
-coding system is given in Section \ref{sec:res:sys}.
-
-% We analyze these artifacts by applying a classic pedagogical theory by Bellack
-% et al.~\cite{bellack1966language} that describes the patterns of language used
-% in the process of teaching. Bellack et al.\ define a typology for coding
-% transcripts of teacher and student verbalizations during teaching. An overview
-% of the typology is given in Section~\ref{sec:back:typ}.
-
-
-This paper makes the following contributions:
+coding system is given in Section \ref{sec:res:sys}. This paper makes the
+following contributions:
 %
 \begin{enumerate}[C1.]
 
@@ -224,24 +216,11 @@ explanation artifacts (Section~\ref{sec:exp:data}).
 
 \item \label{contrib:codes}
 %
-  \todo{decide if we need to split this contribution up} We provide a coding
-  system for analyzing \emph{explanation artifacts} in the form of lecture
-  notes, we show that through the application of the coding system, each
-  such artifact, regardless of content, author or institution, forms a tree
-  structure, which we have termed a \emph{explanation tree}
-
-  \todo{Pretty sure I have this distilled above, please re-read and make changes
-    as you see fit} One of the central dilemmas of analyzing explanations in the
-  wild is that they vary widely and do not directly map onto any perceivable
-  shared, abstract structure. If explanation-oriented programming is to become a
-  viable paradigm then this formative problem must be solved. A major step
-  forward in this direction is the concept of \emph{explanation trees}. In this
-  paper, use a coding system grounded in the data to observe a shared structure
-  between explanations of like content and dissimilar content, lengths, authors,
-  and institutions. We believe that such a structure forms the building blocks
-  of \todo{something}
-
-(Section \ref{sec:res:xopTree}).
+  We provide a coding system for analyzing \emph{explanation artifacts} in the
+  form of lecture notes. We show that through the application of the coding
+  system, each such artifact, regardless of content, author or institution,
+  forms a tree structure, which we have termed a \emph{explanation tree}
+  (Section \ref{sec:res:xopTree}).
 
 
 \item \label{contrib:DSL}
@@ -438,15 +417,6 @@ required. This is when the researcher's system is able to express data that was
 may vary drastically based on factors such as researcher, topic, and motivating
 research questions.
 
-
-%% How it was used and Why
-% For this study, saturation was reached at 11 documents.
-% In this study, grounded theory was employed to generate a \emph{coding paradigm}
-% about explanation artifacts. Our resultant theory is that explanation artifacts
-% correspond to a pre-order traversal of an \emph{explanation tree}. Such trees,
-% expressed in the coding system, distill the essence of a given explanation
-% artifact. \todo{Eric's thoughts on flowery language}
-
 \section{Experimental Setup}
 \label{sec:exp:data}
 In this section we describe how the data was collected, any preprocessing the
@@ -574,30 +544,41 @@ graphiz~\cite{Ellson2002}.
 
 Figure~\ref{fig:djk-tree} displays the explanation tree of an explanation
 artifact for Dijkstra's algorithm, that has been slightly altered to provide a
-useful example. By observation, a pre-order traversal of this tree corresponds
-with a normal reading of the document. Aspect tags become nodes in the
-explanation tree, and the aspect is set by the path to a given node. For
-example, if the aspect path is \brackets{Algorithm, Operation} then the aspect
-is discussing the ``Operation'' of the ``Algorithm''. Moves are leaves in the
-tree. If the move occurs in the code coincident with a structure and aspect tag,
-then it is represented in the tree as a leaf of the child aspect, for example
-the ``Summary'' leaf of the ``Operation'' node. If a move tag appears without an
-aspect tag, then it represents a terminal leaf attached to the current node, as
-shown at the root node. If a move tag appears coincident with the pop operator
-then it manifests as a leaf, on the parent of the current node. This corresponds
-with popping the aspect, and then applying the move. Notation tags are
-represented as terminal leaf nodes, as seen at ``Code'' in
-figure~\ref{fig:djk-tree} or attached as labels to move leaves (not shown).
+useful example. Solid nodes denote aspect nodes, while dotted nodes denote
+leaves. We us a vertical ellipses to represent an arbitrary sub-tree. By
+observation, a pre-order traversal of this tree corresponds with a normal
+reading of the document.
+
+Aspect tags become nodes in the explanation tree, and the aspect is set by the
+path to a given node. For example, if the aspect path is \brackets{Algorithm,
+  Operation} then the aspect is discussing the ``Operation'' of the
+``Algorithm''. Moves are leaves in the tree. If the move occurs in the code
+coincident with a structure and aspect tag, then it is represented in the tree
+as a leaf of the child aspect, for example the ``Summary'' leaf of the
+``Operation'' node. If a move tag appears without an aspect tag, then it
+represents a terminal leaf attached to the current node, as shown at the root
+node. If a move tag appears coincident with the pop operator then it manifests
+as a leaf, on the parent of the current node. This corresponds with popping the
+aspect, and then applying the move. Notation tags are represented as terminal
+leaf nodes, as seen at ``Code'' in figure~\ref{fig:djk-tree} or attached as
+labels to existing nodes or leaves as shown in ``Derivation, Mathematic''.
 Modifier tags are represented as labels that are attached to their input tags,
 regardless of how those input tags manifest, some examples are nodes
 ``Description, Caveat'' and ``Implementation, Related''.
 
+Some examples of reading the explanation tree in figure~\ref{fig:djk-tree} are
+as follows: Consider the path ``Algorithm, Complexity, Implementation Related'',
+this would be read as ``The document is discussing a related implementation of
+the algorithm, in terms of its computational complexity''. Another path may be
+``Algorithm, Operation, Summary'', this would be read as ``The document is
+giving a summary of an operation the algorithm uses''.
+
 \section{Discussion of Results}
 \label{sec:dis}
 In this section we summarize and interpret the results presented above. In
-section \ref{sec:dis:model} we describe the benefits of translating
-explanation artifacts into explanation trees. Section \ref{sec:dis:expr} reflects
-on supporting varied expressions of like content and section \ref{sec:dis:tail}
+section \ref{sec:dis:model} we describe the benefits of translating explanation
+artifacts into explanation trees. Section \ref{sec:dis:expr} reflects on
+supporting varied expressions of like content and section \ref{sec:dis:tail}
 discusses the support of tailored, adaptive, explanations. Although we posit
 several benefits to using work presented in this paper, all such benefits are
 merely conjectures until such a DSL, as is referenced throughout this paper, is
@@ -609,16 +590,15 @@ immediately arise with such an approach: 1) What is an \emph{explanation} and
 how does one model it as a computational concept? 2) How does one react to user
 input? 3) How does one capture varied notation? 4) Similarly, how does one
 capture the flexibility and robustness of tailored explanations. Throughout this
-section we refer to the \emph{consumer} of an explanation to mean the end audience
-for an explanation that the user of the DSL creates. 
+section we refer to the \emph{consumer} of an explanation to mean the end
+audience for an explanation that the user of the DSL creates.
 
 \subsection{Advantages of an Abstract Model}
 \label{sec:dis:model}
 
 % Problem 1
-Rather than delving into the yawning maw of philosophy of explanation
-\todo{reference DN-theory, Constructivist theories, and Sander's explaining
-  explaining (check that its been published)}, we offload such concerns to the
+Rather than delving into the yawning maw of philosophy of
+explanation~\cite{sep-scientific-explanation} we offload such concerns to the
 prospective user's of the DSL. The remaining issues, we believe, are
 significantly alleviated with explanation trees.
 
