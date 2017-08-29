@@ -110,7 +110,7 @@ digraph graph_name {
   // Operation -> Desc6;
   // Operation -> Prf2;
   Algorithm -> Complexity;
-  Deri [label = "Derivation", style = dotted];
+  Deri [label = "Derivation\nMathematic", style = dotted];
   Complexity -> Deri;
   // Desc7 [label = "Description", style = dotted];
   // Complexity -> Desc7;
