@@ -1,0 +1,8 @@
+   \textbf{Structure} &  Structure tags control how the context in the artifact is set \\
+    \hline
+    $\rightarrow$ & Push: takes one content tag and sets the context to the conjunction of the input tag and parent context \\
+    $\leftarrow$ & Pop: takes any number of action or expression tags as input, sets context up one level, and then applies input tags\\
+    \text{|} & Takes one content tag as input, synonymous with the sequence $\leftarrow$, $\rightarrow$ \brackets{input tag} \\
+    $\twoheadleftarrow$ & Return: takes no input, pops until top level is reached 
+    \todo{erase this, write the formal semantics, make sure we don't forget
+      return and pipe!} \\
