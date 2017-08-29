@@ -1,3 +1,5 @@
+// compile to pdf with: dot -Tpdf /path/to/dotfile -o /output/name.pdf
+
 digraph graph_name {
   graph [
     charset = "UTF-8";
@@ -30,7 +32,7 @@ digraph graph_name {
   ];
 
   // node define
-  Algorithm [color = red, penwidth = 2.5];
+  Algorithm [color = red, penwidth = 2.5, style = bold];
   // History2 [label = "History"];
   // Def2 [label = "Definition", style = dotted];
 
@@ -56,13 +58,14 @@ digraph graph_name {
 
 
   // edges
-  Algorithm -> Property;
+  Prp [label = "Property", shape = pentagon];
+  Algorithm -> Prp;
 
   // Def2 [label = "Definition", style = dotted];
   // Math [label = "Mathematic", style = dotted];
   // Property -> Def2;
   // Property -> Math;
-  Property -> Dummy1;
+  Prp -> Dummy1;
   Dummy1 [label = "⋮" , color="white" , fontsize=30];
   // Algorithm -> Problem;
   // Dummy2 [label = "⋮" , color="white" , fontsize=30];
@@ -70,12 +73,11 @@ digraph graph_name {
   // Problem -> Dummy2;
   // Problem -> Math2;
 
-  Algorithm -> Operation;
-  Ctn [label = "Summary", style = dotted];
-  Operation -> Ctn;
-  Desc [label = "Description\nCaveat", style = dotted];
-  Operation -> Desc;
-  Code1 [label = "Code", style = dotted];
+  Op [label = "Operation", shape = pentagon];
+  Algorithm -> Op;
+  Sum [label = "Summary", shape = box];
+  Op -> Sum;
+  Code1 [label = "Code", shape = box];
   Algorithm -> Code1;
   // Operation -> Lgnd;
   // Cases [label = "Cases", style = dotted];
@@ -109,15 +111,18 @@ digraph graph_name {
   // Prf2 [label = "Proof", style = dotted];
   // Operation -> Desc6;
   // Operation -> Prf2;
-  Algorithm -> Complexity;
-  Deri [label = "Derivation\nMathematic", style = dotted];
-  Complexity -> Deri;
+  Compl [label = "Complexity", shape = pentagon];
+  Algorithm -> Compl;
+  Deri [label =<Derivation<BR/><I>Mathematic</I>>, shape = box];
+  Compl -> Deri;
   // Desc7 [label = "Description", style = dotted];
   // Complexity -> Desc7;
   Impl1 [label = "Implementation\nRelated"];
-  Complexity -> Impl1;
+  Impl1 [label =<Implmentation<BR/><I>Related</I>>, shape = pentagon];
+  Compl -> Impl1;
   Impl [label = "Implementation"];
-  Complexity -> Impl;
-  Desc8 [label = "Description", style = dotted];
-  Impl -> Desc8;
+  Impl [label =<Implmentation>, shape = pentagon];
+  Compl -> Impl;
+  // Desc8 [label = "Description", shape = box];
+  // Impl -> Desc8;
 }
