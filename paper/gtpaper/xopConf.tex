@@ -187,8 +187,8 @@ This paper represents a formative step toward this vision. We conduct a
 content of the explanation artifacts that educators are already creating.
 %
 We base our analysis on an established qualitative research method called
-\emph{grounded theory}~\cite{Strauss67discoveryof} in order to better understand how well existing artifacts
-explain complex topics
+\emph{grounded theory}~\cite{Strauss67discoveryof} in order to better understand
+how well existing artifacts explain complex topics
 
 
 More specifically, we collect 15 explanation artifacts from the internet,
@@ -197,12 +197,9 @@ data structure commonly covered in undergraduate computer science courses:
 Dijkstra's shortest path algorithm~\cite[pp.~137--142]{KT06}, merge sort
 ~\cite[210--214]{KT06}, and AVL trees~\cite[pp.~458--475]{KnuthArt3}.
 %
-We analyze these artifacts through the application of grounded
-theory~\cite{Strauss67discoveryof}, a formal method for analyzing qualitative
-data that originated in sociological research. Through the application of
-grounded theory, we develop a coding system that captures the structure of
-explanation for each document. An overview of the coding system is given in
-Section \ref{sec:res:sys}.
+Through the application of grounded theory, we develop a coding system that
+captures the structure of explanation for each document. An overview of the
+coding system is given in Section \ref{sec:res:sys}.
 
 % We analyze these artifacts by applying a classic pedagogical theory by Bellack
 % et al.~\cite{bellack1966language} that describes the patterns of language used
@@ -217,8 +214,7 @@ This paper makes the following contributions:
 
 \item \label{contrib:method}
   We provide a case study on analyzing \emph{qualitative data} through the
-  application of a formal research method \emph{grounded theory}, that is not
-  part of the computer science parlance.
+  application of a formal research method \emph{grounded theory}.
 
 \item \label{contrib:data}
 %
@@ -228,30 +224,31 @@ explanation artifacts (Section~\ref{sec:exp:data}).
 
 \item \label{contrib:codes}
 %
-\todo{decide if we need to split this contribution up}
-We provide a coding system for analyzing \emph{explanation artifacts} in the
-form of lecture notes, and we show that through the application of the coding
-system, each such artifact forms a tree structure, which we have termed a
-\emph{explanation tree}
+  \todo{decide if we need to split this contribution up} We provide a coding
+  system for analyzing \emph{explanation artifacts} in the form of lecture
+  notes, we show that through the application of the coding system, each
+  such artifact, regardless of content, author or institution, forms a tree
+  structure, which we have termed a \emph{explanation tree}
 
-\todo{tie this in} One of the central dilemmas of analyzing explanations in the
-wild is that they vary widely and do not directly map onto any perceivable
-shared, abstract structure. If explanation-oriented programming is to become a
-viable paradigm then this formative problem must be solved. A major step forward
-in this direction is the concept of \emph{explanation trees}. In this paper, use
-a coding system grounded in the data to observe a shared structure between
-explanations of like content and dissimilar content, lengths, authors, and
-institutions. We believe that such a structure forms the building blocks of
-\todo{something}
+  \todo{Pretty sure I have this distilled above, please re-read and make changes
+    as you see fit} One of the central dilemmas of analyzing explanations in the
+  wild is that they vary widely and do not directly map onto any perceivable
+  shared, abstract structure. If explanation-oriented programming is to become a
+  viable paradigm then this formative problem must be solved. A major step
+  forward in this direction is the concept of \emph{explanation trees}. In this
+  paper, use a coding system grounded in the data to observe a shared structure
+  between explanations of like content and dissimilar content, lengths, authors,
+  and institutions. We believe that such a structure forms the building blocks
+  of \todo{something}
 
 (Section \ref{sec:res:xopTree}).
 
 
 \item \label{contrib:DSL}
 %
-  We describe how a coding system grounded in data can provide a
-  semantics basis for a DSL and argue for the advantages of such an approach
-  (Section~\ref{sec:res:DSL}).
+  We describe how a coding system grounded in data can provide the
+  basis for a DSL and argue for the advantages of such an approach
+  (Section~\ref{sec:dis}).
 %
 \end{enumerate}
 
@@ -260,13 +257,13 @@ institutions. We believe that such a structure forms the building blocks of
 \section{Background And Related Works}
 \label{sec:back}
 
-\todo{Add related works to this section, get some sources}
-In this section, we put the present work into aspect by the describing the
-paradigm of \emph{explanation-oriented programming} in
-Section~\ref{sec:back:xop}, the exploration of which is an underlying
-motivation of our work, and by introducing the methodology of grounded theory
-~\cite{Strauss67discoveryof} in Section~\ref{sec:back:gt}, which is the
-theoretical foundation of our coding system.
+\todo{Add related works to this section, get some sources} In this section, we
+put the present work into context by the describing the paradigm of
+\emph{explanation-oriented programming} and by introducing grounded theory.
+Section~\ref{sec:back:xop} explicates explanation-oriented programming, and
+shows the underlying motivation of our work. Section~\ref{sec:back:gt} provides
+a detailed summary of grounded theory's methodology, which is the theoretical
+foundation of our coding system.
 
 \subsection{Explanation-oriented programming}
 \label{sec:back:xop}
@@ -277,7 +274,7 @@ where the primary output of a program is not a set of computed values, but an
 \emph{explanation of how} those values were
 computed~\cite{EW08vl,EW09dsl,EW09vl,WE11dsl,EW13jvlc}.
 %
-A high-level goal of this work is to further develop the paradigm of XOP
+A high-level goal of this work is to further realize the paradigm of XOP
 through the development of a specific DSL.
 
 
@@ -352,10 +349,6 @@ We expect that DSLs for XOP can help alleviate this burden.
 
 \subsection{Grounded Theory}
 \label{sec:back:gt}
-In this section we present an overview of the research method known as grounded
-theory. This section is meant to help orient the reader to understand the
-process by which the coding system was formed.
-
 %% What is it
 The central idea behind grounded theory is to generate, or discover theory,
 inductively, \emph{based on data} rather than to use data to evince a hypothesis
@@ -373,7 +366,7 @@ the phenomena it represents}.
 Like any methodology, grounded theory employs a specific vocabulary to refer to
 stages and phases of research. The rest of this section will introduce grounded theory
 terminology in concert with an operational example that will show how one may
-actually perform a grounded theory analysis.
+perform a grounded theory analysis.
 
 
 Imagine a researcher who wants to find out why students drop out of
@@ -429,9 +422,9 @@ pivotal to the validity of the method~\cite{Strauss67discoveryof}.
  
 The second tenet is \emph{theoretical sampling}; theoretical sampling, focuses
 on filling the \emph{perceived} gaps in data based on current theory. To put
-this into aspect, if the researcher in our example were a quantitative
+this into context, if the researcher in our example were a quantitative
 researcher they would determine the total student population of the CS program,
-and then use statistics to generate a representative data set. The grounded
+and then use statistics to generate a representative sample. The grounded
 theory researcher, would look at their data and determine that they do not have
 any data points from people who have taken the operating systems class, thus
 they will collect more data to fill that gap \emph{based on their current
@@ -472,10 +465,10 @@ to PDF. No powerpoint lecture notes were considered because we feared that such
 documents would be information scarce; powerpoints are used to structure a
 lecture and thus should be considered with the concomitant lecture.
 
-All data was coded by hand with the aid of Atlast.ti software~\cite{atlast} by a
-single researcher. The use of the Atlast.ti software was primarily for
-organizational and representational benefit, such as generating the code list
-and performing constant comparison.
+All data was coded by hand with the aid of Atlast.ti software~\cite{atlast}.
+The use of the Atlast.ti software was primarily for organizational and
+representational benefit, such as generating the code list and performing
+constant comparison.
 %
 The use of such software is contingent with respect to grounded theory.
 % This analysis, and any other grounded theory analysis, could be performed without such an aid.
@@ -485,7 +478,7 @@ was not considered. For example, if a document explaining Dijkstra's algorithm,
 discussed shortest-path problems, then this was considered as it is directly
 relevant to explaining Dijkstra's algorithm, but if that document included a
 section on explaining Bellman-Ford's algorithm, then this section was not
-considered as it's purpose is not to \emph{explain} Dijkstra's algorithm.
+considered as it's purpose is no longer to \emph{explain} Dijkstra's algorithm.
 
 Explanatory artifacts were indexed according to the algorithm that was to be
 explained, and a simple counter. For example, the first document regarding AVL
@@ -495,22 +488,24 @@ All of the data in this paper was collected and analyzed by a single researcher.
 We made no attempt to restrict the size of the data collected, in order to
 collect a diverse set of data. The smallest document collected has only a page
 and a half of relevant material while the longest consists of eighteen pages.
-All data can be found the projects github repository\footnote[1]{anonymized for
+All data can be found in the projects github repository\footnote[1]{anonymized for
   review} Fifteen documents were coded in total, with five documents each per
 algorithm.
 
+\todo{Eric sign off on this last statement}
 Lastly, selective coding was not attempted or performed. The goal of this study
 was to develop a prototype coding system, not to develop an overarching, causal
-theory for these documents.
+theory for these documents, such as one would generate in selective coding.
 
 \section{Results}
 In this section we present our findings. We make three major observations from
 the data. First, we observe that the data is able to be expressed in the coding
-system and provide an overview of the coding system in Section \ref{sec:res:sys}
-and provide a sample coding. In Section \ref{sec:res:xopTree} we observe that
-when data is expressed through the lens of the coding system, the result is an
-explanation tree, and that the content of each document is expressed with a
-pre-order traversal of the corresponding explanation tree.
+system, provide an overview of the coding system in Section \ref{sec:res:sys}
+and provide a sample coding (table~\ref{res:txt:ex}). Secondly, in Section
+\ref{sec:res:xopTree} we observe that data that is expressed through the lens of
+the coding system results is an explanation tree. Lastly, we observe that the
+explanation artifacts presentation of content corresponds with a pre-order
+traversal of its explanation tree.
 
 \subsection{The Coding System}
 \label{sec:res:sys}
@@ -525,41 +520,42 @@ The coding system consists of 4 finite sets of tags. Aspect tags determine what
 subject is being discussed in the corresponding section of the document.
 %
 Structuring tags construct and traverse the structure of the document. The
-push and swap tags take a single aspect tag as input and creates a sub-aspect
+push and | tags take a single aspect tag as input and creates a sub-aspect
 for that input tag. For example in row 5 of example~\ref{res:txt:ex}, the
 snippet exists in the aspect ``Algorithm'', thus ``push Motivation'' will
 create a sub-aspect that denotes \emph{the motivation of the Algorithm}.
 %
-The pop tag takes any number of move and expression tags, lifts one level of
-aspect, and then applies the input tags. Note that if a pop and push tags occur
+The pop tag takes any number of move and expression tags, lifts one aspect
+level, and then applies the input tags. Note that if a pop and push tags occur
 in the same sequence, pop is always applied before push. The return tag takes no
-input, and pops until reaching the root aspect. The swap tag takes a single
-aspect tag as input, and any number of move or expression tags and then pops
-out of a sub-aspect, creates a new sub-aspect with that input tag, and
-then applies the non-content tags it is synonymous with the sequence ``pop push
+input, and pops until reaching the root aspect. The pipe tag is syntactic sugar
+for moving to a sibling aspect, it is synonymous with the sequence ``pop push
 <input tags>''.
-%
-When a aspect tag is \emph{orphaned} as in example~\ref{res:txt:ex}
+
+
+When a aspect tag is \emph{orphaned} as in row~1 of example~\ref{res:txt:ex}
 \todo{reference rows in a table?}, then that is interpreted as returning to the
 top level scope and then sub scoping into that tags aspect. The first tag in
 every document is interpreted as setting the \emph{root} node of that particular
-document. For instance, in example~\ref{res:txt:ex} row 1, the first tag:
+document. For instance, in example~\ref{res:txt:ex} row~1, the first tag:
 ``Algorithm'', sets the root aspect for the entire example.
-%
-Action tags determine what the document is \emph{doing} for a given section.
+
+Move tags determine what the document is \emph{doing} for a given section.
 These tags are concrete things that are being done in the text, such as: Giving
 an example, providing an outline, describing something, concluding a point, or
-giving a proof. Action tags may occur alone or with any other tags. When move
-tags are orphaned then this is interpreted as adding that move to the current
-aspect. For example, rows 2, 3 and 4 in table~\ref{res:txt:ex}, occur in the
-aspect ``Algorithm'', thus these are interpreted as: The document is discussing
-an Algorithm; giving a description of it and introducing an in vivo term (row
-2); 
-%
+giving a proof. Move tags may occur alone or with any other tags. When move
+tags are orphaned then they are interpreted as adding that move to the current
+aspect. For example, row~4 in table~\ref{res:txt:ex}, occurs in the
+aspect ``Algorithm'', thus it is interpreted as: The document is discussing
+an Algorithm, and expressing it in a visual manner.
+
 Notation tags denote \emph{how} the aspect is being expressed , some examples
 are: Cartoon, PseudoCode, Code, and Table. Notation tags may be orphaned or
-occur with any other tag. Modifier tags alter the semantic meaning of content
-tags that they are applied, each is a special case described in
+occur with any other tag, when they occur with another tag, such as a move, then
+they are interpreted as specifying how that move is expressed in relation to the
+current aspect. When they occur as orphans then they denote how the current
+aspect is being expressed. Lastly, Modifier tags alter the semantic meaning of
+the tags that they are applied, each is a special case described in
 table~\ref{res:tbl:grmr}.
 %
 
@@ -568,9 +564,9 @@ table~\ref{res:tbl:grmr}.
 The coding system borne out of the data is, in essence, one used to describe a
 tree structure. This conclusion was born out of necessity during axial coding
 and became the \emph{coding paradigm} for this study. The central problem was to
-keep track of the different topics each document would discuss throughout their
-duration. This led directly to the creation of content and structure tags, which
-upon retrospection clearly formulate the document into a tree structure. An
+keep track the different topics each document would discuss throughout their
+duration. This led directly to the creation of aspect and structure tags, which
+upon retrospection clearly formulate into a tree structure. An
 example tree is given below, constructed, by hand, via
 graphiz~\cite{Ellson2002}.
 
@@ -582,21 +578,22 @@ useful example. By observation, a pre-order traversal of this tree corresponds
 with a normal reading of the document. Aspect tags become nodes in the
 explanation tree, and the aspect is set by the path to a given node. For
 example, if the aspect path is \brackets{Algorithm, Operation} then the aspect
-is discussing the ``Operation'' of the ``Algorithm'', as seen in
-figure~\ref{fig:djk-tree}. Moves are leaves in the tree. If the move occurs in
-the code coincident with a structure and aspect tag, then it is represented in
-the tree as a leaf of the child aspect, as seen in the ``Operation'' node. If a
-move tag appears without an aspect tag, then it represents a terminal leaf
-attached to the current node, as shown in the root node. If a move tag appears
-coincident with the pop operator then it manifests as a leaf, on the parent of
-the current node. This corresponds with popping the aspect, and then applying
-the move. Notation tags are represented as terminal leaf nodes, as seen at
-``Code'' in figure~\ref{fig:djk-tree}. Modifier tags are represented as labels
-that are attached to their input tags, regardless of how those input tags
-manifest, some examples are nodes ``Description, Caveat'' and ``Implementation,
-Related''
+is discussing the ``Operation'' of the ``Algorithm''. Moves are leaves in the
+tree. If the move occurs in the code coincident with a structure and aspect tag,
+then it is represented in the tree as a leaf of the child aspect, for example
+the ``Summary'' leaf of the ``Operation'' node. If a move tag appears without an
+aspect tag, then it represents a terminal leaf attached to the current node, as
+shown at the root node. If a move tag appears coincident with the pop operator
+then it manifests as a leaf, on the parent of the current node. This corresponds
+with popping the aspect, and then applying the move. Notation tags are
+represented as terminal leaf nodes, as seen at ``Code'' in
+figure~\ref{fig:djk-tree} or attached as labels to move leaves (not shown).
+Modifier tags are represented as labels that are attached to their input tags,
+regardless of how those input tags manifest, some examples are nodes
+``Description, Caveat'' and ``Implementation, Related''.
 
 \section{Discussion of Results}
+\label{sec:dis}
 In this section we summarize and interpret the results presented above. In
 section \ref{sec:dis:model} we describe the benefits of translating
 explanation artifacts into explanation trees. Section \ref{sec:dis:expr} reflects
@@ -605,46 +602,47 @@ discusses the support of tailored, adaptive, explanations. Although we posit
 several benefits to using work presented in this paper, all such benefits are
 merely conjectures until such a DSL, as is referenced throughout this paper, is
 created. \todo{where do we say this line}
-%
+
 The central problem with designing and constructing an explanation-oriented DSL
 is translating explanations into an abstract computational model. Several issues
 immediately arise with such an approach: 1) What is an \emph{explanation} and
 how does one model it as a computational concept? 2) How does one react to user
-input? 3) How does one capture the varied notation? 4) Similarly, how does one
+input? 3) How does one capture varied notation? 4) Similarly, how does one
 capture the flexibility and robustness of tailored explanations. Throughout this
 section we refer to the \emph{consumer} of an explanation to mean the end audience
-for an explanation that the \emph{DSL} of the DSL creates. 
+for an explanation that the user of the DSL creates. 
 
 \subsection{Advantages of an Abstract Model}
 \label{sec:dis:model}
 
 % Problem 1
-Rather than delving into the yawning maw of philosophy \todo{reference
-  DN-theory, Constructivist theories, and Sander's explaining explaining (check
-  that its been published)}, we offload such concerns to the prospective user's
-of the DSL. The remaining issues, we believe, are significantly alleviated with
-explanation trees.
+Rather than delving into the yawning maw of philosophy of explanation
+\todo{reference DN-theory, Constructivist theories, and Sander's explaining
+  explaining (check that its been published)}, we offload such concerns to the
+prospective user's of the DSL. The remaining issues, we believe, are
+significantly alleviated with explanation trees.
 
 % Problem 2
-In order to support interaction with an end user a DSL must have an abstract
-model with which the user may interact with. Explanation trees directly enable
-this type of behavior by providing an abstract model of an explanation artifact.
+In order to support interaction with a consumer a DSL must have an abstract
+model with which the user, and consumer may interact with. Explanation trees
+directly enable this type of behavior by providing an abstract model of an
+explanation artifact.
 %
 By distilling an explanation artifact into an explanation tree, a user may
 create an explanation that matches, and extends, the interactivity with static
 documents. For example, a user may want to create an explanation of the
-mergesort algorithm; this would correspond directly with a translation of an
+mergesort algorithm; which would correspond directly with a translation of an
 explanation artifact to an explanation tree. The user may then anticipate
 inquires into other topics related to mergesort but that are not covered in
 static documents, such as computational complexity or array data structures.
-%
+
 Because explanation trees are, in essence, abstract models of explanations, one
 could imagine the user adding special edges or \emph{links} to support such
 inquires. Then if a consumer of the explanation inquired about computational
 complexity, the explanation could traverse such a link to the explanation tree
 for computational complexity. Such features are simply not possible with
 traditional static documents.
-%
+
 Furthermore, the benefits of an abstract model is that one is now able to
 compare, abstractly, different explanations for like things. In fact, one may
 envision having database of explanations for like things which could be used to
@@ -654,44 +652,51 @@ have more advantages, some of which are described below.
 \subsection{Handling Content Expression}
 \label{sec:dis:expr}
 % Problem 3
-A trivial examination of explanation artifacts or even experience in academia
+A trivial examination of explanation artifacts or any experience in academia
 reveals that like things are explained using varied and eclectic notations. The
 notations encompassed in the coding system are unlikely to be an exhaustive list
-of notations. However, because content is orthogonal to expression in an
-explanation tree, content may therefore be separated from notation. Thus, the
-expression of content in an explanation tree is extensible. A thorough or
-meticulous user may wish to create explanations that can express content with
-varied notations. Such a user may provide their explanations with a textual
-expression, a cartoon expression or a mathematical formulation, all such
-notations are viable. Such features are matched by traditional static documents,
-an explanation-oriented DSL, that operates on explanation trees, could support
-expressing a single aspect (a single node in the explanation tree) with
-different expressions. For example, a DSL user may provide a code based
-expression for the relax operation in Dijkstra's algorithm, but they may also
-provide an auxiliary cartoon based expression. The addition of an auxiliary
-expression could then be requested by an explanation consumer. Technically, the
-explanation-tree would simply have another expression tag applied to the same
-node. \todo{this probably needs work}
+of all such notations.
+
+Content is orthogonal to expression in an explanation tree, thus content may
+therefore be separated from notation, and the expression of content in an
+explanation tree is extensible. A thorough or meticulous user may wish to create
+explanations that can express content with varied notations. Such a user may
+provide their explanations with a textual expression, a cartoon expression or a
+mathematical formulation, all notations are viable because of the separation of
+content and content expression. Such features are currently matched by
+traditional static documents. An explanation-oriented DSL, that operates on
+explanation trees, could support expressing a single aspect (a single node in
+the explanation tree) with different expressions, thereby increasing the options
+available to DSL users and explanation consumers.
+
+For example, a DSL user may provide a code based expression for the relax
+operation in Dijkstra's algorithm, but they may also provide an auxiliary
+cartoon based expression. The addition of an auxiliary expression could then be
+requested by an explanation consumer. Technically, the explanation-tree would
+simply have another expression tag applied to the same node. This feature, the
+ability to express the same content, in many notations, at the request of the
+explanation consumer, is only observed in in-person explanations. \todo{this probably
+  needs work}
 
 % Problem 4
 \subsection{Towards Tailored Computational Explanation}
 \label{sec:dis:tail}
 The last issue with an explanation-oriented DSL is that of supporting tailored
-explanation. This problem essentially boils down to \todo{fix this language}
-adapting, in real time, to an explanation consumer. While support for such a
-feature will hinge on the interaction semantics available to the consumer, we
-view explanation trees as being a significant step in the right direction.
+explanation. This problem essentially boils down to adapting, in real time, to
+an explanation consumer. While support for such a feature will hinge on the
+interaction semantics available to the consumer, we view explanation trees as
+being a significant step in the right direction.
+
 Serving as an abstract model, it becomes possible to collect several explanation
 artifacts of like content, much like the data used in this study. By having a
 database of such artifacts a user could construct an explanation that draws upon
 several explanation artifacts except just one, as is the case with current
 static \emph{and} interactive tools. Thus, if a consumer becomes stuck on a
-certain aspect of an explanation, they may switch to the corresponding point in
+at some point of an explanation, they may switch to the corresponding point in
 another explanation and attempt to proceed from there, or consume only that
-node, and then return to the previous explanation. While this is still far
-from competing with a one-on-one tutorship on the material, such a feature is
-simply impossible with static documents and without an abstract model of
-explanations, and represents a step toward more interactivity.  
+node, and then return to the previous explanation. While this is still far from
+competing with a one-on-one tutorship on the material, such a feature is simply
+impossible with static documents and represents a step toward more interactivity.
 
 \subsection{Qualities shared with Non-Interactive Explanations}
 Our approach differs from many other successful
@@ -725,9 +730,6 @@ system is not transferable to other computer science content. Thus, more coding,
 with varied content is pivotal to validate that the coding system can actually
 express radically different content then that which it is grounded in.
 \todo{what else?}
-
-
-\section{Conclusion}
 
 \bibliography{XOPbib,eric}
 \bibliographystyle{ACM-Reference-Format}
