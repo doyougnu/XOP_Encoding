@@ -403,6 +403,32 @@ required. This is when the researcher's system is able to express data that was
 may vary drastically based on factors such as researcher, topic, and motivating
 research questions.
 
+\subsection{Teaching Algorithms}
+\todo{eric double check these references, most have over 100 citations, but I
+  didn't dive too deep into AV (alg vis) work because adding each reference
+  limits our space even more}
+Aspects of this work touch upon many well researched areas in the field of
+computer science education. There are several examples in the literature of
+researchers adding and considering the addition of a pedagogical tool; such as,
+multimedia methodologies and animation~\cite{baecker1981sorting,
+  Naps:2002:ERV:782941.782998, Grissom:2003:AVC:774833.774846, HANSEN2002291},
+puzzles~\cite{Levitin:2002:UPT:563517.563456}, in addition to advocating active
+learning~\cite{McConnell:1996:ALU:1013718.237526} and
+interactivity~\cite{Rodger:1995:ILA:199691.199820}
+
+Our approach differs from other approaches~\cite{brecht2012learning,
+  brecht2008enabling} to explaining algorithms, but shares many important
+features of those approaches. Algorithm visualizations and internet based
+lectures have the property of being random access i.e. the user may move
+forward, backward, jump around, and increase or decrease the pace, of the
+lecture at will. This property has shown to be a very effective pedagogical
+tool~\cite{cardall2008live, zhang2005interactive, zhang2006instructional,
+  Schwan2004293, Merkt2011687}.
+%
+While such a property ultimately comes down to the implementation of the DSL, we
+believe that the work presented here directly supports such beneficial aspects
+of previous work such as random-access and interactivity.
+
 \section{Experimental Setup}
 \label{sec:exp:data}
 In this section we describe how the data was collected, any preprocessing the
@@ -553,8 +579,8 @@ aspect, and then applying the move. Notation tags are represented as terminal
 leaf nodes, as seen at ``Code'' in figure~\ref{fig:djk-tree} or attached as
 labels to existing nodes or leaves as shown in ``Derivation, Mathematic''.
 Modifier tags are represented as labels that are attached to their input tags,
-regardless of how those input tags manifest, some examples are nodes
-``Description, Caveat'' and ``Implementation, Related''.
+regardless of how those input tags manifest, an example is node ``Implementation
+Related''.
 
 Some examples of reading the explanation tree in figure~\ref{fig:djk-tree} are
 as follows: Consider the path ``Algorithm, Complexity, Implementation Related'',
@@ -672,21 +698,6 @@ impossible with static documents and represents a step toward more interactivity
 % move an reframe this section, maybe teaching algorithms, just have two
 % paragaphs that detail other works on algorithm visualization and teaching
 % algorithms, 
-Our approach differs from many other successful
-approaches~\cite{brecht2012learning, brecht2008enabling}, but shares many
-important features of those approaches. Algorithm visualizations and internet
-based lectures have the property of being random access i.e. the user may move
-forward, backward, jump around, and increase or decrease the pace, of the
-lecture at will. This property has shown to be a very effective pedagogical
-tool~\cite{cardall2008live, zhang2005interactive, zhang2006instructional,
-  Schwan2004293, Merkt2011687} . While such a property ultimately comes down to
-the implementation of the DSL, we believe that our approach directly supports
-such behavior.
-
-It is for these reasons that employing the techniques discussed in this paper
-provide an explanation designer with invaluable tools. Tools which serve to
-enrich the state of XOP and allow the explanation designer to draw upon other
-domains to form their explanations.
 
 \section{Conclusion and Future Work}
 
