@@ -2,274 +2,232 @@ module DocEncodings where
 
 import ExplanationTree
 
--- * Actions
 
--- | Simple Sum type to enumerate all legal actions
-data Actions = Abstraction
-             | Assumption
-             | BaseCase
-             | Cases
-             | Comment
-             | Conclusion
-             | Contrast
-             | Definition
-             | Derivation
-             | Description
-             | Example
-             | Implication
-             | InVivoIntro
-             | Legend
-             | Observation
-             | Outline
-             | Proof
-             | Proposal
-             | Solicitation
-             | Summary
-             deriving Show
+-- * Codes
 
--- * Exprressions
+-- | Aspects of an explanation text, determined by grounded theory analysis.
+data Aspect
+   = Advantages
+   | Algorithm
+   | Application
+   | Class
+   | Complexity
+   | Condition
+   | Constituent
+   | Design
+   | DataStructure
+   | Disadvantages
+   | Goal
+   | History
+   | Implementation
+   | Motivation
+   | Operation
+   | Problem
+   | Property
+   | Solution
+   | State
+  deriving Show
 
--- | Simple Sum type to enumerate all legal exprressions
-data Exprressions = Cartoon
-                 | Code
-                 | PseudoCode
-                 | Sequence
-                 | Mathematic
-                 | Table
-                 deriving Show
+-- | Moves of an explanation text, determined by grounded theory analysis.
+data Move
+   = Abstrmoveion
+   | Assumption
+   | BaseCase
+   | Cases
+   | Comment
+   | Conclusion
+   | Contrast
+   | Definition
+   | Derivation
+   | Description
+   | Example
+   | Implication
+   | InVivoIntro
+   | Legend
+   | Observation
+   | Outline
+   | Proof
+   | Proposal
+   | Solicitation
+   | Summary
+  deriving Show
 
--- * Descriptors
+-- | Decorators for explanation codes can describe the notation used or
+--   clarify the role of some text that do not directly advance the
+--   aspect of the explanation under consideration.
+data Decorator
+   = Note Notation
+   | Role Role
+  deriving Show
 
--- | Simple wrapper for actions and exprressions. This is needed because an edge
--- can take an action label, or an exprression label
-data Descriptors = A Actions
-                 | E Exprressions
-                 deriving Show
+-- | Notations used in explanations, determined by grounded theory analysis.
+data Notation
+   = Cartoon
+   | Code
+   | PseudoCode
+   | Sequence
+   | Mathematics
+   | Table
+  deriving Show
 
--- * Contexts
-
--- | Simple Sum type to enumerate all legal Contexts
-data Contexts = Advantages
-              | Algorithm
-              | Application
-              | Class
-              | Complexity
-              | Condition
-              | Constituent
-              | Design
-              | DataStructure
-              | Disadvantages
-              | Goal
-              | History
-              | Implementation
-              | Motivation
-              | Operation
-              | Problem
-              | Property
-              | Solution
-              | State
-              deriving Show
-
--- * Modifiers
-
--- | Simple Sum type to enumerate all legal Modifiers Pop is commented out
--- because this is handled in a special case in Codes
-data Modifiers = Push
-               -- | Pop
-               | Swap
-               | Aside
-               | Caveat
-               | Pedagogical
-               | Focus
-               | Meta
-               | Related
-               | Review
-               deriving Show
+-- | Secondary roles of text in explanations, determined by grounded theory
+--   analysis.
+data Role
+   = Aside
+   | Caveat
+   | Pedagogical
+   | Focus
+   | Meta
+   | Related
+   | Review
+  deriving Show
 
 -- | Convenience function
-run :: (Show c, Show m, Show a) => [Code c m a] -> IO ()
+run :: [Code Aspect Move Decorator] -> IO ()
 run = prettyTree . toTree
 
--- Begin Document Codes
-exception = [ New Algorithm, Act Assumption ]
+djk09 :: [Code Aspect Move Decorator]
+djk09 = [
+  aspect Algorithm
+  , aspect Property
+    , move Definition @@ [Note Mathematics]
+    , pop
+  , aspect Problem
+    , move Definition @@ [Note Mathematics]
+    , pop
+  , aspect Operation
+    , move Proposal @@ [Note Cartoon]
+    , move Description
+    , move Legend
+    , move Cases
+    , move Proof
+    , move BaseCase
+    , move Description @@ [Note Mathematics]
+    , move Proposal
+    , move Description
+    , move Cases
+    , move Description @@ [Note Mathematics]
+    , move Conclusion
+    , move Description @@ [Note Cartoon]
+    , move Proposal
+    , move Description
+    , move Proof
+    , pop
+  , aspect Complexity
+    , move Description
+    , aspect Implementation
+      , pop
+    , aspect Implementation
+      , move Description
+  ]
 
-act = Act . A
-expr = Act . E
-
-djk09 :: [Code Contexts m Descriptors]
-djk09 = [ New Algorithm
-           , New Property
-             , act Definition
-             , expr Mathematic
-             , Pop
-           , New Problem
-             , act Definition
-             , expr Mathematic
-             , Pop
-           , New Operation
-             , act Proposal
-             , expr Cartoon
-             , act Description
-             , act Legend
-             , act Cases
-             , act Proof
-             , act BaseCase
-             , act Description
-             , expr Mathematic
-             , act Proposal
-             , act Description
-             , act Cases
-             , act Description
-             , expr Mathematic
-             , act Conclusion
-             , act Description
-             , expr Cartoon
-             , act Proposal
-             , act Description
-             , act Proof
-             , Pop
-           , New Complexity
-             , act Description
-             , New Implementation
-               , Pop
-             , New Implementation
-               , act Description
-         ]
-
-avt01 :: [Code Contexts Modifiers Descriptors]
-avt01 = [ New DataStructure
-          , New Problem
-            , act Description
-            , act Example
-            , act Proposal
-            , New Solution
-              , act InVivoIntro
-              , New Condition
-                , act Description
-                , Pop
-              , New Class
-                , Mod Meta
-                , Pop
-              , Pop
-            , Pop
-          , New History
-            , act Description
-            , Pop
-          , New Property -- here
-            , Mod Review
-            , act Definition
-            , expr Mathematic
-            , Pop
-          , act Definition
-          , act InVivoIntro
-          , expr Mathematic
-          , act InVivoIntro
-          , New Property
-            , act Definition
-            , act Example
-            , expr Cartoon
-            , New Operation
-              , act Example
-              , expr Cartoon
-              , Pop
-            , New State
-              , act Description
-              , act Observation
-              , expr Cartoon
-              , Pop
-            , New Operation
-              , act Example
-              , act Observation
-              , Pop
-            , New State
-              , act Observation
-              , act Conclusion
-              , act Example
-              , act Proposal
-              , expr Cartoon
-              , Pop
-            , New Problem
-              , act InVivoIntro
-              , Pop
-            , New Operation
-              , act Example
-              , expr Cartoon
-              , act Legend
-              , act Description
-              , expr Cartoon
-              , New State
-                , act Observation
-                , Pop
-              , act Example
-              , Mod Review
-              , expr Code
-              , act Definition
-              , Mod Review
-              , expr Code
-              , Mod Review
-              , expr Code
-              , Mod Review
-              , expr Cartoon
-              , act Example
-              , expr Code
-              , act Example
-              , Pop
-            , New Operation
-              , act Description
-              , Mod Related
-              , Mod Review
-              , Pop
-            , New Operation
-              , act Description
-              , New Advantages
-                , Pop
-              , act Description
-              , New State
-                , act Example
-                , act Observation
-                , expr Cartoon
-                , New Operation
-                  , act Example
-                  , act InVivoIntro
-                  , expr Cartoon
-                  , Pop
-                , Pop
-              , Pop
-            , Pop
-          , New Operation
-          , act Description
-          , Mod Related
-            , New Design
-            , act Description
-            , expr Code
-            , expr Code
-            , act Description
-            , Pop
-          , act Description
-          , expr Code
-          , act Definition
-          , expr Code
-          , act Definition
-          , New Operation
-            , act Example
-            , Pop
-          , expr Code
-          , act Definition
-          , New Operation
-            , Mod Related
-            , act Description
-            , expr Code
-            , act Description
-            , expr Code
-            , act Description
-            , Pop
-          , New DataStructure
-            , Mod Related
-            , Pop
-          , New Application
-            , act Description
-            , New Problem
-              , New Solution
-                , New Application
-                , act Description
-        ]
+-- TODO: When translating this one to the new coding scheme, there were many
+--       ambiguities that I didn't know how to resolve. So, check it closely.
+avt01 :: [Code Aspect Move Decorator]
+avt01 = [
+  aspect DataStructure
+  , aspect Problem
+    , move Description
+    , move Example
+    , move Proposal
+    , aspect Solution
+      , move InVivoIntro
+      , aspect Condition
+        , move Description
+        , pop
+      , aspect Class @@ [Role Meta]
+        , pop
+      , pop
+    , pop
+  , aspect History
+    , move Description
+    , pop
+  , aspect Property @@ [Role Review]
+    , move Definition @@ [Note Mathematics]
+    , pop
+  , move Definition
+  , move InVivoIntro @@ [Note Mathematics]
+  , move InVivoIntro
+  , aspect Property
+    , move Definition
+    , move Example @@ [Note Cartoon]
+    , aspect Operation
+      , move Example @@ [Note Cartoon]
+      , pop
+    , aspect State
+      , move Description
+      , move Observation @@ [Note Cartoon]
+      , pop
+    , aspect Operation
+      , move Example
+      , move Observation
+      , pop
+    , aspect State
+      , move Observation
+      , move Conclusion
+      , move Example
+      , move Proposal @@ [Note Cartoon]
+      , pop
+    , aspect Problem
+      , move InVivoIntro
+      , pop
+    , aspect Operation
+      , move Example @@ [Note Cartoon]
+      , move Legend
+      , move Description @@ [Note Cartoon]
+      , aspect State
+        , move Observation
+        , pop
+      , move Example @@ [Role Review, Note Code]
+      , move Definition @@ [Role Review, Note Code]
+      , move Comment @@ [Role Review, Note Code, Note Cartoon]
+      , move Example @@ [Note Code]
+      , move Example
+      , pop
+    , aspect Operation
+      , move Description @@ [Role Related, Role Review]
+      , pop
+    , aspect Operation
+      , move Description
+      , aspect Advantages
+        , pop
+      , move Description
+      , aspect State
+        , move Example
+        , move Observation @@ [Note Cartoon]
+        , aspect Operation
+          , move Example
+          , move InVivoIntro @@ [Note Cartoon]
+          , pop
+        , pop
+      , pop
+    , pop
+  , aspect Operation
+  , move Description @@ [Role Related]
+  , aspect Design
+    , move Description @@ [Note Code]
+    , move Comment @@ [Note Code]
+    , move Description
+    , pop
+  , move Description @@ [Note Code]
+  , move Definition @@ [Note Code]
+  , move Definition
+  , aspect Operation
+    , move Example
+    , pop
+  , move Comment @@ [Note Code]
+  , move Definition
+  , aspect Operation @@ [Role Related]
+    , move Description @@ [Note Code]
+    , move Description @@ [Note Code]
+    , move Description
+    , pop
+  , aspect DataStructure @@ [Role Related]
+    , pop
+  , aspect Application
+    , move Description
+    , aspect Problem
+      , aspect Solution
+        , aspect Application
+        , move Description
+  ]
