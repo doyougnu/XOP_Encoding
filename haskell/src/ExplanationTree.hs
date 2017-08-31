@@ -22,12 +22,16 @@ type ExplNode a m d = ([d], Either a m)
 
 -- | Pretty print an explanation tree.
 prettyTree :: (Show a, Show m, Show d) => ExplTree a m d -> IO ()
-prettyTree = putStrLn . drawTree . stringify
+prettyTree = putStrLn . condense . drawTree . stringify
   where
     stringify (Node l cs) = Node (label l) (map stringify cs)
-    label (ds, e) = either show show e ++ decorators ds
+    label (ds, e) = node e ++ decorators ds
+    node (Left a)  = "Aspect " ++ show a
+    node (Right m) = "Move " ++ show m
     decorators [] = ""
     decorators ds = " @ " ++ show (reverse ds)
+    condense = unlines . filter empty . lines
+    empty = not . all (\c -> c == ' ' || c == '|')
 
 
 -- * Explanation codes
