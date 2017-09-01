@@ -1,36 +1,50 @@
+\newcommand{\ExCodeWidth}{0.25\columnwidth}
+
 \begin{table}[H]
-  \begin{tabular}{c p{0.8\linewidth} l}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{@{~}l@{\hspace{1ex}} p{0.63\columnwidth} l}
+& \textbf{Text} & \textbf{Coding} \\
+\hline
+1 & \emph{2.2 Mergesort}
+& \Push~Algorithm \\
 
-    & Text & Coding \\
-    \hline
-    1 & \emph{2.2 Mergesort} & Algorithm \\
-    \\
+2 & The algorithms that we consider in this section is based on a simple operation
+known as merging: combining two ordered arrays to make one larger ordered
+array.
+& \parbox[t]{\ExCodeWidth}{
+  \Push~Operation \\
+  Description \\
+  InVivo} \\
 
-    2 & The algorithms that we consider in this section is based on a simple operation
-    known as merging: combining two ordered arrays to make one larger ordered
-    array. & Push Operation Description InVivo\\
-    \\
+3 & This operation immediately lends itself to a simple recursive sort
+method known as mergesort: to sort an array, divide it into two halves, sort
+the two halves (recursively), and then merge the results.
+& \parbox[t]{\ExCodeWidth}{\Pop \\ Definition \\ +~Sequence} \\
 
-    3 & This operation immediately lends itself to a simple recursive sort
-    method known as mergesort: to sort an array, divide it into two halves, sort
-    the two halves (recursively), and then merge the results. & Pop Description \\
-    \\
+4 & \text{\brackets{diagram of list}}
+& +~Cartoon \\
 
-    4 & \text{\brackets{cartoon of list}} & Cartoon \\
-    \\
+5 & Mergesort guarantees to sort an array of N items in time proportional to N log
+N, no matter what the input.
+& \parbox[t]{\ExCodeWidth}{
+  \Push~Motivation \\
+  Description \\
+  +~Mathematics} \\ 
 
-    5 & Mergesort guarantees to sort an array of N items in time proportional to N log
-    N, no matter what the input. & Push Motivation Description \\
-    \\
+6 & Its prime disadvantage is that it uses extra space proportional to N.
+& \parbox[t]{\ExCodeWidth}{
+  \PopPush~Disadvantage \\
+  Description \\
+  +~Mathematics} \\[5.5ex]
 
-    6 & Its prime disadvantage is that it uses extra space proportional to N. & |
-    Disadvantage Description \\
-    \\
-
-    7 & \emph{Abstract in-place merge.} & | Operation
-  \end{tabular}
-  \caption{Sample text and codings for beginning of MS03, italicized text are headers}
-  \label{res:txt:ex}
+7 & \emph{Abstract in-place merge}
+& \PopPush~Operation \\[1.5ex]
+%
+\end{tabular}
+\renewcommand{\arraystretch}{1}
+\caption{Sample text and codings for beginning of MS03. Italicized text
+corresponds to headers in the original document.}
+\label{res:txt:ex}
 \end{table}
   
    

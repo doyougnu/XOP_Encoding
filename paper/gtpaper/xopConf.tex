@@ -519,6 +519,33 @@ traversal of its explanation tree.
 \subsection{The Coding System}
 \label{sec:res:sys}
 
+\newcommand{\OR}{\OB{\hspace{1.5ex}|\hspace{1.5ex}}}
+
+\newcommand{\Push}{\OB{\Rightarrow}}
+\newcommand{\Pop}{\OB{\Leftarrow}}
+\newcommand{\PopPush}{\OB{\Leftrightarrow}}
+
+\begin{figure}
+\begin{syntax}
+\multicolumn{3}{c}{
+  a\in\mathit{Aspect} \quad
+  m\in\mathit{Move} \quad
+  r\in\mathit{Role} \quad
+  n\in\mathit{Notation}} \\
+c\in\mathit{Code}
+ &::=& \Push~a
+ \OR \!\Pop\!
+ \OR m
+ \OR c+d \\
+d\in\mathit{Decorator}
+ &::=& r \OR n
+\end{syntax}
+
+\vspace{-1.5ex}
+\caption{Syntax of codes from grounded theory analysis.}
+\label{tbl:codes:syntax}
+\end{figure}
+
 \begin{table}
 % \begin{tabular}{>{\em}rl}
 \begin{tabular}{ll}
