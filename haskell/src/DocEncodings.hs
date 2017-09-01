@@ -7,15 +7,15 @@ import ExplanationTree
 
 -- | Aspects of an explanation text, determined by grounded theory analysis.
 data Aspect
-   = Advantages
+   = Advantage
    | Algorithm
    | Application
    | Class
    | Complexity
    | Constituent
-   | Design
    | DataStructure
-   | Disadvantages
+   | Design
+   | Disadvantage
    | Goal
    | History
    | Implementation
@@ -29,9 +29,8 @@ data Aspect
 
 -- | Moves of an explanation text, determined by grounded theory analysis.
 data Move
-   = Abstrmoveion
+   = Abstraction
    | Assumption
-   | BaseCase
    | Cases
    | Comment
    | Conclusion
@@ -41,7 +40,7 @@ data Move
    | Description
    | Example
    | Implication
-   | InVivoIntro
+   | InVivo
    | Legend
    | Observation
    | Outline
@@ -63,9 +62,9 @@ data Decorator
 data Notation
    = Cartoon
    | Code
+   | Mathematics
    | PseudoCode
    | Sequence
-   | Mathematics
    | Table
   deriving Show
 
@@ -74,9 +73,8 @@ data Notation
 data Role
    = Aside
    | Caveat
-   | Pedagogical
-   | Focus
    | Meta
+   | Pedagogical
    | Related
    | Review
   deriving Show
@@ -100,7 +98,7 @@ djk09 = [
     , move Legend
     , move Cases
     , move Proof
-    , move BaseCase
+    , move Cases
     , move Description @@ [Note Mathematics]
     , move Proposal
     , move Description
@@ -130,7 +128,7 @@ avt01 = [
     , move Example
     , move Proposal
     , aspect Solution
-      , move InVivoIntro
+      , move InVivo
       , aspect Property
         , move Description
         , pop
@@ -145,8 +143,8 @@ avt01 = [
     , move Definition @@ [Note Mathematics]
     , pop
   , move Definition
-  , move InVivoIntro @@ [Note Mathematics]
-  , move InVivoIntro
+  , move InVivo @@ [Note Mathematics]
+  , move InVivo
   , aspect Property
     , move Definition
     , move Example @@ [Note Cartoon]
@@ -168,7 +166,7 @@ avt01 = [
       , move Proposal @@ [Note Cartoon]
       , pop
     , aspect Problem
-      , move InVivoIntro
+      , move InVivo
       , pop
     , aspect Operation
       , move Example @@ [Note Cartoon]
@@ -188,7 +186,7 @@ avt01 = [
       , pop
     , aspect Operation
       , move Description
-      , aspect Advantages
+      , aspect Advantage
         , pop
       , move Description
       , aspect State
@@ -196,7 +194,7 @@ avt01 = [
         , move Observation @@ [Note Cartoon]
         , aspect Operation
           , move Example
-          , move InVivoIntro @@ [Note Cartoon]
+          , move InVivo @@ [Note Cartoon]
           , pop
         , pop
       , pop
@@ -230,3 +228,20 @@ avt01 = [
         , aspect Application
         , move Description
   ]
+
+ms03 = [
+  aspect Algorithm
+  , aspect Operation
+    , move Description
+    , move InVivo
+    , pop
+  , move Definition @@ [Note Sequence, Note Cartoon]
+  , aspect Motivation
+    , move Description @@ [Note Mathematics]
+    , pop
+  , aspect Disadvantage
+    , move Description @@ [Note Mathematics]
+    , pop
+  , aspect Operation
+  ]
+    

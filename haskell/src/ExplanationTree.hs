@@ -29,7 +29,7 @@ prettyTree = putStrLn . condense . drawTree . stringify
     node (Left a)  = "Aspect " ++ show a
     node (Right m) = "Move " ++ show m
     decorators [] = ""
-    decorators ds = " @ " ++ show (reverse ds)
+    decorators ds = " @ " ++ show ds
     condense = unlines . filter empty . lines
     empty = not . all (\c -> c == ' ' || c == '|')
 
