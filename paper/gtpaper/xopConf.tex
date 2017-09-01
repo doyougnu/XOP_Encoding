@@ -2,13 +2,15 @@
 
 \usepackage{booktabs} % For formal tables
 \usepackage{amsmath,amssymb}
+\usepackage{array}
 % \usepackage{cite}   % importing cite is throwing errors for some reason
 \usepackage{color}
 \usepackage[inline]{enumitem}
 \usepackage{multicol}
 \usepackage{float}
+% \usepackage[labelfont=bf,textfont=up]{caption}
 
-\usepackage{ textcomp }
+\usepackage{textcomp}
 
 % Get todos to render properly
 \usepackage[obeyFinal]{easy-todo}
@@ -499,6 +501,19 @@ traversal of its explanation tree.
 
 \subsection{The Coding System}
 \label{sec:res:sys}
+
+\begin{table}
+% \begin{tabular}{>{\em}rl}
+\begin{tabular}{ll}
+\input{AspectTable}
+\\[-1.5ex]
+\input{MoveTable}
+\end{tabular}
+\caption{Overview of all \emph{aspects} and \emph{moves} identified by the grounded theory
+analysis. Aspects organize an explanation into its constituent parts while
+moves are the specific steps taken to guide the reader toward understanding.}
+\label{tbl:actmove}
+\end{table}
 
 The complete grammar is shown in table~\ref{res:tbl:grmr}.
 
