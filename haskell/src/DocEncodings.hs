@@ -12,7 +12,6 @@ data Aspect
    | Application
    | Class
    | Complexity
-   | Condition
    | Constituent
    | Design
    | DataStructure
@@ -132,7 +131,7 @@ avt01 = [
     , move Proposal
     , aspect Solution
       , move InVivoIntro
-      , aspect Condition
+      , aspect Property
         , move Description
         , pop
       , aspect Class @@ [Role Meta]
