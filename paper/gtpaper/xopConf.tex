@@ -4,7 +4,7 @@
 \usepackage{amsmath,amssymb}
 % \usepackage{cite}   % importing cite is throwing errors for some reason
 \usepackage{color}
-\usepackage{enumerate}
+\usepackage[inline]{enumitem}
 \usepackage{multicol}
 \usepackage{float}
 
@@ -72,23 +72,32 @@
 %  \state{Oregon}
 %  \country{USA}}
 \author{Anonymized for Review}
-
+\affiliation{
+  \institution{\phantom{Anonymous}}
+  \department{\phantom{Anonymous}}
+  \city{\phantom{Anonymous}}
+  \state{\phantom{Anonymous}}
+  \country{\phantom{Anonymous}}
+}
 
 \begin{abstract}
-  Explanations of data structures and algorithms are complex interactions of
-  several notations, including natural language, mathematics, pseudocode, and
-  diagrams. Currently, such explanations are created ad hoc using a variety of
-  tools, and the resulting artifacts are static, reducing explanatory value. We
-  envision a domain-specific language for developing rich, interactive
-  explanations of data structures and algorithms. In this paper, we analyze this
-  domain to sketch requirements for our language. We perform a grounded theory
-  analysis, to generate a qualitative coding system for explanation artifacts
-  collected online. We show that grounded theory provides a robust methodology
-  for analyzing qualitative objects and that the resultant coding system forms
-  the skeleton of a domain-specific language. This work is part of our effort to
-  develop the paradigm of explanation-oriented programming, which shifts the
-  focus of programming from computing results to producing rich explanations of
-  how those results were computed.
+%
+Explanations of data structures and algorithms are complex interactions of
+several notations, including natural language, mathematics, pseudocode, and
+diagrams. Currently, such explanations are created ad hoc using a variety of
+tools and the resulting artifacts are static, reducing explanatory value. We
+envision a domain-specific language for developing rich, interactive
+explanations of data structures and algorithms. In this paper, we analyze this
+domain to sketch requirements for our language. We perform a grounded theory
+analysis to generate a qualitative coding system for explanation artifacts
+collected online. This coding system implies a common structure among
+explanations of algorithms and data structures. We believe this structure can
+be reused as the semantic basis of a domain-specific language for creating
+interactive explanation artifacts. This work is part of our effort to develop
+the paradigm of explanation-oriented programming, which shifts the focus of
+programming from computing results to producing rich explanations of how those
+results were computed.
+%
 \end{abstract}
 
 %
@@ -155,16 +164,16 @@ Section~ \ref{sec:back:xop}.
 
 The intended users of the envisioned DSL are CS educators who want to create
 \emph{interactive artifacts} to support the explanation of algorithms. These
-users are experts on the corresponding algorithms, and also trained and skilled
+users are experts on the corresponding algorithms and also skilled
 programmers. The produced explanation artifacts might supplement a lecture or
 be posted to a web page as a self-contained (textual and graphical)
 explanation.
 %
-The DSL should support pedagogical methods directly through built-in
+The DSL should support pedagogical methods through built-in
 abstractions and language constructs. It should also support a variety of forms
 of student interaction. For example, teachers should be able to define
 equivalence relations enabling users to automatically generate variant
-explanations~\cite{EW13jvlc}, to build in specific responses to anticipated
+explanations~\cite{EW13jvlc}, to build in responses to anticipated
 questions, and to provide explanations at multiple levels of abstraction.
 
 
@@ -172,70 +181,74 @@ This paper represents a formative step toward this vision. We conduct a
 \emph{qualitative analysis} of our domain in order to determine the form and
 content of the explanation artifacts that educators are already creating.
 %
-We base our analysis on an established qualitative research method called
+We base our analysis on the established qualitative research method of
 \emph{grounded theory}~\cite{Strauss67discoveryof} in order to better understand
-how well existing artifacts explain complex topics
+how existing explanation artifacts explain algorithms.
 
 
-More specifically, we collect 15 explanation artifacts from the internet,
-consisting of only lecture notes that explain two algorithms and one
-data structure commonly covered in undergraduate computer science courses:
-Dijkstra's shortest path algorithm~\cite[pp.~137--142]{KT06}, merge sort
-~\cite[210--214]{KT06}, and AVL trees~\cite[pp.~458--475]{KnuthArt3}.
+More specifically, we collect 15 explanation artifacts from the internet. These
+artifacts are lecture notes that explain two algorithms and one data structure
+commonly covered in undergraduate computer science courses: Dijkstra's shortest
+path algorithm~\cite[pp.~137--142]{KT06}, merge sort~\cite[210--214]{KT06}, and
+AVL trees~\cite[pp.~458--475]{KnuthArt3}.
 %
 Through the application of grounded theory, we develop a coding system that
-captures the structure of explanation for each document. An overview of the
-coding system is given in Section \ref{sec:res:sys}. This paper makes the
+captures the structure of the explanation in each document. An overview of the
+coding system is given in Section~\ref{sec:res:sys}. This paper makes the
 following contributions:
 %
-\begin{enumerate}[C1.]
+\begin{enumerate}[label=C\arabic*.]
 
-\item \label{contrib:method}
-  We provide a case study on analyzing \emph{qualitative data} through the
-  application of a formal research method \emph{grounded theory}.
+% \item \label{contrib:method}
+% %
+% We provide a case study on analyzing \emph{qualitative data} through the
+% application of a formal research method \emph{grounded theory}.
 
 \item \label{contrib:data}
 %
 We provide a coded qualitative data set of explanation artifacts, using the
-system defined in C\ref{contrib:codes} applied to our sample of 15 collected
+system defined in C\ref{contrib:codes}, applied to our sample of 15 collected
 explanation artifacts (Section~\ref{sec:exp:data}).
 
 \item \label{contrib:codes}
 %
-  We provide a coding system for analyzing \emph{explanation artifacts} in the
-  form of lecture notes. We show that through the application of the coding
-  system, each such artifact, regardless of content, author or institution,
-  forms a tree structure, which we have termed a \emph{explanation tree}
-  (Section \ref{sec:res:xopTree}).
+We provide a coding system for analyzing \emph{explanation artifacts} in the
+form of lecture notes (Section~\ref{sec:res:sys}). We show that through the
+application of the coding system, each artifact, regardless of content, author,
+or institution, forms a tree structure, which we have termed an
+\emph{explanation tree} (Section~\ref{sec:res:xopTree}).
 
 
 \item \label{contrib:DSL}
 %
-  We describe how a coding system grounded in data can provide the
-  basis for a DSL and argue for the advantages of such an approach
-  (Section~\ref{sec:dis}).
+We describe how our coding system and explanation trees can provide a semantic
+basis for a DSL and argue for the advantages of such an approach
+(Section~\ref{sec:dis}).
 %
 \end{enumerate}
 
 \noindent
 
-\section{Background And Related Works}
+\section{Background And Related Work}
 \label{sec:back}
 
-\todo{Add related works to this section, get some sources} In this section, we
-put the present work into context by the describing the paradigm of
-\emph{explanation-oriented programming} and by introducing grounded theory.
-Section~\ref{sec:back:xop} explicates explanation-oriented programming, and
-shows the underlying motivation of our work. Section~\ref{sec:back:gt} provides
-a detailed summary of grounded theory's methodology, which is the theoretical
-foundation of our coding system.
+In this section, we put our work into context.
+%
+In Section~\ref{sec:back:xop}, we describe the paradigm of explanation-oriented
+programming, which is the underlying motivation for our work.
+%
+In Section~\ref{sec:back:gt}, we describe the grounded theory methodology that
+we used to develop our coding system.
+%
+And in Section~\ref{sec:back:rw}, we briefly discuss other work related to
+teaching algorithms.
 
-\subsection{Explanation-oriented programming}
+
+\subsection{Explanation-Oriented Programming}
 \label{sec:back:xop}
 
-\emph{Explanation-oriented programming} (XOP) is a new programming paradigm
-% originally proposed at VL/HCC~2008~\cite{EW08vl},
-where the primary output of a program is not a set of computed values, but an
+Explanation-oriented programming (XOP) is a programming paradigm where the
+primary output of a program is not a set of computed values, but an
 \emph{explanation of how} those values were
 computed~\cite{EW08vl,EW09dsl,EW09vl,WE11dsl,EW13jvlc}.
 %
@@ -304,6 +317,7 @@ We expect that DSLs for XOP can help alleviate this burden.
 
 \subsection{Grounded Theory}
 \label{sec:back:gt}
+
 %% What is it
 The central idea behind grounded theory is to generate, or discover theory,
 inductively, \emph{based on data} rather than to use data to evince a hypothesis
@@ -394,6 +408,8 @@ may vary drastically based on factors such as researcher, topic, and motivating
 research questions.
 
 \subsection{Teaching Algorithms}
+\label{sec:back:rw}
+
 \todo{eric double check these references, most have over 100 citations, but I
   didn't dive too deep into AV (alg vis) work because adding each reference
   limits our space even more}
@@ -437,19 +453,22 @@ to PDF. No powerpoint lecture notes were considered because we feared that such
 documents would be information scarce; powerpoints are used to structure a
 lecture and thus should be considered with the concomitant lecture.
 
-All data was coded by hand with the aid of Atlast.ti software~\cite{atlast}.
+All data was coded by hand with the aid of Atlast.ti software.%
+\footnote{\url{http://atlasti.com/learning-old/about/}}
+%
 The use of the Atlast.ti software was primarily for organizational and
 representational benefit, such as generating the code list and performing
 constant comparison.
 %
 The use of such software is contingent with respect to grounded theory.
 %
-If a document drifted substantially into a different algorithm then that section
-was not considered. For example, if a document explaining Dijkstra's algorithm,
-discussed shortest-path problems, then this was considered as it is directly
-relevant to explaining Dijkstra's algorithm, but if that document included a
-section on explaining Bellman-Ford's algorithm, then this section was not
-considered as it's purpose is no longer to \emph{explain} Dijkstra's algorithm.
+If a document drifted substantially into a different algorithm then that
+section was not considered. For example, if a document explaining Dijkstra's
+algorithm, discussed shortest-path problems, then this was considered as it is
+directly relevant to explaining Dijkstra's algorithm, but if that document
+included a section on explaining Bellman-Ford's algorithm, then this section
+was not considered as it's purpose is no longer to \emph{explain} Dijkstra's
+algorithm.
 
 Explanatory artifacts were indexed according to the algorithm that was to be
 explained, and a simple counter. For example, the first document regarding AVL
@@ -484,9 +503,9 @@ traversal of its explanation tree.
 The complete grammar is shown in table~\ref{res:tbl:grmr}.
 
 % cleanup the repetitive stuff in the table
-\include{grammar}
+\input{grammar}
 
-\include{gramExample}
+\input{gramExample}
 
 The coding system consists of 4 finite sets of tags. Aspect tags determine what
 subject is being discussed in the corresponding section of the document.
@@ -533,7 +552,8 @@ table~\ref{res:tbl:grmr}.
 
 \subsection{Explanation Trees}
 \label{sec:res:xopTree}
-\include{DJK_tree}
+
+\input{DJK_tree}
 
 The coding system borne out of the data is, in essence, one used to describe a
 tree structure. This conclusion was born out of necessity during axial coding
