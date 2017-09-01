@@ -145,23 +145,23 @@ Currently, explanation artifacts for algorithms are created ad hoc using a
 variety of tools and techniques, and the resulting explanations tend to be
 static, reducing their explanatory value.
 %
-Although there has been a substantial amount of work on algorithm visualization~
-\cite{Gloor92,Gloor97,HDS02, shaffer2010algorithm, HANSEN2002291, KANN1997223},
+Although there has been a substantial amount of work on algorithm
+visualization~\cite{Gloor92,Gloor97,HDS02,shaffer2010algorithm,HANSEN2002291,KANN1997223},
 and tools exist for creating these kinds of supporting artifacts, there is no
-good solution for creating integrated, multi-notational explanations as a whole.
-Similarly, although some algorithm visualization tools provide a means for the
-student to tweak the parameters or inputs to an algorithm to generate new
-visualizations, they do not support creating cohesive interactive explanations
-that correspondingly modify the surrounding explanation or that allow the
-student to respond to or query the explanation in other ways.
+good solution for creating integrated, multi-notational explanations as a
+whole. Similarly, although some algorithm visualization tools provide a means
+for the student to tweak the parameters or inputs to an algorithm to generate
+new visualizations, they do not support creating cohesive interactive
+explanations that correspondingly modify the surrounding explanation or
+allow the student to respond to or query the explanation in other ways.
 %
 To fill this gap, we envision a \emph{domain-specific language} (DSL) that
 supports the creation of rich, interactive, multi-notational artifacts for
 explaining algorithms.
 %
-The development of this DSL is part of a larger effort to explore the new
-paradigm of \emph{explanation-oriented programming}, briefly described in
-Section~ \ref{sec:back:xop}.
+The development of this DSL is part of an effort to explore the new paradigm of
+\emph{explanation-oriented programming}, described in
+Section~\ref{sec:back:xop}.
 
 
 The intended users of the envisioned DSL are CS educators who want to create
@@ -185,21 +185,23 @@ content of the explanation artifacts that educators are already creating.
 %
 We base our analysis on the established qualitative research method of
 \emph{grounded theory}~\cite{Strauss67discoveryof} in order to better understand
-how existing explanation artifacts explain algorithms.
+how existing explanation artifacts explain algorithms. Our grounded theory
+methodology is described in Section~\ref{sec:back:gt}.
 
 
-More specifically, we collect 15 explanation artifacts from the internet. These
-artifacts are lecture notes that explain two algorithms and one data structure
-commonly covered in undergraduate computer science courses: Dijkstra's shortest
-path algorithm~\cite[pp.~137--142]{KT06}, merge sort~\cite[210--214]{KT06}, and
-AVL trees~\cite[pp.~458--475]{KnuthArt3}.
+More specifically, we collect 15 explanation artifacts from the internet, as
+described in Section~\ref{sec:exp:setup}. These artifacts are lecture notes
+that explain two algorithms and one data structure commonly covered in
+undergraduate computer science courses: Dijkstra's shortest path
+algorithm~\cite[pp.~137--142]{KT06}, merge sort~\cite[210--214]{KT06}, and AVL
+trees~\cite[pp.~458--475]{KnuthArt3}.
 %
 Through the application of grounded theory, we develop a coding system that
-captures the structure of the explanation in each document. An overview of the
-coding system is given in Section~\ref{sec:res:sys}. This paper makes the
-following contributions:
+captures the structure and strategy of the explanation in each document.
+% An overview of the coding system is given in Section~\ref{sec:res:sys}.
+This paper makes the following contributions:
 %
-\begin{enumerate}[label=C\arabic*.]
+\begin{enumerate}[label=C\arabic*.,ref=C\arabic*,leftmargin=*]
 
 % \item \label{contrib:method}
 % %
@@ -210,12 +212,13 @@ following contributions:
 %
 We provide a coded qualitative data set of explanation artifacts, using the
 system defined in \ref{contrib:codes}, applied to our sample of 15 collected
-explanation artifacts (Section~\ref{sec:exp:data}).
+explanation artifacts, along with a tool for exploring and visualizing this
+data set (Section~\ref{sec:res:data}).
 
 \item \label{contrib:codes}
 %
-We provide a coding system for analyzing \emph{explanation artifacts} in the
-form of lecture notes (Section~\ref{sec:res:sys}). We show that through the
+We provide a \emph{coding system} (Section~\ref{sec:res:sys}) for analyzing
+explanation artifacts in the form of lecture notes. We show that through the
 application of the coding system, each artifact, regardless of content, author,
 or institution, forms a tree structure, which we have termed an
 \emph{explanation tree} (Section~\ref{sec:res:xopTree}).
@@ -454,8 +457,8 @@ tool~\cite{Schwan2004293,Merkt2011687,zhang2005interactive}.
 % aspects of previous work such as random-access and interactivity.
 
 
-\section{Data and Experimental Setup}
-\label{sec:exp:data}
+\section{Experimental Setup}
+\label{sec:exp:setup}
 
 In this section we describe how the data was collected, any preprocessing the
 data may have undergone, and the system used to apply tags to the data. 
@@ -474,7 +477,7 @@ documents would be information scarce; powerpoints are used to structure a
 lecture and thus should be considered with the concomitant lecture.
 
 All data was coded by hand with the aid of Atlast.ti software.%
-\footnote{\url{http://atlasti.com/learning-old/about/}}
+\footnote{\url{http://atlasti.com/}}
 %
 The use of the Atlast.ti software was primarily for organizational and
 representational benefit, such as generating the code list and performing
@@ -518,6 +521,9 @@ and provide a sample coding (table~\ref{tbl:sample}). Secondly, in Section
 the coding system results is an explanation tree. Lastly, we observe that the
 explanation artifacts presentation of content corresponds with a pre-order
 traversal of its explanation tree.
+
+\subsection{Data Set and Tool Support}
+\label{sec:res:data}
 
 \subsection{The Coding System}
 \label{sec:res:sys}
