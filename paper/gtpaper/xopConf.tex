@@ -510,7 +510,7 @@ theory for these documents, such as one would generate in selective coding.
 In this section we present our findings. We make three major observations from
 the data. First, we observe that the data is able to be expressed in the coding
 system, provide an overview of the coding system in Section \ref{sec:res:sys}
-and provide a sample coding (table~\ref{res:txt:ex}). Secondly, in Section
+and provide a sample coding (table~\ref{tbl:sample}). Secondly, in Section
 \ref{sec:res:xopTree} we observe that data that is expressed through the lens of
 the coding system results is an explanation tree. Lastly, we observe that the
 explanation artifacts presentation of content corresponds with a pre-order
@@ -577,14 +577,14 @@ add additional information.}
 
 The complete grammar is shown in table~\ref{res:tbl:grmr}.
 
-\input{gramExample}
+\input{sampleCoding}
 
 The coding system consists of 4 finite sets of tags. Aspect tags determine what
 subject is being discussed in the corresponding section of the document.
 %
 Structuring tags construct and traverse the structure of the document. The
 push and | tags take a single aspect tag as input and creates a sub-aspect
-for that input tag. For example in row 5 of example~\ref{res:txt:ex}, the
+for that input tag. For example in row 5 of example~\ref{tbl:sample}, the
 snippet exists in the aspect ``Algorithm'', thus ``push Motivation'' will
 create a sub-aspect that denotes \emph{the motivation of the Algorithm}.
 %
@@ -596,11 +596,11 @@ for moving to a sibling aspect, it is synonymous with the sequence ``pop push
 <input tags>''.
 
 
-When a aspect tag is \emph{orphaned} as in row~1 of example~\ref{res:txt:ex}
+When a aspect tag is \emph{orphaned} as in row~1 of example~\ref{tbl:sample}
 \todo{reference rows in a table?}, then that is interpreted as returning to the
 top level scope and then sub scoping into that tags aspect. The first tag in
 every document is interpreted as setting the \emph{root} node of that particular
-document. For instance, in example~\ref{res:txt:ex} row~1, the first tag:
+document. For instance, in example~\ref{tbl:sample} row~1, the first tag:
 ``Algorithm'', sets the root aspect for the entire example.
 
 Move tags determine what the document is \emph{doing} for a given section.
@@ -608,7 +608,7 @@ These tags are concrete things that are being done in the text, such as: Giving
 an example, providing an outline, describing something, concluding a point, or
 giving a proof. Move tags may occur alone or with any other tags. When move
 tags are orphaned then they are interpreted as adding that move to the current
-aspect. For example, row~4 in table~\ref{res:txt:ex}, occurs in the
+aspect. For example, row~4 in table~\ref{tbl:sample}, occurs in the
 aspect ``Algorithm'', thus it is interpreted as: The document is discussing
 an Algorithm, and expressing it in a visual manner.
 
@@ -625,7 +625,25 @@ table~\ref{res:tbl:grmr}.
 \subsection{Explanation Trees}
 \label{sec:res:xopTree}
 
-\input{DJK_tree}
+% \input{DJK_tree}
+
+\begin{figure}
+\begin{Verbatim}[fontsize=\small,xleftmargin=2ex]
+Aspect Algorithm
++- Aspect Operation
+|  +- Move Description
+|  `- Move InVivo
++- Move Definition @ [Note Sequence,Note Cartoon]
++- Aspect Motivation
+|  `- Move Description @ [Note Mathematics]
++- Aspect Disadvantage
+|  `- Move Description @ [Note Mathematics]
+`- Aspect Operation
+\end{Verbatim}
+\caption{Rendering of the explanation tree produced by the coding of the
+beginning of MS03 given in Table~\ref{tbl:sample}.}
+\label{fig:tree}
+\end{figure}
 
 The coding system borne out of the data is, in essence, one used to describe a
 tree structure. This conclusion was born out of necessity during axial coding
