@@ -317,6 +317,7 @@ explicitly program in responses to queries by the student.
 %
 We expect that DSLs for XOP can help alleviate this burden.
 
+
 \subsection{Grounded Theory}
 \label{sec:back:gt}
 
@@ -335,96 +336,82 @@ targeted at its intended uses~\cite{Strauss67discoveryof}.
 % \say{A grounded theory is one that is inductively derived from the study of
 % the phenomena it represents}.
 %
-Like any methodology, grounded theory employs a specific vocabulary to refer to
-phases of research. The rest of this section will introduce grounded theory
-terminology in concert with an operational example that will show how one may
-perform a grounded theory analysis.
+% Like any methodology, grounded theory employs a specific vocabulary to refer
+% to phases of research. The rest of this section will introduce grounded
+% theory terminology in concert with an operational example that will show how
+% one may perform a grounded theory analysis.
+%
+The rest of this section briefly outlines the grounded theory methodology from
+\citet{corbin2014basics} that we used in this formative study.
 
 
-Imagine a researcher who wants to find out why students drop out of computer
-science programs. The first task for a grounded theorist would be to collect
-data from the subject they wish to study. This data could be in the form of
-interviews with students, their schedules, and example homework assignments.
-Once some data is collected the researcher will begin \emph{coding}, which is
-the act of taking qualitative data and assigning tags that describe the data.
+The first task in grounded theory is to collect initial data from the subject
+one wishes to study. For example, a researcher who wants to find out why some
+students drop out of computer science programs might conduct interviews with
+students, and collect student schedules and homework assignments.
+%
+Once some data is collected, the researcher begins \emph{coding}, which is the
+process of assigning descriptive tags to qualitative data.
 
 
-Coding consists of three stages~\cite{corbin2014basics}:
+Coding consists of three stages:
 %
 \begin{enumerate*}
 %
-\item In \emph{open coding}, the researcher writes down \emph{any} terms that
-describe the data.
+\item In the \emph{open coding} stage, the researcher writes down \emph{any}
+terms that describe the data.
 %
-\item Next, in \emph{axial coding}, the researcher identifies relationships
-between the tags developed during open coding. The goal of this step is to
-develop a \emph{coding paradigm}, which is a model that describes the
-inter-relationship between codes.
-
+\item In the \emph{axial coding} stage, the researcher identifies similarities
+and other relationships between the tags developed during open coding. The goal
+of this step is to develop a \emph{coding paradigm}, which is a model that
+describes the inter-relationship between tags.
+%
+\item Finally, in the \emph{selective coding} stage, the researcher tries to
+identify a small set of core tags that capture the main concepts and
+relationships identified during axial coding. These tags form the basis of the
+theory extracted from the data.
+%
 \end{enumerate*}
 
 
-First, a researcher
-performs \emph{open coding}. In open coding, one writes down \emph{any}
-terms that describe the data, regardless of duplicate or related concepts. In
-our example, these tags could be things such as the year of a student, nicknames
-that people call one another, things about their life, family, or activities.
-Open coding should make use of \emph{in vivo} terms, these are terms that
-people immersed in the culture use.
-% For example, a computer scientist may
-% discuss the ``recurrence relation'', while a factory worker may use the term
-% ``floor boss'' to mean the manager.
- 
-
-The second stage of coding is called \emph{axial coding}, where the researcher
-identifies the relationships between the tags developed in open coding. The
-goal is to develop a \emph{coding paradigm}, which is a model that displays the
-inter-relationship between codes~\cite{corbin2014basics}. An axial code for our
-example may coalesce sets of open codes to several axial codes. For example, if
-one had the open codes ``tired, exhausted, no time for other activities,
-stressed from homework'', these might inform the axial code ``burn out''.
- 
-\emph{selective coding} is the final stage of coding, in this stage the
-researcher tries to identify a few central tags that form the basis for the
-theory. After identifying these core tags the researcher then seeks to relate
-the core tags to the remaining tags. In our example, we might have the axial
-codes ``burn out, no support, everyone is perceived better, anxiety over
-schoolwork'' and conclude that the selective code would be ``impostor
-syndrome''.
- 
-All phases of research proceed in parallel to data collection and analysis.
-That is to say that the researcher in our example will be simultaneously
-collecting data, coding, forming their theory, and moving between each activity
-at the same time . This is a marked departure from quantitative methods where
-phases are distinct and disjunct~\cite{Strauss67discoveryof}.
+In grounded theory, data collection and analysis occurs simultaneously and
+iteratively. That is, after forming an initial theory, new data will be added
+that might provide new tags during open coding, which will suggest revisions to
+the theory developed through axial and selective coding, which will trigger a
+re-analysis of old data, and so on.
+%
+This movement back-and-forth between data collection, analysis, and theory
+building is a marked departure from quantitative methods where phases are
+distinct~\cite{Strauss67discoveryof}.
 
 
-Through coding, the researcher interacts with their data. But how does that
-researcher know when to stop coding? Or how much data to code? Such questions
-are the motivation for three central tenets in grounded theory.
- 
-The first is called \emph{constant comparison}, the idea is that during coding,
-the researcher must think back and ask if they are being consistent. Researchers
-should perform this check constantly and at every stage of coding as it is
-pivotal to the validity of the method~\cite{Strauss67discoveryof}.
- 
-The second tenet is \emph{theoretical sampling}; theoretical sampling, focuses
-on filling the \emph{perceived} gaps in data based on current theory. To put
-this into context, if the researcher in our example were a quantitative
-researcher they would determine the total student population of the CS program,
-and then use statistics to generate a representative sample. The grounded
-theory researcher, would look at their data and determine that they do not have
-any data points from people who have taken the operating systems class, thus
-they will collect more data to fill that gap \emph{based on their current
-  results}.
- 
-The last tenet describes how to reach an end point in coding; grounded theorists
-call it \emph{saturation}. Saturation occurs when new data is added to the
-researcher's data set and no new tags or modifications to the coding system are
-required. This is when the researcher's system is able to express data that was
-\emph{not} used to generate it. The requisite number of data to reach this point
-may vary drastically based on factors such as researcher, topic, and motivating
-research questions.
+How does the researcher know when the theory is adequate and when to stop
+collecting and coding new data? There are three tenets that can help answer
+that question, and which are pivotal to the validity of the grounded theory
+method~\cite{Strauss67discoveryof}.
+%
+\begin{enumerate*}
+%
+\item The tenet of \emph{constant comparison} is that during all phases of
+coding, the researcher must constantly return to earlier data to check whether
+tags are applied consistently.
+%
+\item The tenet of \emph{theoretical sampling} focuses on filling perceived
+gaps in the data based on the current theory. For example, we chose to analyze
+explanations of algorithms operating on three different underlying data types:
+lists, trees, and graphs. After analyzing explanations of merge sort,
+explanations of other sorting algorithms have less theoretical sampling value
+than explanations of a very different kind of algorithm.
+%
+\item The tenet of \emph{saturation} helps determine when to stop collecting
+and coding new data. Saturation occurs when the coding system is able to
+accommodate new data without modification. That is, when the theory can
+accurately describe data that was \emph{not} used to generate it. The amount of
+data needed to reach this point will vary depending on the topic, research
+questions, and individual researchers.
+%
+\end{enumerate*}
+
 
 \subsection{Teaching Algorithms}
 \label{sec:back:rw}
