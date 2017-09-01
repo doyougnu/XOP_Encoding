@@ -54,6 +54,14 @@
 
 \acmPrice{15.00}
 
+% inline alternative separator in grammar definitions
+\newcommand{\OR}{\OB{\hspace{1.5ex}|\hspace{1.5ex}}}
+
+% explanation tree stack operation
+\newcommand{\Push}{\OB{\Rightarrow}}
+\newcommand{\Pop}{\OB{\Leftarrow}}
+\newcommand{\PopPush}{\OB{\Leftrightarrow}}
+
 
 \begin{document}
 \title{A Domain Analysis of Data Structure and Algorithm Explanations in the Wild}
@@ -486,10 +494,6 @@ they support.
 %
 We made no attempt to restrict the size of the data collected. The smallest
 document collected was 1.5 pages and the longest was 18 pages.
-%
-Artifacts are indexed according to the algorithm to be explained and a simple
-counter. For example, the first AVL tree document is named AVT01 and the fifth
-is named AVT05.
 
 
 All data was collected and coded by hand by a single researcher with the aid of
@@ -531,26 +535,48 @@ Bellman-Ford's shortest-path algorithm, which we ignored.
 
 \section{Results}
 
-In this section we present our findings. We make three major observations from
-the data. First, we observe that the data is able to be expressed in the coding
-system, provide an overview of the coding system in Section \ref{sec:res:sys}
-and provide a sample coding (table~\ref{tbl:sample}). Secondly, in Section
-\ref{sec:res:xopTree} we observe that data that is expressed through the lens of
-the coding system results is an explanation tree. Lastly, we observe that the
-explanation artifacts presentation of content corresponds with a pre-order
-traversal of its explanation tree.
+In this section we present the results of our grounded theory analysis.
+%
+In Section~\ref{sec:res:data}, we briefly describe the coded data set and a
+simple associated tool that we provide.
+%
+In Section~\ref{sec:res:sys} we describe the coding system produced by the
+grounded theory analysis and provide a sample coding to illustrate its use. We
+observe that the coding paradigm identified during axial coding is that
+explanations are tree structured.
+%
+In Section~\ref{sec:res:xopTree}, we discuss the tree structure of explanations
+and describe how to transform a coded explanation artifact into the
+corresponding explanation tree.
+
 
 \subsection{Data Set and Tool Support}
 \label{sec:res:data}
 
+The coded data set is available online.\footnote{Will be made available after
+anonymous review.} The coded documents are provided both in the proprietary
+Atlast.ti format and in an exported CSV format.
+%
+Artifacts are indexed according to the algorithm of focus and a simple counter.
+For example, the first AVL tree document is named AVT01 and the fifth is named
+AVT05.
+
+
+We also provide a small tool written in Haskell that implements the coding
+system described in Section~\ref{sec:res:sys} and the explanation tree
+representation described in Section~\ref{sec:res:xopTree}. The tool supports
+converting a code sequence into the corresponding explanation tree, and
+rendering explanation trees in a 2-dimensional plain-text format (see
+Figure~\ref{fig:tree}).
+%
+We provide the code sequence for each document in the data set in a format
+compatible with the tool.
+
+
 \subsection{The Coding System}
 \label{sec:res:sys}
 
-\newcommand{\OR}{\OB{\hspace{1.5ex}|\hspace{1.5ex}}}
-
-\newcommand{\Push}{\OB{\Rightarrow}}
-\newcommand{\Pop}{\OB{\Leftarrow}}
-\newcommand{\PopPush}{\OB{\Leftrightarrow}}
+The complete grammar is shown in table~\ref{res:tbl:grmr}.
 
 \begin{figure}
 \begin{syntax}
@@ -601,8 +627,6 @@ by the grounded theory analysis. These codes decorate aspect and move codes to
 add additional information.}
 \label{tbl:codes:dec}
 \end{table}
-
-The complete grammar is shown in table~\ref{res:tbl:grmr}.
 
 \input{sampleCoding}
 
