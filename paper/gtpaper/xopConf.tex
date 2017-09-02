@@ -62,6 +62,9 @@
 \newcommand{\Pop}{\OB{\Leftarrow}}
 \newcommand{\PopPush}{\OB{\Leftrightarrow}}
 
+% semantics
+\newcommand{\Sem}[1]{\OB{\llbracket#1\rrbracket}}
+
 
 \begin{document}
 \title{A Domain Analysis of Data Structure and Algorithm Explanations in the Wild}
@@ -718,7 +721,59 @@ also explained through a description with mathematical notation.
 \subsection{Explanation Trees}
 \label{sec:res:xopTree}
 
-% \input{DJK_tree}
+In the previous section, we described how our analysis revealed a hierarchical
+structure that is crucial to understanding how an explanation does its work.
+%
+We call this hierarchical structure an \emph{explanation tree}. The internal
+nodes of an explanation tree are the hierarchy of aspects that an explanation
+addresses, while the leaves of the tree are the specific moves taken to explain
+these aspects. Both the aspects and moves of an explanation tree can be
+decorated by secondary roles and notations.
+%
+The notion of an explanation tree, discovered during axial coding, became the
+\emph{coding paradigm} for our analysis, so we adapted our codes to capture
+this structure.
+
+
+Our coding system can be viewed as a simple stack-based language for
+constructing an explanation tree. Figure~\ref{fig:semantics} defines an
+interpretation of codes as operations in a stack-based machine that builds an
+explanation tree.
+%
+The semantic domain of codes under this interpretation is an update function on
+a stack of trees, represented as a linked list. The $\Push\,a$ code pushes a
+node labeled by $a$ with no children to the stack. Note that we use $a$ to
+represent both the aspect and the corresponding tree node on the stack. The
+$\Pop$ code pops the first two nodes on the stack and adds the first node as a
+child of the second. The $m$ code adds the move node $m$ to the stack and then
+immediately executes a pop code ($\Pop$) since moves correspond to leaves in
+the explanation tree.
+%
+In this interpretation, we assume that the codes have been preprocessed to
+incorporate all decorators into the corresponding nodes.
+%
+Using the $\Sem{\cdot}$ function we can build an explanation tree from a
+sequence of codes by simply left-folding the function over the codes with an
+initially empty stack, then executing pop codes until the stack is empty.
+
+
+\newcommand{\TS}{\mathit{ts}}
+
+\begin{figure}
+\[
+\begin{array}{r@{}l@{~}l}
+\Sem{\cdot}    &            &\,:~ \mathit{Tree}^* \to \mathit{Tree}^* \\
+\Sem{\Push\,a} &(\TS)       &= a::\TS \\
+\Sem{\Pop}     &(c::p::\TS) &= \mathit{addChild}(c,p)::\TS \\
+\Sem{m}        &(\TS)       &= \Sem{\Pop}(m::\TS)
+\end{array}
+\]
+\vspace{-1.5ex}
+\caption{Interpreting codes as operations in a stack machine that builds an
+explanation tree.}
+\label{fig:semantics}
+\end{figure}
+
 
 \begin{figure}
 \begin{Verbatim}[fontsize=\small,xleftmargin=2ex]
@@ -737,48 +792,22 @@ beginning of MS03 given in Table~\ref{tbl:sample}.}
 \label{fig:tree}
 \end{figure}
 
-The coding system borne out of the data is, in essence, one used to describe a
-tree structure. This conclusion was born out of necessity during axial coding
-and became the \emph{coding paradigm} for this study. The central problem was to
-keep track the different topics each document would discuss throughout their
-duration. This led directly to the creation of aspect and structure tags, which
-upon retrospection clearly formulate into a tree structure. An
-example tree is given below, constructed, by hand, via
-graphiz~\cite{Ellson2002}.
+
+The Haskell tool provided with the data set implements the transformation from
+code sequences to explanation trees. It also provides a way to render
+explanation trees. This functionality is illustrated in Figure~\ref{fig:tree},
+which renders the explanation tree produced by the code sequence in the coding
+sample in Table~\ref{tbl:sample}.
 
 
-Figure~\ref{fig:djk-tree} displays the explanation tree of an explanation
-artifact for Dijkstra's algorithm, that has been slightly altered to provide a
-useful example. Pentagonal nodes denote aspect nodes, while boxed nodes denote
-leaves, and the oval node is the root. We us a vertical ellipses to represent an
-arbitrary sub-tree. Italicized text represents a modifier or notation tag that
-\emph{has been applied} to another tag. Note that many leaves have been omitted
-for space considerations. By observation, a pre-order traversal of this tree
-corresponds with a normal reading of the document.
+A move at the leaf of an explanation tree can be understood to advance the
+reader's understanding of the aspects along the path to a root. For example,
+the last description move explains a disadvantage of the algorithm identified
+by the root.
+%
+The linear structure of the original explanation can be recovered by a
+pre-order traversal of the explanation tree. 
 
-Aspect tags become nodes in the explanation tree, and the aspect is set by the
-path to a given node. For example, if the aspect path is \brackets{Algorithm,
-  Operation} then the aspect is discussing the ``Operation'' of the
-``Algorithm''. Moves are leaves in the tree. If the move occurs in the code
-coincident with a structure and aspect tag, then it is represented in the tree
-as a leaf of the child aspect, for example the ``Summary'' leaf of the
-``Operation'' node. If a move tag appears without an aspect tag, then it
-represents a terminal leaf attached to the current node, as shown at the root
-node. If a move tag appears coincident with the pop operator then it manifests
-as a leaf, on the parent of the current node. This corresponds with popping the
-aspect, and then applying the move. Notation tags are represented as terminal
-leaf nodes, as seen at ``Code'' in figure~\ref{fig:djk-tree} or attached as
-labels to existing nodes or leaves as shown in ``Derivation, Mathematic''.
-Modifier tags are represented as labels that are attached to their input tags,
-regardless of how those input tags manifest, an example is node ``Implementation
-Related''.
-
-Some examples of reading the explanation tree in figure~\ref{fig:djk-tree} are
-as follows: Consider the path ``Algorithm, Complexity, Implementation Related'',
-this would be read as ``The document is discussing a related implementation of
-the algorithm, in terms of its computational complexity''. Another path may be
-``Algorithm, Operation, Summary'', this would be read as ``The document is
-giving a summary of an operation the algorithm uses''.
 
 \section{Discussion of Results}
 \label{sec:dis}
