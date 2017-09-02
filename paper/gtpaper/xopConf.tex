@@ -576,7 +576,70 @@ compatible with the tool.
 \subsection{The Coding System}
 \label{sec:res:sys}
 
-The complete grammar is shown in table~\ref{res:tbl:grmr}.
+The coding system consists of four finite sets of tags---aspects, moves, roles,
+and notations---determined through the grounded theory analysis. Aspects and
+moves are summarized in Table~\ref{tbl:codes:main}, roles and notations in
+Table~\ref{tbl:codes:dec}.
+
+
+\begin{table}
+% \begin{tabular}{>{\em}rl}
+\begin{tabular}{ll}
+\input{AspectTable}
+\\[-1.5ex]
+\input{MoveTable}
+\\[-1.5ex]
+\end{tabular}
+\caption{Overview of all \emph{aspects} and \emph{moves} identified by the grounded theory
+analysis. Aspects organize an explanation into its constituent parts while
+moves are the specific steps taken to guide the reader toward understanding.}
+\label{tbl:codes:main}
+\end{table}
+
+
+An \emph{aspect} tag identifies a constituent part of an algorithm explanation,
+that is, \emph{what} is being discussed. Example aspects of an explanation are
+the goal of the algorithm, required operations, historical context, advantages
+and disadvantages, and implementation details.
+%
+A \emph{move} tag is always associated with a parent aspect and describes
+\emph{how} that aspect is addressed, that is, the step taken by the explainer
+to help advance the reader's understanding. For example, by breaking the aspect
+into cases, providing an example or proof, or defining a concept. A single
+aspect may be explained in several moves. We take the name for this concept
+from \citet{bellack1966language}'s notion of a ``pedagogical move''.
+
+
+\begin{table}
+% \begin{tabular}{>{\em}rl}
+\begin{tabular}{ll}
+\input{RoleTable}
+\\[-1.5ex]
+\input{NotationTable}
+\\[-1.5ex]
+\end{tabular}
+\caption{Overview of the secondary \emph{roles} and \emph{notations} identified
+by the grounded theory analysis. These codes decorate aspect and move codes to
+add additional information.}
+\label{tbl:codes:dec}
+\end{table}
+
+
+Both aspect and move tags can be decorated by tags describing secondary roles
+and notations.
+%
+A \emph{role} tag modifies a move or aspect to indicate that this part of the
+explanation serves some secondary purpose not directly captured by the modified
+tag. For example, the Aside role might be attached to a move to indicate that
+the given move is an aside that does not directly advance the explanation of
+the parent aspect, while the Pedagogical role might indicate that the move
+gives advice about how to study an aspect rather than explaining it.
+%
+A \emph{notation} tag modifies a move or aspect to indicate that this part of
+the explanation is presented in some format other than natural language text.
+If no notation decorator is provided, the tagged fragment is assumed to be
+text.
+
 
 \begin{figure}
 \begin{syntax}
@@ -596,82 +659,61 @@ d\in\mathit{Decorator}
 
 \vspace{-1.5ex}
 \caption{Syntax of codes from grounded theory analysis.}
-\label{tbl:codes:syntax}
+\label{fig:codes:syntax}
 \end{figure}
 
-\begin{table}
-% \begin{tabular}{>{\em}rl}
-\begin{tabular}{ll}
-\input{AspectTable}
-\\[-1.5ex]
-\input{MoveTable}
-\\[-1.5ex]
-\end{tabular}
-\caption{Overview of all \emph{aspects} and \emph{moves} identified by the grounded theory
-analysis. Aspects organize an explanation into its constituent parts while
-moves are the specific steps taken to guide the reader toward understanding.}
-\label{tbl:codes:main}
-\end{table}
 
+The syntax of codes in our system is defined by the grammar in
+Figure~\ref{fig:codes:syntax}, which refers to the tags defined in
+Tables~\ref{tbl:codes:main} and~\ref{tbl:codes:dec}.
+%
+During axial coding, it was realized that aspects of an explanation are
+hierarchically arranged, and that in many cases it is only possible to
+understand how a move advances an explanation by considering not only the
+parent aspect but also its ancestors.
+%
+Therefore, the coding system needs a way to capture this hierarchy. To do this,
+we introduced structuring elements to our codes for indicating where in the
+hierarchy a given aspect sits.
+%
+A new child aspect $a$ is introduced by a ``push'' code, $\Push\,a$, and we
+exit out of this aspect with a corresponding ``pop'' code, $\Pop$. A sibling
+aspect can be added to the hierarchy with a pop followed by a push. Since
+adding siblings is quite common, we introduce $\PopPush\,a$ as syntactic sugar
+for this case.
+%
+A move tag $m$ is added as a child to the current aspect, which may not be the
+most recent aspect named in a code due to intervening pop codes.
+%
+Finally, secondary roles and notations are unified as \emph{decorators}; a
+decorator $d$ can be added to a code $c$ as $c+d$.
 
-\begin{table}
-% \begin{tabular}{>{\em}rl}
-\begin{tabular}{ll}
-\input{RoleTable}
-\\[-1.5ex]
-\input{NotationTable}
-\\[-1.5ex]
-\end{tabular}
-\caption{Overview of the secondary \emph{notations} and \emph{roles} identified
-by the grounded theory analysis. These codes decorate aspect and move codes to
-add additional information.}
-\label{tbl:codes:dec}
-\end{table}
 
 \input{sampleCoding}
 
-The coding system consists of 4 finite sets of tags. Aspect tags determine what
-subject is being discussed in the corresponding section of the document.
+
+In Table~\ref{tbl:sample}, we illustrate the application of the coding system
+to the beginning of one of the documents in our data set, MS03.
 %
-Structuring tags construct and traverse the structure of the document. The
-push and | tags take a single aspect tag as input and creates a sub-aspect
-for that input tag. For example in row 5 of example~\ref{tbl:sample}, the
-snippet exists in the aspect ``Algorithm'', thus ``push Motivation'' will
-create a sub-aspect that denotes \emph{the motivation of the Algorithm}.
+The document begins in Row~1 with a header that we code as the root aspect,
+representing the algorithm itself. Row~2 addresses a sub-aspect, the merge
+operation, which it explains in two moves: a description, and the definition of
+an in-vivo term.
 %
-The pop tag takes any number of move and expression tags, lifts one aspect
-level, and then applies the input tags. Note that if a pop and push tags occur
-in the same sequence, pop is always applied before push. The return tag takes no
-input, and pops until reaching the root aspect. The pipe tag is syntactic sugar
-for moving to a sibling aspect, it is synonymous with the sequence ``pop push
-<input tags>''.
-
-
-When a aspect tag is \emph{orphaned} as in row~1 of example~\ref{tbl:sample}
-\todo{reference rows in a table?}, then that is interpreted as returning to the
-top level scope and then sub scoping into that tags aspect. The first tag in
-every document is interpreted as setting the \emph{root} node of that particular
-document. For instance, in example~\ref{tbl:sample} row~1, the first tag:
-``Algorithm'', sets the root aspect for the entire example.
-
-Move tags determine what the document is \emph{doing} for a given section.
-These tags are concrete things that are being done in the text, such as: Giving
-an example, providing an outline, describing something, concluding a point, or
-giving a proof. Move tags may occur alone or with any other tags. When move
-tags are orphaned then they are interpreted as adding that move to the current
-aspect. For example, row~4 in table~\ref{tbl:sample}, occurs in the
-aspect ``Algorithm'', thus it is interpreted as: The document is discussing
-an Algorithm, and expressing it in a visual manner.
-
-Notation tags denote \emph{how} the aspect is being expressed , some examples
-are: Cartoon, PseudoCode, Code, and Table. Notation tags may be orphaned or
-occur with any other tag, when they occur with another tag, such as a move, then
-they are interpreted as specifying how that move is expressed in relation to the
-current aspect. When they occur as orphans then they denote how the current
-aspect is being expressed. Lastly, Modifier tags alter the semantic meaning of
-the tags that they are applied, each is a special case described in
-table~\ref{res:tbl:grmr}.
+Row~3 is coded by a pop since the explanation is no longer focused on this
+operation, but is defining what merge sort is. This move is decorated by the
+sequence notation since it is defined by a sequence of steps.
 %
+Row~4, referring to a diagram illustrating this definition, further decorates
+this move with the cartoon notation.
+%
+Row~5 concerns the sub-aspect of motivating merge sort, which it does through a
+description move that uses (light) mathematical notation.
+%
+Row~6 introduces the sibling aspect of disadvantages of merge sort, which is
+also explained through a description with mathematical notation.
+
+
 
 \subsection{Explanation Trees}
 \label{sec:res:xopTree}
@@ -687,9 +729,8 @@ Aspect Algorithm
 +- Move Definition @ [Note Sequence,Note Cartoon]
 +- Aspect Motivation
 |  `- Move Description @ [Note Mathematics]
-+- Aspect Disadvantage
-|  `- Move Description @ [Note Mathematics]
-`- Aspect Operation
+`- Aspect Disadvantage
+   `- Move Description @ [Note Mathematics]
 \end{Verbatim}
 \caption{Rendering of the explanation tree produced by the coding of the
 beginning of MS03 given in Table~\ref{tbl:sample}.}
