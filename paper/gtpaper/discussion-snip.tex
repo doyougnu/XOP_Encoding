@@ -1,0 +1,104 @@
+In this section we summarize and interpret the results presented above. In
+section \ref{sec:dis:model} we describe the benefits of translating explanation
+artifacts into explanation trees. Section \ref{sec:dis:expr} reflects on
+supporting varied expressions of like content and section \ref{sec:dis:tail}
+discusses the support of tailored, adaptive, explanations. Although we posit
+several benefits to using work presented in this paper, all such benefits are
+merely conjectures until such a DSL, as is referenced throughout this paper, is
+created. \todo{where do we say this line}
+
+The central problem with designing and constructing an explanation-oriented DSL
+is translating explanations into an abstract computational model. Several issues
+immediately arise with such an approach: 1) What is an \emph{explanation} and
+how does one model it as a computational concept? 2) How does one react to user
+input? 3) How does one capture varied notation? 4) Similarly, how does one
+capture the flexibility and robustness of tailored explanations. Throughout this
+section we refer to the \emph{consumer} of an explanation to mean the end
+audience for an explanation that the user of the DSL creates.
+
+
+\subsection{Advantages of an Abstract Model}
+\label{sec:dis:model}
+
+% Problem 1
+Rather than delving into the yawning maw of philosophy of
+explanation~\cite{sep-scientific-explanation} we offload such concerns to the
+prospective user's of the DSL. The remaining issues, we believe, are
+significantly alleviated with explanation trees.
+
+% Problem 2
+In order to support interaction with a consumer a DSL must have an abstract
+model with which the user, and consumer may interact with. Explanation trees
+directly enable this type of behavior by providing an abstract model of an
+explanation artifact.
+%
+By distilling an explanation artifact into an explanation tree, a user may
+create an explanation that matches, and extends, the interactivity with static
+documents. For example, a user may want to create an explanation of the
+mergesort algorithm; which would correspond directly with a translation of an
+explanation artifact to an explanation tree. The user may then anticipate
+inquires into other topics related to mergesort but that are not covered in
+static documents, such as computational complexity or array data structures.
+
+Because explanation trees are, in essence, abstract models of explanations, one
+could imagine the user adding special edges or \emph{links} to support such
+inquires. Then if a consumer of the explanation inquired about computational
+complexity, the explanation could traverse such a link to the explanation tree
+for computational complexity. Such features are simply not possible with
+traditional static documents.
+
+Furthermore, the benefits of an abstract model is that one is now able to
+compare, abstractly, different explanations for like things. In fact, one may
+envision having database of explanations for like things which could be used to
+formulate a \emph{general explanation} for a given topic. Such a database would
+have more advantages, some of which are described below.
+
+
+\subsection{Handling Content Expression}
+\label{sec:dis:expr}
+% Problem 3
+A trivial examination of explanation artifacts or any experience in academia
+reveals that like things are explained using varied and eclectic notations. The
+notations encompassed in the coding system are unlikely to be an exhaustive list
+of all such notations.
+
+Content is orthogonal to expression in an explanation tree, thus content may
+therefore be separated from notation, and the expression of content in an
+explanation tree is extensible. A thorough or meticulous user may wish to create
+explanations that can express content with varied notations. Such a user may
+provide their explanations with a textual expression, a cartoon expression or a
+mathematical formulation, all notations are viable because of the separation of
+content and content expression. Such features are currently matched by
+traditional static documents. An explanation-oriented DSL, that operates on
+explanation trees, could support expressing a single aspect (a single node in
+the explanation tree) with different expressions, thereby increasing the options
+available to DSL users and explanation consumers.
+
+For example, a DSL user may provide a code based expression for the relax
+operation in Dijkstra's algorithm, but they may also provide an auxiliary
+cartoon based expression. The addition of an auxiliary expression could then be
+requested by an explanation consumer. Technically, the explanation-tree would
+simply have another expression tag applied to the same node. This feature, the
+ability to express the same content, in many notations, at the request of the
+explanation consumer, is only observed in in-person explanations. \todo{this probably
+  needs work}
+
+% Problem 4
+\subsection{Towards Tailored Computational Explanation}
+\label{sec:dis:tail}
+The last issue with an explanation-oriented DSL is that of supporting tailored
+explanation. This problem essentially boils down to adapting, in real time, to
+an explanation consumer. While support for such a feature will hinge on the
+interaction semantics available to the consumer, we view explanation trees as
+being a significant step in the right direction.
+
+Serving as an abstract model, it becomes possible to collect several explanation
+artifacts of like content, much like the data used in this study. By having a
+database of such artifacts a user could construct an explanation that draws upon
+several explanation artifacts except just one, as is the case with current
+static \emph{and} interactive tools. Thus, if a consumer becomes stuck on a
+at some point of an explanation, they may switch to the corresponding point in
+another explanation and attempt to proceed from there, or consume only that
+node, and then return to the previous explanation. While this is still far from
+competing with a one-on-one tutorship on the material, such a feature is simply
+impossible with static documents and represents a step toward more interactivity.

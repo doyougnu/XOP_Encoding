@@ -8,6 +8,7 @@
 \usepackage[inline]{enumitem}
 \usepackage{multicol}
 \usepackage{float}
+\usepackage[shortcuts]{extdash}
 % \usepackage[labelfont=bf,textfont=up]{caption}
 
 \usepackage{textcomp}
@@ -537,6 +538,7 @@ Bellman-Ford's shortest-path algorithm, which we ignored.
 
 
 \section{Results}
+\label{sec:res}
 
 In this section we present the results of our grounded theory analysis.
 %
@@ -809,126 +811,105 @@ The linear structure of the original explanation can be recovered by a
 pre-order traversal of the explanation tree. 
 
 
-\section{Discussion of Results}
+\section{Discussion}
 \label{sec:dis}
-In this section we summarize and interpret the results presented above. In
-section \ref{sec:dis:model} we describe the benefits of translating explanation
-artifacts into explanation trees. Section \ref{sec:dis:expr} reflects on
-supporting varied expressions of like content and section \ref{sec:dis:tail}
-discusses the support of tailored, adaptive, explanations. Although we posit
-several benefits to using work presented in this paper, all such benefits are
-merely conjectures until such a DSL, as is referenced throughout this paper, is
-created. \todo{where do we say this line}
 
-The central problem with designing and constructing an explanation-oriented DSL
-is translating explanations into an abstract computational model. Several issues
-immediately arise with such an approach: 1) What is an \emph{explanation} and
-how does one model it as a computational concept? 2) How does one react to user
-input? 3) How does one capture varied notation? 4) Similarly, how does one
-capture the flexibility and robustness of tailored explanations. Throughout this
-section we refer to the \emph{consumer} of an explanation to mean the end
-audience for an explanation that the user of the DSL creates.
+This formative study was conducted to better understand the domain of algorithm
+and data structure explanations, in order to inform the design of an
+explanation-oriented DSL for creating interactive explanation artifacts. In
+this section, we interpret the results from Section~\ref{sec:res} in this
+context.
 
-\subsection{Advantages of an Abstract Model}
-\label{sec:dis:model}
 
-% Problem 1
-Rather than delving into the yawning maw of philosophy of
-explanation~\cite{sep-scientific-explanation} we offload such concerns to the
-prospective user's of the DSL. The remaining issues, we believe, are
-significantly alleviated with explanation trees.
-
-% Problem 2
-In order to support interaction with a consumer a DSL must have an abstract
-model with which the user, and consumer may interact with. Explanation trees
-directly enable this type of behavior by providing an abstract model of an
-explanation artifact.
+At a basic level, the grounded theory analysis reveals a set of concepts that
+should be realized by abstractions, constructs, in features of the DSL.
 %
-By distilling an explanation artifact into an explanation tree, a user may
-create an explanation that matches, and extends, the interactivity with static
-documents. For example, a user may want to create an explanation of the
-mergesort algorithm; which would correspond directly with a translation of an
-explanation artifact to an explanation tree. The user may then anticipate
-inquires into other topics related to mergesort but that are not covered in
-static documents, such as computational complexity or array data structures.
+The DSL should provide ways to capture all of the various aspects of an
+algorithm explanation, including aspects like historical background,
+motivation, and advantages/disadvantages that are typically not captured
+formally.
+%
+The DSL should also support a range of more and less formal mechanisms for
+advancing an explanation through pedagogical moves. The DSL should provide
+formal mechanisms for (semi\=/)automatically generating examples from
+implementations, performing case-analyses and derivations, and testing
+properties of an algorithm, but also support informal explanatory moves such as
+presenting observations and assumptions.
+%
+The DSL should also provide support for a variety of different notations and
+support secondary roles such as asides and caveats.
 
-Because explanation trees are, in essence, abstract models of explanations, one
-could imagine the user adding special edges or \emph{links} to support such
-inquires. Then if a consumer of the explanation inquired about computational
-complexity, the explanation could traverse such a link to the explanation tree
-for computational complexity. Such features are simply not possible with
-traditional static documents.
 
-Furthermore, the benefits of an abstract model is that one is now able to
-compare, abstractly, different explanations for like things. In fact, one may
-envision having database of explanations for like things which could be used to
-formulate a \emph{general explanation} for a given topic. Such a database would
-have more advantages, some of which are described below.
+Explanation trees can serve as an underlying semantic model for the DSL.
+%
+In an interactive setting, explanation trees provide convenient places (nodes)
+to hang extra details about a topic which may be explored or not. Explanation
+trees presented as lecture notes enforce a single linear path through this tree
+structure, but interactive explanations can provide multiple paths through the
+same tree structure corresponding to explanations at different levels of
+abstraction and with different focuses. In addition to providing suggested
+paths through the tree, we can also allow users to navigate the tree on their
+own, exploring more details or alternative explanations where desired.
+%
+The secondary roles we discovered in existing explanations are evidence that
+such supplementary information, that does not directly advance the explanation,
+is useful. However, there is a disincentive in a linear explanation to provide
+too many extra details that detract from the main line of the explanation.
+These concerns would be mitigated in an interactive setting where secondary
+details can be explored on-demand and remain out-of-the-way otherwise.
 
-\subsection{Handling Content Expression}
-\label{sec:dis:expr}
-% Problem 3
-A trivial examination of explanation artifacts or any experience in academia
-reveals that like things are explained using varied and eclectic notations. The
-notations encompassed in the coding system are unlikely to be an exhaustive list
-of all such notations.
 
-Content is orthogonal to expression in an explanation tree, thus content may
-therefore be separated from notation, and the expression of content in an
-explanation tree is extensible. A thorough or meticulous user may wish to create
-explanations that can express content with varied notations. Such a user may
-provide their explanations with a textual expression, a cartoon expression or a
-mathematical formulation, all notations are viable because of the separation of
-content and content expression. Such features are currently matched by
-traditional static documents. An explanation-oriented DSL, that operates on
-explanation trees, could support expressing a single aspect (a single node in
-the explanation tree) with different expressions, thereby increasing the options
-available to DSL users and explanation consumers.
+A more speculative application is that our theory could be used to adapt and
+remix existing explanations into new ones, targeted at a specific audience or
+even an individual user.
+%
+These existing explanations could be in the form of coded lecture notes or
+explanations created in the future using our proposed DSL.
+%
+By organizing an explanation into its constituent aspects that describe
+\emph{what} part of an explanation is doing, and separating this from the moves
+that describe \emph{how} it is doing it, it becomes possible to identify in
+other explanations alternative ways of explaining the same thing.
+%
+For example, suppose a user is interacting with an explanation that uses a
+programming language she is unfamiliar with or is less formal than she likes; a
+system could identify corresponding parts from other explanations that use a
+different notation or contains more mathematically-decorated moves. Likewise,
+an explanation designer could anticipate such challenges and use such a system
+to piece together an initial alternative explanation that can then be refined
+to be made more consistent with the rest.
+%
+This empirical approach to generating alternative explanations can supplement
+other strategies explored in previous work, such as generating alternative
+explanations from equivalence laws~\cite{EW13jvlc}.
 
-For example, a DSL user may provide a code based expression for the relax
-operation in Dijkstra's algorithm, but they may also provide an auxiliary
-cartoon based expression. The addition of an auxiliary expression could then be
-requested by an explanation consumer. Technically, the explanation-tree would
-simply have another expression tag applied to the same node. This feature, the
-ability to express the same content, in many notations, at the request of the
-explanation consumer, is only observed in in-person explanations. \todo{this probably
-  needs work}
 
-% Problem 4
-\subsection{Towards Tailored Computational Explanation}
-\label{sec:dis:tail}
-The last issue with an explanation-oriented DSL is that of supporting tailored
-explanation. This problem essentially boils down to adapting, in real time, to
-an explanation consumer. While support for such a feature will hinge on the
-interaction semantics available to the consumer, we view explanation trees as
-being a significant step in the right direction.
+\section{Conclusion}
+\label{sec:conc}
 
-Serving as an abstract model, it becomes possible to collect several explanation
-artifacts of like content, much like the data used in this study. By having a
-database of such artifacts a user could construct an explanation that draws upon
-several explanation artifacts except just one, as is the case with current
-static \emph{and} interactive tools. Thus, if a consumer becomes stuck on a
-at some point of an explanation, they may switch to the corresponding point in
-another explanation and attempt to proceed from there, or consume only that
-node, and then return to the previous explanation. While this is still far from
-competing with a one-on-one tutorship on the material, such a feature is simply
-impossible with static documents and represents a step toward more interactivity.
+This paper has presented a grounded theory analysis of explanations of
+algorithms and data structures. The analysis was performed on 15 sets of
+lecture notes covering three very different algorithms.
+%
+The grounded theory analysis yielded a coding paradigm that organizes algorithm
+explanations into explanation trees, where internal nodes represent various
+aspects of the algorithm to be explained and leaves represent pedagogical moves
+that incrementally advance the reader's understanding. The analysis also
+enumerated the set of aspects and moves that appeared in our data set and
+revealed that explanations exhibit a variety of notations.
+%
+We make our coded data set publicly available and provide an associated tool
+for rendering the explanation tree corresponding to each document and to
+support future work based on our coding system.
 
-\section{Conclusion and Future Work}
 
-\todo{write conclusion}
-As described in the previous section, we believe that this work offers several
-avenues of continued research. First an foremost is to begin writing a DSL based
-on the results presented here. Several aspects of the DSL are abstract; for
-instance the semantics of interaction, and the user interface. These aspects of
-the DSL are likely to remain open questions until an implementation is created. 
+This study was performed as a formative domain analysis to inform the design of
+a DSL for creating interactive explanations of algorithms and data structures.
+Explanation trees can provide a good semantic basis for such a language, and
+that the enumerated aspects, moves, and roles discovered by the analysis
+suggest a suite of useful constructs and abstractions the language should
+support and establishes its basic expressiveness requirements.
 
-The coding system is, admittedly, based on few raw documents. While we reached
-saturation with only eleven documents, there is always a risk that the coding
-system is not transferable to other computer science content. Thus, more coding,
-with varied content is pivotal to validate that the coding system can actually
-express radically different content then that which it is grounded in.
-\todo{what else?}
 
 \bibliography{XOPbib,eric}
 \bibliographystyle{ACM-Reference-Format}
