@@ -199,9 +199,13 @@ Specifically, we answer the following research questions:
 %
 \begin{enumerate}[label=RQ\arabic*.,ref=RQ\arabic*,leftmargin=*]
 
-\item \label{rq:parts}
+\item \label{rq:what}
 %
 What are the component parts of an algorithm explanation?
+
+\item \label{rq:how}
+%
+How does each part advance the overall explanation?
 
 \item \label{rq:structure}
 %
@@ -326,16 +330,15 @@ explanations, but have the advantage of being easy to massively share and reuse
 via libraries and the internet.
 
 
-In-person lectures, such as in many undergraduate computer science programs,
-exist at a midway point between impersonal and personal explanations, perhaps
-closer to the personal end of the spectrum. These \emph{classroom explanations}
-are adaptable---students can ask questions in class, the teacher can respond,
-and explanations can be adapted on the fly if students are confused---but they
-are not as adaptable as personal explanations since the teacher must
-accommodate many students at once. Classroom explanations are more efficient
-than personal explanations since they are shared amongst many students, but not
-as efficient as impersonal explanations since they are still ephemeral and
-therefore difficult to reuse.
+In-person lectures exist at a midway point between impersonal and personal
+explanations, perhaps closer to the personal end of the spectrum. These
+\emph{classroom explanations} are adaptable---students can ask questions in
+class, the teacher can respond, and explanations can be adapted on the fly if
+students are confused---but they are less adaptable than personal explanations
+since the teacher must accommodate many students at once. Classroom
+explanations are more efficient than personal explanations since they are
+shared among many students, but less efficient than impersonal explanations
+since they are ephemeral and therefore difficult to reuse.
 
 
 We target another midway point, closer to the impersonal end of the spectrum,
@@ -376,10 +379,10 @@ This subsection briefly outlines the grounded theory methodology from
 \citet{corbin2014basics} used in our study.
 
 
-The first task in grounded theory is to collect initial data from the subject
-one wishes to study. For example, a researcher who wants to find out why some
-students drop out of computer science programs might conduct interviews with
-students, and collect student schedules and homework assignments.
+Grounded theory starts by collecting initial data on the subject of interest.
+For example, a researcher interested in why students drop out of computer
+science programs might conduct interviews with students, and collect student
+schedules and homework assignments.
 %
 Once some data is collected, the researcher begins \emph{coding}, which is the
 process of assigning descriptive tags to qualitative data.
@@ -587,9 +590,11 @@ corresponding explanation tree.
 \subsection{Data Set and Tool Support}
 \label{sec:res:data}
 
-The coded data set is available online.\footnote{Will be made available after
-anonymous review.} The coded documents are provided both in the proprietary
-Atlast.ti format and in an exported CSV format.
+The coded data set is available online.%
+\footnote{\url{https://github.com/lambda-land/XOP-Algorithms-Data}}
+%
+The coded documents are provided both in the proprietary Atlast.ti format and
+in an exported CSV format.
 %
 Artifacts are indexed according to the algorithm of focus and a simple counter.
 For example, the first AVL tree document is named AVT01 and the fifth is named
@@ -599,7 +604,7 @@ AVT05.
 We also provide a small tool written in Haskell that implements the coding
 system described in Section~\ref{sec:res:sys} and the explanation tree
 representation described in Section~\ref{sec:res:xopTree}. The tool supports
-converting a code sequence into the corresponding explanation tree, and
+converting a code sequence into the corresponding explanation tree and
 rendering explanation trees in a 2-dimensional plain-text format (see
 Figure~\ref{fig:tree}).
 %
@@ -611,8 +616,8 @@ compatible with the tool.
 \label{sec:res:sys}
 
 The coding system consists of four finite sets of tags---aspects, moves, roles,
-and notations---determined through the grounded theory analysis. Aspects and
-moves are summarized in Table~\ref{tbl:codes:main}, roles and notations in
+and notations---identified by the grounded theory analysis. Aspects and moves
+are summarized in Table~\ref{tbl:codes:main}, roles and notations in
 Table~\ref{tbl:codes:dec}.
 
 
@@ -632,16 +637,17 @@ moves are the specific steps taken to guide the reader toward understanding.}
 
 
 An \emph{aspect} tag identifies a constituent part of an algorithm explanation,
-that is, \emph{what} is being discussed. Example aspects of an explanation are
-the goal of the algorithm, required operations, historical context, advantages
-and disadvantages, and implementation details.
+that is, \emph{what} is being discussed (answering \ref{rq:what}). Example
+aspects of an explanation are the goal of the algorithm, required operations,
+historical context, advantages and disadvantages, and implementation details.
 %
 A \emph{move} tag is always associated with a parent aspect and describes
-\emph{how} that aspect is addressed, that is, the step taken by the explainer
-to help advance the reader's understanding. For example, by breaking the aspect
-into cases, providing an example or proof, or defining a concept. A single
-aspect may be explained in several moves. We take the name for this concept
-from \citet{bellack1966language}'s notion of a ``pedagogical move''.
+\emph{how} that aspect is addressed (\ref{rq:how}), that is, the step taken by
+the explainer to help advance the reader's understanding. For example, by
+breaking the aspect into cases, providing an example or proof, or defining a
+concept. A single aspect may be explained in several moves. We take the name
+for this concept from \citet{bellack1966language}'s notion of a ``pedagogical
+move''.
 
 
 \begin{table}
@@ -664,15 +670,16 @@ and notations.
 %
 A \emph{role} tag modifies a move or aspect to indicate that this part of the
 explanation serves some secondary purpose not directly captured by the modified
-tag. For example, the Aside role might be attached to a move to indicate that
-the given move is an aside that does not directly advance the explanation of
-the parent aspect, while the Pedagogical role might indicate that the move
-gives advice about how to study an aspect rather than explaining it.
+tag (related to both \ref{rq:how} and \ref{rq:structure}). For example,
+attaching an Aside role to a move might indicate that the move is an aside that
+does not directly advance the explanation of the parent aspect, while the
+Pedagogical role might indicate that the move gives advice about how to study
+an aspect rather than explaining it.
 %
 A \emph{notation} tag modifies a move or aspect to indicate that this part of
-the explanation is presented in some format other than natural language text.
-If no notation decorator is provided, the tagged fragment is assumed to be
-text.
+the explanation is presented in some format other than natural language text
+(\ref{rq:notations}). If no notation decorator is provided, the tagged fragment
+is assumed to be text.
 
 
 \begin{figure}
@@ -701,10 +708,10 @@ The syntax of codes in our system is defined by the grammar in
 Figure~\ref{fig:codes:syntax}, which refers to the tags defined in
 Tables~\ref{tbl:codes:main} and~\ref{tbl:codes:dec}.
 %
-During axial coding, it was realized that aspects of an explanation are
+During axial coding, we observed that aspects of an explanation are
 hierarchically arranged, and that in many cases it is only possible to
 understand how a move advances an explanation by considering not only the
-parent aspect but also its ancestors.
+parent aspect but also its ancestors (\ref{rq:structure}).
 %
 Therefore, the coding system needs a way to capture this hierarchy. To do this,
 we introduced structuring elements to our codes for indicating where in the
@@ -761,11 +768,9 @@ addresses, while the leaves of the tree are the specific moves taken to explain
 these aspects. Both the aspects and moves of an explanation tree can be
 decorated by secondary roles and notations.
 %
-\todo{respond to, there needs to be more explanation than discovered during
-  axial coding}
-The notion of an explanation tree, discovered during axial coding, became the
-\emph{coding paradigm} for our analysis, so we adapted our codes to capture
-this structure.
+The notion of an explanation tree, discovered by considering the relationship
+between adjacent moves during axial coding, became the \emph{coding paradigm}
+for our analysis, so we adapted our codes to capture this structure.
 
 
 Our coding system can be viewed as a simple stack-based language for
@@ -853,12 +858,11 @@ context.
 
 
 At a basic level, the grounded theory analysis reveals a set of concepts that
-should be realized by abstractions, constructs, in features of the DSL.
+should be realized by abstractions, constructs, and features of the DSL.
 %
-The DSL should provide ways to capture all of the various aspects of an
-algorithm explanation, including aspects like historical background,
-motivation, and advantages/disadvantages that are typically not captured
-formally.
+The DSL should provide ways to capture the various aspects of an algorithm
+explanation, including aspects like historical background, motivation, and
+advantages/disadvantages that are typically not captured formally.
 %
 The DSL should also support a range of more and less formal mechanisms for
 advancing an explanation through pedagogical moves. The DSL should provide
@@ -874,80 +878,88 @@ support secondary roles such as asides and caveats.
 Explanation trees can serve as an underlying semantic model for the DSL.
 %
 In an interactive setting, explanation trees provide convenient places (nodes)
-to hang extra details about a topic which may be explored or not. Explanation
-trees presented as lecture notes enforce a single linear path through this tree
-structure, but interactive explanations can provide multiple paths through the
-same tree structure corresponding to explanations at different levels of
-abstraction and with different focuses. In addition to providing suggested
-paths through the tree, we can also allow users to navigate the tree on their
-own, exploring more details or alternative explanations where desired.
+to hang extra details about an aspect that may be explored or not. Lecture
+notes enforce one path through an explanation, but interactive explanations can
+provide multiple paths through the same tree structure corresponding to
+explanations at different levels of abstraction and with different focuses. In
+addition to providing suggested paths through the tree, we can allow users to
+navigate the tree on their own, exploring more details or alternative
+explanations where desired.
 %
-The secondary roles we discovered in existing explanations are evidence that
-such supplementary information, that does not directly advance the explanation,
-is useful. However, there is a disincentive in a linear explanation to provide
-too many extra details that detract from the main line of the explanation.
-These concerns would be mitigated in an interactive setting where secondary
-details can be explored on-demand and remain out-of-the-way otherwise.
+The secondary roles we discovered are evidence that such supplementary
+information that does not directly advance the explanation is useful. However,
+there is a disincentive in a linear explanation to provide too many extra
+details that detract from the main line of the explanation. These concerns
+would be mitigated in an interactive setting where secondary details can be
+explored on-demand and remain out-of-the-way otherwise.
 
 
 A more speculative application is that our theory could be used to adapt and
 remix existing explanations into new ones, targeted at a specific audience or
 even an individual user.
 %
-These existing explanations could be in the form of coded lecture notes or
-explanations created in the future using our proposed DSL.
+% Existing explanations could be in the form of coded lecture notes or
+% explanations created in the future using our proposed DSL.
 %
 By organizing an explanation into its constituent aspects that describe
 \emph{what} part of an explanation is doing, and separating this from the moves
 that describe \emph{how} it is doing it, it becomes possible to identify in
 other explanations alternative ways of explaining the same thing.
 %
-For example, suppose a user is interacting with an explanation that uses a
-programming language she is unfamiliar with or is less formal than she likes; a
-system could identify corresponding parts from other explanations that use a
-different notation or contains more mathematically-decorated moves. Likewise,
-an explanation designer could anticipate such challenges and use such a system
-to piece together an initial alternative explanation that can then be refined
-to be made more consistent with the rest.
+For example, suppose a user is interacting with an explanation that is less
+formal than she likes; a system could identify corresponding parts from other
+explanations that contains additional proof aspects or more math-decorated
+moves. An explanation designer could also use such a system to proactively
+identify alternative explanations to be incorporated and refined to be more
+consistent with the rest.
 %
 This empirical approach to generating alternative explanations can supplement
 other strategies explored in previous work, such as generating alternative
 explanations from equivalence laws~\cite{EW13jvlc}.
 
-\section{Limitations}
-While we believe that the work presented here is a promising foundation for
-the explanation-oriented paradigm, there are several limitations to the
-results presented here that must be addressed.
 
-Admittedly, our data sample is narrow and focused because it does not include
-many other forms of explanation e.g. oral or video explanations. While this was
-a purposeful decision, it still limits the impact of the results presented here.
+Finally, it is important to acknowledge some limitations of this work. First,
+our decision to sample only lecture notes excludes many other ways that people
+already explain algorithms, such as oral or animated explanations. We
+restricted our study to lecture notes because they were easy to collect and
+analyze and because they represent coherent, self-contained explanations, which
+is the focus of our proposed DSL. However, unlike animations or algorithm
+visualization tools, lecture notes are static. Since we aim to produce
+interactive explanation artifacts, it is possible we missed important features
+because of this restriction.
+%
+Second, we chose grounded theory analysis because it is a process we are
+familiar with. 
+%
+However, grounded theory is typically best suited for answering \emph{why}
+questions (e.g.\ ...).
 
-\todo{eric sign off on this statement}
-We have expounded on the benefits of explanation trees, but we have said nothing
-on \textit{how} explanation trees could be used in practice. We purposefully
-leave this as an open question for future work because exploring it requires
-consideration of varying implementations which is outside the scope of our
-present purposes.
 
-\subsection{The Application of Grounded Theory}
-%% Why is grounded theory used for this application? What about Discourse Analysis?
-We chose to perform a grounded theory approach because we understood the
-qualitative nature of the data, and understood our desired long-term result.
-Based on these criteria grounded theory seemed a natural fit for the
-application. However, our results are significantly unlike results one would
-expect from a grounded theory analysis for two reasons. First, our research
-question was, and is, ill fitted for grounded theory. We are interested in the
-\textit{structure} of an explanation, not the \textit{relationship} between
-constituent parts of an explanation. The basic difference is between a
-\textit{how} question and a \textit{why} question. While grounded theory is not
-limited to \textit{why} questions, we find that our research question was
-sufficiently answered by the coding paradigm identified in
-section~\ref{sec:res:sys}. Therefore, this analysis falls short of grounded
-theory because the result is not a set of identifiable categories and the
-relations between them, rather it is the coding paradigm itself. In essence, our
-research question was not complex enough to warrant a full grounded theory
-analysis.
+% \todo{eric sign off on this statement}
+% We have expounded on the benefits of explanation trees, but we have said nothing
+% on \textit{how} explanation trees could be used in practice. We purposefully
+% leave this as an open question for future work because exploring it requires
+% consideration of varying implementations which is outside the scope of our
+% present purposes.
+% 
+% \subsection{The Application of Grounded Theory}
+% %% Why is grounded theory used for this application? What about Discourse Analysis?
+% We chose to perform a grounded theory approach because we understood the
+% qualitative nature of the data, and understood our desired long-term result.
+% Based on these criteria grounded theory seemed a natural fit for the
+% application. However, our results are significantly unlike results one would
+% expect from a grounded theory analysis for two reasons. First, our research
+% question was, and is, ill fitted for grounded theory. We are interested in the
+% \textit{structure} of an explanation, not the \textit{relationship} between
+% constituent parts of an explanation. The basic difference is between a
+% \textit{how} question and a \textit{why} question. While grounded theory is not
+% limited to \textit{why} questions, we find that our research question was
+% sufficiently answered by the coding paradigm identified in
+% section~\ref{sec:res:sys}. Therefore, this analysis falls short of grounded
+% theory because the result is not a set of identifiable categories and the
+% relations between them, rather it is the coding paradigm itself. In essence, our
+% research question was not complex enough to warrant a full grounded theory
+% analysis.
 
 %% explain in detail what the central phenomena was during GT
 
