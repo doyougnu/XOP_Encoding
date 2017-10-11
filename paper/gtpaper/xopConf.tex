@@ -191,22 +191,40 @@ explanations~\cite{EW13jvlc}, to build in responses to anticipated
 questions, and to provide explanations at multiple levels of abstraction.
 
 
-This paper represents a formative step toward this vision. We conduct a
-\emph{qualitative analysis} of our domain in order to determine the form and
-content of the explanation artifacts that educators are already creating.
+This paper presents a formative step toward this vision. We conduct a
+\emph{qualitative analysis} of our domain to determine the form and content of
+the explanation artifacts that educators are already creating.
 %
-Our motivating research questions for this analysis are: \TODO{Add another
-question about what are the features we need...} How are explanations of
-algorithms and data structures structured?
+Specifically, we answer the following research questions:
+%
+\begin{enumerate}[label=RQ\arabic*.,ref=RQ\arabic*,leftmargin=*]
+
+\item \label{rq:parts}
+%
+What are the component parts of an algorithm explanation?
+
+\item \label{rq:structure}
+%
+How are the parts of an algorithm explanation structured?
+
+\item \label{rq:notations}
+%
+What kinds of notations are used in algorithm explanations?
+
+\end{enumerate}
+%
+Answering these questions establishes expressiveness requirements for our DSL
+since we should be able to express at least explanations of the kinds educators
+are already creating. They also help to guide the design of the DSL by
+establishing an initial set of components and operations for building
+explanations.
 %
 We base our analysis on the established qualitative research method of
-\emph{grounded theory}~\cite{Strauss67discoveryof} in order to answer our
-motivating research question: How are existing explanations of Algorithms
-structured? Our grounded theory methodology is described in
+\emph{grounded theory}~\cite{Strauss67discoveryof}, which we describe in
 Section~\ref{sec:back:gt}.
 
 
-More specifically, we collect 15 explanation artifacts from the internet, as
+For our analysis, we collected 15 explanation artifacts from the internet, as
 described in Section~\ref{sec:exp:setup}. These artifacts are lecture notes
 that explain two algorithms and one data structure commonly covered in
 undergraduate computer science courses: Dijkstra's shortest path
@@ -214,16 +232,11 @@ algorithm~\cite[pp.~137--142]{KT06}, merge sort~\cite[210--214]{KT06}, and AVL
 trees~\cite[pp.~458--475]{KnuthArt3}.
 %
 Through the application of grounded theory, we develop a coding system that
-captures the structure and strategy of the explanation in each document.
-% An overview of the coding system is given in Section~\ref{sec:res:sys}.
-This paper makes the following contributions:
+captures the components, structure, and notations of the explanation in each
+document. This paper makes the following contributions:
 %
 \begin{enumerate}[label=C\arabic*.,ref=C\arabic*,leftmargin=*]
 
-% \item \label{contrib:method}
-% %
-% We provide a case study on analyzing \emph{qualitative data} through the
-% application of a formal research method \emph{grounded theory}.
 
 \item \label{contrib:codes}
 %
@@ -313,26 +326,25 @@ explanations, but have the advantage of being easy to massively share and reuse
 via libraries and the internet.
 
 
-In-person lectures, such as those covering algorithms in most undergraduate
-computer science programs, exist at a midway point between impersonal and
-personal explanations, perhaps closer to the personal end of the spectrum.
-These \emph{classroom explanations} are adaptable---students can ask questions
-in class, the teacher can respond, and explanations can be adapted on the fly
-if students are confused---but they are not as adaptable as personal
-explanations since the teacher must accommodate many students at once.
-Classroom explanations are more efficient than personal explanations since they
-are shared amongst many students, but not as efficient as impersonal
-explanations since they are still ephemeral and therefore difficult to reuse.
+In-person lectures, such as in many undergraduate computer science programs,
+exist at a midway point between impersonal and personal explanations, perhaps
+closer to the personal end of the spectrum. These \emph{classroom explanations}
+are adaptable---students can ask questions in class, the teacher can respond,
+and explanations can be adapted on the fly if students are confused---but they
+are not as adaptable as personal explanations since the teacher must
+accommodate many students at once. Classroom explanations are more efficient
+than personal explanations since they are shared amongst many students, but not
+as efficient as impersonal explanations since they are still ephemeral and
+therefore difficult to reuse.
 
 
-We target another midway point, a bit closer to the impersonal end of the
-spectrum, of \emph{interactive explanation artifacts} that provide as much of
-the responsiveness and adaptability of personal explanations as possible, but
-which can still be massively shared and reused online. Such an explanation
-artifact would be quite expensive to produce with current tools since an
-\emph{explanation designer} must not only construct a high quality initial
-explanation and corresponding visualizations, but also anticipate and
-explicitly program in responses to queries by the student.
+We target another midway point, closer to the impersonal end of the spectrum,
+of \emph{interactive explanation artifacts} that attempt to reproduce the
+responsiveness and adaptability of personal explanations, but which can still
+be shared and reused online. Such explanation artifacts would be expensive to
+produce with current tools since an \emph{explanation designer} must not only
+create a high quality initial explanation and corresponding visualizations, but
+also anticipate and explicitly program responses to queries by the student.
 %
 We expect that DSLs for XOP can help alleviate this burden.
 
@@ -341,12 +353,12 @@ We expect that DSLs for XOP can help alleviate this burden.
 \label{sec:back:gt}
 
 %% What is it
-The central idea behind grounded theory is to generate or discover a theory
-inductively, \emph{based on data}, rather than the usual scientific approach of
-using data to evaluate a theory developed a priori. 
+The core idea of grounded theory is to generate or discover a theory
+inductively, based on data, rather than the usual scientific approach of using
+data to evaluate a theory developed a priori. 
 %
-Grounded theory is rooted in a \emph{pragmatist} view that theory should be
-targeted at its intended uses~\cite{Strauss67discoveryof}.
+Grounded theory is rooted in a pragmatist view that theory should target
+its intended uses~\cite{Strauss67discoveryof}.
 %
 % uses vis-a-viz logico-deductive theories which are concerned with what can be
 % expressed by the theory~\cite{Strauss67discoveryof}. As Glaser and Strauss
@@ -360,8 +372,8 @@ targeted at its intended uses~\cite{Strauss67discoveryof}.
 % theory terminology in concert with an operational example that will show how
 % one may perform a grounded theory analysis.
 %
-The rest of this section briefly outlines the grounded theory methodology from
-\citet{corbin2014basics} that we used in this formative study.
+This subsection briefly outlines the grounded theory methodology from
+\citet{corbin2014basics} used in our study.
 
 
 The first task in grounded theory is to collect initial data from the subject
@@ -377,18 +389,17 @@ Coding consists of three stages:
 %
 \begin{enumerate*}
 %
-\item In the \emph{open coding} stage, the researcher writes down \emph{any}
-terms that describe the data.
+\item During \emph{open coding}, the researcher writes down \emph{any} terms
+that describe the data.
 %
-\item In the \emph{axial coding} stage, the researcher identifies similarities
-and other relationships between the tags developed during open coding. The goal
-of this step is to develop a \emph{coding paradigm}, which is a model that
-describes the inter-relationship between tags.
+\item During \emph{axial coding}, the researcher identifies similarities and
+other relationships between tags developed during open coding. The goal of this
+step is to develop a \emph{coding paradigm}, which is a model that describes
+the inter-relationship of tags.
 %
-\item Finally, in the \emph{selective coding} stage, the researcher tries to
-identify a small set of core tags that capture the main concepts and
-relationships identified during axial coding. These tags form the basis of the
-theory extracted from the data.
+\item Finally, during \emph{selective coding}, the identifies a small set of
+core tags that capture the main concepts and relationships identified during
+axial coding. These tags form the basis of the theory extracted from the data.
 %
 \end{enumerate*}
 
@@ -482,7 +493,7 @@ outlined in Section~\ref{sec:back:gt}.
 We restricted the scope of data collection to include only lecture notes
 produced by faculty/instructors in computer science departments at respected
 universities. Furthermore, we restrict our data to include only static, written
-documents. Restricting the scope in this way has three benefits:
+documents. Restricting the scope in this way has two benefits:
 %
 \begin{enumerate*}
 %
@@ -499,12 +510,13 @@ algorithms.
 %   must communicate in a restricted manner. In contrast, an oral explanation may
 %   use tone, intonation and other forms of explanation to accentuate the
 %   explanation. Including such data would complicate the
-\todo{fix this}
-\item The data is similar in form to the envisioned dsl i.e. the dsl is
-  envisioned as being directed towards an audience whose means of interaction
-  with it is by text. In contrast, if oral, or video explanations were included
-  than some amount of translation would be required. Although this is not
-  unreasonable it is outside the scope of this analysis.
+%
+% \todo{fix this}
+% \item The data is similar in form to the envisioned dsl i.e. the dsl is
+%   envisioned as being directed towards an audience whose means of interaction
+%   with it is by text. In contrast, if oral, or video explanations were included
+%   than some amount of translation would be required. Although this is not
+%   unreasonable it is outside the scope of this analysis.
   
 \end{enumerate*}
 %
@@ -517,7 +529,7 @@ We made no attempt to restrict the size of the data collected. The smallest
 document collected was 1.5 pages and the longest was 18 pages.
 
 
-All data was collected and coded by hand by a single researcher with the aid of
+All data was collected and coded by hand by the first author with the aid of
 Atlast.ti software.\footnote{\url{http://atlasti.com/}}
 %
 Atlast.ti provides direct support for the grounded theory process by allowing
