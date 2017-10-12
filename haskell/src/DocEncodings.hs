@@ -97,100 +97,109 @@ avt01 = [
         , move Description
         , pop
       , aspect Class @@ [Role Meta]
-        , move Comment
+        , aspect History
+          , move Description
+          , pop
+        , aspect Property @@ [Role Review]
+          , move Comment
+          , pop
+        , aspect DataStructure @@ [Role Related]
+          , move Definition @@ [Note Mathematics]
+          , pop
+        , move Definition @@ [Note Mathematics]
+        , move InVivo @@ [Note Mathematics]
         , pop
-      , pop
-    , pop
-  , aspect History
-    , move Description
-    , pop
-  , aspect Property @@ [Role Review]
-    , move Definition @@ [Note Mathematics]
-    , pop
-  , move Definition @@ [Note Mathematics]
-  , move InVivo @@ [Note Mathematics]
-  , move InVivo
-  , aspect Property
-    , move Definition
-    , move Example @@ [Note Cartoon]
-    , aspect Operation
-      , move Example @@ [Note Cartoon]
-      , pop
-    , aspect State
-      , move Description
-      , move Observation @@ [Note Cartoon]
-      , pop
-    , aspect Operation
-      , move Example
-      , move Observation
-      , pop
-    , aspect State
-      , move Observation
-      , move Conclusion
-      , move Example @@ [Note Cartoon]
-      , move Proposal @@ [Note Cartoon]
-      , pop
-    , aspect Problem
       , move InVivo
-      , pop
-    , aspect Operation
-      , move Example @@ [Note Cartoon]
-      , move Legend
-      , move Description @@ [Note Cartoon]
-      , aspect State
-        , move Observation
+      , aspect Property
+        , move Definition
+        , move Example @@ [Note Cartoon]
+        , aspect Operation
+          , move Example @@ [Note Cartoon]
+          , pop
+        , aspect State
+          , move Observation
+          , move Observation @@ [Note Cartoon]
+          , pop
+        , aspect Operation
+          , move Example
+          , move Observation
+          , pop
+        , aspect State
+          , move Observation
+          , move Conclusion
+          , move Example @@ [Note Cartoon]
+          , move Proposal @@ [Note Cartoon]
+          , pop
+        , aspect Problem
+          , move Comment
+          , pop
+        , move InVivo
         , pop
+      , aspect Operation
+        , move Example @@ [Note Cartoon]
+        , move Legend
+        , move Description @@ [Note Cartoon]
+        , aspect State
+          , move Observation
+          , pop
+        , aspect State
+          , move Observation
+          , pop
+        , aspect Application
+          , move Description
+          , pop
       , move Example @@ [Role Review]
       , move Definition @@ [Note Code]
       , move Comment @@ [Role Review]
       , move Comment @@ [Role Review, Note Code]
-      , move Example @@ [Note Cartoon]
       , move Example @@ [Note Code]
+      , move Example @@ [Note Cartoon]
       , pop
-    , aspect Operation
-      , move Description @@ [Role Related, Role Review]
+    , aspect Operation @@ [Role Related, Role Review]
+      , move Description
       , pop
     , aspect Operation
       , move Description
       , aspect Advantage
+        , move Comment
         , pop
       , move Description
       , aspect State
         , move Example @@ [Note Cartoon]
         , move Observation @@ [Note Cartoon]
-        , aspect Operation
-          , move Example @@ [Note Cartoon]
-          , move InVivo @@ [Note Cartoon]
+        , aspect Solution
+          , aspect Operation
+            , move Example @@ [Note Cartoon]
+            , move InVivo @@ [Note Cartoon]
+            , pop
           , pop
         , pop
       , pop
     , pop
-  , aspect Operation
-  , move Description @@ [Role Related]
-  , aspect Design
+  , aspect Operation @@ [Role Related]
     , move Description
-    , move Comment @@ [Note Code]
-    , move Description @@ [Note Code]
+    , aspect Design
+      , move Description
+      , move Comment @@ [Note Code]
+      , move Description @@ [Note Code]
+      , pop
+    , move Description
+    , move Definition @@ [Note Code]
+    , move Definition @@ [Note Code]
+    , aspect Operation
+      , move Example
+      , aspect Application
+        , move Description
+        , pop
+      , move Definition @@ [Note Code]
+      , pop
     , pop
-  , move Description
-  , move Definition @@ [Note Code]
-  , move Definition @@ [Note Code]
-  , aspect Operation
-    , move Example
-    , pop
-  , move Definition @@ [Note Code]
   , aspect Operation @@ [Role Related]
     , move Description
     , move Description @@ [Note Code]
-    , pop
-  , aspect DataStructure @@ [Role Related]
-    , pop
-  , aspect Application
-    , move Description
+    , move Description @@ [Note Code]
     , aspect Problem
-      , aspect Solution
-        , aspect Application
-        , move Description
+      , move Comment
   ]
 
 avt02 :: [Code Aspect Move Decorator]
@@ -198,28 +207,11 @@ avt02 = [
   aspect DataStructure
   , aspect Problem
     , aspect Solution
-    , move Description
+      , move Description
+      , pop
     , pop
   , aspect Property
     , move Definition
-    , pop
-  , aspect Property
-    , move Proposal
-    , aspect Problem
-      , move Description
-      , move Cases @@ [Note Mathematics]
-      , move Description @@ [Note Mathematics]
-      , aspect Solution
-        , move Derivation @@ [Note Mathematics]
-        , pop
-      , pop
-    , pop
-  , aspect Operation
-    , move Example @@ [Note Cartoon]
-    , pop
-  , move Description @@ [Note Code]
-  , move Example @@ [Note Cartoon]
-  , aspect DataStructure
     , pop
   , aspect Constituent
     , move Description
@@ -229,6 +221,23 @@ avt02 = [
     , move InVivo
     , move Description
     , move Comment @@ [Role Aside]
+    , aspect Solution
+      , move Derivation @@ [Note Mathematics]
+      , pop
+    , aspect Property
+      , move Proposal
+      , aspect Problem
+        , move Description
+        , move Cases @@ [Note Mathematics]
+        , move Description @@ [Note Mathematics]
+        , pop
+      , pop
+    , pop
+  , aspect Operation
+    , move Example @@ [Note Cartoon]
+    , pop
+  , move Description @@ [Note Code]
+  , move Example @@ [Note Cartoon]
     ]
 
 avt03 :: [Code Aspect Move Decorator]
@@ -281,13 +290,10 @@ avt03 = [
           , move InVivo
           , move Definition
           , move InVivo
+        , aspect Design
           , aspect Complexity
             , move Description
             , move Description
-            , pop
-          , pop
-        , aspect Design
-          , move Comment
         ]
 
 avt04 :: [Code Aspect Move Decorator]
@@ -313,32 +319,35 @@ avt04 = [
           , move Proof
           , move Solicitation
           , move Proof
-          , aspect Solution
+          , aspect Problem
             , move Description
-            , pop
-          , aspect State
-            , move Description
-            , move Definition
-            , move Observation
-            , move Comment @@ [Note Cartoon]
-            , move Legend
-            , move Observation
-            , pop
-          , aspect Operation
-            , move InVivo
-            , move Cases
-            , move Description
-            , move Observation
-            , move Description
-            , move Legend
-            , move Description
-            , move Description @@ [Note Cartoon]
+            , aspect Solution
+              , move Description
+              , pop
+            , aspect State
+              , move Description
+              , move Definition
+              , move Observation
+              , move Comment @@ [Note Cartoon]
+              , move Legend
+              , move Observation
+              , pop
+            , aspect Operation
+              , move InVivo
+              , move Cases
+              , move Description
+              , move Observation
+              , move Description
+              , move Legend
+              , move Description
+              , move Description @@ [Note Cartoon]
+              , pop
             , pop
           , pop
         , aspect Operation
           , move Description
           , aspect Operation
-            , move Description
+            , move Observation
             , move Observation
             , pop
           , pop
@@ -383,8 +392,6 @@ avt04 = [
           , move Description
           , move Observation
           , move Conclusion @@ [Note Cartoon]
-          , aspect Problem
-            , move Description
         ]
 
 avt05 :: [Code Aspect Move Decorator]
@@ -396,7 +403,11 @@ avt05 = [
     , move Description @@ [Note Sequence]
     , move Description @@ [Note Sequence]
     , move Implication @@ [Note Sequence]
-    , move Description @@ [Note Sequence]
+    , aspect DataStructure
+      , move Comment
+      , pop
+    , pop
+  , move Description @@ [Note Sequence]
     , aspect History
       , move Description
       , pop
@@ -412,12 +423,16 @@ avt05 = [
         , move Implication
         , pop
       , move Example @@ [Note Cartoon]
+      , move Description @@ [Note Sequence]
+      , move Example @@ [Note Cartoon]
       , aspect Operation
-        , move Description @@ [Note Sequence]
-        , move Example @@ [Note Cartoon]
         , move Description
         , move Comment @@ [Note Sequence]
         , move Example @@ [Note Cartoon]
+        , aspect State
+          , move Observation
+          , pop
+        , move Description
         , aspect State
           , move Observation
           , pop
@@ -486,30 +501,31 @@ djk01 =
       , pop
     , aspect Problem
       , move Description
-    , aspect Class
-      , move Description
-      , move Comment @@ [Role Aside]
-      , pop
-    , aspect Problem @@ [Role Related]
-      , move Description
-      , pop
-    , aspect DataStructure
-      , move Definition @@ [Note Mathematics]
+      , aspect Class
+        , move Description
+        , move Comment @@ [Role Aside]
+        , pop
+      , aspect Problem @@ [Role Related]
+        , move Description
+        , pop
+      , aspect DataStructure
+        , move Definition @@ [Note Mathematics]
+        , pop
       , pop
     , aspect Constituent
       , move Definition
       , pop
     , move Description
     , aspect Operation
-    , move Description @@ [Note Mathematics]
-    , move InVivo @@ [Note Mathematics]
-    , move Definition @@ [Note Code]
+      , move Description @@ [Note Mathematics]
+      , move InVivo @@ [Note Mathematics]
+      , move Definition @@ [Note Code]
+      , move Description
+      , move Description
+      , move Definition @@ [Note Code]
+      , pop
     , move Definition
     , move Definition @@ [Note Mathematics, Role Aside]
-    , move Description
-    , move Definition @@ [Note Code]
-    , pop
-    , move Definition
     ]
 
 djk02 :: [Code Aspect Move Decorator]
@@ -527,62 +543,67 @@ djk02 =
       , move InVivo
       , move Description
       , move Definition @@ [Note Code]
-      , aspect Operation
-        , move Description @@ [Role Caveat]
-        , move Definition @@ [Note Code]
-        , move Definition @@ [Note Mathematics]
-        , move InVivo @@ [Note Mathematics]
-        , move Definition
-        , move InVivo
-        , pop
-      , pop
-    , aspect Problem
-      , move Definition
-      , aspect Problem @@ [Role Related]
-        , move Abstraction
-        , move Definition @@ [Note Mathematics]
-        , move InVivo @@ [Role Caveat]
-        , aspect Class
-          , move Description
+      , aspect Operation @@ [Role Caveat]
+        , move Description
+        , aspect Complexity @@ [Role Caveat]
+          , move Assumption
+          , move Definition @@ [Note Code]
+          , move Definition @@ [Note Mathematics]
+          , move InVivo @@ [Note Mathematics]
+          , move Definition
+          , move InVivo
+          , aspect Problem @@ [Role Related]
+            , move Abstraction
+            , move Definition @@ [Note Mathematics]
+            , move InVivo @@ [Role Caveat]
+            , aspect Class
+              , move Description
+              , pop
+            , pop
           , pop
         , pop
       , pop
     , aspect Problem @@ [Role Related]
       , move Description
       , aspect Solution
-        , aspect Complexity
-          , move Description
-          , pop
-        , aspect Design @@ [Role Review]
-          , move Comment @@ [Note Code]
-          , move Description
-          , move InVivo
-          , move Description
-          , aspect Operation
+        , aspect Algorithm
+          , aspect Complexity
             , move Description
             , pop
-          , move Description
-          , move Comment @@ [Note Code]
-          , aspect Problem
-            , move Abstraction
+          , aspect Design @@ [Role Review]
+            , move Comment @@ [Note Code]
+            , move Description
+            , move InVivo
+            , move Description
             , aspect Operation
               , move Description
-              , move Proposal @@ [Note Code]
-              , move Example @@ [Note Cartoon, Role Related]
-              , aspect Problem
+              , pop
+          , move Description
+          , move Comment @@ [Note Code]
+          , pop
+        , pop
+      , pop
+    , aspect Problem
+      , move Abstraction
+      , aspect Solution
+        , move Proposal
+        , aspect Operation
+          , move Description
+          , move Proposal @@ [Note Code]
+          , move Example @@ [Note Cartoon, Role Related]
+            , aspect Problem
+              , move Description
+              , move Example
+              , aspect Solution
+                , move Proposal
                 , move Description
-                , move Example
-                , aspect Solution
-                  , move Proposal
+                , aspect Design
                   , move Description
-                  , aspect Design
-                    , move Description
-                    , move InVivo
-                    , pop
-                  , aspect Operation
-                    , move Description
-                    , move Conclusion
-                    , pop
+                  , move InVivo
+                  , pop
+                , aspect Operation
+                  , move Description
+                  , move Conclusion
                   , pop
                 , pop
               , pop
@@ -608,18 +629,8 @@ djk02 =
       , move Description
       , aspect Operation
         , move Description @@ [Note Mathematics]
-          , aspect Algorithm
-            , aspect Solution
-              , move Proposal
-              , move Definition @@ [Note Code]
-              , pop
-            , pop
-          , pop
-        ,pop
-      , pop
-    , aspect Design @@ [Role Aside]
-      , aspect Complexity @@ [Role Caveat]
-        , move Assumption
+        , aspect Design @@ [Role Aside]
+          , move Comment
     ]
 
 djk03 :: [Code Aspect Move Decorator]
@@ -632,10 +643,16 @@ djk03 =
   , move InVivo
   , move Definition
   , aspect Class
-    , move Comment
+    , move Description
     , pop
   , move Outline @@ [Role Meta]
   , aspect Motivation
+    , move InVivo
+    , aspect Problem
+      , aspect Class
+      , move Comment
+      , pop
+    , aspect Motivation
     , move Comment
     , pop
   , aspect Application
@@ -677,44 +694,50 @@ djk03 =
     , move Description
     , move Description @@ [Note Cartoon]
     , move Example @@ [Note Cartoon]
+    , move Conclusion
     , pop
   , aspect Class
     , move InVivo
+    , pop
+  , aspect Problem @@ [Role Related]
+    , move Abstraction
+    , move Definition @@ [Note Mathematics]
+    , aspect Goal
+      , move Description @@ [Note Mathematics]
+      , pop
     , aspect Property
       , move Definition
       , move InVivo
+      , move Conclusion
       , pop
-    , aspect Problem @@ [Role Related]
-      , move Abstraction
+    , aspect Property
+      , move Definition
+      , move Comment [Role Caveat]
+      , move Conclusion
+      , pop
+    , aspect Property
       , move Definition @@ [Note Mathematics]
-      , aspect Goal
-        , move Description @@ [Note Mathematics]
-        , move Conclusion
-        , pop
-      , aspect Property
-        , move Definition
-        , move Definition @@ [Note Mathematics]
-        , move InVivo
-        , move Description @@ [Role Caveat]
-        , move Description @@ [Role Aside, Role Pedagogical]
-        , move Description
-        , aspect Operation
-          , move Definition @@ [Note Mathematics]
-          , move Description
-          , pop
-        , aspect Operation
-          , move Description
-          , move Definition @@ [Note Mathematics]
-          , move Description
-          , move Comment @@ [Role Caveat]
-          , move Definition @@ [Note Mathematics]
-          , move Description @@ [Role Aside]
-          , move Implication @@ [Role Aside]
-          , pop
-        , move Description
-        , move InVivo
-        , pop
+      , move InVivo
+      , move Description @@ [Note Caveat]
       , pop
+    , pop
+  , move Description @@ [Role Aside, Role Pedagogical]
+  , move Description
+    , aspect Operation
+      , move Definition @@ [Note Mathematics]
+      , move Description
+      , pop
+    , aspect Operation
+      , move Description
+      , move Definition @@ [Note Mathematics]
+      , move Description
+      , move Comment @@ [Role Caveat]
+      , move Definition @@ [Note Mathematics]
+      , move Description @@ [Role Aside]
+      , move Implication @@ [Role Aside]
+      , pop
+    , move Description
+    , move InVivo
     , pop
   , aspect Goal @@ [Role Pedagogical]
     , move Example @@ [Note Cartoon]
@@ -729,23 +752,6 @@ djk03 =
       , move Description
       , move Example
       , move Observation
-      , pop
-    , pop
-  , aspect Algorithm
-    , move Description
-    , aspect Motivation
-      , move InVivo
-      , move Conclusion
-      , move Comment @@ [Role Caveat]
-      , move Conclusion
-      , pop
-    , aspect Property
-      , move Comment
-      , pop
-    , pop
-  , aspect Problem
-    , aspect Class
-      , move Comment
   ]
 
 djk04 :: [Code Aspect Move Decorator]
@@ -796,8 +802,6 @@ djk05 =
   , aspect Property
     , move Description @@ [Note Mathematics]
     , move Proof
-    , move Comment @@ [Note Cartoon]
-    , move Proof
     , move Implication
     , move Description
     , pop
@@ -817,6 +821,7 @@ djk05 =
       , aspect Complexity
         , move Comment @@ [Note Table]
         , move Description
+        , move Comment @@ [Note Cartoon]
   ]
 
 -- | Mergesort Algorithm Document Encodings
@@ -842,7 +847,6 @@ ms01 =
   , aspect Goal
     , move Description
     , pop
-  , move Description
   , aspect Operation
     , move Description
     , move InVivo
@@ -861,7 +865,7 @@ ms01 =
   , move Legend @@ [Note Cartoon]
   , move Description
   , move Assumption
-  , move Description -- 27
+  , move Description
   , move Description @@ [Note Mathematics]
   , move Definition @@ [Note Code]
   , aspect Operation
@@ -882,6 +886,7 @@ ms01 =
       , pop
     , pop
   , move Description
+  , move InVivo
   , aspect Property
     , move Comment
     , pop
@@ -904,50 +909,48 @@ ms02 =
       , move Description
       , pop
     , aspect Design
-    , move Comment @@ [Role Meta]
-    , pop
-  , aspect Algorithm
-    , move Description
-    , pop
-  , move Description
-  , move Example @@ [Note Cartoon]
-  , aspect Problem @@ [Role Pedagogical]
-    , move Solicitation
-    , aspect Solution
-    , move Description @@ [Note Sequence]
-    , move Cases
-    , move Description
-    , move Comment @@ [Role Caveat]
-    , move Description
-    , move Example @@ [Note Code]
-    , move Comment @@ [Role Meta, Role Pedagogical]
-    , move InVivo
-    , move Example @@ [Note Cartoon]
-    , move Description
-    , pop
-  , aspect Complexity
-    , move Description @@ [Note Cartoon]
-    , aspect State
-      , move Observation
+      , move Comment @@ [Role Meta]
+      , pop
+    , aspect Algorithm
+      , aspect Complexity
+        , move Comment
+        , pop
+      , pop
+    , aspect Complexity
+      , move Comment
+      , pop
+    , aspect Algorithm
+      , aspect Complexity
+      , move Comment
+      , pop
+    , aspect Algorithm
+      , aspect Complexity
       , move Description
-      , move Comment @@ [Role Meta, Role Pedagogical]
       , pop
-    , pop
-  , aspect Complexity
-    , move Comment
-    , pop
-  , aspect Algorithm
-    , aspect Complexity
-      , move Comment
-      , pop
-    , pop
-  , aspect Algorithm
-    , aspect Complexity
-      , move Comment
-      , pop
-    , pop
-  , aspect Class
-    , move Comment
+    , move Description
+    , move Example @@ [Note Cartoon]
+    , aspect Problem @@ [Role Pedagogical]
+      , move Solicitation
+        , aspect Solution
+          , move Description @@ [Note Sequence]
+          , move Cases
+          , move Description
+          , move Comment @@ [Role Caveat]
+          , move Description
+          , move Example @@ [Note Code]
+          , move Comment @@ [Role Meta, Role Pedagogical]
+          , pop
+        , aspect Class
+          , move InVivo
+          , move Example @@ [Note Cartoon]
+          , move Description
+          , pop
+        , aspect Complexity
+          , move Description @@ [Note Cartoon]
+          , aspect State
+            , move Observation
+            , move Description
+            , move Comment @@ [Role Meta, Role Pedagogical]
   ]
 
 ms03 :: [Code Aspect Move Decorator]
@@ -957,7 +960,7 @@ ms03 = [
     , move Description
     , move InVivo
     , pop
-  , move Definition @@ [Note Sequence, Note Cartoon]
+  , move Definition @@ [Note Sequence]
   , aspect Motivation
     , move Description @@ [Note Mathematics]
     , pop
@@ -965,6 +968,30 @@ ms03 = [
     , move Description @@ [Note Mathematics]
     , pop
   , aspect Operation
+    , move Description
+    , move Comment @@ [Role Aside, Role Related]
+    , pop
+  , move Description @@ [Note Cartoon]
+  , move Description
+  , move InVivo
+  , move Description @@ [Note Cartoon]
+  , aspect Implementation
+    , aspect Complexity
+      , move Proposal
+      , aspect Design
+        , move Description
+        , pop
+      , move Comment @@ [Note Cartoon]
+      , pop
+    , pop
+  , aspect Algorithm @@ [Role Related]
+    , move Description
+    , move Description @@ [Note Cartoon]
+    , aspect Complexity
+      , move Proposal
+      , move Description
+      , move Proposal
+      , move Comment @@ [Note Cartoon]
   ]
 
 ms04 :: [Code Aspect Move Decorator]
@@ -991,24 +1018,28 @@ ms04 =
           , pop
         , move Observation
         , move Observation
-        , move Definition @@ [Note Code]
-        , move Example @@ [Note Code]
-        , move Observation
-        , move Definition @@ [Note Code]
-        , move Example @@ [Note Code]
-        , aspect Complexity
-          , move Conclusion
-          , aspect Operation
-            , move Description
-            , pop
-          , pop
         , pop
       , pop
-    , pop
+    , move Definition @@ [Note Code]
+    , move Example @@ [Note Code]
+    , move Observation
+    , move Definition @@ [Note Code]
+    , move Example @@ [Note Code]
+   , aspect Complexity
+     , move Conclusion
+       , aspect Operation
+         , move Description
+         , pop
+       , pop
+     , pop
+   , pop
   , aspect Problem
     , move Description
     , aspect Solution
       , move Description
+      , aspect Operation
+        , move Description
+        , pop
       , pop
     , pop
   , move Definition @@ [Note Code]
@@ -1034,30 +1065,27 @@ ms04 =
   , aspect Disadvantage
     , move Description
     , aspect Operation
-      , move Description
-      , aspect Application
-        , move Example
-        , move InVivo
-        , pop
-      , pop
-    , pop
-  , aspect Advantage
-    , move Comment
+      , aspect Advantage
+        , move Description
+          , aspect Application
+          , move Example
+          , move InVivo
   ]
 
 ms05 :: [Code Aspect Move Decorator]
 ms05 =
   [
   aspect Algorithm
-  , move Description @@ [Role Review]
-  , aspect Complexity
-    , move Description
-    , move Conclusion
-    , move Example
-    , move Solicitation
-    , move Description
+  , aspect Algorithm
+    , move Description @@ [Role Review]
+    , aspect Complexity
+      , move Description
+      , move Conclusion
+      , move Example
+      , move Solicitation
+      , move Description
+      , pop
     , pop
-  , move Description
   , move Example @@ [Note Cartoon]
   , move Comment @@ [Note PseudoCode]
   , aspect Operation
@@ -1079,6 +1107,4 @@ ms05 =
     , pop
   , move Comment @@ [Role Meta, Role Pedagogical]
   , move Solicitation @@ [Role Meta, Role Pedagogical]
-  , aspect Algorithm
-    , move Comment
   ]
