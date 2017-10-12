@@ -97,6 +97,7 @@ avt01 = [
         , move Description
         , pop
       , aspect Class @@ [Role Meta]
+        , move Comment
         , pop
       , pop
     , pop
@@ -139,8 +140,8 @@ avt01 = [
       , aspect State
         , move Observation
         , pop
-      , move Example @@ [Role Review, Note Code]
-      , move Definition @@ [Role Review, Note Code]
+      , move Example @@ [Role Review]
+      , move Definition @@ [Note Code]
       , move Comment @@ [Role Review]
       , move Comment @@ [Role Review, Note Code]
       , move Example @@ [Note Cartoon]
@@ -207,6 +208,7 @@ avt02 = [
     , aspect Problem
       , move Description
       , move Cases @@ [Note Mathematics]
+      , move Description @@ [Note Mathematics]
       , aspect Solution
         , move Derivation @@ [Note Mathematics]
         , pop
@@ -233,8 +235,8 @@ avt03 :: [Code Aspect Move Decorator]
 avt03 = [
         aspect DataStructure
         , move Outline
-        , aspect DataStructure
-          , move Comment @@ [Role Review]
+        , aspect DataStructure @@ [Role Review]
+          , move Comment
         , aspect Constituent
           , move Definition
           , move Example @@ [Note Cartoon]
@@ -248,11 +250,11 @@ avt03 = [
             , move Definition
             , move InVivo
             , move Definition
-            , aspect Constituent
-              , move Description
-              , move Comment @@ [Note Cartoon]
-              , pop
             , pop
+          , pop
+        , aspect Constituent
+          , move Description
+          , move Comment @@ [Note Cartoon]
           , pop
         , aspect Property
           , move Derivation
@@ -285,6 +287,7 @@ avt03 = [
             , pop
           , pop
         , aspect Design
+          , move Comment
         ]
 
 avt04 :: [Code Aspect Move Decorator]
@@ -370,6 +373,8 @@ avt04 = [
           , aspect State
             , move Comment @@ [Note Cartoon]
             , move Observation
+            , move Conclusion @@ [Note Cartoon]
+            , move Observation
             , move Implication
             , move Description
             , move Conclusion @@ [Note Cartoon]
@@ -389,8 +394,8 @@ avt05 = [
     , move Description
     , move Example @@ [Note Cartoon]
     , move Description @@ [Note Sequence]
-    , move Implication @@ [Note Sequence]
     , move Description @@ [Note Sequence]
+    , move Implication @@ [Note Sequence]
     , move Description @@ [Note Sequence]
     , aspect History
       , move Description
@@ -420,9 +425,11 @@ avt05 = [
         , aspect State
           , move Observation
           , pop
+        , move Description
         , aspect State
           , move Observation
           , pop
+        , move Description
         , aspect State
           , move Observation
           , pop
