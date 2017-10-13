@@ -819,7 +819,7 @@ initially empty stack, then executing pop codes until the stack is empty.
 \caption{Interpreting codes as operations in a stack machine that builds an
 explanation tree.}
 \label{fig:semantics}
-\vspace{-1ex}
+\vspace{-2ex}
 \end{figure}
 
 
@@ -835,10 +835,10 @@ Aspect Algorithm
 `- Aspect Disadvantage
    `- Move Description @ [Note Mathematics]
 \end{Verbatim}
-\caption{Rendering of the explanation tree produced by the coding of the
-beginning of MS03 given in Table~\ref{tbl:sample}.}
+\vspace{-1.5ex}
+\caption{Tree rendering of the codes for MS03 in Table~\ref{tbl:sample}.}
 \label{fig:tree}
-\vspace{-1ex}
+\vspace{-2ex}
 \end{figure}
 
 
@@ -905,24 +905,24 @@ would be mitigated in an interactive setting where secondary details can be
 explored on-demand and remain out-of-the-way otherwise.
 
 
-A more speculative application is that our theory could be used to adapt and
-remix existing explanations into new ones, targeted at a specific audience or
-even an individual user.
+A more speculative application is to use our theory to adapt and remix
+explanations into new ones targeted at a specific audience or even an
+individual user.
 %
 % Existing explanations could be in the form of coded lecture notes or
 % explanations created in the future using our proposed DSL.
 %
 By organizing an explanation into its constituent aspects that describe
 \emph{what} part of an explanation is doing, and separating this from the moves
-that describe \emph{how} it is doing it, it becomes possible to identify in
-other explanations alternative ways of explaining the same thing.
+that describe \emph{how} it is doing it, it is possible to identify other ways
+of explaining the same thing.
 %
-For example, suppose a user is interacting with an explanation that is less
-formal than she likes; a system could identify corresponding parts from other
-explanations that contains additional proof aspects or more math-decorated
-moves. An explanation designer could also use such a system to proactively
-identify alternative explanations to be incorporated and refined to be more
-consistent with the rest.
+% For example, suppose a user is interacting with an explanation that is less
+% formal than she likes; a system could identify corresponding parts from other
+% explanations that contains additional proof aspects or more math-decorated
+% moves. An explanation designer could also use such a system to proactively
+% identify alternative explanations to be incorporated and refined to be more
+% consistent with the rest.
 %
 This empirical approach to generating alternative explanations can supplement
 other strategies explored in previous work, such as generating alternative
@@ -961,28 +961,24 @@ natural language.
 \section{Conclusion}
 \label{sec:conc}
 
-This paper has presented a grounded theory analysis of explanations of
-algorithms and data structures. The analysis was performed on 15 sets of
-lecture notes covering three very different algorithms.
+This paper presented a grounded theory analysis of 15 explanations of
+algorithms and data structures in the form of lecture notes.
 %
-The grounded theory analysis yielded a coding paradigm that organizes algorithm
-explanations into explanation trees, where internal nodes represent various
-aspects of the algorithm to be explained and leaves represent pedagogical moves
-that incrementally advance the reader's understanding. The analysis also
-enumerated the set of aspects and moves that appeared in our data set and
-revealed that explanations exhibit a variety of notations.
+The analysis yielded a coding paradigm that organizes algorithm explanations
+into explanation trees, where internal nodes represent aspects of the algorithm
+and leaves represent pedagogical moves that incrementally advance the reader's
+understanding.
 %
 We make our coded data set publicly available and provide an associated tool
-for rendering the explanation tree corresponding to each document and to
-support future work based on our coding system.
+for rendering the explanation tree corresponding to each document.
 
 
 This study was performed as a formative domain analysis to inform the design of
 a DSL for creating interactive explanations of algorithms and data structures.
-Explanation trees can provide a good semantic basis for such a language, and
-that the enumerated aspects, moves, and roles discovered by the analysis
-suggest a suite of useful constructs and abstractions the language should
-support and establishes its basic expressiveness requirements.
+Explanation trees can provide a semantic basis for such a language, and that
+the enumerated aspects, moves, and roles discovered by the analysis suggest a
+suite of useful constructs and abstractions the language should support and
+establishes its basic expressiveness requirements.
 
 
 \section*{Acknowledgments}
