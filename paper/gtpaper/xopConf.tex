@@ -918,50 +918,34 @@ other strategies explored in previous work, such as generating alternative
 explanations from equivalence laws~\cite{EW13jvlc}.
 
 
-Finally, it is important to acknowledge some limitations of this work. First,
-our decision to sample only lecture notes excludes many other ways that people
-already explain algorithms, such as oral or animated explanations. We
-restricted our study to lecture notes because they were easy to collect and
-analyze and because they represent coherent, self-contained explanations, which
-is the focus of our proposed DSL. However, unlike animations or algorithm
-visualization tools, lecture notes are static. Since we aim to produce
-interactive explanation artifacts, it is possible we missed important features
-because of this restriction.
+Finally, it is important to acknowledge some limitations of this work.
 %
-Second, we chose grounded theory analysis because it is a process we are
-familiar with. 
-%
-However, grounded theory is typically best suited for answering \emph{why}
-questions (e.g.\ ...).
+First, our results are the output of a grounded theory analysis which is
+inherently subjective. Grounded theory provides a framework for systematically
+extracting a theory from qualitative data (see Section~\ref{sec:back:gt}), but
+the process relies on our subjective decisions about how to code the data. It
+is possible that other researchers follow the same process and yet arrive at
+very different results.
 
 
-% \todo{eric sign off on this statement}
-% We have expounded on the benefits of explanation trees, but we have said nothing
-% on \textit{how} explanation trees could be used in practice. We purposefully
-% leave this as an open question for future work because exploring it requires
-% consideration of varying implementations which is outside the scope of our
-% present purposes.
-% 
-% \subsection{The Application of Grounded Theory}
-% %% Why is grounded theory used for this application? What about Discourse Analysis?
-% We chose to perform a grounded theory approach because we understood the
-% qualitative nature of the data, and understood our desired long-term result.
-% Based on these criteria grounded theory seemed a natural fit for the
-% application. However, our results are significantly unlike results one would
-% expect from a grounded theory analysis for two reasons. First, our research
-% question was, and is, ill fitted for grounded theory. We are interested in the
-% \textit{structure} of an explanation, not the \textit{relationship} between
-% constituent parts of an explanation. The basic difference is between a
-% \textit{how} question and a \textit{why} question. While grounded theory is not
-% limited to \textit{why} questions, we find that our research question was
-% sufficiently answered by the coding paradigm identified in
-% section~\ref{sec:res:sys}. Therefore, this analysis falls short of grounded
-% theory because the result is not a set of identifiable categories and the
-% relations between them, rather it is the coding paradigm itself. In essence, our
-% research question was not complex enough to warrant a full grounded theory
-% analysis.
+Another limitation is that our decision to sample only lecture notes excludes
+many other ways that people already explain algorithms, such as oral or
+animated explanations. We restricted our study to lecture notes because they
+were easy to collect and analyze and because they represent coherent,
+self-contained explanations, which is the focus of our proposed DSL. However,
+unlike animations or algorithm visualization tools, lecture notes are static.
+Since we aim to produce interactive explanation artifacts, it is possible we
+missed important features because of this restriction.
 
-%% explain in detail what the central phenomena was during GT
+
+Finally, since explanations are about communicating ideas, it is possible that
+\emph{discourse analysis}~\cite{Gee14}, which focuses on extracting meaning
+from \emph{how language is used}, would have been a better choice than grounded
+theory. We chose grounded theory because it is a process we are familiar with
+and because we anticipated coding artifacts with a variety of notations besides
+natural language.
+
+
 
 \section{Conclusion}
 \label{sec:conc}
@@ -992,11 +976,10 @@ support and establishes its basic expressiveness requirements.
 
 \section*{Acknowledgments}
 
-Thank you to Shujin Wu for helping collect data and shape the direction of this
-work.
+Thanks to Shujin Wu for helping collect data and conceptualize this work.
 %
-Thank you to Dan Hillman for providing data from a previous study, which we
-didn't end up using but appreciate just the same.
+Thanks to Dan Hillman for providing data from a previous study, which we didn't
+end up using but very much appreciate.
 
 
 \bibliography{XOPbib,eric}
