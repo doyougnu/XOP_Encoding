@@ -704,18 +704,27 @@ d\in\mathit{Decorator}
 \end{figure}
 
 
-The syntax of codes in our system is defined by the grammar in
-Figure~\ref{fig:codes:syntax}, which refers to the tags defined in
-Tables~\ref{tbl:codes:main} and~\ref{tbl:codes:dec}.
+During axial coding, we observed that the meaning of an individual code often
+depends on preceding codes. For example, a description move does not stand on
+its own but typically describes a preceding aspect. 
 %
-During axial coding, we observed that aspects of an explanation are
-hierarchically arranged, and that in many cases it is only possible to
-understand how a move advances an explanation by considering not only the
-parent aspect but also its ancestors (\ref{rq:structure}).
+Understanding how a move advances an explanation may require understanding a
+sequence of preceding aspects, but not necessarily the immediately preceding
+aspects. For example, in AVT02 we observe the sequence \textit{data structure,
+problem, solution, description, property, definition} where the final move
+defines a property of the data structure; the intervening subsequence
+\textit{problem, solution, description} is irrelevant to the definition move
+but forms a separate meaning-dependency chain.
 %
-Therefore, the coding system needs a way to capture this hierarchy. To do this,
-we introduced structuring elements to our codes for indicating where in the
-hierarchy a given aspect sits.
+Thus, it seems that explanations have a hierarchical structure
+(\ref{rq:structure}), and so the coding system needs a way to capture this
+hierarchy. To do this, we introduced structuring elements to our codes to
+indicate where in the hierarchy a given aspect or move sits.
+
+
+The syntax of codes is defined by the grammar in Figure~\ref{fig:codes:syntax},
+which refers to the tags defined in Tables~\ref{tbl:codes:main}
+and~\ref{tbl:codes:dec}.
 %
 A new child aspect $a$ is introduced by a ``push'' code, $\Push\,a$, and we
 exit out of this aspect with a corresponding ``pop'' code, $\Pop$. A sibling
