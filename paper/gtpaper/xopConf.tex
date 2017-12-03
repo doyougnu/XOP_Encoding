@@ -73,24 +73,36 @@
 \copyrightyear{2018}
 \acmYear{2018}
 \setcopyright{acmlicensed}
-\acmConference[SIGCSE '18]{SIGCSE '18: The 49th ACM Technical Symposium on Computing Science Education}{February 21--24, 2018}{Baltimore , MD, USA}
-\acmBooktitle{SIGCSE '18: SIGCSE '18: The 49th ACM Technical Symposium on Computing Science Education, February 21--24, 2018, Baltimore , MD, USA}
+\acmConference[SIGCSE'18]{The 49th ACM Technical Symposium on Computing Science Education}{February 21--24, 2018}{Baltimore, MD, USA}
 \acmPrice{15.00}
 \acmDOI{10.1145/3159450.3159477}
 \acmISBN{978-1-4503-5103-4/18/02}
 
 
+% \begin{CCSXML}
+% <ccs2012>
+% <concept>
+% <concept_id>10003456.10003457.10003527.10003531.10003533</concept_id>
+% <concept_desc>Social and professional topics~Computer science education</concept_desc>
+% <concept_significance>500</concept_significance>
+% </concept>
+% </ccs2012>
+% \end{CCSXML}
+% 
+% \ccsdesc[500]{Social and professional topics~Computer science education}
+
 \begin{CCSXML}
 <ccs2012>
 <concept>
-<concept_id>10010405.10010489</concept_id>
-<concept_desc>Applied computing~Education</concept_desc>
+<concept_id>10003456.10003457.10003527</concept_id>
+<concept_desc>Social and professional topics~Computing education</concept_desc>
 <concept_significance>500</concept_significance>
 </concept>
 </ccs2012>
 \end{CCSXML}
 
-\ccsdesc[500]{Applied computing~Education}
+\ccsdesc[500]{Social and professional topics~Computing education}
+
 
 \author{Jeffrey Young} 
 \affiliation{%
@@ -106,14 +118,6 @@
  \city{Corvallis} 
  \state{Oregon}
  \country{USA}}
-% \author{Anonymized for Review}
-% \affiliation{
-%   \institution{\phantom{Anonymous}}
-%   \department{\phantom{Anonymous}}
-%   \city{\phantom{Anonymous}}
-%   \state{\phantom{Anonymous}}
-%   \country{\phantom{Anonymous}}
-% }
 
 \begin{abstract}
 %
@@ -135,8 +139,8 @@ results were computed.
 %
 \end{abstract}
 
-\keywords{ACM proceedings, \LaTeX, explanation-oriented programming, domain-specific-language, grounded
-  theory, algorithm explanation}
+\keywords{explanation-oriented programming; domain-specific languages;
+grounded theory; algorithm explanation}
 
 \maketitle
 
@@ -144,9 +148,8 @@ results were computed.
 \label{sec:intro}
 
 Data structures and algorithms are at the heart of computer science and must be
-explained to each new generation of students. A pressing question is: How can we
-do this effectively?
-
+explained to each new generation of students. How can we do this effectively?
+%
 In this paper, we focus on the \emph{artifacts} that constitute or support
 explanations of data structures and algorithms (hereafter just ``algorithms''),
 which can be shared and reused.
@@ -155,10 +158,10 @@ For verbal explanations, such as a lecture, the supporting artifact might be
 the associated slides. For written explanations, the artifact is the
 explanation as a whole, including the text and any supporting figures.
 %
-Explanation artifacts associated with algorithms are interesting because they
-typically present a complex interaction among many different notations,
-including natural language, mathematics, pseudocode, executable code, various
-kinds of diagrams, animations, and more.
+Explanation artifacts for algorithms are interesting because they typically
+present a complex interaction among many different notations, including natural
+language, mathematics, pseudocode, executable code, various kinds of diagrams,
+animations, and more.
 
 
 Currently, explanation artifacts for algorithms are created ad hoc using a
@@ -225,14 +228,13 @@ What kinds of notations are used in algorithm explanations?
 
 \end{enumerate}
 %
-Answering these questions establishes expressiveness requirements for our DSL
-since we should be able to express, at very least, explanations of the kinds
-educators are already creating. They also help to guide the design of the DSL by
-establishing an initial set of components and operations for building
-explanations.
+Answers to these questions set expressiveness requirements for our DSL since we
+should be able to express explanations that educators are already creating.
+They also guide the design of the DSL by providing an initial set of components
+and operations for building explanations.
 %
 We base our analysis on the established qualitative research method of
-\emph{grounded theory}~\cite{Strauss67discoveryof}, which we describe in
+\emph{grounded theory}~\cite{Strauss67discoveryof}, described in
 Section~\ref{sec:back:gt}.
 
 
@@ -240,10 +242,10 @@ For our analysis, we collected 15 explanation artifacts from the internet, as
 described in Section~\ref{sec:exp:setup}. These artifacts are lecture notes
 that explain two algorithms and one data structure commonly covered in
 undergraduate computer science courses: Dijkstra's shortest path
-algorithm~\cite[pp.~137--142]{KT06}, merge sort~\cite[210--214]{KT06}, and AVL
+algorithm~\cite[pp.~137--142]{KT06}, merge sort~\cite[pp.~210--214]{KT06}, and AVL
 trees~\cite[pp.~458--475]{KnuthArt3}.
 %
-Through the application of grounded theory, we develop a coding system that
+Applying grounded theory, we develop a coding system that
 captures the components, structure, and notations of the explanation in each
 document. This paper makes the following contributions:
 %
@@ -280,8 +282,8 @@ basis for a DSL and argue for the advantages of such an approach
 
 In this section, we put our work into context.
 %
-In Section~\ref{sec:back:xop}, we describe the paradigm of explanation-oriented
-programming, which is the underlying motivation for our work.
+In Section~\ref{sec:back:xop}, we describe explanation-oriented programming,
+which motivates our work.
 %
 In Section~\ref{sec:back:gt}, we describe the grounded theory methodology that
 we used to develop our coding system.
@@ -380,8 +382,10 @@ intended uses~\cite{Strauss67discoveryof}.
 % theory terminology in concert with an operational example that will show how
 % one may perform a grounded theory analysis.
 %
-This subsection briefly outlines the grounded theory methodology from
-\citet{corbin2014basics} used in our study.
+Our study uses the grounded theory methodology defined by
+\citet{corbin2014basics}.
+% This subsection briefly outlines the grounded theory methodology from
+% \citet{corbin2014basics} used in our study.
 
 
 Grounded theory starts by collecting initial data on the subject of interest.
